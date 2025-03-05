@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Two-Column Sticky + Overlay Right Grid (Unified Styles)</title>
+  <link rel="stylesheet" href="https://use.typekit.net/asl5wgb.css">
   <style>
     /* Reset default margins and paddings */
     * {
@@ -13,6 +14,12 @@
       padding: 0;
     }
 
+    a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+   
     .header-bar {
       height: 40px;
       width: 100%;
@@ -28,6 +35,7 @@
     .netra-logo {
       display: flex;
       align-items: center;
+      margin-left: 30px;
       /* Ensures the Netra logo is vertically centered */
     }
 
@@ -41,6 +49,7 @@
       /* Keeps icons vertically centered */
       gap: 5px;
       /* Ensures 5px spacing between icons */
+      margin-right: 30px;
     }
 
     .twitter,
@@ -74,7 +83,7 @@
       align-items: center;
       background: #262626;
       color: white;
-      font-family: Helvetica, sans-serif;
+      font-family: 'National', monospace;
     }
 
     /* Kicker (Section Title) */
@@ -85,6 +94,7 @@
       letter-spacing: 0.15em;
       padding-bottom: 12px;
       position: relative;
+      margin-top: 150px;
     }
 
     /* Adds the decorative line below the kicker */
@@ -93,7 +103,7 @@
       display: block;
       width: 166px;
       height: 7px;
-      background: linear-gradient(to right, #C52622 50%, #5194C3 50%);
+      background: linear-gradient(to right, #DB1D08 50%, #a7fbd0 50%);
       bottom: 0;
       left: 50%;
       position: absolute;
@@ -134,7 +144,7 @@
       font-weight: 300;
       letter-spacing: 0.2px;
       line-height: 1.25;
-      margin-top: 0.8rem;
+      margin: 0.8rem 0px;
       /* Adjusts spacing below h1 */
     }
 
@@ -150,12 +160,13 @@
       font-weight: 400;
       line-height: 1.5;
       max-width: 60ch;
-      margin-top: 10px 0px;
+      margin: 15px 0px 0px 0px;
+
     }
 
     .publish,
     .by-text {
-      font-family: monospace;
+      font-family: 'National', monospace;
     }
 
     @media screen and (min-width: 800px) {
@@ -172,8 +183,7 @@
 
     /* Byline Links */
     .byline a {
-      color: var(--color-headline);
-      text-decoration: none;
+      color: #fff;
     }
 
     .byline a:hover {
@@ -196,11 +206,25 @@
 
     }
 
-    .article p,
-    .article-2 p {
-      margin: 20px 0px;
-      color: white;
-      max-width: 650px;
+    p {
+    max-width: 650px;
+    color: #fff;
+    font-family: 'Publico Text Web', Georgia, serif;
+    font-size: 18px;
+    margin: 13px 0px;
+    font-variant-ligatures: normal;
+    font-variation-settings: normal;
+    font-feature-settings: normal;
+    -webkit-text-size-adjust: 100%;
+    line-height: 30px;
+    font-stretch: 100%;
+    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    }
+
+    .infographic {
+      background-color: #000;
     }
 
     /* ✅ Sticky Legend */
@@ -210,7 +234,7 @@
       z-index: 100;
       background: black;
       color: white;
-      font-family: monospace;
+      font-family: 'National', monospace;
       padding: 10px;
       display: flex;
       align-items: center;
@@ -240,16 +264,17 @@
     /* ✅ Two-Column Layout */
     .main-container {
       display: flex;
-      width: 100%;
-      min-height: 100vh;
+      width: 80%;
+      min-height: 40vh;
       align-items: flex-start;
       background: black;
+      margin: auto;
     }
 
     /* ✅ Left Grid (National Population) */
     .col-left {
       position: sticky;
-      top: 50px;
+      top: 18%;
       width: 50%;
       border-right: 1px solid #ddd;
       background: black;
@@ -273,14 +298,14 @@
     /* ✅ The scrolling trigger container */
     .scrolly-steps {
       width: 100%;
-      height: 800vh;
+      height: 1000vh;
       position: relative;
     }
 
     /* ✅ Pinned Container: Holds the changing overlays */
     .pinned-container {
       position: sticky;
-      top: 50px;
+      top: 18%;
       width: 100%;
       height: calc(100vh - 50px);
       display: flex;
@@ -326,7 +351,7 @@
     .step {
       position: relative;
       width: 80%;
-      margin: 0 auto 40vh;
+      margin: 0 auto 100vh;
       border: 2px dashed #ccc;
       min-height: 20vh;
       display: flex;
@@ -379,7 +404,8 @@
       gap: 5px;
       flex-wrap: wrap;
       text-align: center;
-      font-family: monospace;
+      font-family: 'National', monospace;
+      font-size: 14px;
     }
 
     .circle {
@@ -400,6 +426,9 @@
     .title-text {
       width: 50%;
       text-align: left;
+      font-family: "franklin-gothic-condensed", sans-serif;
+      font-weight: 400;
+      font-style: normal;
     }
 
     .title-icon {
@@ -434,119 +463,140 @@
       background-color: #44c4ff;
     }
 
-    .methodology, .methodology p {
+    .methodology,
+    .methodology p {
       color: gray;
     }
 
 
-/* Footer Styling */
-#footer {
-    background-color: #0a0a0a;
-    color: white;
-    padding: 40px 5%;
-    font-family: Arial, sans-serif;
-}
+    /* Footer Styling */
+    #footer {
+      background-color: #0a0a0a;
+      color: white;
+      padding: 40px 5%;
+      font-family: Arial, sans-serif;
+    }
 
-/* Inner Wrapper */
-#footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    /* Inner Wrapper */
+    #footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* Logo and Tagline */
-.logo {
-    text-align: left;
-    margin-bottom: 20px;
-}
+    /* Logo and Tagline */
+    .logo {
+      text-align: left;
+      margin-bottom: 20px;
+    }
 
-.logo img {
-    display: block;
-    margin-bottom: 10px;
-}
+    .logo img {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-.logo p {
-    font-size: 18px;
-    font-weight: 400;
-    opacity: 0.9;
-}
+    .logo p {
+      font-size: 18px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
 
-/* List Container */
-.lists {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 30px;
-    margin-top: 30px;
-}
+    /* List Container */
+    .lists {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 30px;
+      margin-top: 30px;
+    }
 
-/* List Sections */
-.list {
-    flex: 1;
-    min-width: 200px;
-    text-align: left;
-}
+    /* List Sections */
+    .list {
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
+    }
 
-.list h3 {
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
+    .list h3 {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
 
-.list ul {
-    list-style: none;
-    padding: 0;
-}
+    .list ul {
+      list-style: none;
+      padding: 0;
+    }
 
-.list ul li {
-    margin-bottom: 5px;
-}
+    .list ul li {
+      margin-bottom: 5px;
+    }
 
-.list ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
+    .list ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
 
-.list ul li a:hover {
-    opacity: 1;
-}
+    .list ul li a:hover {
+      opacity: 1;
+    }
 
-/* Copyright Section */
-.copyright {
-    text-align: left;
-    font-size: 14px;
-    opacity: 0.8;
-    margin-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
+    /* Copyright Section */
+    .copyright {
+      text-align: left;
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-/* CC License Icons */
-.cc-yy {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-}
+    /* CC License Icons */
+    .cc-yy {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
 
-.cc-yy img {
-    width: 35px;
-    height: auto;
-    margin-right: 5px;
-}
+    .cc-yy img {
+      width: 35px;
+      height: auto;
+      margin-right: 5px;
+    }
 
-.logo img {
-    max-width: 150px;
-    height: 100%;
-}
+    .logo img {
+      max-width: 150px;
+      height: 100%;
+    }
+
+    /* CUSTOM FONT STARTS */
+
+    @font-face {
+      font-family: 'Publico Text Web';
+      src: url('../assets/fonts/PublicoText-Roman-Web.woff2') format('woff2'),
+        url('../assets/fonts/PublicoText-Roman-Web.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-stretch: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'National';
+      src: url('../assets/fonts/national-book.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
 
 
+    /* CUSTOM FONT ENDS */
   </style>
 </head>
 
@@ -604,33 +654,63 @@
 
   <div class="article">
 
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-
+    <p>For Bangladesh’s religious minorities, most portals to power seem open.</p>
+    <p>They can—and do—rise through the ranks of the police, civil administration, judiciary, academia, and media,
+      reflecting a level of inclusivity almost elusive in South Asia. </p>
+    <p>But their path to power stops at the military’s gates: Fewer than one percent of Bangladeshi army officers and
+      just over one percent of navy officers are non-Muslim, according to a first-of-its-kind analysis of confidential
+      military records conducted by Netra News. </p>
+    <p>These figures contrast sharply with other government and professional arenas, where minority representation
+      closely mirrors national demographics. In the police force, civil service, Dhaka University faculty, and the
+      Supreme Court Bar Association, religious minorities hold positions in the country’s key levers of power at a level
+      that closely aligns with, or even exceeds, their nine-percent share of the population, a separate examination by
+      Netra News shows. </p>
+    <p>In Bangladesh, officer-level positions across different branches of the government, military or even autonomous
+      bodies are prized gateways to the elite, offering a rare path to upward mobility. That religious and ethnic
+      minorities hold a fair share in many of them is a rare bright spot in the country’s state-building. </p>
+    <p>Their prestige, however, makes them fiercely contested, and perceptions of bias can spark political upheaval.
+      Last year, mass protests over alleged discrimination in public-sector hiring led to the dramatic downfall of Prime
+      Minister Sheikh Hasina’s long-entrenched administration.</p>
+    <p>To compile these findings, Netra News sifted through a wide spectrum of official and confidential records.
+      Researchers accessed around 8,000 names from past army and navy rosters, along with a restricted police directory
+      of about 2,500 officers, as well as publicly available information on civil servants, lower court judges,
+      university faculty, and membership lists of two professional bodies. In total, the study mapped the likely
+      religious affiliations of more than 40,000 individuals. </p>
+    <p>XXX</p>
+    <p>Outside the barracks, minority inclusion in Bangladesh’s public institutions and professional societies often
+      exceeds the national make-up of religious and ethnic minorities.</p>
+    <p>More than 10% of lower court judges, 9% of police officers, and 10.5% of civil servants come from minority
+      communities, with Hindus making up the largest share. Indigenous, Christian, and Buddhist representation is also
+      strong.</p>
+    <p>Non-Muslims represent over 10 percent of Dhaka University’s permanent faculty, 8.57 percent of DRU members, and
+      about 8 percent of the Supreme Court Bar Association—ratios that broadly reflect the national religious landscape.
+    </p>
+    <p>But disparities emerge—and widen—at higher ranks.</p>
+    <p>At Dhaka University, 93 percent of top professorial posts are held by Muslims, slightly above their 91-percent
+      share of the national population. In the lower judiciary, 92 percent of senior district judges and equivalents are
+      Muslim. </p>
+    <p>The disparity intensifies in the civil administration, where only one out of 74 top-tier secretaries identifies
+      as non-Muslim. Police leadership posts mirror this pattern: just five of the 81 deputy inspector generals or
+      higher are from minority communities.</p>
+    <p>In the armed forces, however, the gap turns into a chasm. </p>
+    <p>In the 2016 army roster, the highest-ranked non-Muslim officer—a brigadier general from the engineering corps—has
+      since retired. In the 2017 navy rolls, there was just one non-Muslim commodore, also no longer serving. Beyond
+      these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating that for
+      every non-Muslim at the top, there were over 200 Muslim officers. This is despite non-Muslim citizens comprising
+      about one in 12 Bangladeshis.</p>
+    <p>Equally telling is the breakdown within this small minority. </p>
+    <p>According to the data analysed by Netra News, there are no indigenous (Adivasi) personnel in the navy officer
+      corps, just one Christian officer, and three Buddhists. In the army, no Christians at all appear in the officer
+      ranks, while only seven indigenous officers and seven Buddhists were identified.</p>
+    <p>The armed forces in Bangladesh recruit through a distinctive process centered on the Inter Services Selection
+      Board (ISSB), which assesses candidates on personality, family background, and other factors—criteria that can
+      include religion. Unlike many other government agencies, the military does not reserve quotas for marginalized
+      communities or descendants of freedom fighters. </p>
+    <p>Officially, the system is based on merit, yet the end result is a near-total absence of minorities in the upper
+      echelons of military command.</p>
   </div>
+
+<div class="infographic">
   <!-- Sticky Legend at the Top -->
   <div class="legend-container">
     <ul>
@@ -648,7 +728,7 @@
       <div class="grid-card" id="leftGridCard">
         <div class="title-section">
           <div class="title-text">
-            <h3>National Population</h3>
+            <h3>National population</h3>
           </div>
           <div class="title-icon"><img src="icons/BD MAP.svg" alt="icon"></div>
         </div>
@@ -666,101 +746,73 @@
       </div>
     </div>
   </div>
+</div>
+
 
   <div class="article-2">
 
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
+    <p>A Regional Perspective</p>
+    <p>Bangladesh’s overall record on minority inclusion far surpasses that of its neighbors. </p>
+    <p>Bangladesh’s military numbers echo India’s when it comes to uniformed minorities. In India, the largest minority
+      group, Muslims, reportedly makes up only about two percent of the armed forces’ officer corps, even though they
+      form around 14 percent of the national population—nearly double the share of Hindus in Bangladesh. </p>
+    <p>Thus, the army and navy figures in Bangladesh, for all their stark shortfalls, are not entirely out of step with
+      regional norms for religious representation in military ranks.</p>
+    <p>However, Bangladesh far outperforms India in other arenas of governance. </p>
+    <p>In Bangladesh’s civil service, around nine percent of officers are non-indigenous Hindus—112 percent of their
+      population share. In India, by contrast, Muslims comprise about 4.3 percent of the elite civil service, data
+      shows. That’s just 28 percent of their national proportion. </p>
+    <p>Put differently, adjusted for each country’s religious demographics, Hindus in Bangladesh’s civil service are
+      nearly four times better represented than Muslims in India’s. </p>
+    <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
+      share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
+    <p>Bangladesh’s southern neighbor Nepal has its own intricacies. </p>
+    <p>Official data suggests that Hindus, constituting 81 percent of Nepal’s population, occupy more than 90 percent of
+      civil service positions. </p>
+    <p>Nepal’s Muslim minority, conversely, accounts for over four percent of the population but just 0.1 percent of
+      civil service posts, according to a 2016 study by Tek Bahadur Dong, a Nepalese social scientist with Social
+      Science Baha.</p>
+    <p>Indigenous Buddhist-majority groups beyond the Newar community—who together comprise over 30 percent of Nepal’s
+      population—are massively underrepresented at only 1.6 percent of officer-level posts. </p>
+    <p>Meanwhile, Bahuns (upper-caste Brahmins), 12 percent of the population, hold more than 70 percent of these
+      coveted roles.</p>
+    <p>Political minefield</p>
+    <p>In Bangladesh, a civil service position is a highly coveted badge of social and economic status, a legacy of
+      British colonial bureaucracy. Mass protests in July and August last year, ignited by accusations of bias in
+      public-sector appointments, paved the way for the downfall of Prime Minister Sheikh Hasina’s long-standing
+      administration.</p>
+    <p>Conservative critics of the former Awami League government long claimed it had favored Hindu officers due to
+      their perceived electoral loyalty. </p>
+    <p>Yet the Netra News data suggests these complaints may be exaggerated. </p>
+    <p>Minority representation in government agencies appears largely in line with—or slightly above—demographic
+      expectations. If any institution stands apart, it is the armed forces, where the numbers of non-Muslim officers
+      plummet dramatically.</p>
+    <p>Despite the controversies, Bangladesh presents a complex tableau of inclusion: a setting where minority voices
+      resonate in the courts, the cabinet secretariat, and academia, but still echo faintly in the military barracks.
+    </p>
 
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
-
-    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
-      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
-      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
-      Mojave before we head back.</p>
 
 
     <div class="methodology">
       <h3>How Netra News reported this story</h3>
-      <p>Netra reviewed Federal Election Commission reports on hundreds of millions of contributions made through WinRed and
-      ActBlue, the main donation platforms for Republican and Democratic campaigns. Reporters identified the top
-      small-dollar donors who also gave the most frequently on each platform in recent years, and then reached out to
-      more than 150 of those top donors and their family members for each platform.</p>
+      <p>Netra reviewed Federal Election Commission reports on hundreds of millions of contributions made through WinRed
+        and
+        ActBlue, the main donation platforms for Republican and Democratic campaigns. Reporters identified the top
+        small-dollar donors who also gave the most frequently on each platform in recent years, and then reached out to
+        more than 150 of those top donors and their family members for each platform.</p>
 
       <p>Based on these interviews, as well as an analysis of hundreds of consumer complaints submitted to the Federal
-      Trade Commission and state Attorneys General, reporters identified more than 50 elderly donors who gave more than
-      they intended, many of whom suffered from cognitive decline or dementia. Reporters also reviewed complaints lodged
-      on consumer advocacy websites TrustPilot.com and PissedConsumer.com.</p>
+        Trade Commission and state Attorneys General, reporters identified more than 50 elderly donors who gave more
+        than
+        they intended, many of whom suffered from cognitive decline or dementia. Reporters also reviewed complaints
+        lodged
+        on consumer advocacy websites TrustPilot.com and PissedConsumer.com.</p>
 
-      <p>Reporters reviewed data on donations made by those vulnerable donors reported in WinRed and ActBlue’s FEC filings
-      over five years, from July 2019 through the end of June 2024. The donation amounts reported in the story do not
-      include any refunds the donors later received, which were typically only a small fraction of the total they had
-      given.</p>
+      <p>Reporters reviewed data on donations made by those vulnerable donors reported in WinRed and ActBlue’s FEC
+        filings
+        over five years, from July 2019 through the end of June 2024. The donation amounts reported in the story do not
+        include any refunds the donors later received, which were typically only a small fraction of the total they had
+        given.</p>
     </div>
 
   </div>
@@ -768,14 +820,16 @@
   <div id="footer">
     <div id="footer-inner">
       <div class="logo">
-        <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/logo.png" alt="Netra News Logo" width="250" height="25">
+        <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/logo.png"
+          alt="Netra News Logo" width="250" height="25">
         <p>Reportage, debate, analysis</p>
       </div>
       <div class="lists">
         <div class="list">
           <h3>About</h3>
           <ul>
-            <li><a href="https://netra.news/2019/journalism-on-behalf-of-the-people/" target="_blank" rel="noopener noreferrer">Editorial Mission</a></li>
+            <li><a href="https://netra.news/2019/journalism-on-behalf-of-the-people/" target="_blank"
+                rel="noopener noreferrer">Editorial Mission</a></li>
             <li><a href="https://netra.news/about/" target="_blank" rel="noopener noreferrer">About Netra
                 News</a></li>
             <li><a href="https://netra.news/privacy/" target="_blank" rel="noopener noreferrer">Privacy
@@ -787,7 +841,8 @@
         <div class="list">
           <h3>Coverage</h3>
           <ul>
-            <li><a href="https://netra.news/tags/netra-report/" target="_blank" rel="noopener noreferrer">Investigations</a></li>
+            <li><a href="https://netra.news/tags/netra-report/" target="_blank"
+                rel="noopener noreferrer">Investigations</a></li>
             <li><a href="https://netra.news/tags/column/" target="_blank" rel="noopener noreferrer">Column</a>
             </li>
             <li><a href="https://netra.news/tags/analysis/" target="_blank" rel="noopener noreferrer">Explainer</a>
@@ -804,7 +859,8 @@
             <li><a href="https://twitter.com/netranews" target="_blank" rel="noopener noreferrer">Twitter</a>
             </li>
             <li><a href="https://www.youtube.com/netranews" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-            <li><a href="https://www.instagram.com/netra.news/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.instagram.com/netra.news/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </li>
           </ul>
         </div>
 
@@ -812,9 +868,11 @@
 
       <div class="copyright">
         <div class="cc-yy">
-          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/cc.svg" loading="lazy" alt="CC">
+          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/cc.svg" loading="lazy"
+            alt="CC">
           <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/by.svg" alt="BY">
-          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/nd.svg" max-width="250px" max-height="50px" alt="ND">
+          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/nd.svg"
+            max-width="250px" max-height="50px" alt="ND">
         </div>
         <p>The article is licensed under Creative Commons NonCommercial-NoDerivatives 4.0
           International, Netra News/Bangladesh Media Network</p>
