@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Two-Column Sticky + Overlay Right Grid (Unified Styles)</title>
+  <style>
+    /* Reset default margins and paddings */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-bar {
+      height: 40px;
+      width: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      /* Vertically center all items */
+      justify-content: space-between;
+      /* Pushes left and right content to the edges */
+
+    }
+
+    .netra-logo {
+      display: flex;
+      align-items: center;
+      /* Ensures the Netra logo is vertically centered */
+    }
+
+    .nav-logo {
+      height: 30px;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      /* Keeps icons vertically centered */
+      gap: 5px;
+      /* Ensures 5px spacing between icons */
+    }
+
+    .twitter,
+    .facebook {
+      display: flex;
+      align-items: center;
+    }
+
+    .twitter-share,
+    .facebook-share {
+      list-style: none;
+      /* Removes default list styling */
+    }
+
+    .twitter-logo,
+    .fb-logo {
+      height: 23px;
+      color: white;
+      margin: 0px 3px;
+    }
+
+    /* Titles Container */
+    .titles {
+      padding-top: 1rem;
+      max-width: 100%;
+      /* Ensures alignment */
+      text-align: center;
+      /* Centers all child elements */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #262626;
+      color: white;
+      font-family: Helvetica, sans-serif;
+    }
+
+    /* Kicker (Section Title) */
+    .kicker {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding-bottom: 12px;
+      position: relative;
+    }
+
+    /* Adds the decorative line below the kicker */
+    .kicker::after {
+      content: "";
+      display: block;
+      width: 166px;
+      height: 7px;
+      background: linear-gradient(to right, #C52622 50%, #5194C3 50%);
+      bottom: 0;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+
+    /* Headline */
+    h1,
+    h2,
+    .byline,
+    .publish {
+      max-width: 40ch;
+      /* Ensures all text blocks have the same width */
+      text-align: center;
+      /* Aligns text properly */
+      margin: 0 auto;
+      /* Centers within the container */
+    }
+
+    /* Headline */
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+      margin: .67em 0;
+    }
+
+    @media screen and (min-width: 800px) {
+      h1 {
+        font-size: 48px;
+      }
+    }
+
+    /* Subtitle */
+    h2 {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+      line-height: 1.25;
+      margin-top: 0.8rem;
+      /* Adjusts spacing below h1 */
+    }
+
+    @media screen and (min-width: 800px) {
+      h2 {
+        font-size: 26px;
+      }
+    }
+
+    /* Byline */
+    .byline {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 60ch;
+      margin-top: 10px 0px;
+    }
+
+    .publish,
+    .by-text {
+      font-family: monospace;
+    }
+
+    @media screen and (min-width: 800px) {
+      .byline {
+        font-size: 15px;
+      }
+    }
+
+    /* Published Date */
+    .publish {
+      margin-top: 0.5em;
+      /* Adjusts spacing from byline */
+    }
+
+    /* Byline Links */
+    .byline a {
+      color: var(--color-headline);
+      text-decoration: none;
+    }
+
+    .byline a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Page background */
+    html,
+    body {
+      background-color: #262626;
+      font-family: Arial, sans-serif;
+    }
+
+    .article,
+    .article-2 {
+      margin: 20px 0px;
+      display: grid;
+      justify-content: center;
+
+    }
+
+    .article p,
+    .article-2 p {
+      margin: 20px 0px;
+      color: white;
+      max-width: 650px;
+    }
+
+    /* ✅ Sticky Legend */
+    .legend-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: black;
+      color: white;
+      font-family: monospace;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .legend-container ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .legend-container li {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .legend-container .circle {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    /* ✅ Two-Column Layout */
+    .main-container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      align-items: flex-start;
+      background: black;
+    }
+
+    /* ✅ Left Grid (National Population) */
+    .col-left {
+      position: sticky;
+      top: 50px;
+      width: 50%;
+      border-right: 1px solid #ddd;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ Right Grid (Overlays) */
+    .col-right {
+      position: relative;
+      width: 50%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ The scrolling trigger container */
+    .scrolly-steps {
+      width: 100%;
+      height: 800vh;
+      position: relative;
+    }
+
+    /* ✅ Pinned Container: Holds the changing overlays */
+    .pinned-container {
+      position: sticky;
+      top: 50px;
+      width: 100%;
+      height: calc(100vh - 50px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ Common Card Style for both National Population & Right Overlays */
+    .grid-card {
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border: #00cfc3 1px solid;
+    }
+
+    /* ✅ Right Grid Overlays (Each one appears one by one) */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 90%;
+      max-width: 400px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ✅ Step Triggers (Invisible triggers for scrolling effect) */
+    .step {
+      position: relative;
+      width: 80%;
+      margin: 0 auto 40vh;
+      border: 2px dashed #ccc;
+      min-height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    /* ✅ Grid of Dots */
+    .dots-grid {
+      display: grid;
+      grid-template-columns: repeat(20, 1fr);
+      gap: 5px;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .dots-grid div {
+      width: 9px;
+      height: 9px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+      flex-wrap: wrap;
+      margin-top: 5px;
+      border-top: #00cfc3 1px solid;
+      border-bottom: #00cfc3 1px solid;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .stats-left,
+    .stats-middle,
+    .stats-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      text-align: center;
+      font-family: monospace;
+    }
+
+    .circle {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
+
+    /* ✅ Title Section: Contains h3 + Icon */
+    .title-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .title-text {
+      width: 50%;
+      text-align: left;
+    }
+
+    .title-icon {
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .title-icon img {
+      width: 45px;
+      height: 45px;
+    }
+
+    /* ✅ Religious color classes */
+    .islam {
+      background-color: #00cfc3;
+    }
+
+    .hinduism {
+      background-color: #a7fbd0;
+    }
+
+    .indigenous {
+      background-color: #fe46ac;
+    }
+
+    .christian {
+      background-color: #cdeffe;
+    }
+
+    .buddhist {
+      background-color: #44c4ff;
+    }
+
+    .methodology, .methodology p {
+      color: gray;
+    }
+
+
+/* Footer Styling */
+#footer {
+    background-color: #0a0a0a;
+    color: white;
+    padding: 40px 5%;
+    font-family: Arial, sans-serif;
+}
+
+/* Inner Wrapper */
+#footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo and Tagline */
+.logo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.logo p {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* List Container */
+.lists {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+/* List Sections */
+.list {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+.list h3 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.list ul li {
+    margin-bottom: 5px;
+}
+
+.list ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.list ul li a:hover {
+    opacity: 1;
+}
+
+/* Copyright Section */
+.copyright {
+    text-align: left;
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* CC License Icons */
+.cc-yy {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.cc-yy img {
+    width: 35px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.logo img {
+    max-width: 150px;
+    height: 100%;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <div class='header-bar'>
+    <div class='netra-logo'>
+      <img class="nav-logo" alt="Netra News Logo"
+        src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/logo.png">
+    </div>
+
+    <div class="social-icons">
+      <div class='facebook'>
+        <li class="facebook-share">
+          <a href="XXXXXXXXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
+            <svg viewBox="0 0 14 26" fill="none" preserveAspectRatio="xMidYMid meet" class="fb-logo">
+              <path
+                d="M13.2237 13.9747H8.82474V25.75H4.13073V13.9747H0V9.87083H4.18437V4.88177C4.18437 2.41406 6.00833 0 9.20026 0H13.5456V4.72083H10.6487C9.25391 4.72083 8.77109 4.88177 8.77109 6.06198V9.84401H13.7333L13.2237 13.9747Z"
+                fill="currentColor"></path>
+            </svg>
+          </a>
+        </li>
+      </div>
+
+      <div class='twitter'>
+        <li class="twitter-share">
+          <a href="XXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
+            <svg class="twitter-logo" data-icon="twitter" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
+              fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M8.99079 12.1721L0 1H7.12135L12.6713 7.9051L18.6005 1.03109H22.5226L14.5676 10.2645L24 22H16.8999L10.8905 14.5326L4.47476 21.9793H0.531444L8.99079 12.1721ZM17.9348 19.93L4.36657 3.06999H6.08565L19.6368 19.93H17.9348Z"
+                fill="currentColor"></path>
+            </svg>
+          </a>
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <header class="header fullwidth ready">
+    <div class="titles">
+      <h3 class="kicker">Netra News Interactives</h3>
+      <h1>For Bangladesh’s minorities, the military’s door remains shut</h1>
+      <h2>A Netra News investigation reveals religious and ethnic minorities are woefully underrepresented in
+        Bangladesh’s armed forces in clear contrast to its civilian authorities and other professional bodies.</h2>
+      <p class="byline">
+        By
+        <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>,
+        <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>
+      </p>
+      <p class="byline publish">Published October 22, 2024</p>
+    </div>
+  </header>
+
+
+  <div class="article">
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+
+  </div>
+  <!-- Sticky Legend at the Top -->
+  <div class="legend-container">
+    <ul>
+      <li><span class="circle islam"></span> <span>Islam</span></li>
+      <li><span class="circle hinduism"></span> <span>Hinduism</span></li>
+      <li><span class="circle indigenous"></span> <span>Indigenous</span></li>
+      <li><span class="circle christian"></span> <span>Christian</span></li>
+      <li><span class="circle buddhist"></span> <span>Buddhist</span></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <!-- LEFT COLUMN: National Population (Sticky) -->
+    <div class="col-left">
+      <div class="grid-card" id="leftGridCard">
+        <div class="title-section">
+          <div class="title-text">
+            <h3>National Population</h3>
+          </div>
+          <div class="title-icon"><img src="icons/BD MAP.svg" alt="icon"></div>
+        </div>
+        <div class="stats" id="national-stats"></div>
+        <div class="dots-grid" id="national-grid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Overlays with stepped scrollytelling -->
+    <div class="col-right">
+      <div class="scrolly-steps" id="scrollySteps">
+        <div class="pinned-container" id="pinnedContainer">
+          <!-- Overlays inserted by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-2">
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+    <p>I've rented a car in Las Vegas and have reserved a hotel in Twentynine Palms which is just north of Joshua Tree.
+      We'll drive from Las Vegas through Mojave National Preserve and possibly do a short hike on our way down. Then
+      spend all day on Monday at Joshua Tree. We can decide the next morning if we want to do more in Joshua Tree or
+      Mojave before we head back.</p>
+
+
+    <div class="methodology">
+      <h3>How Netra News reported this story</h3>
+      <p>Netra reviewed Federal Election Commission reports on hundreds of millions of contributions made through WinRed and
+      ActBlue, the main donation platforms for Republican and Democratic campaigns. Reporters identified the top
+      small-dollar donors who also gave the most frequently on each platform in recent years, and then reached out to
+      more than 150 of those top donors and their family members for each platform.</p>
+
+      <p>Based on these interviews, as well as an analysis of hundreds of consumer complaints submitted to the Federal
+      Trade Commission and state Attorneys General, reporters identified more than 50 elderly donors who gave more than
+      they intended, many of whom suffered from cognitive decline or dementia. Reporters also reviewed complaints lodged
+      on consumer advocacy websites TrustPilot.com and PissedConsumer.com.</p>
+
+      <p>Reporters reviewed data on donations made by those vulnerable donors reported in WinRed and ActBlue’s FEC filings
+      over five years, from July 2019 through the end of June 2024. The donation amounts reported in the story do not
+      include any refunds the donors later received, which were typically only a small fraction of the total they had
+      given.</p>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <div id="footer-inner">
+      <div class="logo">
+        <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/logo.png" alt="Netra News Logo" width="250" height="25">
+        <p>Reportage, debate, analysis</p>
+      </div>
+      <div class="lists">
+        <div class="list">
+          <h3>About</h3>
+          <ul>
+            <li><a href="https://netra.news/2019/journalism-on-behalf-of-the-people/" target="_blank" rel="noopener noreferrer">Editorial Mission</a></li>
+            <li><a href="https://netra.news/about/" target="_blank" rel="noopener noreferrer">About Netra
+                News</a></li>
+            <li><a href="https://netra.news/privacy/" target="_blank" rel="noopener noreferrer">Privacy
+                Policy</a></li>
+            <li><a href="https://netra.news/contact/" target="_blank" rel="noopener noreferrer">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="list">
+          <h3>Coverage</h3>
+          <ul>
+            <li><a href="https://netra.news/tags/netra-report/" target="_blank" rel="noopener noreferrer">Investigations</a></li>
+            <li><a href="https://netra.news/tags/column/" target="_blank" rel="noopener noreferrer">Column</a>
+            </li>
+            <li><a href="https://netra.news/tags/analysis/" target="_blank" rel="noopener noreferrer">Explainer</a>
+            </li>
+            <li><a href="https://medium.com/@NetraNews" target="_blank" rel="noopener noreferrer">Blog</a>
+            </li>
+          </ul>
+        </div>
+        <div class="list">
+          <h3>Social</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/newsnetra" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </li>
+            <li><a href="https://twitter.com/netranews" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </li>
+            <li><a href="https://www.youtube.com/netranews" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+            <li><a href="https://www.instagram.com/netra.news/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        <div class="cc-yy">
+          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/cc.svg" loading="lazy" alt="CC">
+          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/by.svg" alt="BY">
+          <img src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/icons/nd.svg" max-width="250px" max-height="50px" alt="ND">
+        </div>
+        <p>The article is licensed under Creative Commons NonCommercial-NoDerivatives 4.0
+          International, Netra News/Bangladesh Media Network</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /***************************************************
+     * Common Data & Utility
+     ***************************************************/
+    function getColor(religion) {
+      const colors = {
+        islam: "#00cfc3",
+        hinduism: "#a7fbd0",
+        indigenous: "#fe46ac",
+        christian: "#cdeffe",
+        buddhist: "#44c4ff"
+      };
+      return colors[religion] || "#000";
+    }
+
+    function generateStats(container, distribution) {
+      container.innerHTML = '';
+
+      const values = Object.entries(distribution);
+      const leftStats = document.createElement('div');
+      leftStats.classList.add('stats-left');
+
+      const middleStats = document.createElement('div');
+      middleStats.classList.add('stats-middle');
+
+      const rightStats = document.createElement('div');
+      rightStats.classList.add('stats-right');
+
+      values.forEach(([religion, percentage], index) => {
+        const span = document.createElement('span');
+        span.innerHTML = `<span class="circle" style="background-color: ${getColor(religion)};"></span> ${percentage.toFixed(2)}%`;
+
+        // Distribute into left, middle, or right sections
+        if (index === 0) {
+          leftStats.appendChild(span);
+        } else if (index === 1 || index === 2) {
+          middleStats.appendChild(span);
+        } else {
+          rightStats.appendChild(span);
+        }
+      });
+
+      // Append all three sections
+      container.appendChild(leftStats);
+      container.appendChild(middleStats);
+      container.appendChild(rightStats);
+    }
+
+    function generateDots(container, distribution) {
+      container.innerHTML = '';
+      Object.entries(distribution).forEach(([religion, percentage]) => {
+        const count = Math.max(1, Math.floor(percentage * 5));
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('div');
+          dot.style.backgroundColor = getColor(religion);
+          container.appendChild(dot);
+        }
+      });
+    }
+
+    function generateTitleSection(title, iconSrc) {
+      const titleSection = document.createElement('div');
+      titleSection.classList.add('title-section');
+
+      const titleText = document.createElement('div');
+      titleText.classList.add('title-text');
+      titleText.innerHTML = `<h3>${title}</h3>`;
+
+      const titleIcon = document.createElement('div');
+      titleIcon.classList.add('title-icon');
+      titleIcon.innerHTML = `<img src="${iconSrc}" alt="${title} icon">`;
+
+      titleSection.appendChild(titleText);
+      titleSection.appendChild(titleIcon);
+
+      return titleSection;
+    }
+
+    /***************************************************
+     * Left Column: National Data
+     ***************************************************/
+    const nationalData = {
+      islam: 91.09,
+      hinduism: 7.75,
+      indigenous: 1.00,
+      christian: 0.15,
+      buddhist: 0.01
+    };
+    const nationalStats = document.getElementById('national-stats');
+    const nationalGrid = document.getElementById('national-grid');
+    generateStats(nationalStats, nationalData);
+    generateDots(nationalGrid, nationalData);
+
+    /***************************************************
+     * Right Column: Overlays + Steps
+     ***************************************************/
+    const areas = [
+      {
+        name: 'Local judiciary',
+        data: { islam: 89.85, hinduism: 9.78, indigenous: 0.22, christian: 0.07, buddhist: 0.07 },
+        icon: 'icons/low court.svg'
+      },
+      {
+        name: 'Dhaka University',
+        data: { islam: 89.89, hinduism: 8.76, indigenous: 0.25, christian: 0.43, buddhist: 0.67 },
+        icon: 'icons/du teach.svg'
+      },
+      {
+        name: 'Navy',
+        data: { islam: 98.47, hinduism: 1.29, indigenous: 0.00, christian: 0.06, buddhist: 0.18 },
+        icon: 'icons/BD NAVY.svg'
+      },
+      {
+        name: 'Dhaka Reporters Unity',
+        data: { islam: 91.32, hinduism: 8.21, indigenous: 0.21, christian: 0.10, buddhist: 0.16 },
+        icon: 'icons/reporters.svg'
+      },
+      {
+        name: 'Police',
+        data: { islam: 90.85, hinduism: 7.58, indigenous: 1.36, christian: 0.08, buddhist: 0.12 },
+        icon: 'icons/police.svg'
+      },
+      {
+        name: 'Army',
+        data: { islam: 99.09, hinduism: 0.64, indigenous: 0.13, christian: 0.00, buddhist: 0.13 },
+        icon: 'icons/BD ARMY.svg'
+      },
+      {
+        name: 'Civil service',
+        data: { islam: 89.56, hinduism: 8.91, indigenous: 1.30, christian: 0.09, buddhist: 0.14 },
+        icon: 'icons/civil ad.svg'
+      },
+      {
+        name: 'Supreme Court Bar',
+        data: { islam: 92.20, hinduism: 7.44, indigenous: 0.06, christian: 0.16, buddhist: 0.13 },
+        icon: 'icons/supreme court bar.svg'
+      }
+    ];
+
+    const pinnedContainer = document.getElementById('pinnedContainer');
+    const scrollySteps = document.getElementById('scrollySteps');
+
+    // Create Overlays
+    areas.forEach((area, index) => {
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay', 'grid-card');
+      overlay.id = `overlay-${index}`;
+
+      // ✅ If first overlay, make it visible
+      if (index === 0) {
+        overlay.classList.add('visible');
+      }
+
+      // Add title
+      overlay.appendChild(generateTitleSection(area.name, area.icon));
+
+      // Add Stats
+      const statsDiv = document.createElement('div');
+      statsDiv.classList.add('stats');
+      overlay.appendChild(statsDiv);
+      generateStats(statsDiv, area.data);
+
+      // Add Dots
+      const gridDiv = document.createElement('div');
+      gridDiv.classList.add('dots-grid');
+      overlay.appendChild(gridDiv);
+      generateDots(gridDiv, area.data);
+
+      // Append to pinned container
+      pinnedContainer.appendChild(overlay);
+    });
+
+    // Create Steps
+    areas.forEach((area, index) => {
+      const stepDiv = document.createElement('div');
+      stepDiv.classList.add('step');
+      stepDiv.id = `step-${index}`;
+      stepDiv.innerHTML = `<h2>Scroll Step: ${area.name}</h2>`;
+      scrollySteps.appendChild(stepDiv);
+    });
+
+    /***************************************************
+     * Intersection Observer: Show correct overlay
+     ***************************************************/
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+    const overlays = document.querySelectorAll('.overlay');
+    let activeOverlayIndex = 0;
+
+    function showOverlay(idx) {
+      if (activeOverlayIndex >= 0) {
+        overlays[activeOverlayIndex].classList.remove('visible');
+      }
+      overlays[idx].classList.add('visible');
+      activeOverlayIndex = idx;
+    }
+
+    // ✅ Make first overlay visible immediately on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      showOverlay(0); // Show first overlay when page loads
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stepId = entry.target.id;
+          const index = parseInt(stepId.split('-')[1], 10);
+          showOverlay(index);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.step').forEach(step => {
+      observer.observe(step);
+    });
+
+
+    document.addEventListener("scroll", () => {
+      const legend = document.querySelector(".legend-container");
+      const mainContainer = document.querySelector(".main-container");
+      const mainContainerBottom = mainContainer.offsetTop + mainContainer.offsetHeight;
+
+      if (window.scrollY >= mainContainerBottom) {
+        legend.style.position = "relative"; // Remove sticky effect
+      } else {
+        legend.style.position = "sticky"; // Keep sticky effect
+        legend.style.top = "0"; // Maintain sticky behavior
+      }
+    });
+
+  </script>
+
+
+
+</body>
+
+</html>
