@@ -596,8 +596,63 @@
       font-display: swap;
     }
 
-
     /* CUSTOM FONT ENDS */
+
+    @media (orientation: landscape) {
+    .main-container {
+        width: 100%;
+    }
+
+    .dots-grid {
+        grid-template-columns: repeat(25, 1fr);
+    }
+
+    .col-left, .pinned-container {
+      top: 15%;
+    }
+}
+
+@media (max-width: 820px) and (orientation: portrait) {
+    .dots-grid div {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+@media (max-width: 670px) {
+    .dots-grid div {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+@media (max-width: 540px) {
+    .main-container {
+        width: 100%;
+    }
+
+    .pinned-container,
+    .col-left {
+        top: 10%;
+    }
+
+    .dots-grid {
+        grid-template-columns: repeat(13, 1fr);
+    }
+
+    .title-text {
+      font-size: 12px;
+      width: 70%;
+    }
+
+    .title-icon {
+      width: 30%;
+    }
+}
+
+
+
+
   </style>
 </head>
 
