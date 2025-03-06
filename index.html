@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Two-Column Sticky + Overlay Right Grid (Unified Styles)</title>
+  <title>Bangladesh’s minorities rise—but never in uniform</title>
   <link rel="stylesheet" href="https://use.typekit.net/rsa7eoe.css">
   <style>
     /* Reset default margins and paddings */
@@ -19,17 +19,17 @@
       text-underline-offset: 4px;
     }
 
-   
+
     .header-bar {
-  position: sticky;
-  top: 0;
-  height: 40px;
-  width: 100%;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+      position: sticky;
+      top: 0;
+      height: 40px;
+      width: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
 
     .netra-logo {
@@ -117,10 +117,7 @@
     .publish {
       max-width: 40ch;
       /* Ensures all text blocks have the same width */
-      text-align: center;
-      /* Aligns text properly */
-      margin: 0 auto;
-      /* Centers within the container */
+
     }
 
     /* Headline */
@@ -141,14 +138,13 @@
     h2 {
       font-size: 22px;
       font-weight: 300;
-      letter-spacing: 0.2px;
       line-height: 1.25;
-      margin: 0.8rem 0px;
       font-family: 'franklin-gothic-urw', sans-serif;
-      /* Adjusts spacing below h1 */
+      color: #fff
+        /* Adjusts spacing below h1 */
     }
 
-  
+
 
     /* Byline */
     .byline {
@@ -202,21 +198,35 @@
 
     }
 
+    .highlighted {
+      font-weight: 400;
+    color: #111;
+    background-color: #f28965;
+    padding: 2px 4px;
+    }
+
+    .article h2,
+    .article-2 h2 {
+      margin: 13px;
+      font-weight: 700;
+      font-size: 25px;
+    }
+
     p {
-    max-width: 650px;
-    color: #fff;
-    font-family: 'Publico Text Web', Georgia, serif;
-    font-size: 19px;
-    margin: 13px;
-    font-variant-ligatures: normal;
-    font-variation-settings: normal;
-    font-feature-settings: normal;
-    -webkit-text-size-adjust: 100%;
-    line-height: 30px;
-    font-stretch: 100%;
-    word-wrap: break-word;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+      max-width: 650px;
+      color: #fff;
+      font-family: 'Publico Text Web', Georgia, serif;
+      font-size: 19px;
+      margin: 13px;
+      font-variant-ligatures: normal;
+      font-variation-settings: normal;
+      font-feature-settings: normal;
+      -webkit-text-size-adjust: 100%;
+      line-height: 30px;
+      font-stretch: 100%;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
     .infographic {
@@ -594,68 +604,65 @@
     /* CUSTOM FONT ENDS */
 
     @media (orientation: landscape) {
-    .main-container {
+      .main-container {
         width: 100%;
-    }
+      }
 
-    .dots-grid {
+      .dots-grid {
         grid-template-columns: repeat(25, 1fr);
+      }
+
+      .col-left,
+      .pinned-container {
+        top: 15%;
+      }
     }
 
-    .col-left, .pinned-container {
-      top: 15%;
-    }
-}
-
-@media (max-width: 820px) and (orientation: portrait) {
-    .dots-grid div {
+    @media (max-width: 820px) and (orientation: portrait) {
+      .dots-grid div {
         width: 7px;
         height: 7px;
+      }
     }
-}
 
-@media (max-width: 670px) {
-    .dots-grid div {
+    @media (max-width: 670px) {
+      .dots-grid div {
         width: 5px;
         height: 5px;
+      }
     }
-}
 
-@media (max-width: 540px) {
-    .main-container {
+    @media (max-width: 540px) {
+      .main-container {
         width: 100%;
-    }
+      }
 
-    .pinned-container,
-    .col-left {
+      .pinned-container,
+      .col-left {
         top: 10%;
-    }
+      }
 
-    .dots-grid {
+      .dots-grid {
         grid-template-columns: repeat(13, 1fr);
+      }
+
+      .title-text {
+        font-size: 12px;
+        width: 70%;
+      }
+
+      .title-icon {
+        width: 30%;
+      }
+
+      .legend-container li {
+        font-size: 12px;
+      }
+
+      .legend-container ul {
+        gap: 5px;
+      }
     }
-
-    .title-text {
-      font-size: 12px;
-      width: 70%;
-    }
-
-    .title-icon {
-      width: 30%;
-    }
-
-    .legend-container li {
-      font-size: 12px;
-    }
-
-    .legend-container ul {
-      gap: 5px;
-    }
-}
-
-
-
-
   </style>
 </head>
 
@@ -698,9 +705,8 @@
   <header class="header fullwidth ready">
     <div class="titles">
       <h3 class="kicker">Netra News Interactives</h3>
-      <h1>For Bangladesh’s minorities, the military’s door remains shut</h1>
-      <h2>A Netra News investigation reveals religious and ethnic minorities are woefully underrepresented in
-        Bangladesh’s armed forces in clear contrast to its civilian authorities and other professional bodies.</h2>
+      <h1>Bangladesh’s minorities rise—but never in uniform</h1>
+      <h2>Bangladesh’s religious minorities can—and do—ascend through courts, classrooms, and government offices, but in the military, they all but vanish.</h2>
       <p class="byline">
         By
         <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>,
@@ -714,28 +720,23 @@
   <div class="article">
 
     <p>For Bangladesh’s religious minorities, most portals to power seem open.</p>
-    <p>They can—and do—rise through the ranks of the police, civil administration, judiciary, academia, and media,
-      reflecting a level of inclusivity almost elusive in South Asia. </p>
-    <p>But their path to power stops at the military’s gates: Fewer than one percent of Bangladeshi army officers and
-      just over one percent of navy officers are non-Muslim, according to a first-of-its-kind analysis of confidential
+    <p>In bustling offices across the country, minority officers shape decisions in the police and civil services. They deliver justice as judges in packed courtrooms, guide generations of students at prestigious universities, and shape public opinion through prominent roles in the media. Their presence in corridors of power paints a vibrant picture of inclusivity, rare in a South Asia often marred by religious divides. </p>
+    <p>But at the military’s doorstep, their rise abruptly halts. </p>      
+    <p><span class="highlighted">Fewer than one percent</span> of Bangladeshi army officers and
+      <span class="highlighted">just over one percent</span> of navy officers are non-Muslim, according to a first-of-its-kind analysis of confidential
       military records conducted by Netra News. </p>
     <p>These figures contrast sharply with other government and professional arenas, where minority representation
-      closely mirrors national demographics. In the police force, civil service, Dhaka University faculty, and the
-      Supreme Court Bar Association, religious minorities hold positions in the country’s key levers of power at a level
-      that closely aligns with, or even exceeds, their nine-percent share of the population, a separate examination by
-      Netra News shows. </p>
-    <p>In Bangladesh, officer-level positions across different branches of the government, military or even autonomous
-      bodies are prized gateways to the elite, offering a rare path to upward mobility. That religious and ethnic
-      minorities hold a fair share in many of them is a rare bright spot in the country’s state-building. </p>
-    <p>Their prestige, however, makes them fiercely contested, and perceptions of bias can spark political upheaval.
-      Last year, mass protests over alleged discrimination in public-sector hiring led to the dramatic downfall of Prime
-      Minister Sheikh Hasina’s long-entrenched administration.</p>
+      closely mirrors national demographics.</p>
+      <p>From the police force, civil service, Dhaka University faculty to elite professional guilds, religious minorities hold positions in the country’s key levers of power at a level
+      that closely aligns with, or even exceeds, their nine-percent share of the population. That level of visibility tends to be rare for minorities in South Asia, where officer-level government positions are prized
+      gateways to the elite and are overwhelmingly dominated by majority classes.</p>
     <p>To compile these findings, Netra News sifted through a wide spectrum of official and confidential records.
       Researchers accessed around 8,000 names from past army and navy rosters, along with a restricted police directory
       of about 2,500 officers, as well as publicly available information on civil servants, lower court judges,
-      university faculty, and membership lists of two professional bodies. In total, the study mapped the likely
-      religious affiliations of more than 40,000 individuals. </p>
-    <p>XXX</p>
+      university faculty, and membership lists of two professional bodies. </p>
+      
+      <p>In total, the study mapped the likely religious affiliations of more than 40,000 individuals across Bangladesh and India, using both conventional methods and machine-learning models to classify identities.</p>
+    <h2>The higher up, the fewer</h2>
     <p>Outside the barracks, minority inclusion in Bangladesh’s public institutions and professional societies often
       exceeds the national make-up of religious and ethnic minorities.</p>
     <p>More than 10% of lower court judges, 9% of police officers, and 10.5% of civil servants come from minority
@@ -748,8 +749,8 @@
     <p>At Dhaka University, 93 percent of top professorial posts are held by Muslims, slightly above their 91-percent
       share of the national population. In the lower judiciary, 92 percent of senior district judges and equivalents are
       Muslim. </p>
-    <p>The disparity intensifies in the civil administration, where only one out of 74 top-tier secretaries identifies
-      as non-Muslim. Police leadership posts mirror this pattern: just five of the 81 deputy inspector generals or
+    <p>The disparity intensifies in the civil administration, where <span class="highlighted">only one</span> out of 74 top-tier secretaries identifies
+      as non-Muslim. Police leadership posts mirror this pattern: <span class="highlighted">just five</span> of the 81 deputy inspector generals or
       higher are from minority communities.</p>
     <p>In the armed forces, however, the gap turns into a chasm. </p>
     <p>In the 2016 army roster, the highest-ranked non-Muslim officer—a brigadier general from the engineering corps—has
@@ -769,43 +770,43 @@
       echelons of military command.</p>
   </div>
 
-<div class="infographic">
-  <!-- Sticky Legend at the Top -->
-  <div class="legend-container">
-    <ul>
-      <li><span class="circle islam"></span> <span>Islam</span></li>
-      <li><span class="circle hinduism"></span> <span>Hinduism</span></li>
-      <li><span class="circle indigenous"></span> <span>Indigenous</span></li>
-      <li><span class="circle christian"></span> <span>Christian</span></li>
-      <li><span class="circle buddhist"></span> <span>Buddhist</span></li>
-    </ul>
-  </div>
+  <div class="infographic">
+    <!-- Sticky Legend at the Top -->
+    <div class="legend-container">
+      <ul>
+        <li><span class="circle islam"></span> <span>Islam</span></li>
+        <li><span class="circle hinduism"></span> <span>Hinduism</span></li>
+        <li><span class="circle indigenous"></span> <span>Indigenous</span></li>
+        <li><span class="circle christian"></span> <span>Christian</span></li>
+        <li><span class="circle buddhist"></span> <span>Buddhist</span></li>
+      </ul>
+    </div>
 
-  <div class="main-container">
-    <!-- LEFT COLUMN: National Population (Sticky) -->
-    <div class="col-left">
-      <div class="grid-card" id="leftGridCard">
-        <div class="title-section">
-          <div class="title-text">
-            <h3>National population</h3>
+    <div class="main-container">
+      <!-- LEFT COLUMN: National Population (Sticky) -->
+      <div class="col-left">
+        <div class="grid-card" id="leftGridCard">
+          <div class="title-section">
+            <div class="title-text">
+              <h3>National population</h3>
+            </div>
+            <div class="title-icon"><img src="icons/BD MAP.svg" alt="icon"></div>
           </div>
-          <div class="title-icon"><img src="icons/BD MAP.svg" alt="icon"></div>
+          <div class="stats" id="national-stats"></div>
+          <div class="dots-grid" id="national-grid"></div>
         </div>
-        <div class="stats" id="national-stats"></div>
-        <div class="dots-grid" id="national-grid"></div>
       </div>
-    </div>
 
-    <!-- RIGHT COLUMN: Overlays with stepped scrollytelling -->
-    <div class="col-right">
-      <div class="scrolly-steps" id="scrollySteps">
-        <div class="pinned-container" id="pinnedContainer">
-          <!-- Overlays inserted by JS -->
+      <!-- RIGHT COLUMN: Overlays with stepped scrollytelling -->
+      <div class="col-right">
+        <div class="scrolly-steps" id="scrollySteps">
+          <div class="pinned-container" id="pinnedContainer">
+            <!-- Overlays inserted by JS -->
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
   <div class="article-2">
