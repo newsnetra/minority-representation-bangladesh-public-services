@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bangladesh’s minorities rise—but never in uniform</title>
+  <title>Bangladesh’s minorities rise — but never in uniform</title>
   <link rel="stylesheet" href="https://use.typekit.net/rsa7eoe.css">
   <style>
     /* Reset default margins and paddings */
@@ -23,9 +23,9 @@
     .header-bar {
       position: sticky;
       top: 0;
-      height: 40px;
+      height: 30px;
       width: 100%;
-      background: black;
+      background: #F6F4EE;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -40,7 +40,7 @@
     }
 
     .nav-logo {
-      height: 30px;
+      height: 20px;
     }
 
     .social-icons {
@@ -66,8 +66,8 @@
 
     .twitter-logo,
     .fb-logo {
-      height: 23px;
-      color: white;
+      height: 20px;
+      color: #333333;
       margin: 0px 3px;
     }
 
@@ -81,8 +81,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #262626;
-      color: white;
+      background: #F6F4EE;
+      color: #333333;
       font-family: 'National', monospace;
     }
 
@@ -142,9 +142,9 @@
       font-weight: 300;
       line-height: 1.25;
       font-family: 'franklin-gothic-urw', sans-serif;
-    margin: 5px 13px 15px;
-      color: #fff
-        /* Adjusts spacing below h1 */
+      margin: 5px 13px 15px;
+      color: #333333;
+      /* Adjusts spacing below h1 */
     }
 
 
@@ -178,7 +178,7 @@
 
     /* Byline Links */
     .byline a {
-      color: #fff;
+      color: #333333;
     }
 
     .byline a:hover {
@@ -189,8 +189,8 @@
     /* Page background */
     html,
     body {
-      background-color: #262626;
-      font-family: Arial, sans-serif;
+      background-color: #F6F4EE;
+      font-family: 'Publico Text Web', Georgia, serif;
     }
 
     .article,
@@ -203,133 +203,112 @@
 
     .highlighted {
       font-weight: 400;
-    color: #000;
-    background-color: #f28965;
-    padding: 2px 0px;
+      color: #F6F4EE;
+      background-color: #f28965;
+      padding: 2px 0px;
     }
 
     .article h2,
     .article-2 h2 {
-      margin: 13px;
+      margin: 20px;
       font-weight: 700;
       font-size: 25px;
     }
 
     p {
-      max-width: 650px;
-      color: #fff;
+      max-width: 618px;
+      color: #333333;
       font-family: 'Publico Text Web', Georgia, serif;
-      font-size: 19px;
-      margin: 13px;
+      line-height: 1.5;
+      font-size: 20px;
+      margin: 20px;
       font-variant-ligatures: normal;
       font-variation-settings: normal;
       font-feature-settings: normal;
       -webkit-text-size-adjust: 100%;
-      line-height: 30px;
       font-stretch: 100%;
       word-wrap: break-word;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
 
+
+
+
     .infographic {
-      background-color: #000;
+      background-color: #F6F4EE;
     }
 
-    /* ✅ Sticky Legend */
-    .legend-container {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: black;
-      color: white;
-      font-family: 'National', monospace;
-      padding: 10px;
+    .main-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #ddd;
+      width: 80%;
+      min-height: 40vh;
+      align-items: flex-start;
+      background: #F6F4EE;
+      margin: auto;
+    }
+
+    .legend-container {
+      flex: 0 0 10%;
+      background: #F6F4EE;
+      color: #333333;
+      font-family: 'National', monospace;
+      position: sticky;
+      top: 10%;
+      height: 100vh;
+      padding: 15rem 1rem;
     }
 
     .legend-container ul {
       list-style: none;
       display: flex;
-      gap: 15px;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
     }
 
     .legend-container li {
       display: flex;
       align-items: center;
       font-size: 14px;
+      justify-content: left;
+      margin-left: 50%;
+      gap: 15px;
     }
 
     .legend-container .circle {
-      width: 12px;
-      height: 12px;
-      display: inline-block;
       margin-right: 5px;
     }
 
-    /* ✅ Two-Column Layout */
-    .main-container {
-      display: flex;
-      width: 80%;
-      min-height: 40vh;
-      align-items: flex-start;
-      background: black;
-      margin: auto;
-    }
-
-    /* ✅ Left Grid (National Population) */
-    .col-left {
+    .left-grid-card {
+      flex: 0 0 42%;
+      background: #F6F4EE;
+      color: #333333;
       position: sticky;
-      top: 18%;
-      width: 50%;
-      border-right: 1px solid #ddd;
-      background: black;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 10%;
+      height: 100vh;
+      overflow-y: auto;
+      border-right: 1px solid #333333;
+      padding: 1rem;
     }
 
-    /* ✅ Right Grid (Overlays) */
     .col-right {
-      position: relative;
-      width: 50%;
-      background: black;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex: 0 0 42%;
+      background: #F6F4EE;
+      color: #333333;
+      padding: 1rem;
     }
 
-    /* ✅ The scrolling trigger container */
-    .scrolly-steps {
-      width: 100%;
-      height: 1000vh;
-      position: relative;
-    }
-
-    /* ✅ Pinned Container: Holds the changing overlays */
-    .pinned-container {
-      position: sticky;
-      top: 18%;
-      width: 100%;
-      height: calc(100vh - 50px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ✅ Common Card Style for both National Population & Right Overlays */
+    /***************************************************
+     * Grid Card + Titles
+     ***************************************************/
     .grid-card {
-      width: 90%;
-      max-width: 400px;
+      max-width: 600px;
       padding: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      background: black;
-      color: white;
+      background: #F6F4EE;
+      color: #333333;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -338,92 +317,6 @@
       border: #00cfc3 1px solid;
     }
 
-    /* ✅ Right Grid Overlays (Each one appears one by one) */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 0);
-      width: 90%;
-      max-width: 400px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .overlay.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ✅ Step Triggers (Invisible triggers for scrolling effect) */
-    .step {
-      position: relative;
-      width: 80%;
-      margin: 0 auto 100vh;
-      border: 2px dashed #ccc;
-      min-height: 20vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-      font-size: 1rem;
-    }
-
-    /* ✅ Grid of Dots */
-    .dots-grid {
-      display: grid;
-      grid-template-columns: repeat(20, 1fr);
-      gap: 5px;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    .dots-grid div {
-      width: 9px;
-      height: 9px;
-    }
-
-    .stats {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-      flex-wrap: wrap;
-      margin-top: 5px;
-      border-top: #00cfc3 1px solid;
-      border-bottom: #00cfc3 1px solid;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-
-    .stats-left,
-    .stats-middle,
-    .stats-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      min-width: 80px;
-    }
-
-    .stats span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-      text-align: center;
-      font-family: 'National', monospace;
-      font-size: 14px;
-    }
-
-    .circle {
-      width: 12px;
-      height: 12px;
-      display: inline-block;
-    }
-
-    /* ✅ Title Section: Contains h3 + Icon */
     .title-section {
       display: flex;
       align-items: center;
@@ -451,7 +344,51 @@
       height: 45px;
     }
 
-    /* ✅ Religious color classes */
+    /***************************************************
+     * Stats Row
+     ***************************************************/
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      text-align: center;
+      flex-wrap: wrap;
+      margin-top: 5px;
+      border-top: #00cfc3 1px solid;
+      border-bottom: #00cfc3 1px solid;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .stats-left,
+    .stats-middle,
+    .stats-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+      gap: 5px;
+    }
+
+    .stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      text-align: center;
+      font-family: 'National', monospace;
+      font-size: 10px;
+    }
+
+    .circle {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+    }
+
+    /***************************************************
+     * Religion Colors
+     ***************************************************/
     .islam {
       background-color: #00cfc3;
     }
@@ -472,27 +409,157 @@
       background-color: #44c4ff;
     }
 
+    /***************************************************
+     * Dots-Grid & Religion Rows
+     ***************************************************/
+    .dots-grid {
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .religion-row {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 0;
+    }
+
+    .religion-row .dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      margin: 1px;
+      vertical-align: top;
+    }
+
+    /***************************************************
+     * Scrolly Steps & Overlays
+     ***************************************************/
+    .scrolly-steps {
+      width: 100%;
+      height: 1000vh;
+      position: relative;
+    }
+
+    .pinned-container {
+      position: sticky;
+      top: 18%;
+      width: 100%;
+      height: calc(100vh - 50px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 100%;
+      max-width: 550px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .step {
+      position: relative;
+      width: 80%;
+      margin: 0 auto 100vh;
+      border: 2px dashed #ccc;
+      min-height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    /***************************************************
+     * Responsive Tweaks
+     ***************************************************/
+    @media (orientation: landscape) {
+      .main-container {
+        width: 100%;
+      }
+
+      .col-left,
+      .pinned-container {
+        top: 12%;
+      }
+    }
+
+    @media (max-width: 820px) and (orientation: portrait) {
+      .religion-row .dot {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    @media (max-width: 670px) {
+      .religion-row .dot {
+        width: 5px;
+        height: 5px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .main-container {
+        width: 100%;
+      }
+
+      .pinned-container,
+      .col-left {
+        top: 10%;
+      }
+
+      .title-text {
+        font-size: 12px;
+        width: 70%;
+      }
+
+      .title-icon {
+        width: 30%;
+      }
+
+      .legend-container li {
+        font-size: 12px;
+      }
+
+      .legend-container ul {
+        gap: 5px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+
+
+
+
     .methodology,
     .methodology p {
       color: gray;
     }
 
-
-    /* Footer Styling */
     #footer {
       background-color: #0a0a0a;
-      color: white;
+      color: #333333;
       padding: 40px 5%;
       font-family: Arial, sans-serif;
     }
 
-    /* Inner Wrapper */
     #footer-inner {
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Logo and Tagline */
     .logo {
       text-align: left;
       margin-bottom: 20px;
@@ -509,7 +576,6 @@
       opacity: 0.9;
     }
 
-    /* List Container */
     .lists {
       display: flex;
       justify-content: space-between;
@@ -519,7 +585,6 @@
       margin-top: 30px;
     }
 
-    /* List Sections */
     .list {
       flex: 1;
       min-width: 200px;
@@ -543,7 +608,7 @@
     }
 
     .list ul li a {
-      color: white;
+      color: #333333;
       text-decoration: none;
       font-size: 14px;
       opacity: 0.8;
@@ -554,7 +619,6 @@
       opacity: 1;
     }
 
-    /* Copyright Section */
     .copyright {
       text-align: left;
       font-size: 14px;
@@ -567,7 +631,6 @@
       flex-wrap: wrap;
     }
 
-    /* CC License Icons */
     .cc-yy {
       display: flex;
       align-items: center;
@@ -585,7 +648,6 @@
       height: 100%;
     }
 
-    /* CUSTOM FONT STARTS */
 
     @font-face {
       font-family: 'Publico Text Web';
@@ -603,78 +665,30 @@
       font-weight: 400;
       font-display: swap;
     }
-
-    /* CUSTOM FONT ENDS */
-
-    @media (orientation: landscape) {
-      .main-container {
-        width: 100%;
-      }
-
-      .dots-grid {
-        grid-template-columns: repeat(25, 1fr);
-      }
-
-      .col-left,
-      .pinned-container {
-        top: 15%;
-      }
-    }
-
-    @media (max-width: 820px) and (orientation: portrait) {
-      .dots-grid div {
-        width: 7px;
-        height: 7px;
-      }
-    }
-
-    @media (max-width: 670px) {
-      .dots-grid div {
-        width: 5px;
-        height: 5px;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .main-container {
-        width: 100%;
-      }
-
-      .pinned-container,
-      .col-left {
-        top: 10%;
-      }
-
-      .dots-grid {
-        grid-template-columns: repeat(13, 1fr);
-      }
-
-      .title-text {
-        font-size: 12px;
-        width: 70%;
-      }
-
-      .title-icon {
-        width: 30%;
-      }
-
-      .legend-container li {
-        font-size: 12px;
-      }
-
-      .legend-container ul {
-        gap: 5px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
+  <!-- Place this in your HTML, e.g., at the bottom of <body> -->
+  <!-- Place this in your HTML, e.g., at the bottom of <body> -->
+  <svg width="0" height="0" style="position:absolute;">
+    <clipPath id="bangladeshClip" clipPathUnits="userSpaceOnUse">
+      <!-- 
+        A rough, hand-coded path in a 400x600 coordinate space. 
+        You can tweak these points or replace with a more accurate shape.
+      -->
+      <path transform="translate(-800 -12000) scale(0.01)" d="
+      m 1486.5,431.9 l-4.5,-10.1 -1.5,0.1 -0.2,4 -3.5,-3.3 1.1,-3.6 2.4,-0.4 1.6,-5.3 -3.4,-1.1 -5,0.1 -5.4,-0.9 -1.2,-4.4 -2.7,-0.4 -4.8,-2.7 -1.2,4.3 4.6,3.4 -3.1,2.4 -0.8,2.3 3.7,1.7 -0.4,3.8 2.6,4.8 1.6,5.2 2.2,0.6 1.7,0.7 0.6,-1.2 2.5,1.3 1.3,-3.5 -0.9,-2.6 5.1,0.2 2.8,3.7 1.5,3.1 0.8,3.2 2,3.3 -1.1,-5.1 2.1,1 -0.5,-4.6 z
+      " />
+    </clipPath>
+  </svg>
+
+
   <div class='header-bar'>
     <div class='netra-logo'>
       <img class="nav-logo" alt="Netra News Logo"
-        src="https://interactive.netra.news/extrajudicial-killings-bangladesh/assets/logo.png">
+        src="./icons/netralogo.svg">
     </div>
 
     <div class="social-icons">
@@ -708,10 +722,10 @@
   <header class="header fullwidth ready">
     <div class="titles">
       <h3 class="kicker">Netra News Interactives</h3>
-      <h1>Bangladesh’s minorities rise—but never in uniform</h1>
-      <h2>Bangladesh’s religious minorities can—and do—ascend through courts, classrooms, and government offices, but the country’s armed forces remain off-limits.</h2>
+      <h1>Bangladesh’s minorities rise — but never in uniform</h1>
+      <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices, but
+        the country’s armed forces remain off-limits.</h2>
       <p class="byline">
-        By
         <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>,
         <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>
       </p>
@@ -723,18 +737,29 @@
   <div class="article">
 
     <p>For Bangladesh’s religious minorities, most portals to power seem open.</p>
-    <p>In bustling offices across the country, minority officers shape decisions in the police and civil services. They deliver justice as judges in packed courtrooms, guide generations of students at prestigious universities, and shape public opinion through prominent roles in the media. Their presence in Bangladesh’s corridors of power paints a vibrant picture of inclusivity—rare in a South Asia often marred by communal fractures.</p>
-    <p>But at the military’s doorstep, their rise abruptly halts. </p>      
+    <p>In bustling offices across the country, minority officers shape decisions in the police and civil services. They
+      deliver justice as judges and advocates in packed courtrooms, guide generations of students at prestigious
+      universities, and shape public opinion through prominent roles in the media. Their presence in Bangladesh’s
+      corridors of power paints a vibrant picture of inclusivity — rare in a South Asia often marred by communal
+      fractures.</p>
+    <p>But at the military’s doorstep, their rise abruptly halts. </p>
     <p><span class="highlighted">Fewer than one percent</span> of Bangladeshi army officers and
-      <span class="highlighted">just over one percent</span> of navy officers are non-Muslim, according to a first-of-its-kind analysis of confidential
-      military records conducted by Netra News. </p>
-    <p>These figures contrast sharply with the country’s other key levers of power—such as the police force, civil service, Dhaka University faculty, and elite professional guilds—where religious minorities at a level that mirrors and, at times, even exceeds their nine-percent share of the population. That level of visibility is rare for minorities in South Asia, where officer-level government positions are prized gateways to the elite and tend to be overwhelmingly dominated by majority groups.</p>
+      <span class="highlighted">just over one percent</span> of navy officers are non-Muslim, according to a
+      first-of-its-kind analysis of confidential
+      military records conducted by Netra News.
+    </p>
+    <p>These figures contrast sharply with the country’s other key levers of power — such as the police force, civil
+      service, Dhaka University faculty, and elite professional guilds-where religious minorities at a level that
+      mirrors and, at times, even exceeds their nine-percent share of the population. That level of visibility is rare
+      for minorities in South Asia, where officer-level government positions are prized gateways to the elite and tend
+      to be overwhelmingly dominated by majority groups.</p>
     <p>To compile these findings, Netra News sifted through a wide spectrum of official and confidential records.
       Researchers accessed around 8,000 names from past army and navy rosters, along with a restricted police directory
       of about 2,500 officers, as well as publicly available information on civil servants, lower court judges,
       university faculty, and membership lists of two professional bodies. </p>
-      
-      <p>In total, the study mapped the likely religious affiliations of more than 40,000 individuals across Bangladesh and India, using both conventional methods and machine-learning models to classify identities.</p>
+
+    <p>In total, the study mapped the likely religious affiliations of more than 40,000 individuals across Bangladesh
+      and India, using both conventional methods and machine-learning models to classify identities.</p>
     <h2>The higher up, the fewer</h2>
     <p>Outside the barracks, minority inclusion in Bangladesh’s public institutions and professional societies often
       exceeds the national make-up of religious and ethnic minorities.</p>
@@ -742,48 +767,48 @@
       communities, with Hindus making up the largest share. Indigenous, Christian, and Buddhist representation is also
       strong.</p>
     <p>Non-Muslims represent over 10 percent of Dhaka University’s permanent faculty, 8.57 percent of DRU members, and
-      about 8 percent of the Supreme Court Bar Association—ratios that broadly reflect the national religious landscape.
+      about 8 percent of the Supreme Court Bar Association — ratios that broadly reflect the national religious landscape.
     </p>
-    <p>But gaps emerge—and widen—at higher ranks.</p>
+    <p>But gaps emerge — and widen — at higher ranks.</p>
     <p>At Dhaka University, 93 percent of top professorial posts are held by Muslims, slightly above their 91-percent
       share of the national population. In the lower judiciary, 92 percent of senior district judges and equivalents are
       Muslim. </p>
-    <p>The disparity intensifies in the civil administration, where <span class="highlighted">only one</span> out of 74 top-tier secretaries identifies
-      as non-Muslim. Police leadership posts mirror this pattern: <span class="highlighted">just five</span> of the 81 deputy inspector generals or
+    <p>The disparity intensifies in the civil administration, where <span class="highlighted">only one</span> out of 74
+      top-tier secretaries identifies
+      as non-Muslim. Police leadership posts mirror this pattern: <span class="highlighted">just five</span> of the 81
+      deputy inspector generals or
       higher are from minority communities.</p>
     <p>In the armed forces, however, the gap turns into a chasm. </p>
-    <p>In the 2016 army roster obtained by Netra News, the highest-ranked non-Muslim officer—a brigadier general from the engineering corps—has
-      since retired. In the 2017 navy rolls, there was just one non-Muslim commodore, also no longer serving.</p> 
-      <p>Beyond these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating that for
-      every non-Muslim at the top, there were over 200 Muslim officers. In contrast, Bangladesh’s national population counts one non-Muslim among 12 citizens.</p>
+    <p>In the 2016 army roster obtained by Netra News, the highest-ranked non-Muslim officer — a brigadier general from
+      the engineering corps — has
+      since retired. In the 2017 navy rolls, there was just one non-Muslim commodore, also no longer serving.</p>
+    <p>Beyond these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating that
+      for
+      every non-Muslim at the top, there were over 200 Muslim officers. In contrast, Bangladesh’s national population
+      counts one non-Muslim among 12 citizens.</p>
     <p>Equally telling is the breakdown within this small minority. </p>
     <p>According to the data analysed by Netra News, there are no indigenous (Adivasi) personnel in the navy officer
       corps, just one Christian officer, and three Buddhists. In the army, no Christians at all appear in the officer
       ranks, while only seven indigenous officers and seven Buddhists were identified.</p>
     <p>The armed forces in Bangladesh recruit through a distinctive process through the Inter Services Selection
-      Board (ISSB), which assesses candidates on personality, family background, and other factors—criteria that can
+      Board (ISSB), which assesses candidates on personality, family background, and other factors — criteria that can
       include religion. Unlike many other government agencies, the military does not reserve quotas for marginalized
       communities or descendants of freedom fighters. </p>
     <p>Officially, the system is based on merit, yet the end result is a near-total absence of minorities in the upper
       echelons of military command.</p>
   </div>
 
-  <div class="infographic">
-    <!-- Sticky Legend at the Top -->
-    <div class="legend-container">
-      <ul>
-        <li><span class="circle islam"></span> <span>Islam</span></li>
-        <li><span class="circle hinduism"></span> <span>Hinduism</span></li>
-        <li><span class="circle indigenous"></span> <span>Indigenous</span></li>
-        <li><span class="circle christian"></span> <span>Christian</span></li>
-        <li><span class="circle buddhist"></span> <span>Buddhist</span></li>
-      </ul>
-    </div>
 
+  <div class="infographic">
     <div class="main-container">
-      <!-- LEFT COLUMN: National Population (Sticky) -->
-      <div class="col-left">
-        <div class="grid-card" id="leftGridCard">
+      <!-- Column 1: Legend (20%) -->
+      <div class="legend-container">
+        <!-- optional legend here -->
+      </div>
+
+      <!-- Column 2: Left Grid Card (40%) -->
+      <div class="left-grid-card" id="leftGridCard">
+        <div class="grid-card">
           <div class="title-section">
             <div class="title-text">
               <h3>National population</h3>
@@ -795,7 +820,7 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: Overlays with stepped scrollytelling -->
+      <!-- Column 3: Right Column for Overlays / Scrolly Steps (40%) -->
       <div class="col-right">
         <div class="scrolly-steps" id="scrollySteps">
           <div class="pinned-container" id="pinnedContainer">
@@ -803,7 +828,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- /.main-container -->
   </div>
 
 
@@ -813,11 +838,11 @@
     <p>Bangladesh’s overall record on minority inclusion far surpasses that of its neighbors. </p>
     <p>Bangladesh’s military numbers echo India’s when it comes to uniformed minorities. In India, the largest minority
       group, Muslims, reportedly makes up only about two percent of the armed forces’ officer corps, even though they
-      form around 14 percent of the national population—nearly double the share of Hindus in Bangladesh. </p>
+      form around 14 percent of the national population — nearly double the share of Hindus in Bangladesh. </p>
     <p>Thus, the army and navy figures in Bangladesh, for all their stark shortfalls, are not entirely out of step with
       regional norms for religious representation in military ranks.</p>
     <p>However, Bangladesh far outperforms India in other arenas of governance. </p>
-    <p>In Bangladesh’s civil service, around nine percent of officers are non-indigenous Hindus—112 percent of their
+    <p>In Bangladesh’s civil service, around nine percent of officers are non-indigenous Hindus — 112 percent of their
       population share. In India, by contrast, Muslims comprise about 4.3 percent of the elite civil service, data
       shows. That’s just 28 percent of their national proportion. </p>
     <p>Put differently, adjusted for each country’s religious demographics, Hindus in Bangladesh’s civil service are
@@ -830,8 +855,8 @@
     <p>Nepal’s Muslim minority, conversely, accounts for over four percent of the population but just 0.1 percent of
       civil service posts, according to a 2016 study by Tek Bahadur Dong, a Nepalese social scientist with Social
       Science Baha.</p>
-    <p>Indigenous Buddhist-majority groups beyond the Newar community—who together comprise over 30 percent of Nepal’s
-      population—are massively underrepresented at only 1.6 percent of officer-level posts. </p>
+    <p>Indigenous Buddhist-majority groups beyond the Newar community — who together comprise over 30 percent of Nepal’s
+      population — are massively underrepresented at only 1.6 percent of officer-level posts. </p>
     <p>Meanwhile, Bahuns (upper-caste Brahmins), 12 percent of the population, hold more than 70 percent of these
       coveted roles.</p>
     <p>Political minefield</p>
@@ -842,7 +867,7 @@
     <p>Conservative critics of the former Awami League government long claimed it had favored Hindu officers due to
       their perceived electoral loyalty. </p>
     <p>Yet the Netra News data suggests these complaints may be exaggerated. </p>
-    <p>Minority representation in government agencies appears largely in line with—or slightly above—demographic
+    <p>Minority representation in government agencies appears largely in line with — or slightly above — demographic
       expectations. If any institution stands apart, it is the armed forces, where the numbers of non-Muslim officers
       plummet dramatically.</p>
     <p>Despite the controversies, Bangladesh presents a complex tableau of inclusion: a setting where minority voices
@@ -938,9 +963,13 @@
     </div>
   </div>
 
+
+
   <script>
+
+
     /***************************************************
-     * Common Data & Utility
+     * Utilities
      ***************************************************/
     function getColor(religion) {
       const colors = {
@@ -950,13 +979,50 @@
         christian: "#cdeffe",
         buddhist: "#44c4ff"
       };
-      return colors[religion] || "#000";
+      return colors[religion] || "#F6F4EE";
     }
 
-    function generateStats(container, distribution) {
+    /**
+     * Generates a block (.religion-row) per religion.
+     */
+    function generateDots(container, distribution) {
       container.innerHTML = '';
+      const religionOrder = ["islam", "hinduism", "indigenous", "christian", "buddhist"];
 
-      const values = Object.entries(distribution);
+      religionOrder.forEach((religion) => {
+        if (religion in distribution) {
+          const count = Math.round(distribution[religion] * 50);
+          const religionRow = document.createElement('div');
+          religionRow.classList.add('religion-row');
+
+          for (let i = 0; i < count; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.style.backgroundColor = getColor(religion);
+            religionRow.appendChild(dot);
+          }
+
+          container.appendChild(religionRow);
+        }
+      });
+    }
+
+    /***************************************************
+     * Stats logic (add religion labels + circles + percentages)
+     ***************************************************/
+    function generateStats(container, distribution) {
+      // Map keys to user-friendly labels:
+      const religionNames = {
+        islam: 'Islam',
+        hinduism: 'Hinduism',
+        indigenous: 'Indigenous',
+        christian: 'Christianity',
+        buddhist: 'Buddhism'
+      };
+
+      container.innerHTML = '';
+      const entries = Object.entries(distribution);
+
       const leftStats = document.createElement('div');
       leftStats.classList.add('stats-left');
 
@@ -966,11 +1032,20 @@
       const rightStats = document.createElement('div');
       rightStats.classList.add('stats-right');
 
-      values.forEach(([religion, percentage], index) => {
-        const span = document.createElement('span');
-        span.innerHTML = `<span class="circle" style="background-color: ${getColor(religion)};"></span> ${percentage.toFixed(2)}%`;
+      entries.forEach(([religion, percentage], index) => {
+        // If you have a mismatch in the religion key, console.log them here:
+        // console.log('religion key => ', religion, ', percentage => ', percentage);
 
-        // Distribute into left, middle, or right sections
+        const label = religionNames[religion] || religion;  // fallback to the raw key
+
+        const span = document.createElement('span');
+        span.innerHTML = `
+          ${label}
+          <span class="circle" style="background-color: ${getColor(religion)};"></span>
+          ${percentage.toFixed(2)}%
+        `;
+
+        // Same logic for which column to place them in:
         if (index === 0) {
           leftStats.appendChild(span);
         } else if (index === 1 || index === 2) {
@@ -980,22 +1055,9 @@
         }
       });
 
-      // Append all three sections
       container.appendChild(leftStats);
       container.appendChild(middleStats);
       container.appendChild(rightStats);
-    }
-
-    function generateDots(container, distribution) {
-      container.innerHTML = '';
-      Object.entries(distribution).forEach(([religion, percentage]) => {
-        const count = Math.max(1, Math.floor(percentage * 5));
-        for (let i = 0; i < count; i++) {
-          const dot = document.createElement('div');
-          dot.style.backgroundColor = getColor(religion);
-          container.appendChild(dot);
-        }
-      });
     }
 
     function generateTitleSection(title, iconSrc) {
@@ -1012,7 +1074,6 @@
 
       titleSection.appendChild(titleText);
       titleSection.appendChild(titleIcon);
-
       return titleSection;
     }
 
@@ -1026,13 +1087,14 @@
       christian: 0.15,
       buddhist: 0.01
     };
+
     const nationalStats = document.getElementById('national-stats');
     const nationalGrid = document.getElementById('national-grid');
     generateStats(nationalStats, nationalData);
     generateDots(nationalGrid, nationalData);
 
     /***************************************************
-     * Right Column: Overlays + Steps
+     * Right Column Overlays / Steps
      ***************************************************/
     const areas = [
       {
@@ -1080,37 +1142,35 @@
     const pinnedContainer = document.getElementById('pinnedContainer');
     const scrollySteps = document.getElementById('scrollySteps');
 
-    // Create Overlays
     areas.forEach((area, index) => {
       const overlay = document.createElement('div');
       overlay.classList.add('overlay', 'grid-card');
       overlay.id = `overlay-${index}`;
 
-      // ✅ If first overlay, make it visible
+      // Make the first overlay visible initially
       if (index === 0) {
         overlay.classList.add('visible');
       }
 
-      // Add title
+      // Title
       overlay.appendChild(generateTitleSection(area.name, area.icon));
 
-      // Add Stats
+      // Stats
       const statsDiv = document.createElement('div');
       statsDiv.classList.add('stats');
       overlay.appendChild(statsDiv);
       generateStats(statsDiv, area.data);
 
-      // Add Dots
+      // Dots
       const gridDiv = document.createElement('div');
       gridDiv.classList.add('dots-grid');
       overlay.appendChild(gridDiv);
       generateDots(gridDiv, area.data);
 
-      // Append to pinned container
       pinnedContainer.appendChild(overlay);
     });
 
-    // Create Steps
+    // Create Steps (Scrolling triggers)
     areas.forEach((area, index) => {
       const stepDiv = document.createElement('div');
       stepDiv.classList.add('step');
@@ -1120,7 +1180,7 @@
     });
 
     /***************************************************
-     * Intersection Observer: Show correct overlay
+     * Intersection Observer
      ***************************************************/
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
     const overlays = document.querySelectorAll('.overlay');
@@ -1134,9 +1194,8 @@
       activeOverlayIndex = idx;
     }
 
-    // ✅ Make first overlay visible immediately on page load
     document.addEventListener("DOMContentLoaded", () => {
-      showOverlay(0); // Show first overlay when page loads
+      showOverlay(0);
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -1152,21 +1211,6 @@
     document.querySelectorAll('.step').forEach(step => {
       observer.observe(step);
     });
-
-
-    document.addEventListener("scroll", () => {
-      const legend = document.querySelector(".legend-container");
-      const mainContainer = document.querySelector(".main-container");
-      const mainContainerBottom = mainContainer.offsetTop + mainContainer.offsetHeight;
-
-      if (window.scrollY >= mainContainerBottom) {
-        legend.style.position = "relative"; // Remove sticky effect
-      } else {
-        legend.style.position = "sticky"; // Keep sticky effect
-        legend.style.top = "0"; // Maintain sticky behavior
-      }
-    });
-
   </script>
 
 
