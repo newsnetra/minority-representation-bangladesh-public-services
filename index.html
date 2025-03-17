@@ -268,9 +268,8 @@
       color: #000;
       position: sticky;
       top: 10%;
-      height: 100vh;
       overflow-y: auto;
-      border-right: 1px solid #000;
+      border-right: 1.5px solid #f28965;
       padding: 0 1rem;
     }
 
@@ -969,7 +968,7 @@
 
   <div class="article-2">
 
-    <p>A Regional Perspective</p>
+    <h2>A Regional Perspective</h2>
     <p>Bangladesh’s overall record on minority inclusion far surpasses that of its neighbors. </p>
     <p>Bangladesh’s military numbers echo India’s when it comes to uniformed minorities. In India, the largest minority
       group, Muslims, reportedly makes up only about two percent of the armed forces’ officer corps, even though they
@@ -994,7 +993,7 @@
       population — are massively underrepresented at only 1.6 percent of officer-level posts. </p>
     <p>Meanwhile, Bahuns (upper-caste Brahmins), 12 percent of the population, hold more than 70 percent of these
       coveted roles.</p>
-    <p>Political minefield</p>
+    <h2>Political minefield</h2>
     <p>In Bangladesh, a civil service position is a highly coveted badge of social and economic status, a legacy of
       British colonial bureaucracy. Mass protests in July and August last year, ignited by accusations of bias in
       public-sector appointments, paved the way for the downfall of Prime Minister Sheikh Hasina’s long-standing
@@ -1021,7 +1020,7 @@
               address the disparity in recruitment of religious minorities.
             </p>
 
-            <p>We used Google Pinpoint and other Tabula to extract entries from scanned PDF files to plain text in
+            <p>We used Google Pinpoint and Tabula to extract entries from scanned PDF files to plain text in
               spreadsheets. We then manually fixed spelling errors and other inaccuracies in names and other details.
             </p>
 
@@ -1037,9 +1036,9 @@
             <p>We obtained a list of common Hindu and Indigenous surnames from four Wikipedia pages, and added the rest
               ourselves.
             </p>
-            <p>We then developed a cleaning technique to assign likely religion based on their surname.
+            <p>We then developed a cleaning technique to assign likely religion based on their surname:
             </p>
-            <p><code>=ARRAYFORMULA(TEXTJOIN(", ", TRUE, IF(LEN(A2), IFERROR(VLOOKUP(FILTER(SPLIT(A2, " "), SPLIT(A2, " ") <>
+            <p style="padding: 0px 50px;"><code>=ARRAYFORMULA(TEXTJOIN(", ", TRUE, IF(LEN(A2), IFERROR(VLOOKUP(FILTER(SPLIT(A2, " "), SPLIT(A2, " ") <>
                 ""), 'Sheet with Non-Muslim surnames'!A:B, 2, FALSE), ""), "")))</code></p>
             <p>If A2 contains the name, the formula will divide the names into several pieces. If A2 contains "মৃণাল
               কান্তি দাস”, it will first divide it into three parts: “মৃণাল”, “কান্তি” and “দাস” and match each of the
@@ -1057,7 +1056,7 @@
               norms for naming themselves. Our list of traditionally non-Muslim surnames can be found here.
             </p>
 
-            <p>Bangladesh’s 2022 census says Bangladesh has 1% indigenous people in its 165 million population. We
+            <p>Bangladesh’s 2022 census says the country has 1% indigenous people in its 165 million population. We
               estimate 60% of them to follow Buddhist, 20% to follow Hinduism and 15% to follow Christianity.
               Accordingly, to find the share of indigenous irrespective of their religions in population, we deducted
               the similar share from total Hindu, Buddhist and Christian populations to find a national share of all
