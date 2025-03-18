@@ -269,7 +269,7 @@
       position: sticky;
       top: 10%;
       overflow-y: auto;
-      border-right: 1.5px solid #f28965;
+      border-right: 1.5px solid #bcb9b1;
       padding: 0 1rem;
     }
 
@@ -379,11 +379,11 @@
     }
 
     .indigenous {
-      background-color: #D84315;
+      background-color: #927819;
     }
 
     .christian {
-      background-color: #3949AB;
+      background-color: #e94437;
     }
 
     .buddhist {
@@ -406,10 +406,11 @@
 
     .religion-row .dot {
       display: inline-block;
-      width: 3px;
-      height: 3px;
+      width: 3.5px;
+      height: 3.5px;
       margin: 1px;
       vertical-align: top;
+      border-radius: 50%;
     }
 
     /***************************************************
@@ -505,11 +506,14 @@
         padding: 0;
         border: none;
       }
-
+      .stats-left, .stats-middle, .stats-right {
+    flex-direction: row;
+      }
+/* 
       .left-grid-card,
       .pinned-container {
         top: 3.5%;
-      }
+      } */
 
       .religion-row .dot {
         width: 2.5px;
@@ -517,7 +521,7 @@
       }
 
       .grid-card {
-        padding: 2px;
+        padding: 0 5px;
         border: none;
         box-shadow: none;
       }
@@ -1150,8 +1154,8 @@
       const colors = {
         islam: "#00796B",
         hinduism: "#FFA726",
-        indigenous: "#D84315",
-        christian: "#3949AB",
+        indigenous: "#927819",
+        christian: "#e94437",
         buddhist: "#1e90ff"
       };
       return colors[religion] || "#F6F4EE";
