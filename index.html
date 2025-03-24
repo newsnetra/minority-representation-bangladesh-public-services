@@ -15,9 +15,18 @@
     }
 
     ::selection {
-      background-color: #f28965;
+      background-color: #00243e;
       color: white;
     }
+
+
+    /* Page background */
+    html,
+    body {
+      background-color: #F6F4EE;
+      font-family: 'Publico Text Web', Georgia, serif;
+    }
+
 
     a {
       text-decoration: underline;
@@ -99,7 +108,7 @@
       letter-spacing: 0.15em;
       padding-bottom: 12px;
       position: relative;
-      margin-top: 150px;
+      margin: 20px auto;
     }
 
     /* Adds the decorative line below the kicker */
@@ -108,7 +117,7 @@
       display: block;
       width: 166px;
       height: 7px;
-      background: linear-gradient(to right, #f28965 50%, #000 50%);
+      background: linear-gradient(to right, #00243e 50%, #000 50%);
       bottom: 0;
       left: 50%;
       position: absolute;
@@ -125,14 +134,41 @@
 
     }
 
+    .byline {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 60ch;
+  margin: 15px 0 0 0;
+  color: #6e6e6eff;
+  font-family: 'National', monospace;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.by-text,
+.publish,
+.byline time {
+  font-family: 'National', monospace;
+  color: #6e6e6eff;
+}
+
+.byline a:hover {
+  text-decoration: underline;
+}
+
+
     /* Headline */
     h1 {
       font-size: 36px;
       line-height: 1.1;
-      max-width: 16ch;
-      margin: .67em 0;
+      max-width: 25ch;
+      margin: 40px 0;
       font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
       font-weight: 700;
+      color: #00243e;
     }
 
     @media screen and (min-width: 800px) {
@@ -154,20 +190,6 @@
 
 
 
-    /* Byline */
-    .byline {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.5;
-      max-width: 60ch;
-      margin: 15px 0px 0px 0px;
-
-    }
-
-    .publish,
-    .by-text {
-      font-family: 'National', monospace;
-    }
 
     @media screen and (min-width: 800px) {
       .byline {
@@ -175,28 +197,7 @@
       }
     }
 
-    /* Published Date */
-    .publish {
-      margin-top: 0.5em;
-      /* Adjusts spacing from byline */
-    }
 
-    /* Byline Links */
-    .byline a {
-      color: #000;
-    }
-
-    .byline a:hover {
-      text-decoration: underline;
-    }
-
-
-    /* Page background */
-    html,
-    body {
-      background-color: #F6F4EE;
-      font-family: 'Publico Text Web', Georgia, serif;
-    }
 
     .article,
     .article-2 {
@@ -208,14 +209,14 @@
 
     .articlex::first-letter {
       font-weight: 700;
-      color: #f28965;
+      color: #00243e;
 
     }
 
     .highlighted {
       font-weight: 400;
       color: #F6F4EE;
-      background-color: #f28965;
+      background-color: #00243e;
       padding: 2px 0px;
     }
 
@@ -260,25 +261,24 @@
       justify-content: center;
     }
 
-
-
-    .left-grid-card {
+    .left-grid-card, .col-right {
       flex: 0 0 42%;
       background: #F6F4EE;
       color: #000;
+      padding: 0 1rem;
+
+    }
+
+    .left-grid-card {
+      
+
       position: sticky;
       top: 10%;
       overflow-y: auto;
       border-right: 1.5px solid #bcb9b1;
-      padding: 0 1rem;
+
     }
 
-    .col-right {
-      flex: 0 0 42%;
-      background: #F6F4EE;
-      color: #000;
-      padding: 0 1rem;
-    }
 
 
 
@@ -789,6 +789,13 @@
     }
 
 
+.banner {
+  height: auto;
+  width: 40%;
+  margin: 40px auto;
+  display: block;
+}
+
 
     @font-face {
       font-family: 'Publico Text Web';
@@ -806,6 +813,18 @@
       font-weight: 400;
       font-display: swap;
     }
+
+    /* Hide .header-bar ONLY on small screens when it has class "hidden" */
+@media (max-width: 540px) {
+  .header-bar.hidden {
+    display: none;
+  }
+
+  .left-grid-card, .pinned-container {
+    top:0;
+  }
+}
+
   </style>
 </head>
 
@@ -846,18 +865,31 @@
   </div>
 
   <header class="header fullwidth ready">
+
     <div class="titles">
       <h3 class="kicker">Netra News Interactives</h3>
+      <div> 
+
+        <img class="banner" src="icons/Service jobs proportion.png" alt="Description of the image">
+  
+      </div>
       <h1>Bangladesh’s minorities rise — but never in uniform</h1>
       <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
         but
         the country’s armed forces remain off-limits.</h2>
-      <p class="byline">
-        <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>,
-        <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>
-      </p>
-      <p class="byline publish">Published October 22, 2024</p>
+        <div class="byline">
+          <span>By 
+            <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>, 
+            <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>,
+          </span>
+          <span class="publish">
+         <time datetime="2025-04-01">April 1st 2025</time>
+          </span>
+        </div>
+        
+      
     </div>
+    
   </header>
 
 
@@ -939,11 +971,6 @@
 
   <div class="infographic">
     <div class="main-container">
-      <!-- Column 1: Legend (20%) -->
-      <div class="legend-container">
-        <!-- optional legend here -->
-      </div>
-
       <!-- Column 2: Left Grid Card (40%) -->
       <div class="left-grid-card" id="leftGridCard">
         <div class="grid-card">
@@ -1166,7 +1193,7 @@
      */
     function generateDots(container, distribution) {
       container.innerHTML = '';
-      const religionOrder = ["islam", "hinduism", "indigenous", "christian", "buddhist"];
+      const religionOrder = ["indigenous", "christian", "buddhist", "hinduism", "islam"];
 
       religionOrder.forEach((religion) => {
         if (religion in distribution) {
@@ -1260,11 +1287,12 @@
      * Left Column: National Data
      ***************************************************/
     const nationalData = {
-      islam: 91.09,
+      
       hinduism: 7.75,
       indigenous: 1.00,
       christian: 0.15,
-      buddhist: 0.01
+      buddhist: 0.01,
+      islam: 91.09
     };
 
     const nationalStats = document.getElementById('national-stats');
@@ -1418,6 +1446,38 @@
         isOpen = !isOpen;
       }
     });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const infographic = document.querySelector(".infographic");
+  const headerBar   = document.querySelector(".header-bar");
+
+  // If either element is missing, do nothing
+  if (!infographic || !headerBar) return;
+
+  // Only run on small screens
+  const isSmallScreen = window.matchMedia("(max-width: 540px)").matches;
+  if (!isSmallScreen) return;
+
+  // Set up the observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // If infographic is on-screen, hide the header
+        headerBar.classList.add("hidden");
+      } else {
+        // If infographic is off-screen, show the header again
+        headerBar.classList.remove("hidden");
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0   // triggers as soon as any part of .infographic intersects
+  });
+
+  observer.observe(infographic);
+});
 
   </script>
 
