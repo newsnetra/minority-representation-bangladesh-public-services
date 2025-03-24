@@ -135,29 +135,29 @@
     }
 
     .byline {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
-  max-width: 60ch;
-  margin: 15px 0 0 0;
-  color: #6e6e6eff;
-  font-family: 'National', monospace;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  align-items: center;
-}
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.5;
+      max-width: 60ch;
+      margin: 15px 0 0 0;
+      color: #6e6e6eff;
+      font-family: 'National', monospace;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      align-items: center;
+    }
 
-.by-text,
-.publish,
-.byline time {
-  font-family: 'National', monospace;
-  color: #6e6e6eff;
-}
+    .by-text,
+    .publish,
+    .byline time {
+      font-family: 'National', monospace;
+      color: #6e6e6eff;
+    }
 
-.byline a:hover {
-  text-decoration: underline;
-}
+    .byline a:hover {
+      text-decoration: underline;
+    }
 
 
     /* Headline */
@@ -261,21 +261,27 @@
       justify-content: center;
     }
 
-    .left-grid-card, .col-right {
+    .left-grid-card,
+    .col-right {
       flex: 0 0 42%;
       background: #F6F4EE;
       color: #000;
-      padding: 0 1rem;
+
 
     }
 
+    .col-right {
+      padding: 0 1rem;
+    }
+
     .left-grid-card {
-      
+
 
       position: sticky;
       top: 10%;
       overflow-y: auto;
       border-right: 1.5px solid #bcb9b1;
+      padding: 0 1rem;
 
     }
 
@@ -489,7 +495,7 @@
 
       .left-grid-card,
       .col-right {
-        flex: 0 0 45%;
+        flex: 0 0 50%;
       }
 
 
@@ -500,16 +506,13 @@
     @media (max-width: 540px) {
 
 
-      .left-grid-card,
-      .col-right {
-        flex: 0 0 50%;
-        padding: 0;
-        border: none;
+      .stats-left,
+      .stats-middle,
+      .stats-right {
+        flex-direction: row;
       }
-      .stats-left, .stats-middle, .stats-right {
-    flex-direction: row;
-      }
-/* 
+
+      /* 
       .left-grid-card,
       .pinned-container {
         top: 3.5%;
@@ -789,12 +792,12 @@
     }
 
 
-.banner {
-  height: auto;
-  width: 40%;
-  margin: 40px auto;
-  display: block;
-}
+    .banner {
+      height: auto;
+      width: 40%;
+      margin: 40px auto;
+      display: block;
+    }
 
 
     @font-face {
@@ -815,16 +818,46 @@
     }
 
     /* Hide .header-bar ONLY on small screens when it has class "hidden" */
-@media (max-width: 540px) {
-  .header-bar.hidden {
-    display: none;
-  }
+    @media (max-width: 540px) {
+      .header-bar.hidden {
+        display: none;
+      }
 
-  .left-grid-card, .pinned-container {
-    top:0;
-  }
-}
+      .left-grid-card,
+      .pinned-container {
+        top: 5%;
 
+
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .left-grid-card,
+      .pinned-container {
+        top: 0;
+      }
+
+      .left-grid-card,
+      .col-right,
+      .grid-card {
+
+        border: none;
+      }
+
+      .grid-card {
+        padding: 0;
+      }
+
+      .col-right {
+        padding: 0px 0px 0px 3px;
+      }
+
+      .left-grid-card {
+        padding: 0px 3px 0px 0px;
+      }
+
+    }
   </style>
 </head>
 
@@ -868,28 +901,28 @@
 
     <div class="titles">
       <h3 class="kicker">Netra News Interactives</h3>
-      <div> 
+      <div>
 
         <img class="banner" src="icons/Service jobs proportion.png" alt="Description of the image">
-  
+
       </div>
       <h1>Bangladesh’s minorities rise — but never in uniform</h1>
       <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
         but
         the country’s armed forces remain off-limits.</h2>
-        <div class="byline">
-          <span>By 
-            <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>, 
-            <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>,
-          </span>
-          <span class="publish">
-         <time datetime="2025-04-01">April 1st 2025</time>
-          </span>
-        </div>
-        
-      
+      <div class="byline">
+        <span>By
+          <a href="https://XXXXX" class="by-text" target="_blank">Tasneem Khalil</a>,
+          <a href="https://XXXXXX" class="by-text" target="_blank">Subinoy Eron</a>,
+        </span>
+        <span class="publish">
+          <time datetime="2025-04-01">April 1st 2025</time>
+        </span>
+      </div>
+
+
     </div>
-    
+
   </header>
 
 
@@ -976,7 +1009,7 @@
         <div class="grid-card">
           <div class="title-section">
             <div class="title-text">
-              <h3>National population</h3>
+              <h3>Population share</h3>
             </div>
             <div class="title-icon"><img src="icons/BD MAP.svg" alt="icon"></div>
           </div>
@@ -1193,7 +1226,7 @@
      */
     function generateDots(container, distribution) {
       container.innerHTML = '';
-      const religionOrder = ["indigenous", "christian", "buddhist", "hinduism", "islam"];
+      const religionOrder = ["buddhist", "christian", "indigenous", "hinduism", "islam"];
 
       religionOrder.forEach((religion) => {
         if (religion in distribution) {
@@ -1287,11 +1320,10 @@
      * Left Column: National Data
      ***************************************************/
     const nationalData = {
-      
-      hinduism: 7.75,
-      indigenous: 1.00,
-      christian: 0.15,
       buddhist: 0.01,
+      christian: 0.15,
+      indigenous: 1.00,
+      hinduism: 7.75,
       islam: 91.09
     };
 
@@ -1306,45 +1338,94 @@
     const areas = [
       {
         name: 'Local judiciary',
-        data: { islam: 89.85, hinduism: 9.78, indigenous: 0.22, christian: 0.07, buddhist: 0.07 },
+        data: {
+          buddhist: 0.07,
+          christian: 0.07,
+          indigenous: 0.22,
+          hinduism: 9.78,
+          islam: 89.85
+        },
         icon: 'icons/low court.svg'
       },
       {
         name: 'Dhaka University',
-        data: { islam: 89.89, hinduism: 8.76, indigenous: 0.25, christian: 0.43, buddhist: 0.67 },
+        data: {
+          buddhist: 0.67,
+          christian: 0.43,
+          indigenous: 0.25,
+          hinduism: 8.76,
+          islam: 89.89
+        },
         icon: 'icons/du teach.svg'
       },
       {
         name: 'Navy',
-        data: { islam: 98.47, hinduism: 1.29, indigenous: 0.00, christian: 0.06, buddhist: 0.18 },
+        data: {
+          buddhist: 0.18,
+          christian: 0.06,
+          indigenous: 0.00,
+          hinduism: 1.29,
+          islam: 98.47
+        },
         icon: 'icons/BD NAVY.svg'
       },
       {
-        name: 'Dhaka Reporters Unity',
-        data: { islam: 91.32, hinduism: 8.21, indigenous: 0.21, christian: 0.10, buddhist: 0.16 },
+        name: 'DRU',
+        data: {
+          buddhist: 0.16,
+          christian: 0.10,
+          indigenous: 0.21,
+          hinduism: 8.21,
+          islam: 91.32
+        },
         icon: 'icons/reporters.svg'
       },
       {
         name: 'Police',
-        data: { islam: 90.85, hinduism: 7.58, indigenous: 1.36, christian: 0.08, buddhist: 0.12 },
+        data: {
+          buddhist: 0.12,
+          christian: 0.08,
+          indigenous: 1.36,
+          hinduism: 7.58,
+          islam: 90.85
+        },
         icon: 'icons/police.svg'
       },
       {
         name: 'Army',
-        data: { islam: 99.09, hinduism: 0.64, indigenous: 0.13, christian: 0.00, buddhist: 0.13 },
+        data: {
+          buddhist: 0.13,
+          christian: 0.00,
+          indigenous: 0.13,
+          hinduism: 0.64,
+          islam: 99.09
+        },
         icon: 'icons/BD ARMY.svg'
       },
       {
         name: 'Civil service',
-        data: { islam: 89.56, hinduism: 8.91, indigenous: 1.30, christian: 0.09, buddhist: 0.14 },
+        data: {
+          buddhist: 0.14,
+          christian: 0.09,
+          indigenous: 1.30,
+          hinduism: 8.91,
+          islam: 89.56
+        },
         icon: 'icons/civil ad.svg'
       },
       {
         name: 'Supreme Court Bar',
-        data: { islam: 92.20, hinduism: 7.44, indigenous: 0.06, christian: 0.16, buddhist: 0.13 },
+        data: {
+          buddhist: 0.13,
+          christian: 0.16,
+          indigenous: 0.06,
+          hinduism: 7.44,
+          islam: 92.20
+        },
         icon: 'icons/supreme court bar.svg'
       }
     ];
+
 
     const pinnedContainer = document.getElementById('pinnedContainer');
     const scrollySteps = document.getElementById('scrollySteps');
@@ -1449,35 +1530,35 @@
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const infographic = document.querySelector(".infographic");
-  const headerBar   = document.querySelector(".header-bar");
+    document.addEventListener("DOMContentLoaded", function () {
+      const infographic = document.querySelector(".infographic");
+      const headerBar = document.querySelector(".header-bar");
 
-  // If either element is missing, do nothing
-  if (!infographic || !headerBar) return;
+      // If either element is missing, do nothing
+      if (!infographic || !headerBar) return;
 
-  // Only run on small screens
-  const isSmallScreen = window.matchMedia("(max-width: 540px)").matches;
-  if (!isSmallScreen) return;
+      // Only run on small screens
+      const isSmallScreen = window.matchMedia("(max-width: 540px)").matches;
+      if (!isSmallScreen) return;
 
-  // Set up the observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // If infographic is on-screen, hide the header
-        headerBar.classList.add("hidden");
-      } else {
-        // If infographic is off-screen, show the header again
-        headerBar.classList.remove("hidden");
-      }
+      // Set up the observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // If infographic is on-screen, hide the header
+            headerBar.classList.add("hidden");
+          } else {
+            // If infographic is off-screen, show the header again
+            headerBar.classList.remove("hidden");
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0   // triggers as soon as any part of .infographic intersects
+      });
+
+      observer.observe(infographic);
     });
-  }, {
-    root: null,
-    threshold: 0   // triggers as soon as any part of .infographic intersects
-  });
-
-  observer.observe(infographic);
-});
 
   </script>
 
