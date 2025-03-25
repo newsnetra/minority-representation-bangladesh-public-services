@@ -125,7 +125,7 @@
     }
 
     /* Headline */
-    h1,
+
     h2,
     .byline,
     .publish {
@@ -467,110 +467,6 @@
       font-size: 1rem;
     }
 
-    /***************************************************
-     * Responsive Tweaks
-     ***************************************************/
-
-    @media (orientation: landscape) {
-      .main-container {
-        width: 100%;
-      }
-
-    }
-
-
-
-    @media (max-width: 912px) and (orientation: portrait) {
-
-      .main-container {
-        width: 100%;
-      }
-
-      .religion-row .dot {
-        width: 4px;
-        height: 4px;
-      }
-
-
-
-      .left-grid-card,
-      .col-right {
-        flex: 0 0 50%;
-      }
-
-
-
-    }
-
-
-    @media (max-width: 540px) {
-
-
-      .stats-left,
-      .stats-middle,
-      .stats-right {
-        flex-direction: row;
-      }
-
-      /* 
-      .left-grid-card,
-      .pinned-container {
-        top: 3.5%;
-      } */
-
-      .religion-row .dot {
-        width: 2.5px;
-        height: 2.5px;
-      }
-
-      .grid-card {
-        padding: 0 5px;
-        border: none;
-        box-shadow: none;
-      }
-
-      .title-section {
-        margin-bottom: 5px;
-      }
-
-      .stats {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        gap: 2.5px;
-      }
-
-      .dots-grid {
-        margin-top: 5px;
-      }
-
-      .stats span {
-        gap: 2.5px;
-      }
-
-      .circle {
-        width: 10px;
-        height: 10px;
-      }
-
-      .title-text {
-        font-size: 12px;
-        width: 70%;
-      }
-
-      .title-icon {
-        width: 20%;
-      }
-
-      .title-icon img {
-        width: 25px;
-        height: 25px;
-      }
-
-      p {
-        font-size: 18px;
-      }
-    }
-
 
 
 
@@ -857,7 +753,128 @@
         padding: 0px 3px 0px 0px;
       }
 
+
+      
     }
+
+
+    /***************************************************
+     * Responsive Tweaks
+     ***************************************************/
+
+     @media (orientation: landscape) {
+      .main-container {
+        width: 100%;
+      }
+
+    }
+
+
+
+    @media (max-width: 912px) and (orientation: portrait) {
+
+      .main-container {
+        width: 100%;
+      }
+
+      .religion-row .dot {
+        width: 4px;
+        height: 4px;
+      }
+
+
+
+      .left-grid-card,
+      .col-right {
+        flex: 0 0 50%;
+      }
+
+
+
+    }
+
+
+    @media (max-width: 540px) {
+
+      h1 {
+        max-width: 16ch;
+        margin: 20px 0;
+      }
+
+      h2 {
+        max-width: 25ch;
+        line-height: 1.15;
+      }
+
+      .banner {
+        margin: 20px auto;
+      }
+
+      .stats-left,
+      .stats-middle,
+      .stats-right {
+        flex-direction: row;
+      }
+
+      /* 
+      .left-grid-card,
+      .pinned-container {
+        top: 3.5%;
+      } */
+
+      .religion-row .dot {
+        width: 2.5px;
+        height: 2.5px;
+      }
+
+      .grid-card {
+        padding: 0 5px;
+        border: none;
+        box-shadow: none;
+      }
+
+      .title-section {
+        margin-bottom: 5px;
+      }
+
+      .stats {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        gap: 2.5px;
+      }
+
+      .dots-grid {
+        margin-top: 5px;
+      }
+
+      .stats span {
+        gap: 2.5px;
+      }
+
+      .circle {
+        width: 10px;
+        height: 10px;
+      }
+
+      .title-text {
+        font-size: 12px;
+        width: 70%;
+      }
+
+      .title-icon {
+        width: 20%;
+      }
+
+      .title-icon img {
+        width: 25px;
+        height: 25px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+
   </style>
 </head>
 
