@@ -177,6 +177,19 @@
       }
     }
 
+    .bg-texture {
+  display: inline-block;
+  background-image: url('/assets/photos/army_strip.jpg'); /* or your actual path */
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+
     /* Subtitle */
     h2 {
       font-size: 22px;
@@ -926,7 +939,7 @@
         <img class="banner" src="icons/Service jobs proportion.png" alt="Description of the image">
 
       </div>
-      <h1>Bangladesh’s minorities rise — but never in uniform</h1>
+      <h1>Bangladesh’s minorities rise — but never in <span class="bg-texture">uniform</span></h1>
       <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
         but
         the country’s armed forces remain off-limits.</h2>
