@@ -367,33 +367,34 @@
     /* Responsive Stats Row */
 
     .stats {
-  display: flex;
-  justify-content: center;        /* or space-between, if you prefer */
-  flex-wrap: wrap;
-  width: 100%;
-  text-align: center;
-  margin-top: 5px;
-  border-top: #00796B 1px solid;
-  border-bottom: #00796B 1px solid;
-  padding: 10px 0;
-}
+      display: flex;
+      justify-content: center;
+      /* or space-between, if you prefer */
+      flex-wrap: wrap;
+      width: 100%;
+      text-align: center;
+      margin-top: 5px;
+      border-top: #00796B 1px solid;
+      border-bottom: #00796B 1px solid;
+      padding: 10px 0;
+    }
 
-.stats span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  /* Add spacing between items (optional): */
-  margin: 5px 10px; 
-  font-family: 'National', monospace;
-  font-size: 10px;
-}
+    .stats span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      /* Add spacing between items (optional): */
+      margin: 5px 10px;
+      font-family: 'National', monospace;
+      font-size: 10px;
+    }
 
-.circle {
-  width: 5px;
-  height: 5px;
-  display: inline-block;
-  border-radius: 50%;
-}
+    .circle {
+      width: 5px;
+      height: 5px;
+      display: inline-block;
+      border-radius: 50%;
+    }
 
 
     /***************************************************
@@ -921,9 +922,10 @@
 
     @media (max-width: 360px) {
 
-    .stats span {
+      .stats span {
         margin: 1px 1px;
       }
+
       .religion-row {
         margin-bottom: 3px;
       }
@@ -935,69 +937,77 @@
     }
 
     .tooltip_x2 {
-    position: absolute;
-    text-align: left;
-    padding: 8px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    pointer-events: none;
-    font-size: 12px;
-  }
-  .source_x2 {
-    font-family: 'National', monospace;
-    font-size: 8px;
-    color: #6e6e6eff;
-    margin: 0px 20px;
-  }
-  .chart-title_x2 {
-    font-family: 'franklin-gothic-urw', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0px 20px;
-    color: #00243e;
-  }
-  .chart-container_x2 {
-    margin-bottom: 10px;
-  }
+      position: absolute;
+      text-align: left;
+      padding: 3px;
+      color: #f5f5f5;
+      background-color: #0009;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      pointer-events: none;
+      font-size: 10px;
+      font-family: 'franklin-gothic-urw', sans-serif;
+      visibility: hidden; /* Hide by default */
+    }
 
-  /* -------------- Keep only axis & tick color styles -------------- */
-  .axis--x2 path.domain,
-  .axis--x2 .tick line,
-  .axis--y2 path.domain,
-  .axis--y2 .tick line {
-    stroke: #6e6e6eff;
-  }
-  .axis--x2 .tick text,
-  .axis--y2 .tick text {
-    fill: #6e6e6eff;
-    font-size: 8px;
-  }
+    /* ======================== TEXT & LAYOUT ======================== */
+    .source_x2 {
+      font-family: 'National', monospace;
+      font-size: 8px;
+      color: #6e6e6eff;
+      margin: 0px 20px;
+    }
 
-  .legend_x2 {
-    display: flex; 
-    align-items: center;
-    margin: 5px 20px;
-  }
-  .legend-item_x2 {
-    display: flex; 
-    align-items: center;
-    margin-right: 20px;
-  }
-  /* The text label: 8px, 'National' font */
-  .legend-item_x2 span {
-    font-size: 8px;
-    font-family: "National", monospace;
-    margin-right: 4px; /* space between text and the square */
-    margin-left: 4px;
-  }
-  /* The color square: small 10×10 box */
-  .legend-swatch_x2 {
-    width: 10px;
-    height: 10px;
-  }
+    .chart-title_x2 {
+      font-family: 'franklin-gothic-urw', sans-serif;
+      font-size: 15px;
+      margin: 0px 20px;
+      color: #00243e;
+    }
 
+    .chart-container_x2 {
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
 
+    /* ======================== AXIS STYLES ======================== */
+    .axis--x2 path.domain,
+    .axis--x2 .tick line,
+    .axis--y2 path.domain,
+    .axis--y2 .tick line {
+      stroke: #6e6e6eff;
+    }
+
+    .axis--x2 .tick text,
+    .axis--y2 .tick text {
+      fill: #6e6e6eff;
+      font-size: 8px;
+    }
+
+    /* ======================== LEGEND STYLES ======================== */
+    .legend_x2 {
+      display: flex;
+      align-items: center;
+      margin: 5px 20px;
+    }
+
+    .legend-item_x2 {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .legend-item_x2 span {
+      font-size: 8px;
+      font-family: "National", monospace;
+      margin-right: 4px; /* spacing on right */
+      margin-left: 4px;  /* spacing on left */
+    }
+
+    .legend-swatch_x2 {
+      width: 10px;
+      height: 10px;
+    }
   </style>
 </head>
 
@@ -1250,8 +1260,8 @@
       share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
 
 
-      <div id="charts_x2"></div>
-      <div class="tooltip_x2" style="opacity:0;"></div>
+    <div id="charts_x2"></div>
+    <div class="tooltip_x2" ></div>
 
     <p>Bangladesh’s southern neighbor Nepal has its own intricacies. </p>
     <p>Official data suggests that Hindus, constituting 81 percent of Nepal’s population, occupy more than 90 percent of
@@ -1452,33 +1462,33 @@
     /***************************************************
      * Stats logic (add religion labels + circles + percentages)
      ***************************************************/
-     function generateStats(container, distribution) {
-  const religionNames = {
-    islam: 'Islam',
-    hinduism: 'Hinduism',
-    indigenous: 'Indigenous',
-    christian: 'Christianity',
-    buddhist: 'Buddhism'
-  };
+    function generateStats(container, distribution) {
+      const religionNames = {
+        islam: 'Islam',
+        hinduism: 'Hinduism',
+        indigenous: 'Indigenous',
+        christian: 'Christianity',
+        buddhist: 'Buddhism'
+      };
 
-  // Clear out any existing content
-  container.innerHTML = '';
+      // Clear out any existing content
+      container.innerHTML = '';
 
-  // Turn this container itself into our .stats container
-  container.classList.add('stats');
+      // Turn this container itself into our .stats container
+      container.classList.add('stats');
 
-  // Build label + circle + percent for each religion
-  Object.entries(distribution).forEach(([religion, percentage]) => {
-    const label = religionNames[religion] || religion;
-    const span = document.createElement('span');
-    span.innerHTML = `
+      // Build label + circle + percent for each religion
+      Object.entries(distribution).forEach(([religion, percentage]) => {
+        const label = religionNames[religion] || religion;
+        const span = document.createElement('span');
+        span.innerHTML = `
       ${label}
       <span class="circle" style="background-color: ${getColor(religion)};"></span>
       ${percentage.toFixed(2)}%
     `;
-    container.appendChild(span);
-  });
-}
+        container.appendChild(span);
+      });
+    }
 
 
 
@@ -1627,12 +1637,12 @@
       overlay.appendChild(generateTitleSection(area.name, area.icon));
 
       // Stats
-// 1) Don't add .stats here; let generateStats handle that
-const statsDiv = document.createElement('div'); 
-overlay.appendChild(statsDiv);
+      // 1) Don't add .stats here; let generateStats handle that
+      const statsDiv = document.createElement('div');
+      overlay.appendChild(statsDiv);
 
-// 2) Just call generateStats
-generateStats(statsDiv, area.data);
+      // 2) Just call generateStats
+      generateStats(statsDiv, area.data);
 
       // Dots
       const gridDiv = document.createElement('div');
@@ -1747,151 +1757,185 @@ generateStats(statsDiv, area.data);
 
   </script>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 
-<script>
-  const rawData_x2 = [
-    { group: "India", category: "Hinduism", nat: 79.80, cs: 92.88 },
-    { group: "India", category: "Islam", nat: 14.20, cs: 4.22 },
-    { group: "India", category: "Christianity", nat: 2.30, cs: 1.29 },
-    { group: "India", category: "Sikh", nat: 1.70, cs: 0.89 },
-    { group: "India", category: "Jain", nat: 0.40, cs: 0.62 },
-    { group: "India", category: "Buddhism", nat: 0.70, cs: 0.11 },
-    { group: "Bangladesh", category: "Islam", nat: 91.09, cs: 89.56 },
-    { group: "Bangladesh", category: "Hinduism", nat: 7.75, cs: 8.91 },
-    { group: "Bangladesh", category: "Indigenous", nat: 1.00, cs: 1.30 },
-    { group: "Bangladesh", category: "Christianity", nat: 0.15, cs: 0.09 },
-    { group: "Bangladesh", category: "Buddhism", nat: 0.01, cs: 0.14 },
-    { group: "Nepal", category: "Bahuns (Hindu)", nat: 12.74, cs: 72 },
-    { group: "Nepal", category: "Chhetris (Hindu)", nat: 15.8, cs: 15.89 },
-    { group: "Nepal", category: "Newar Janajatis", nat: 5.48, cs: 7.14 },
-    { group: "Nepal", category: "Other Janajatis", nat: 30.83, cs: 1.64 },
-    { group: "Nepal", category: "Madheshis", nat: 12.32, cs: 1.17 },
-    { group: "Nepal", category: "Dalits", nat: 14.99, cs: 0.67 },
-    { group: "Nepal", category: "Islam", nat: 4.27, cs: 0.1 },
-    { group: "Nepal", category: "Others", nat: 3.57, cs: 1.39 }
-  ];
-
-  const tooltip_x2 = d3.select(".tooltip_x2");
-
-  const sources_x2 = {
-    "India": "Source: Pew Research, civil service commissions and census data from India.",
-    "Bangladesh": "Source: Civil Service Commission Reports, Government of Bangladesh.",
-    "Nepal": "Source: Central Bureau of Statistics, Nepal."
-  };
-
-  const countries_x2 = ["India", "Bangladesh", "Nepal"];
-  const margin_x2 = { top: 30, right: 10, bottom: 40, left: window.innerWidth <= 540 ? 90 : 100 };
-
-  countries_x2.forEach(country => {
-    const data_x2 = rawData_x2.filter(d => d.group === country);
-
-    const container_x2 = d3.select("#charts_x2")
-      .append("div")
-      .attr("class", "chart-container_x2");
-
-    // Chart title
-    container_x2.append("div")
-      .attr("class", "chart-title_x2")
-      .text(country);
-
-        // ---- Legend (appended below the chart) ----
-        const legend_x2 = container_x2.append("div")
-      .attr("class", "legend_x2");
-
-
-    const legendItem1 = legend_x2.append("div")
-      .attr("class", "legend-item_x2");
-
-    legendItem1.append("div")
-      .attr("class", "legend-swatch_x2")
-      .style("background-color", "#cbd5e1");
-
-    legendItem1.append("span")
-      .text("Population share");
-
-
-    const legendItem2 = legend_x2.append("div")
-      .attr("class", "legend-item_x2");
-
-    legendItem2.append("div")
-      .attr("class", "legend-swatch_x2")
-      .style("background-color", "#00243e");
-
-    legendItem2.append("span")
-      .text("Civil service share");
-
-    // Determine chart dimensions
-    const chartWidth_x2 = Math.min(window.innerWidth <= 540 ? window.innerWidth - 30 : 618, 900);
-    const chartHeight_x2 = Math.max(300, chartWidth_x2 * 0.4);
-
-    const width_x2 = chartWidth_x2 - margin_x2.left - margin_x2.right;
-    const height_x2 = chartHeight_x2 - margin_x2.top - margin_x2.bottom;
-
-    // Create SVG container
-    const svg_x2 = container_x2.append("svg")
-      .attr("width", chartWidth_x2)
-      .attr("height", chartHeight_x2)
-      .append("g")
-      .attr("transform",
-        window.innerWidth <= 540
-          ? `translate(${chartWidth_x2 - width_x2 - 10},30)`
-          : `translate(${margin_x2.left},${margin_x2.top})`
-      );
-
-    // Scales
-    const y_x2 = d3.scaleBand()
-      .domain(data_x2.map(d => d.category))
-      .range([0, height_x2])
-      .padding(0.3);
-
-    const x_x2 = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, width_x2]);
-
-    // Axes
-    svg_x2.append("g")
-      .attr("class", "axis--y2")
-      .call(d3.axisLeft(y_x2).tickSize(0))
-      .selectAll("text")
-      .style("font-size", "8px")
-      .style("font-family", "National, monospace");
-
-    svg_x2.append("g")
-      .attr("class", "axis--x2")
-      .attr("transform", `translate(0, ${height_x2})`)
-      .call(d3.axisBottom(x_x2).tickFormat(d => d + "%"));
-
-    // Bars for Population share
-    svg_x2.selectAll(".bar-nat_x2")
-      .data(data_x2)
-      .enter()
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", d => y_x2(d.category))
-      .attr("height", y_x2.bandwidth())
-      .attr("width", d => x_x2(d.nat))
-      .attr("fill", "#cbd5e1");
-
-    // Bars for Civil service share
-    svg_x2.selectAll(".bar-cs_x2")
-      .data(data_x2)
-      .enter()
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", d => y_x2(d.category) + y_x2.bandwidth() / 4)
-      .attr("height", y_x2.bandwidth() / 2)
-      .attr("width", d => x_x2(d.cs))
-      .attr("fill", "#00243e");
-
-
-
-    // ---- Source text ----
-    container_x2.append("div")
-      .attr("class", "source_x2")
-      .text(sources_x2[country]);
-  });
-</script>
+  <script>
+    const rawData_x2 = [
+      { group: "India", category: "Hindu", nat: 79.80, cs: 92.88 },
+      { group: "India", category: "Muslim", nat: 14.20, cs: 4.22 },
+      { group: "India", category: "Christian", nat: 2.30, cs: 1.29 },
+      { group: "India", category: "Sikh", nat: 1.70, cs: 0.89 },
+      { group: "India", category: "Jain", nat: 0.40, cs: 0.62 },
+      { group: "India", category: "Buddhist", nat: 0.70, cs: 0.11 },
+      { group: "Bangladesh", category: "Muslim", nat: 91.09, cs: 89.56 },
+      { group: "Bangladesh", category: "Hindu", nat: 7.75, cs: 8.91 },
+      { group: "Bangladesh", category: "Indigenous", nat: 1.00, cs: 1.30 },
+      { group: "Bangladesh", category: "Christian", nat: 0.15, cs: 0.09 },
+      { group: "Bangladesh", category: "Buddhist", nat: 0.01, cs: 0.14 },
+      { group: "Nepal", category: "Bahuns (Hindu)", nat: 12.74, cs: 72 },
+      { group: "Nepal", category: "Chhetris (Hindu)", nat: 15.8, cs: 15.89 },
+      { group: "Nepal", category: "Newar Janajati", nat: 5.48, cs: 7.14 },
+      { group: "Nepal", category: "Other Janajati", nat: 30.83, cs: 1.64 },
+      { group: "Nepal", category: "Madheshi", nat: 12.32, cs: 1.17 },
+      { group: "Nepal", category: "Dalit", nat: 14.99, cs: 0.67 },
+      { group: "Nepal", category: "Muslim", nat: 4.27, cs: 0.1 },
+      { group: "Nepal", category: "Others", nat: 3.57, cs: 1.39 }
+    ];
+  
+    const tooltip_x2 = d3.select(".tooltip_x2");
+  
+    const sources_x2 = {
+      "India": "Source: Pew Research, civil service commissions and census data from India.",
+      "Bangladesh": "Source: Civil Service Commission Reports, Government of Bangladesh.",
+      "Nepal": "Source: Central Bureau of Statistics, Nepal."
+    };
+  
+    const subtitle_x2 = {
+      "India": "Muslims are 14% of the population, but only 4% in civil service jobs",
+      "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
+      "Nepal": "Hindu elites dominate, leaving indigenous, Buddhists far behind"
+    };
+  
+    const countries_x2 = ["India", "Bangladesh", "Nepal"];
+    const margin_x2 = { top: 30, right: 10, bottom: 40, left: window.innerWidth <= 540 ? 90 : 100 };
+  
+    countries_x2.forEach(country => {
+      const data_x2 = rawData_x2.filter(d => d.group === country);
+  
+      const container_x2 = d3.select("#charts_x2")
+        .append("div")
+        .attr("class", "chart-container_x2");
+  
+      // Chart title
+      container_x2.append("div")
+        .attr("class", "chart-title_x2")
+        .text(`${country}: ${subtitle_x2[country]}`);
+  
+      // Legend
+      const legend_x2 = container_x2.append("div")
+        .attr("class", "legend_x2");
+  
+      const legendItem1 = legend_x2.append("div")
+        .attr("class", "legend-item_x2");
+  
+      legendItem1.append("div")
+        .attr("class", "legend-swatch_x2")
+        .style("background-color", "#cbd5e1");
+  
+      legendItem1.append("span")
+        .text("Population share");
+  
+      const legendItem2 = legend_x2.append("div")
+        .attr("class", "legend-item_x2");
+  
+      legendItem2.append("div")
+        .attr("class", "legend-swatch_x2")
+        .style("background-color", "#00243e");
+  
+      legendItem2.append("span")
+        .text("Civil service share");
+  
+      // Determine chart dimensions
+      const chartWidth_x2 = Math.min(window.innerWidth <= 540 ? window.innerWidth - 30 : 618, 900);
+      const chartHeight_x2 = Math.max(300, chartWidth_x2 * 0.4);
+  
+      const width_x2 = chartWidth_x2 - margin_x2.left - margin_x2.right;
+      const height_x2 = chartHeight_x2 - margin_x2.top - margin_x2.bottom;
+  
+      // Create SVG container
+      const svg_x2 = container_x2.append("svg")
+        .attr("width", chartWidth_x2)
+        .attr("height", chartHeight_x2)
+        .append("g")
+        .attr("transform",
+          window.innerWidth <= 540
+            ? `translate(${chartWidth_x2 - width_x2 - 10},30)`
+            : `translate(${margin_x2.left},${margin_x2.top})`
+        );
+  
+      // Scales
+      const y_x2 = d3.scaleBand()
+        .domain(data_x2.map(d => d.category))
+        .range([0, height_x2])
+        .padding(0.3);
+  
+      const x_x2 = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, width_x2]);
+  
+      // Axes
+      svg_x2.append("g")
+        .attr("class", "axis--y2")
+        .call(d3.axisLeft(y_x2).tickSize(0))
+        .selectAll("text")
+        .style("font-size", "8px")
+        .style("font-family", "National, monospace");
+  
+      svg_x2.append("g")
+        .attr("class", "axis--x2")
+        .attr("transform", `translate(0, ${height_x2})`)
+        .call(d3.axisBottom(x_x2).tickFormat(d => d + "%"));
+  
+      // --- Bars for Population share ---
+      svg_x2.selectAll(".bar-nat_x2")
+        .data(data_x2)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", d => y_x2(d.category))
+        .attr("height", y_x2.bandwidth())
+        .attr("width", d => x_x2(d.nat))
+        .attr("fill", "#cbd5e1")
+        // Tooltip events
+        .on("mouseover", function(event, d) {
+          tooltip_x2
+            .style("visibility", "visible")
+            .html(
+              `Population share for <strong>${d.category}</strong>: ${d.nat}%`
+            );
+        })
+        .on("mousemove", function(event) {
+          tooltip_x2
+            .style("top", (event.pageY - 10) + "px")
+            .style("left", (event.pageX + 10) + "px");
+        })
+        .on("mouseout", function() {
+          tooltip_x2.style("visibility", "hidden");
+        });
+  
+      // --- Bars for Civil service share ---
+      svg_x2.selectAll(".bar-cs_x2")
+        .data(data_x2)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", d => y_x2(d.category) + y_x2.bandwidth() / 4)
+        .attr("height", y_x2.bandwidth() / 2)
+        .attr("width", d => x_x2(d.cs))
+        .attr("fill", "#00243e")
+        // Tooltip events
+        .on("mouseover", function(event, d) {
+          tooltip_x2
+            .style("visibility", "visible")
+            .html(
+              `Civil service share for <strong>${d.category}</strong>: ${d.cs}%`
+            );
+        })
+        .on("mousemove", function(event) {
+          tooltip_x2
+            .style("top", (event.pageY - 10) + "px")
+            .style("left", (event.pageX + 10) + "px");
+        })
+        .on("mouseout", function() {
+          tooltip_x2.style("visibility", "hidden");
+        });
+  
+      // Source text
+      container_x2.append("div")
+        .attr("class", "source_x2")
+        .text(sources_x2[country]);
+    });
+  </script>
 
 </body>
 
