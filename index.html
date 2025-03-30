@@ -365,45 +365,35 @@
      * Stats Row
      ***************************************************/
     /* Responsive Stats Row */
+
     .stats {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      text-align: center;
-      flex-wrap: wrap;
-      margin-top: 5px;
-      border-top: #00796B 1px solid;
-      border-bottom: #00796B 1px solid;
-      padding: 10px 0;
-    }
+  display: flex;
+  justify-content: center;        /* or space-between, if you prefer */
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+  border-top: #00796B 1px solid;
+  border-bottom: #00796B 1px solid;
+  padding: 10px 0;
+}
 
-    .stats-left,
-    .stats-middle,
-    .stats-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      min-width: 80px;
-      flex: 1;
-    }
+.stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* Add spacing between items (optional): */
+  margin: 5px 10px; 
+  font-family: 'National', monospace;
+  font-size: 10px;
+}
 
-    .stats span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-      font-family: 'National', monospace;
-      font-size: 10px;
-    }
-
-    .circle {
-      width: 5px;
-      height: 5px;
-      display: inline-block;
-      border-radius: 50%;
-    }
-
+.circle {
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  border-radius: 50%;
+}
 
 
     /***************************************************
@@ -929,6 +919,20 @@
       }
     }
 
+    @media (max-width: 360px) {
+
+    .stats span {
+        margin: 1px 1px;
+      }
+      .religion-row {
+        margin-bottom: 3px;
+      }
+
+      .religion-row .dot {
+        width: 2px;
+        height: 2px;
+      }
+    }
 
     .tooltip_x2 {
     position: absolute;
@@ -1448,55 +1452,35 @@
     /***************************************************
      * Stats logic (add religion labels + circles + percentages)
      ***************************************************/
-    function generateStats(container, distribution) {
-      // Map keys to user-friendly labels:
-      const religionNames = {
-        islam: 'Islam',
-        hinduism: 'Hinduism',
-        indigenous: 'Indigenous',
-        christian: 'Christianity',
-        buddhist: 'Buddhism'
-      };
+     function generateStats(container, distribution) {
+  const religionNames = {
+    islam: 'Islam',
+    hinduism: 'Hinduism',
+    indigenous: 'Indigenous',
+    christian: 'Christianity',
+    buddhist: 'Buddhism'
+  };
 
-      container.innerHTML = '';
-      const entries = Object.entries(distribution);
+  // Clear out any existing content
+  container.innerHTML = '';
 
-      const leftStats = document.createElement('div');
-      leftStats.classList.add('stats-left');
+  // Turn this container itself into our .stats container
+  container.classList.add('stats');
 
-      const middleStats = document.createElement('div');
-      middleStats.classList.add('stats-middle');
+  // Build label + circle + percent for each religion
+  Object.entries(distribution).forEach(([religion, percentage]) => {
+    const label = religionNames[religion] || religion;
+    const span = document.createElement('span');
+    span.innerHTML = `
+      ${label}
+      <span class="circle" style="background-color: ${getColor(religion)};"></span>
+      ${percentage.toFixed(2)}%
+    `;
+    container.appendChild(span);
+  });
+}
 
-      const rightStats = document.createElement('div');
-      rightStats.classList.add('stats-right');
 
-      entries.forEach(([religion, percentage], index) => {
-        // If you have a mismatch in the religion key, console.log them here:
-        // console.log('religion key => ', religion, ', percentage => ', percentage);
-
-        const label = religionNames[religion] || religion;  // fallback to the raw key
-
-        const span = document.createElement('span');
-        span.innerHTML = `
-          ${label}
-          <span class="circle" style="background-color: ${getColor(religion)}; font-size: 8px;"></span>
-          ${percentage.toFixed(2)}%
-        `;
-
-        // Same logic for which column to place them in:
-        if (index === 0) {
-          leftStats.appendChild(span);
-        } else if (index === 1 || index === 2) {
-          middleStats.appendChild(span);
-        } else {
-          rightStats.appendChild(span);
-        }
-      });
-
-      container.appendChild(leftStats);
-      container.appendChild(middleStats);
-      container.appendChild(rightStats);
-    }
 
     function generateTitleSection(title, iconSrc) {
       const titleSection = document.createElement('div');
@@ -1643,10 +1627,12 @@
       overlay.appendChild(generateTitleSection(area.name, area.icon));
 
       // Stats
-      const statsDiv = document.createElement('div');
-      statsDiv.classList.add('stats');
-      overlay.appendChild(statsDiv);
-      generateStats(statsDiv, area.data);
+// 1) Don't add .stats here; let generateStats handle that
+const statsDiv = document.createElement('div'); 
+overlay.appendChild(statsDiv);
+
+// 2) Just call generateStats
+generateStats(statsDiv, area.data);
 
       // Dots
       const gridDiv = document.createElement('div');
