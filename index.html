@@ -954,7 +954,7 @@
   }
   .source_x2 {
     font-family: 'National', monospace;
-    font-size: 12px;
+    font-size: 8px;
     color: #6e6e6eff;
     margin: 0px 20px;
   }
@@ -979,6 +979,7 @@
   .axis--x2 .tick text,
   .axis--y2 .tick text {
     fill: #6e6e6eff;
+    font-size: 8px;
   }
 
   .legend_x2 {
@@ -1853,7 +1854,7 @@
       .attr("class", "axis--y2")
       .call(d3.axisLeft(y_x2).tickSize(0))
       .selectAll("text")
-      .style("font-size", "12px")
+      .style("font-size", "8px")
       .style("font-family", "National, monospace");
 
     svg_x2.append("g")
