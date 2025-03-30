@@ -218,8 +218,9 @@
 
     .method-title {
       margin: 15px 20px;
-      font-style: italic;
+      font-style: normal;
       color: #00243e;
+      font-size: 18px;
     }
 
     @media screen and (min-width: 800px) {
@@ -243,12 +244,14 @@
       font-weight: 700;
       color: #00243e;
     }
-
+    
     .highlighted {
-      font-weight: 400;
-      background-color: #d4f112;
-      padding: 2px 0px;
-    }
+    font-weight: 400;
+    background: linear-gradient(120deg, transparent 0%, rgba(212, 241, 18, 0.3) 10%, #d4f112 20%, #d4f112 50%, rgba(212, 241, 18, 0.3) 80%, transparent 100%);
+    padding: 4px 4px 4px 0px;
+    background-position: 0% 50%;
+}
+
 
     .article h2,
     .article-2 h2, .article-3 h2 {
@@ -572,6 +575,7 @@
     .list ul {
       list-style: none;
       padding: 0;
+      margin-bottom: 15px;
     }
 
     .list ul li {
@@ -945,7 +949,7 @@
       white-space: nowrap;
       overflow-x: scroll;
       overflow-y: hidden;
-      border: 1px solid #ccc;
+      border: 1px solid #d4f112;
       position: relative;
     }
     .horizontal-scroller::-webkit-scrollbar {
@@ -957,8 +961,9 @@
       display: inline-block;
       max-width: 618px;
       vertical-align: top;
-      border-right: 1px solid #eee; /* optional visual separator */
+      border-right: 1px solid #d4f112; /* optional visual separator */
       box-sizing: border-box;
+      margin-right: 5px;
     }
 
     /* Simple stylings */
@@ -968,6 +973,7 @@
       font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
       color: #00243e;
       max-width: 618px;
+      text-wrap-mode: wrap;
     }
     .legend_x2,
     .source_x2 {
@@ -975,6 +981,7 @@
       margin: 8px;
       font-family: 'National', monospace;
       max-width: 618px;
+      text-wrap-mode: wrap;
     }
 
     /* Tooltip for D3 */
@@ -1157,8 +1164,8 @@
 
       <p>That trend is reflected further down the educational pipeline, which feeds into these prestigious professions.
         A government <a href="https://dhakaeducationboard.gov.bd/data/20241215155622468507.pdf">merit list</a> of 3,237
-        high school students across Dhaka division — based on anonymised graduation results to
-        eliminate potential religious bias — shows that minority students made up 9.60%, according to the analysis.</p>
+        high school students across Dhaka division — based on anonymised graduation results that
+        eliminate potential religious bias — shows that minority students made up 9.60%.</p>
 
 
       <p>To compile these findings, Netra News sifted through a wide spectrum of official and confidential records.
@@ -1256,7 +1263,7 @@
     <p>According to the data analysed by Netra News, there are <span class="highlighted">no indigenous (Adivasi)</span>
       personnel in the navy officer
       corps, just <span class="highlighted">one Christian</span> officer, and <span class="highlighted">three
-        Buddhists</span>. In the army, <span class="highlighted">no Christians</span> at all appear in the officer
+        Buddhists.</span> In the army, <span class="highlighted">no Christians</span> at all appear in the officer
       ranks, while only seven indigenous officers and seven Buddhists were identified.</p>
     <p>The armed forces in Bangladesh recruit through a distinctive process through the Inter Services Selection
       Board (ISSB), which assesses candidates on personality, family background, and other factors — criteria that can
