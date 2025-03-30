@@ -952,10 +952,7 @@
       position: relative;
     }
 
-    .horizontal-scroller {
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
-}
+
     .horizontal-scroller::-webkit-scrollbar {
       display: none; /* optional: hide the horizontal scrollbar */
     }
@@ -1813,350 +1810,298 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <script>
-
-//////////////////////////////////////
-// 1) TRACK FINGER POSITION
-//////////////////////////////////////
-let startX = null;
-let startY = null;
-// We'll update these on each move, so we only move the difference
-let lastX = null;
-let lastY = null;
-
-window.addEventListener('touchstart', (e) => {
-  startX = lastX = e.touches[0].clientX;
-  startY = lastY = e.touches[0].clientY;
-});
-
-window.addEventListener('touchmove', (e) => {
-  // If we never got a startX/Y, ignore
-  if (lastX == null || lastY == null) return;
-  
-  // Re-check if scroller is "active"
-  checkScrollerActivation();
-  if (!scrollerActive) {
-    // If not active, do normal vertical scroll
-    return;
-  }
-
-  // Current finger coordinates
-  const currentX = e.touches[0].clientX;
-  const currentY = e.touches[0].clientY;
-
-  // Movement deltas since last event
-  const deltaX = lastX - currentX;
-  const deltaY = lastY - currentY;
-
-  // Compare absolute distances to decide horizontal vs vertical
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // This is primarily a horizontal swipe:
-    const currentLeft = scrollerEl.scrollLeft;
-    const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
-    const goingRight = (deltaX > 0 && currentLeft < maxLeft);
-    const goingLeft  = (deltaX < 0 && currentLeft > 0);
-
-    if (goingRight || goingLeft) {
-      // Prevent normal vertical scrolling
-      e.preventDefault();
-      // Move horizontally by deltaX
-      scrollerEl.scrollLeft += deltaX;
+    /**************************************************************
+     * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
+     **************************************************************/
+    const scrollerEl = document.getElementById('myHorizontalScroller');
+    let scrollerActive = false;
+    
+    function checkScrollerActivation() {
+      const rect = scrollerEl.getBoundingClientRect();
+      const scrollerCenter = rect.top + rect.height / 2;
+      const viewportCenter = window.innerHeight / 2;
+    
+      const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
+      const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
+    
+      scrollerActive = (partlyVisible && centerAboveScreenCenter);
     }
-  } else {
-    // This is primarily a vertical swipe → let normal vertical scroll happen
-    // (No preventDefault here)
-  }
-
-  // Update last positions so we continue from this point
-  lastX = currentX;
-  lastY = currentY;
-});
-
-window.addEventListener('touchend', () => {
-  startX = startY = null;
-  lastX = lastY = null;
-});
-window.addEventListener('touchcancel', () => {
-  startX = startY = null;
-  lastX = lastY = null;
-});
-
-
-/**************************************************************
- * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
- **************************************************************/
- const scrollerEl = document.getElementById('myHorizontalScroller');
-let scrollerActive = false;
-
-function checkScrollerActivation() {
-  // bounding box of the scroller
-  const rect = scrollerEl.getBoundingClientRect();
-  const scrollerCenter = rect.top + (rect.height / 2);
-  const viewportCenter = window.innerHeight / 2;
-
-  // Condition A: scroller partially visible
-  const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
-
-  // Condition B: scroller's center at or above the screen's center line
-  const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
-
-  scrollerActive = (partlyVisible && centerAboveScreenCenter);
-}
-
-// Intercept wheel only if scrollerActive == true and there's horizontal room
-window.addEventListener('wheel', function(e) {
-  // Update scrollerActive first
-  checkScrollerActivation();
-  if (!scrollerActive) return; // not active => normal vertical scroll
-
-  const deltaY      = e.deltaY;
-  const currentLeft = scrollerEl.scrollLeft;
-  const maxLeft     = scrollerEl.scrollWidth - scrollerEl.clientWidth;
-
-  const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
-  const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
-
-  if (canScrollRight || canScrollLeft) {
-    e.preventDefault();
-    scrollerEl.scrollLeft += deltaY;
-  }
-}, { passive: false });
-
-// Recheck activation on normal scroll/resize
-window.addEventListener('scroll', checkScrollerActivation);
-window.addEventListener('resize', checkScrollerActivation);
-
-
-
-  /*****************************
-   * 2) Example D3 Chart Setup *
-   *****************************/
-   const rawData_x2 = [
-    { group: "India", category: "Hindu",      nat: 79.80, cs: 92.88 },
-    { group: "India", category: "Muslim",     nat: 14.20, cs: 4.22  },
-    { group: "India", category: "Christian",  nat: 2.30,  cs: 1.29  },
-    { group: "India", category: "Sikh",       nat: 1.70,  cs: 0.89  },
-    { group: "India", category: "Jain",       nat: 0.40,  cs: 0.62  },
-    { group: "India", category: "Buddhist",   nat: 0.70,  cs: 0.11  },
-    { group: "Bangladesh", category: "Muslim",     nat: 91.09, cs: 89.56 },
-    { group: "Bangladesh", category: "Hindu",      nat: 7.75,  cs: 8.91  },
-    { group: "Bangladesh", category: "Indigenous", nat: 1.00,  cs: 1.30  },
-    { group: "Bangladesh", category: "Christian",  nat: 0.15,  cs: 0.09  },
-    { group: "Bangladesh", category: "Buddhist",   nat: 0.01,  cs: 0.14  },
-    { group: "Nepal", category: "Bahuns",   nat: 12.74, cs: 72    },
-    { group: "Nepal", category: "Chhetris", nat: 15.8,  cs: 15.89 },
-    { group: "Nepal", category: "Newar",   nat: 5.48,  cs: 7.14  },
-    { group: "Nepal", category: "Janajati",   nat: 30.83, cs: 1.64  },
-    { group: "Nepal", category: "Madheshi",         nat: 12.32, cs: 1.17  },
-    { group: "Nepal", category: "Dalit",            nat: 14.99, cs: 0.67  },
-    { group: "Nepal", category: "Muslim",           nat: 4.27,  cs: 0.1   },
-    { group: "Nepal", category: "Others",           nat: 3.57,  cs: 1.39  }
-  ];
-
-  const subtitle_x2 = {
-  "India":      "Muslims are 14% of the population, but only 4% in civil service jobs",
-  "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
-  "Nepal":      "Hindu elites dominate, leaving indigenous, Buddhists far behind"
-};
-const sources_x2 = {
-  "India":      "Government of India, Netra News",
-  "Bangladesh": "Government of Bangladesh, Netra News",
-  "Nepal":      "Social Inequality in the Civil Service (South Asianist Journal)"
-};
-
-const countries_x2 = ["India", "Bangladesh", "Nepal"];
-const tooltip_x2   = d3.select(".tooltip_x2");
-
-// We'll store the chart dimensions in a global so we can use them for the bar charts
-let chartWidth   = 618;
-let chartHeight  = 300;
-let margin       = { top: 30, right: 20, bottom: 30, left: 60 };
-let drawableW    = chartWidth  - margin.left - margin.right;
-let drawableH    = chartHeight - margin.top  - margin.bottom;
-
-// A function to set up or update chart dimension based on current screen size
-function computeChartDimensions() {
-  // If screen is narrower than 618, take something like (window.innerWidth - 20) for safety
-  // Otherwise, clamp to 618 for large screens
-  const windowW = window.innerWidth;
-  if (windowW < 618) {
-    chartWidth = Math.floor(windowW - 20);  // subtract 20px for spacing
-  } else {
-    chartWidth = 618;
-  }
-  // For height, choose a proportion or keep a constant
-  // e.g., half the width or a fixed 300
-  chartHeight = Math.floor(chartWidth * 0.5); // 50% aspect ratio
-  if (chartHeight < 200) {
-    chartHeight = 200; // ensure a minimum height
-  }
-
-  // Recompute the "drawable" area
-  drawableW = chartWidth - margin.left - margin.right;
-  drawableH = chartHeight - margin.top  - margin.bottom;
-}
-
-// This function clears existing charts and rebuilds them
-function buildCharts() {
-  // 1) Clear old chart divs
-  d3.select("#charts_x2").html("");
-
-  // 2) Compute new dimensions
-  computeChartDimensions();
-
-  // 3) For each country, build a "page"
-  countries_x2.forEach(country => {
-    const data = rawData_x2.filter(d => d.group === country);
-
-    // Add one container per chart page
-    const container = d3.select("#charts_x2")
-      .append("div")
-      .attr("class", "chart-container_x2")
-      // Set width in-line so that each "page" is chartWidth
-      .style("width", chartWidth + "px");
-
-    // Title
-    container.append("div")
-      .attr("class", "chart-title_x2")
-      .text(`${country}: ${subtitle_x2[country]}`);
-
-// Legend Container
-const legend = container.append("div")
-  .attr("class", "legend_x2")
-  .style("display", "flex")
-  .style("align-items", "center");
-
-// Population Share (Light) - Color Square + Text
-const popLegend = legend.append("div")
-  .attr("class", "legend-item_x2")
-  .style("display", "flex")
-  .style("align-items", "center")
-  .style("margin-right", "15px"); // Add space between legend items
-
-popLegend.append("div")
-  .style("width", "12px")
-  .style("height", "12px")
-  .style("background-color", "#cbd5e1") // Light color for Pop share
-  .style("margin-right", "6px");
-
-popLegend.append("span")
-  .text("Overall population share");
-
-// Civil Service Share (Dark) - Color Square + Text
-const civilLegend = legend.append("div")
-  .attr("class", "legend-item_x2")
-  .style("display", "flex")
-  .style("align-items", "center");
-
-civilLegend.append("div")
-  .style("width", "12px")
-  .style("height", "12px")
-  .style("background-color", "#00243e") // Dark color for Civil share
-  .style("margin-right", "6px");
-
-civilLegend.append("span")
-  .text("Civil service officers share");
-
-    // Create an SVG
-    const svg = container.append("svg")
-      .attr("width", chartWidth)
-      .attr("height", chartHeight)
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    // Scales
-    const x = d3.scaleLinear()
-      .domain([0, 100])
-      .range([0, drawableW]);
-
-    const y = d3.scaleBand()
-      .domain(data.map(d => d.category))
-      .range([0, drawableH])
-      .padding(0.3);
-
-    // Axes
-    svg.append("g")
-      .attr("transform", `translate(0,${drawableH})`)
-      .call(d3.axisBottom(x).tickFormat(d => d + "%"));
-    svg.append("g")
-      .call(d3.axisLeft(y));
-
-    // Bars: population share
-    svg.selectAll(".bar-pop")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("class", "bar-pop")
-      .attr("x", 0)
-      .attr("y", d => y(d.category))
-      .attr("width", d => x(d.nat))
-      .attr("height", y.bandwidth())
-      .attr("fill", "#cbd5e1")
-      .on("mouseover", (event, d) => {
-        tooltip_x2
-          .style("visibility", "visible")
-          .html(`
-            <strong>${d.category}</strong><br/>
-            Pop: ${d.nat}%
-          `);
-      })
-      .on("mousemove", (event) => {
-        tooltip_x2
-          .style("top",  (event.pageY - 10) + "px")
-          .style("left", (event.pageX + 10) + "px");
-      })
-      .on("mouseout", () => {
-        tooltip_x2.style("visibility", "hidden");
+    
+    // Intercept wheel only if scrollerActive == true and there's horizontal room
+    window.addEventListener('wheel', (e) => {
+      // Update scrollerActive first
+      checkScrollerActivation();
+      if (!scrollerActive) return; // not active => normal vertical scroll
+    
+      const deltaY = e.deltaY;
+      const currentLeft = scrollerEl.scrollLeft;
+      const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+    
+      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
+      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+    
+      if (canScrollRight || canScrollLeft) {
+        e.preventDefault();
+        scrollerEl.scrollLeft += deltaY;
+      }
+    }, { passive: false });
+    
+    // Recheck activation on normal scroll/resize
+    window.addEventListener('scroll',  checkScrollerActivation);
+    window.addEventListener('resize',  checkScrollerActivation);
+    
+    
+    /**************************************************************
+     * 1B) TOUCH EVENTS FOR VERTICAL SWIPE -> HORIZONTAL SCROLL
+     **************************************************************
+     * This mimics the mouse wheel logic on touch devices:
+     * a vertical swipe will move horizontally if scroller is "active"
+     * and the container isn't at a horizontal extreme.
+     **************************************************************/
+    let startY = null;
+    
+    window.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    });
+    
+    window.addEventListener('touchmove', (e) => {
+      // If we have no starting Y coordinate, ignore
+      if (startY === null) return;
+    
+      // Check if the scroller is active
+      checkScrollerActivation();
+      if (!scrollerActive) return; // if not active => let vertical scroll pass
+    
+      // Calculate how far the user has moved vertically
+      const currentY = e.touches[0].clientY;
+      const deltaY   = startY - currentY;
+    
+      // Check horizontal boundaries
+      const currentLeft = scrollerEl.scrollLeft;
+      const maxLeft     = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
+      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+    
+      if (canScrollRight || canScrollLeft) {
+        e.preventDefault(); // block normal vertical scrolling
+        // Move horizontally by deltaY
+        scrollerEl.scrollLeft += deltaY;
+        // Update startY so the user can keep dragging further
+        startY = currentY;
+      }
+    });
+    
+    window.addEventListener('touchend',   () => { startY = null; });
+    window.addEventListener('touchcancel',() => { startY = null; });
+    
+    
+    /*****************************
+     * 2) Example D3 Chart Setup *
+     *****************************/
+    const rawData_x2 = [
+      { group: "India", category: "Hindu",      nat: 79.80, cs: 92.88 },
+      { group: "India", category: "Muslim",     nat: 14.20, cs: 4.22  },
+      { group: "India", category: "Christian",  nat: 2.30,  cs: 1.29  },
+      { group: "India", category: "Sikh",       nat: 1.70,  cs: 0.89  },
+      { group: "India", category: "Jain",       nat: 0.40,  cs: 0.62  },
+      { group: "India", category: "Buddhist",   nat: 0.70,  cs: 0.11  },
+      { group: "Bangladesh", category: "Muslim",     nat: 91.09, cs: 89.56 },
+      { group: "Bangladesh", category: "Hindu",      nat: 7.75,  cs: 8.91  },
+      { group: "Bangladesh", category: "Indigenous", nat: 1.00,  cs: 1.30  },
+      { group: "Bangladesh", category: "Christian",  nat: 0.15,  cs: 0.09  },
+      { group: "Bangladesh", category: "Buddhist",   nat: 0.01,  cs: 0.14  },
+      { group: "Nepal", category: "Bahuns",     nat: 12.74, cs: 72    },
+      { group: "Nepal", category: "Chhetris",   nat: 15.8,  cs: 15.89 },
+      { group: "Nepal", category: "Newar",      nat: 5.48,  cs: 7.14  },
+      { group: "Nepal", category: "Janajati",   nat: 30.83, cs: 1.64  },
+      { group: "Nepal", category: "Madheshi",   nat: 12.32, cs: 1.17  },
+      { group: "Nepal", category: "Dalit",      nat: 14.99, cs: 0.67  },
+      { group: "Nepal", category: "Muslim",     nat: 4.27,  cs: 0.1   },
+      { group: "Nepal", category: "Others",     nat: 3.57,  cs: 1.39  }
+    ];
+    
+    const subtitle_x2 = {
+      "India":      "Muslims are 14% of the population, but only 4% in civil service jobs",
+      "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
+      "Nepal":      "Hindu elites dominate, leaving indigenous, Buddhists far behind"
+    };
+    
+    const sources_x2 = {
+      "India":      "Government of India, Netra News",
+      "Bangladesh": "Government of Bangladesh, Netra News",
+      "Nepal":      "Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
+    };
+    
+    const countries_x2 = ["India", "Bangladesh", "Nepal"];
+    const tooltip_x2   = d3.select(".tooltip_x2");
+    
+    let chartWidth   = 618;
+    let chartHeight  = 300;
+    let margin       = { top: 30, right: 20, bottom: 30, left: 60 };
+    let drawableW    = chartWidth  - margin.left - margin.right;
+    let drawableH    = chartHeight - margin.top  - margin.bottom;
+    
+    // Recompute chart dimension based on current screen size
+    function computeChartDimensions() {
+      const windowW = window.innerWidth;
+      if (windowW < 618) {
+        chartWidth = Math.floor(windowW - 20);
+      } else {
+        chartWidth = 618;
+      }
+      chartHeight = Math.floor(chartWidth * 0.5);
+      if (chartHeight < 200) {
+        chartHeight = 200;
+      }
+    
+      drawableW = chartWidth - margin.left - margin.right;
+      drawableH = chartHeight - margin.top  - margin.bottom;
+    }
+    
+    // Clears existing charts and rebuilds them
+    function buildCharts() {
+      d3.select("#charts_x2").html("");
+      computeChartDimensions();
+    
+      countries_x2.forEach(country => {
+        const data = rawData_x2.filter(d => d.group === country);
+    
+        // Container "page" for each chart
+        const container = d3.select("#charts_x2")
+          .append("div")
+          .attr("class", "chart-container_x2")
+          .style("width", chartWidth + "px");
+    
+        // Title
+        container.append("div")
+          .attr("class", "chart-title_x2")
+          .text(`${country}: ${subtitle_x2[country]}`);
+    
+        // Legend
+        const legend = container.append("div")
+          .attr("class", "legend_x2")
+          .style("display", "flex")
+          .style("align-items", "center");
+    
+        const popLegend = legend.append("div")
+          .attr("class", "legend-item_x2")
+          .style("display", "flex")
+          .style("align-items", "center")
+          .style("margin-right", "15px");
+    
+        popLegend.append("div")
+          .style("width", "12px")
+          .style("height", "12px")
+          .style("background-color", "#cbd5e1")
+          .style("margin-right", "6px");
+    
+        popLegend.append("span")
+          .text("Overall population share");
+    
+        const civilLegend = legend.append("div")
+          .attr("class", "legend-item_x2")
+          .style("display", "flex")
+          .style("align-items", "center");
+    
+        civilLegend.append("div")
+          .style("width", "12px")
+          .style("height", "12px")
+          .style("background-color", "#00243e")
+          .style("margin-right", "6px");
+    
+        civilLegend.append("span")
+          .text("Civil service officers share");
+    
+        // SVG for bars
+        const svg = container.append("svg")
+          .attr("width", chartWidth)
+          .attr("height", chartHeight)
+          .append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+        // Scales
+        const x = d3.scaleLinear().domain([0, 100]).range([0, drawableW]);
+        const y = d3.scaleBand()
+                    .domain(data.map(d => d.category))
+                    .range([0, drawableH])
+                    .padding(0.3);
+    
+        // Axes
+        svg.append("g")
+          .attr("transform", `translate(0,${drawableH})`)
+          .call(d3.axisBottom(x).tickFormat(d => d + "%"));
+    
+        svg.append("g").call(d3.axisLeft(y));
+    
+        // Bars: population share
+        svg.selectAll(".bar-pop")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar-pop")
+          .attr("x", 0)
+          .attr("y", d => y(d.category))
+          .attr("width", d => x(d.nat))
+          .attr("height", y.bandwidth())
+          .attr("fill", "#cbd5e1")
+          .on("mouseover", (event, d) => {
+            tooltip_x2
+              .style("visibility", "visible")
+              .html(`<strong>${d.category}</strong><br/>Pop: ${d.nat}%`);
+          })
+          .on("mousemove", (event) => {
+            tooltip_x2
+              .style("top",  (event.pageY - 10) + "px")
+              .style("left", (event.pageX + 10) + "px");
+          })
+          .on("mouseout", () => {
+            tooltip_x2.style("visibility", "hidden");
+          });
+    
+        // Bars: civil service share
+        svg.selectAll(".bar-cs")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar-cs")
+          .attr("x", 0)
+          .attr("y", d => y(d.category) + y.bandwidth() / 4)
+          .attr("width", d => x(d.cs))
+          .attr("height", y.bandwidth() / 2)
+          .attr("fill", "#00243e")
+          .on("mouseover", (event, d) => {
+            tooltip_x2
+              .style("visibility", "visible")
+              .html(`<strong>${d.category}</strong><br/>Civil: ${d.cs}%`);
+          })
+          .on("mousemove", (event) => {
+            tooltip_x2
+              .style("top",  (event.pageY - 10) + "px")
+              .style("left", (event.pageX + 10) + "px");
+          })
+          .on("mouseout", () => {
+            tooltip_x2.style("visibility", "hidden");
+          });
+    
+        // Source
+        container.append("div")
+          .attr("class", "source_x2")
+          .text(sources_x2[country]);
       });
-
-    // Bars: civil service share
-    svg.selectAll(".bar-cs")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("class", "bar-cs")
-      .attr("x", 0)
-      .attr("y", d => y(d.category) + y.bandwidth() / 4)
-      .attr("width", d => x(d.cs))
-      .attr("height", y.bandwidth() / 2)
-      .attr("fill", "#00243e")
-      .on("mouseover", (event, d) => {
-        tooltip_x2
-          .style("visibility", "visible")
-          .html(`
-            <strong>${d.category}</strong><br/>
-            Civil: ${d.cs}%
-          `);
-      })
-      .on("mousemove", (event) => {
-        tooltip_x2
-          .style("top",  (event.pageY - 10) + "px")
-          .style("left", (event.pageX + 10) + "px");
-      })
-      .on("mouseout", () => {
-        tooltip_x2.style("visibility", "hidden");
-      });
-
-    // Source
-    container.append("div")
-      .attr("class", "source_x2")
-      .text(sources_x2[country]);
-  });
-}
-
-
-/**************************************************************
- * 3) INITIALIZE & RESIZE EVENTS
- **************************************************************/
-buildCharts(); // build once on page load
-checkScrollerActivation(); // also check once on load
-
-// On window resize, rebuild the charts with new widths
-window.addEventListener('resize', () => {
-  buildCharts();
-  checkScrollerActivation();
-});
-  </script>
-  
+    }
+    
+    /**************************************************************
+     * 3) INITIALIZE & RESIZE EVENTS
+     **************************************************************/
+    buildCharts();      // build once on page load
+    checkScrollerActivation(); // also check once on load
+    
+    window.addEventListener('resize', () => {
+      buildCharts();
+      checkScrollerActivation();
+    });
+    </script>
+    
   
 </body>
 
