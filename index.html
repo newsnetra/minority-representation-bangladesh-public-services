@@ -1249,7 +1249,7 @@
     <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
       share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
 
-      <h2>Multi Bullet Bar Charts: Civil Service vs National Share (India, Bangladesh, Nepal)</h2>
+
       <div id="charts_x2"></div>
       <div class="tooltip_x2" style="opacity:0;"></div>
 
@@ -1795,6 +1795,32 @@ generateStats(statsDiv, area.data);
       .attr("class", "chart-title_x2")
       .text(country);
 
+        // ---- Legend (appended below the chart) ----
+        const legend_x2 = container_x2.append("div")
+      .attr("class", "legend_x2");
+
+
+    const legendItem1 = legend_x2.append("div")
+      .attr("class", "legend-item_x2");
+
+    legendItem1.append("div")
+      .attr("class", "legend-swatch_x2")
+      .style("background-color", "#cbd5e1");
+
+    legendItem1.append("span")
+      .text("Population share");
+
+
+    const legendItem2 = legend_x2.append("div")
+      .attr("class", "legend-item_x2");
+
+    legendItem2.append("div")
+      .attr("class", "legend-swatch_x2")
+      .style("background-color", "#00243e");
+
+    legendItem2.append("span")
+      .text("Civil service share");
+
     // Determine chart dimensions
     const chartWidth_x2 = Math.min(window.innerWidth <= 540 ? window.innerWidth - 30 : 618, 900);
     const chartHeight_x2 = Math.max(300, chartWidth_x2 * 0.4);
@@ -1845,7 +1871,7 @@ generateStats(statsDiv, area.data);
       .attr("y", d => y_x2(d.category))
       .attr("height", y_x2.bandwidth())
       .attr("width", d => x_x2(d.nat))
-      .attr("fill", "#00243e");
+      .attr("fill", "#cbd5e1");
 
     // Bars for Civil service share
     svg_x2.selectAll(".bar-cs_x2")
@@ -1856,33 +1882,9 @@ generateStats(statsDiv, area.data);
       .attr("y", d => y_x2(d.category) + y_x2.bandwidth() / 4)
       .attr("height", y_x2.bandwidth() / 2)
       .attr("width", d => x_x2(d.cs))
-      .attr("fill", "#d4f112");
+      .attr("fill", "#00243e");
 
-    // ---- Legend (appended below the chart) ----
-    const legend_x2 = container_x2.append("div")
-      .attr("class", "legend_x2");
 
-    // First legend item (#00243e)
-    const legendItem1 = legend_x2.append("div")
-      .attr("class", "legend-item_x2");
-
-    legendItem1.append("div")
-      .attr("class", "legend-swatch_x2")
-      .style("background-color", "#00243e");
-
-    legendItem1.append("span")
-      .text("Population share");
-
-    // Second legend item (#d4f112)
-    const legendItem2 = legend_x2.append("div")
-      .attr("class", "legend-item_x2");
-
-    legendItem2.append("div")
-      .attr("class", "legend-swatch_x2")
-      .style("background-color", "#d4f112");
-
-    legendItem2.append("span")
-      .text("Civil service share");
 
     // ---- Source text ----
     container_x2.append("div")
