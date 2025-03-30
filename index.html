@@ -949,7 +949,6 @@
       white-space: nowrap;
       overflow-x: scroll;
       overflow-y: hidden;
-      border: 1px solid #d4f112;
       position: relative;
     }
 
@@ -1814,6 +1813,73 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <script>
+
+//////////////////////////////////////
+// 1) TRACK FINGER POSITION
+//////////////////////////////////////
+let startX = null;
+let startY = null;
+// We'll update these on each move, so we only move the difference
+let lastX = null;
+let lastY = null;
+
+window.addEventListener('touchstart', (e) => {
+  startX = lastX = e.touches[0].clientX;
+  startY = lastY = e.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', (e) => {
+  // If we never got a startX/Y, ignore
+  if (lastX == null || lastY == null) return;
+  
+  // Re-check if scroller is "active"
+  checkScrollerActivation();
+  if (!scrollerActive) {
+    // If not active, do normal vertical scroll
+    return;
+  }
+
+  // Current finger coordinates
+  const currentX = e.touches[0].clientX;
+  const currentY = e.touches[0].clientY;
+
+  // Movement deltas since last event
+  const deltaX = lastX - currentX;
+  const deltaY = lastY - currentY;
+
+  // Compare absolute distances to decide horizontal vs vertical
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // This is primarily a horizontal swipe:
+    const currentLeft = scrollerEl.scrollLeft;
+    const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+    const goingRight = (deltaX > 0 && currentLeft < maxLeft);
+    const goingLeft  = (deltaX < 0 && currentLeft > 0);
+
+    if (goingRight || goingLeft) {
+      // Prevent normal vertical scrolling
+      e.preventDefault();
+      // Move horizontally by deltaX
+      scrollerEl.scrollLeft += deltaX;
+    }
+  } else {
+    // This is primarily a vertical swipe → let normal vertical scroll happen
+    // (No preventDefault here)
+  }
+
+  // Update last positions so we continue from this point
+  lastX = currentX;
+  lastY = currentY;
+});
+
+window.addEventListener('touchend', () => {
+  startX = startY = null;
+  lastX = lastY = null;
+});
+window.addEventListener('touchcancel', () => {
+  startX = startY = null;
+  lastX = lastY = null;
+});
+
 
 /**************************************************************
  * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
