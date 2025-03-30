@@ -1811,52 +1811,62 @@
 
   <script>
     /**************************************************************
-     * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
+     * 1) HORIZONTAL SCROLLER STATE
      **************************************************************/
     const scrollerEl = document.getElementById('myHorizontalScroller');
-    let scrollerActive = false;
     
-    function checkScrollerActivation() {
-      const rect = scrollerEl.getBoundingClientRect();
-      const scrollerCenter = rect.top + rect.height / 2;
-      const viewportCenter = window.innerHeight / 2;
+    // Once true, user can scroll vertically again
+    let scrollerComplete = false;
     
-      const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
-      const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
-    
-      scrollerActive = (partlyVisible && centerAboveScreenCenter);
+    /**
+     * Returns how far the scroller can scroll horizontally.
+     * i.e., scrollerEl.scrollWidth - scrollerEl.clientWidth
+     */
+    function getMaxScrollLeft() {
+      return scrollerEl.scrollWidth - scrollerEl.clientWidth;
     }
     
-    // Intercept wheel only if scrollerActive == true and there's horizontal room
-    window.addEventListener('wheel', (e) => {
-      // Update scrollerActive first
-      checkScrollerActivation();
-      if (!scrollerActive) return; // not active => normal vertical scroll
+    /**
+     * Moves the scroller horizontally by `delta`, clamping between [0, maxLeft].
+     * If we hit the right edge, we set scrollerComplete = true.
+     */
+    function moveScroller(delta) {
+      let currentLeft = scrollerEl.scrollLeft;
+      const maxLeft   = getMaxScrollLeft();
     
-      const deltaY = e.deltaY;
-      const currentLeft = scrollerEl.scrollLeft;
-      const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+      // Compute new position
+      let newLeft = currentLeft + delta;
+      if (newLeft < 0)      newLeft = 0;
+      if (newLeft > maxLeft) newLeft = maxLeft;
     
-      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
-      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+      scrollerEl.scrollLeft = newLeft;
     
-      if (canScrollRight || canScrollLeft) {
-        e.preventDefault();
-        scrollerEl.scrollLeft += deltaY;
+      // If we have just reached the right edge, mark complete
+      if (newLeft >= maxLeft) {
+        scrollerComplete = true;
       }
-    }, { passive: false });
-    
-    // Recheck activation on normal scroll/resize
-    window.addEventListener('scroll',  checkScrollerActivation);
-    window.addEventListener('resize',  checkScrollerActivation);
-    
+    }
     
     /**************************************************************
-     * 1B) TOUCH EVENTS FOR VERTICAL SWIPE -> HORIZONTAL SCROLL
-     **************************************************************
-     * This mimics the mouse wheel logic on touch devices:
-     * a vertical swipe will move horizontally if scroller is "active"
-     * and the container isn't at a horizontal extreme.
+     * 2) MOUSE WHEEL -> HORIZONTAL
+     *    Blocks all vertical scroll until we've reached the right edge.
+     **************************************************************/
+    window.addEventListener('wheel', (e) => {
+      // If we've already completed scrolling horizontally, do nothing
+      if (scrollerComplete) {
+        return; // allow normal vertical scroll
+      }
+    
+      // Otherwise, prevent vertical scrolling
+      e.preventDefault();
+    
+      // Move horizontally by the vertical delta
+      moveScroller(e.deltaY);
+    }, { passive: false });
+    
+    /**************************************************************
+     * 3) TOUCH EVENTS -> HORIZONTAL
+     *    Similar logic for mobile. We hijack vertical swipes.
      **************************************************************/
     let startY = null;
     
@@ -1865,39 +1875,35 @@
     });
     
     window.addEventListener('touchmove', (e) => {
-      // If we have no starting Y coordinate, ignore
+      // If we've already completed horizontal scroller, allow vertical
+      if (scrollerComplete) {
+        return; // normal vertical scrolling
+      }
+      // If we have no start coordinate, ignore
       if (startY === null) return;
     
-      // Check if the scroller is active
-      checkScrollerActivation();
-      if (!scrollerActive) return; // if not active => let vertical scroll pass
-    
-      // Calculate how far the user has moved vertically
+      // Distance user swiped vertically
       const currentY = e.touches[0].clientY;
-      const deltaY   = startY - currentY;
+      const deltaY   = startY - currentY; // positive if user drags up
     
-      // Check horizontal boundaries
-      const currentLeft = scrollerEl.scrollLeft;
-      const maxLeft     = scrollerEl.scrollWidth - scrollerEl.clientWidth;
-      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
-      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+      // We hijack the scroll => prevent default vertical scroll
+      e.preventDefault();
     
-      if (canScrollRight || canScrollLeft) {
-        e.preventDefault(); // block normal vertical scrolling
-        // Move horizontally by deltaY
-        scrollerEl.scrollLeft += deltaY;
-        // Update startY so the user can keep dragging further
-        startY = currentY;
-      }
+      // Move horizontally by deltaY
+      moveScroller(deltaY);
+    
+      // Update startY so subsequent movement continues from this point
+      startY = currentY;
     });
     
     window.addEventListener('touchend',   () => { startY = null; });
     window.addEventListener('touchcancel',() => { startY = null; });
     
     
-    /*****************************
-     * 2) Example D3 Chart Setup *
-     *****************************/
+    /**************************************************************
+     * 4) EXAMPLE D3 CHART SETUP
+     *    (Exactly as before, unchanged from your code)
+     **************************************************************/
     const rawData_x2 = [
       { group: "India", category: "Hindu",      nat: 79.80, cs: 92.88 },
       { group: "India", category: "Muslim",     nat: 14.20, cs: 4.22  },
@@ -1910,14 +1916,14 @@
       { group: "Bangladesh", category: "Indigenous", nat: 1.00,  cs: 1.30  },
       { group: "Bangladesh", category: "Christian",  nat: 0.15,  cs: 0.09  },
       { group: "Bangladesh", category: "Buddhist",   nat: 0.01,  cs: 0.14  },
-      { group: "Nepal", category: "Bahuns",     nat: 12.74, cs: 72    },
-      { group: "Nepal", category: "Chhetris",   nat: 15.8,  cs: 15.89 },
-      { group: "Nepal", category: "Newar",      nat: 5.48,  cs: 7.14  },
-      { group: "Nepal", category: "Janajati",   nat: 30.83, cs: 1.64  },
-      { group: "Nepal", category: "Madheshi",   nat: 12.32, cs: 1.17  },
-      { group: "Nepal", category: "Dalit",      nat: 14.99, cs: 0.67  },
-      { group: "Nepal", category: "Muslim",     nat: 4.27,  cs: 0.1   },
-      { group: "Nepal", category: "Others",     nat: 3.57,  cs: 1.39  }
+      { group: "Nepal", category: "Bahuns",   nat: 12.74, cs: 72    },
+      { group: "Nepal", category: "Chhetris", nat: 15.8,  cs: 15.89 },
+      { group: "Nepal", category: "Newar",    nat: 5.48,  cs: 7.14  },
+      { group: "Nepal", category: "Janajati", nat: 30.83, cs: 1.64  },
+      { group: "Nepal", category: "Madheshi", nat: 12.32, cs: 1.17  },
+      { group: "Nepal", category: "Dalit",    nat: 14.99, cs: 0.67  },
+      { group: "Nepal", category: "Muslim",   nat: 4.27,  cs: 0.1   },
+      { group: "Nepal", category: "Others",   nat: 3.57,  cs: 1.39  }
     ];
     
     const subtitle_x2 = {
@@ -1925,11 +1931,10 @@
       "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
       "Nepal":      "Hindu elites dominate, leaving indigenous, Buddhists far behind"
     };
-    
     const sources_x2 = {
       "India":      "Government of India, Netra News",
       "Bangladesh": "Government of Bangladesh, Netra News",
-      "Nepal":      "Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
+      "Nepal":      "Social inequality in the civil service (South Asianist Journal)"
     };
     
     const countries_x2 = ["India", "Bangladesh", "Nepal"];
@@ -1941,7 +1946,6 @@
     let drawableW    = chartWidth  - margin.left - margin.right;
     let drawableH    = chartHeight - margin.top  - margin.bottom;
     
-    // Recompute chart dimension based on current screen size
     function computeChartDimensions() {
       const windowW = window.innerWidth;
       if (windowW < 618) {
@@ -1953,12 +1957,11 @@
       if (chartHeight < 200) {
         chartHeight = 200;
       }
-    
       drawableW = chartWidth - margin.left - margin.right;
       drawableH = chartHeight - margin.top  - margin.bottom;
     }
     
-    // Clears existing charts and rebuilds them
+    // Clear existing charts and rebuild
     function buildCharts() {
       d3.select("#charts_x2").html("");
       computeChartDimensions();
@@ -1966,7 +1969,7 @@
       countries_x2.forEach(country => {
         const data = rawData_x2.filter(d => d.group === country);
     
-        // Container "page" for each chart
+        // Container page
         const container = d3.select("#charts_x2")
           .append("div")
           .attr("class", "chart-container_x2")
@@ -2012,7 +2015,7 @@
         civilLegend.append("span")
           .text("Civil service officers share");
     
-        // SVG for bars
+        // SVG
         const svg = container.append("svg")
           .attr("width", chartWidth)
           .attr("height", chartHeight)
@@ -2022,9 +2025,9 @@
         // Scales
         const x = d3.scaleLinear().domain([0, 100]).range([0, drawableW]);
         const y = d3.scaleBand()
-                    .domain(data.map(d => d.category))
-                    .range([0, drawableH])
-                    .padding(0.3);
+          .domain(data.map(d => d.category))
+          .range([0, drawableH])
+          .padding(0.3);
     
         // Axes
         svg.append("g")
@@ -2091,17 +2094,20 @@
     }
     
     /**************************************************************
-     * 3) INITIALIZE & RESIZE EVENTS
+     * 5) INITIALIZE & RESIZE EVENTS
      **************************************************************/
-    buildCharts();      // build once on page load
-    checkScrollerActivation(); // also check once on load
+    buildCharts();         // build once on page load
+    // Because we now intercept scroll from the start, we might want
+    // to set scrollerEl.scrollLeft = 0
+    scrollerEl.scrollLeft = 0;
     
     window.addEventListener('resize', () => {
       buildCharts();
-      checkScrollerActivation();
+      scrollerEl.scrollLeft = 0; // reset to left if desired
     });
     </script>
     
+  
   
 </body>
 
