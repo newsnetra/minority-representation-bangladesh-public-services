@@ -947,53 +947,17 @@
     /* 1) Center the scroller with max-width: 618px */
 
 
-.wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  perspective: 1000;
-  font-family: 'Fauna One', serif;
-}
-
-/* Container that ScrollMagic pins */
-#js-wrapper {
-  position: relative;
-  /* no special height needed unless you want extra spacing above or below */
-}
-
-/* The container that moves horizontally */
-#js-slideContainer {
-  width: 300%; /* or the width you need for 3 “slides” */
-  display: flex; /* so sections line up horizontally */
-}
-
-/* Each slide is a full screen in height, content centered vertically & horizontally */
-.section {
-  width: 100vw;        /* each section is viewport width */
-  height: 100vh;       /* each section is viewport height */
-  display: flex;       /* use Flexbox */
-  align-items: center; /* center vertically */
-  justify-content: center; /* center horizontally */
-}
-
-
-    
     .horizontal-scroller {
       max-width: 718px;
       margin: 100px auto;
       white-space: nowrap;
-      position: relative;
-    }
-
-    .horizontal-scroller {
       overflow-x: scroll;
-      -webkit-overflow-scrolling: touch;
-      /* iOS smooth scrolling */
+      overflow-y: hidden;
+      position: relative;
+      -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
     }
-
     .horizontal-scroller::-webkit-scrollbar {
-      display: none;
-      /* optional: hide the horizontal scrollbar */
+      display: none; /* optional: hide the horizontal scrollbar */
     }
 
     /* 2) Each chart “page” is 618px wide, ensuring horizontal scroll needed */
@@ -1001,8 +965,7 @@
       display: inline-block;
       max-width: 618px;
       vertical-align: top;
-      border-right: 1px solid #d4f112;
-      /* optional visual separator */
+      border-right: 1px solid #d4f112; /* optional visual separator */
       box-sizing: border-box;
       margin-right: 5px;
     }
@@ -1014,7 +977,8 @@
       font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
       color: #00243e;
       max-width: 618px;
-      text-wrap: wrap;
+      white-space: normal;
+      word-wrap: break-word;
     }
 
     .legend_x2,
@@ -1023,7 +987,8 @@
       margin: 8px;
       font-family: 'National', monospace;
       max-width: 618px;
-      text-wrap: wrap;
+      white-space: normal;
+      word-wrap: break-word;
     }
 
     /* Tooltip for D3 */
@@ -1345,17 +1310,14 @@
     <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
       share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
 
+
+      <!-- 1) Horizontal scroller container -->
+  <div class="horizontal-scroller" id="myHorizontalScroller">
+    <!-- 2) Charts go in here via D3 -->
+    <div id="charts_x2"></div>
   </div>
 
-  <div id="js-wrapper">
-    <div id="js-slideContainer">
-      <section class="section"></section>
-      <section class="section"></section>
-      <section class="section"></section>
-    </div>
-  </div>
-  
-  <!-- Make sure you have your .tooltip_x2 div somewhere on the page: -->
+  <!-- 3) Tooltip div (hidden by default) -->
   <div class="tooltip_x2"></div>
 
   <div class="article-3">
@@ -1854,195 +1816,277 @@
   </script>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/plugins/animation.gsap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/plugins/debug.addIndicators.min.js"></script>
 
   
-  
-  
-
   <script>
-    $(function() {
-  var controller = new ScrollMagic.Controller();
+    /**************************************************************
+     * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
+     **************************************************************/
+    const scrollerEl = document.getElementById('myHorizontalScroller');
+    let scrollerActive = false;
 
-  // Set up horizontal scroll
-  var horizontalSlide = new TimelineMax()
-    .to("#js-slideContainer", 1, { x: "-33.33%" })
-    .to("#js-slideContainer", 1, { x: "-66.66%" });
+    function checkScrollerActivation() {
+      // bounding box of the scroller
+      const rect = scrollerEl.getBoundingClientRect();
+      const scrollerCenter = rect.top + (rect.height / 2);
+      const viewportCenter = window.innerHeight / 2;
 
-  new ScrollMagic.Scene({
-    triggerElement: "#js-wrapper",
-    triggerHook: "onLeave",
-    duration: "300%"
-  })
-    .setPin("#js-wrapper")
-    .setTween(horizontalSlide)
-    .addTo(controller);
+      // Condition A: scroller is partly visible
+      const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
 
-  // Build the charts once
-  buildCharts();
+      // Condition B: scroller's center is at or above the screen's center line
+      const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
+
+      scrollerActive = (partlyVisible && centerAboveScreenCenter);
+    }
+
+    // Intercept wheel only if scrollerActive == true and there's horizontal room
+    window.addEventListener('wheel', function (e) {
+      checkScrollerActivation();
+      if (!scrollerActive) return; // not active => normal vertical scroll
+
+      const deltaY = e.deltaY;
+      const currentLeft = scrollerEl.scrollLeft;
+      const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+
+      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
+      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+
+      if (canScrollRight || canScrollLeft) {
+        e.preventDefault();
+        scrollerEl.scrollLeft += deltaY;
+      }
+    }, { passive: false });
+
+    // Recheck activation on normal scroll & resize
+    window.addEventListener('scroll', checkScrollerActivation);
+    window.addEventListener('resize', checkScrollerActivation);
 
 
-  function buildCharts() {
-
-    // 1) Data & references
-        const rawData_x2 = [
-      { group: "India", category: "Hindu", nat: 79.80, cs: 92.88 },
-      { group: "India", category: "Muslim", nat: 14.20, cs: 4.22 },
-      { group: "India", category: "Christian", nat: 2.30, cs: 1.29 },
-      { group: "India", category: "Sikh", nat: 1.70, cs: 0.89 },
-      { group: "India", category: "Jain", nat: 0.40, cs: 0.62 },
-      { group: "India", category: "Buddhist", nat: 0.70, cs: 0.11 },
-      { group: "Bangladesh", category: "Muslim", nat: 91.09, cs: 89.56 },
-      { group: "Bangladesh", category: "Hindu", nat: 7.75, cs: 8.91 },
-      { group: "Bangladesh", category: "Indigenous", nat: 1.00, cs: 1.30 },
-      { group: "Bangladesh", category: "Christian", nat: 0.15, cs: 0.09 },
-      { group: "Bangladesh", category: "Buddhist", nat: 0.01, cs: 0.14 },
-      { group: "Nepal", category: "Bahuns", nat: 12.74, cs: 72 },
-      { group: "Nepal", category: "Chhetris", nat: 15.8, cs: 15.89 },
-      { group: "Nepal", category: "Newar", nat: 5.48, cs: 7.14 },
-      { group: "Nepal", category: "Janajati", nat: 30.83, cs: 1.64 },
-      { group: "Nepal", category: "Madheshi", nat: 12.32, cs: 1.17 },
-      { group: "Nepal", category: "Dalit", nat: 14.99, cs: 0.67 },
-      { group: "Nepal", category: "Muslim", nat: 4.27, cs: 0.1 },
-      { group: "Nepal", category: "Others", nat: 3.57, cs: 1.39 }
+    /*****************************
+     * 2) Example D3 Chart Setup *
+     *****************************/
+    const rawData_x2 = [
+      { group: "India", category: "Hindu",     nat: 79.80, cs: 92.88 },
+      { group: "India", category: "Muslim",    nat: 14.20, cs: 4.22 },
+      { group: "India", category: "Christian", nat: 2.30,  cs: 1.29 },
+      { group: "India", category: "Sikh",      nat: 1.70,  cs: 0.89 },
+      { group: "India", category: "Jain",      nat: 0.40,  cs: 0.62 },
+      { group: "India", category: "Buddhist",  nat: 0.70,  cs: 0.11 },
+      { group: "Bangladesh", category: "Muslim",     nat: 91.09, cs: 89.56 },
+      { group: "Bangladesh", category: "Hindu",      nat: 7.75,  cs: 8.91 },
+      { group: "Bangladesh", category: "Indigenous", nat: 1.00,  cs: 1.30 },
+      { group: "Bangladesh", category: "Christian",  nat: 0.15,  cs: 0.09 },
+      { group: "Bangladesh", category: "Buddhist",   nat: 0.01,  cs: 0.14 },
+      { group: "Nepal", category: "Bahuns",    nat: 12.74, cs: 72 },
+      { group: "Nepal", category: "Chhetris",  nat: 15.8,  cs: 15.89 },
+      { group: "Nepal", category: "Newar",     nat: 5.48,  cs: 7.14 },
+      { group: "Nepal", category: "Janajati",  nat: 30.83, cs: 1.64 },
+      { group: "Nepal", category: "Madheshi",  nat: 12.32, cs: 1.17 },
+      { group: "Nepal", category: "Dalit",     nat: 14.99, cs: 0.67 },
+      { group: "Nepal", category: "Muslim",    nat: 4.27,  cs: 0.1 },
+      { group: "Nepal", category: "Others",    nat: 3.57,  cs: 1.39 }
     ];
-    
-    
+
+    // Subtitle & sources
     const subtitle_x2 = {
-      "India": "Muslims are 14% of the population, but only 4% in civil service jobs",
+      "India":      "Muslims are 14% of the population, but only 4% in civil service jobs",
       "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
-      "Nepal": "Hindu elites dominate, leaving indigenous, Buddhists far behind"
+      "Nepal":      "Hindu elites dominate, leaving indigenous, Buddhists far behind"
     };
     const sources_x2 = {
-      "India": "Government of India, Netra News",
+      "India":      "Government of India, Netra News",
       "Bangladesh": "Government of Bangladesh, Netra News",
-      "Nepal": "Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
+      "Nepal":      "Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
     };
 
     const countries_x2 = ["India", "Bangladesh", "Nepal"];
 
     const tooltip_x2 = d3.select(".tooltip_x2");
 
-    // 2) For each country, build a chart inside the nth section
-    countries_x2.forEach((country, index) => {
-      const data = rawData_x2.filter(d => d.group === country);
-      
-      // Grab the correct pinned section
-      const section = document.querySelector(`.section:nth-child(${index+1})`);
-      
-      // Create an overall container to hold title, legend, svg, source, etc.
-      const container = document.createElement('div');
-      container.classList.add('chart-container_x2');
-      
-      // Append a chart title
-      const titleDiv = document.createElement('div');
-      titleDiv.classList.add('chart-title_x2');
-      titleDiv.textContent = `${country}: ${subtitle_x2[country]}`;
-      container.appendChild(titleDiv);
+    // For chart sizing
+    let chartWidth  = 618;
+    let chartHeight = 300;
+    let margin      = { top: 30, right: 20, bottom: 30, left: 60 };
+    let drawableW   = chartWidth - margin.left - margin.right;
+    let drawableH   = chartHeight - margin.top - margin.bottom;
 
-      // (Optional) Add a small legend, same as your original code
-      // ...
+    function computeChartDimensions() {
+      // If screen is narrower than 618, scale accordingly:
+      const windowW = window.innerWidth;
+      if (windowW < 618) {
+        chartWidth = Math.floor(windowW - 20);
+      } else {
+        chartWidth = 618;
+      }
+      // For height, pick a ratio or minimum
+      chartHeight = Math.floor(chartWidth * 0.5);
+      if (chartHeight < 200) {
+        chartHeight = 200;
+      }
 
-      // 3) Create the SVG + margins
-      const margin = { top: 30, right: 20, bottom: 30, left: 60 };
-      const fullWidth = 600, fullHeight = 300;
-      const width = fullWidth - margin.left - margin.right;
-      const height = fullHeight - margin.top - margin.bottom;
+      drawableW = chartWidth - margin.left - margin.right;
+      drawableH = chartHeight - margin.top - margin.bottom;
+    }
 
-      const svg = d3.select(container)
-        .append("svg")
-        .attr("width", fullWidth)
-        .attr("height", fullHeight);
+    // Clears existing charts, rebuilds them
+    function buildCharts() {
+      // Clear old chart divs
+      d3.select("#charts_x2").html("");
 
-      const g = svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+      // Compute new chart dimensions
+      computeChartDimensions();
 
-      // 4) Scales + Axes
-      const x = d3.scaleLinear()
-        .domain([0, 100])
-        .range([0, width]);
+      // For each country, build a "page"
+      countries_x2.forEach(country => {
+        const data = rawData_x2.filter(d => d.group === country);
 
-      const y = d3.scaleBand()
-        .domain(data.map(d => d.category))
-        .range([0, height])
-        .padding(0.3);
+        // 1) Outer container for each chart page
+        const container = d3.select("#charts_x2")
+          .append("div")
+          .attr("class", "chart-container_x2")
+          .style("width", chartWidth + "px"); // inline width
 
-      g.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d => d + "%"));
-      
-      g.append("g")
-        .call(d3.axisLeft(y));
+        // Title
+        container.append("div")
+          .attr("class", "chart-title_x2")
+          .text(`${country}: ${subtitle_x2[country]}`);
 
-      // 5) Bars
-      // Population bar
-      g.selectAll(".bar-pop")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar-pop")
-        .attr("x", 0)
-        .attr("y", d => y(d.category))
-        .attr("width", d => x(d.nat))
-        .attr("height", y.bandwidth())
-        .attr("fill", "#cbd5e1")
-        .on("mouseover", (event, d) => {
-          tooltip_x2
-            .style("visibility", "visible")
-            .html(`<strong>${d.category}</strong><br/>Pop: ${d.nat}%`);
-        })
-        .on("mousemove", (event) => {
-          tooltip_x2
-            .style("top", (event.pageY - 10) + "px")
-            .style("left", (event.pageX + 10) + "px");
-        })
-        .on("mouseout", () => {
-          tooltip_x2.style("visibility", "hidden");
-        });
+        // Legend container
+        const legend = container.append("div")
+          .attr("class", "legend_x2")
+          .style("display", "flex")
+          .style("align-items", "center");
 
-      // Civil service bar
-      g.selectAll(".bar-cs")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar-cs")
-        .attr("x", 0)
-        .attr("y", d => y(d.category) + y.bandwidth()/4)
-        .attr("width", d => x(d.cs))
-        .attr("height", y.bandwidth()/2)
-        .attr("fill", "#00243e")
-        .on("mouseover", (event, d) => {
-          tooltip_x2
-            .style("visibility", "visible")
-            .html(`<strong>${d.category}</strong><br/>Civil: ${d.cs}%`);
-        })
-        .on("mousemove", (event) => {
-          tooltip_x2
-            .style("top", (event.pageY - 10) + "px")
-            .style("left", (event.pageX + 10) + "px");
-        })
-        .on("mouseout", () => {
-          tooltip_x2.style("visibility", "hidden");
-        });
+        // 2) Population legend
+        const popLegend = legend.append("div")
+          .attr("class", "legend-item_x2")
+          .style("display", "flex")
+          .style("align-items", "center")
+          .style("margin-right", "15px");
 
-      // 6) Source
-      const sourceDiv = document.createElement('div');
-      sourceDiv.classList.add('source_x2');
-      sourceDiv.textContent = sources_x2[country];
-      container.appendChild(sourceDiv);
+        popLegend.append("div")
+          .style("width", "12px")
+          .style("height", "12px")
+          .style("background-color", "#cbd5e1")
+          .style("margin-right", "6px");
 
-      // Finally attach `container` to the relevant pinned section
-      section.appendChild(container);
+        popLegend.append("span").text("Overall population share");
+
+        // 3) Civil service legend
+        const civilLegend = legend.append("div")
+          .attr("class", "legend-item_x2")
+          .style("display", "flex")
+          .style("align-items", "center");
+
+        civilLegend.append("div")
+          .style("width", "12px")
+          .style("height", "12px")
+          .style("background-color", "#00243e")
+          .style("margin-right", "6px");
+
+        civilLegend.append("span").text("Civil service officers share");
+
+        // 4) SVG + margin group
+        const svg = container.append("svg")
+          .attr("width", chartWidth)
+          .attr("height", chartHeight)
+          .append("g")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Scales
+        const x = d3.scaleLinear()
+          .domain([0, 100])
+          .range([0, drawableW]);
+
+        const y = d3.scaleBand()
+          .domain(data.map(d => d.category))
+          .range([0, drawableH])
+          .padding(0.3);
+
+        // Axes
+        svg.append("g")
+          .attr("transform", `translate(0,${drawableH})`)
+          .call(d3.axisBottom(x).tickFormat(d => d + "%"));
+
+        svg.append("g")
+          .call(d3.axisLeft(y));
+
+        // Bars: population share
+        svg.selectAll(".bar-pop")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar-pop")
+          .attr("x", 0)
+          .attr("y", d => y(d.category))
+          .attr("width", d => x(d.nat))
+          .attr("height", y.bandwidth())
+          .attr("fill", "#cbd5e1")
+          .on("mouseover", (event, d) => {
+            tooltip_x2
+              .style("visibility", "visible")
+              .html(`
+                <strong>${d.category}</strong><br/>
+                Pop: ${d.nat}%
+              `);
+          })
+          .on("mousemove", (event) => {
+            tooltip_x2
+              .style("top", (event.pageY - 10) + "px")
+              .style("left", (event.pageX + 10) + "px");
+          })
+          .on("mouseout", () => {
+            tooltip_x2.style("visibility", "hidden");
+          });
+
+        // Bars: civil service share
+        svg.selectAll(".bar-cs")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar-cs")
+          .attr("x", 0)
+          .attr("y", d => y(d.category) + y.bandwidth() / 4)
+          .attr("width", d => x(d.cs))
+          .attr("height", y.bandwidth() / 2)
+          .attr("fill", "#00243e")
+          .on("mouseover", (event, d) => {
+            tooltip_x2
+              .style("visibility", "visible")
+              .html(`
+                <strong>${d.category}</strong><br/>
+                Civil: ${d.cs}%
+              `);
+          })
+          .on("mousemove", (event) => {
+            tooltip_x2
+              .style("top", (event.pageY - 10) + "px")
+              .style("left", (event.pageX + 10) + "px");
+          })
+          .on("mouseout", () => {
+            tooltip_x2.style("visibility", "hidden");
+          });
+
+        // Source
+        container.append("div")
+          .attr("class", "source_x2")
+          .text(sources_x2[country]);
+      });
+    }
+
+    /**************************************************************
+     * 3) INITIALIZE & RESIZE EVENTS
+     **************************************************************/
+    buildCharts();          // build once on page load
+    checkScrollerActivation(); // check scroller activation on load
+
+    // On window resize, rebuild charts & re-check scroller
+    window.addEventListener('resize', () => {
+      buildCharts();
+      checkScrollerActivation();
     });
-  }
-});
-
   </script>
-
 
 </body>
 
