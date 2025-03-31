@@ -945,53 +945,39 @@
     }
 
     /* 1) Center the scroller with max-width: 618px */
-
-
     .horizontal-scroller {
       max-width: 718px;
       margin: 100px auto;
-      white-space: nowrap;
+      white-space: nowrap; 
       overflow-x: scroll;
       overflow-y: hidden;
-      position: relative;
       -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+      position: relative;
     }
     .horizontal-scroller::-webkit-scrollbar {
       display: none; /* optional: hide the horizontal scrollbar */
     }
 
-    /* 2) Each chart “page” is 618px wide, ensuring horizontal scroll needed */
+    /* Each chart “page” 618px wide => side-by-side horizontally on desktop */
     .chart-container_x2 {
       display: inline-block;
-      max-width: 618px;
-      vertical-align: top;
-      border-right: 1px solid #d4f112; /* optional visual separator */
+      width: 618px;
       box-sizing: border-box;
-      margin-right: 5px;
+      margin-right: 10px;
+      vertical-align: top;
+      border-right: 1px solid #d4f112; /* optional separator */
     }
 
-    /* Simple stylings */
+    /* Chart title, legends, etc. */
     .chart-title_x2 {
       font-size: 15px;
       margin: 8px;
-      font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
       color: #00243e;
-      max-width: 618px;
-      white-space: normal;
-      word-wrap: break-word;
     }
-
-    .legend_x2,
-    .source_x2 {
+    .legend_x2, .source_x2 {
       font-size: 9px;
       margin: 8px;
-      font-family: 'National', monospace;
-      max-width: 618px;
-      white-space: normal;
-      word-wrap: break-word;
     }
-
-    /* Tooltip for D3 */
     .tooltip_x2 {
       position: absolute;
       background: #0009;
@@ -1031,6 +1017,19 @@
     .axis--y2 .tick text {
       fill: #888;
       font-size: 8px;
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .horizontal-scroller {
+        white-space: normal;   /* stack vertically instead of side-by-side */
+        overflow-x: visible;   /* no horizontal scrollbar needed */
+      }
+      .chart-container_x2 {
+        display: block;
+        width: auto;           /* let the chart shrink to mobile width */
+        margin-right: 0;
+        border-right: none;
+        margin-bottom: 40px;   /* a gap between charts */
+      }
     }
 
     /* For very large screens beyond 1920px */
@@ -1816,45 +1815,48 @@
   </script>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
-
   <script>
-    // 0) Detect touch device
-    const isTouchDevice = (
-      'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0
-    );
+    /************************************************************
+     * 1) DETECT COARSE VS. FINE POINTER
+     *    - If pointer is coarse => treat as mobile (vertical stack).
+     *    - If fine => treat as desktop (horizontal scroller).
+     ************************************************************/
+    const mqCoarse = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const isCoarsePointer = mqCoarse.matches; // true => likely mobile
 
-    /**************************************************************
-     * 1) SCROLLER ACTIVATION LOGIC: DESKTOP ONLY
-     **************************************************************/
-    const scrollerEl = document.getElementById('myHorizontalScroller');
+    /************************************************************
+     * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
+     ************************************************************/
     let scrollerActive = false;
+    const scrollerEl = document.getElementById('myHorizontalScroller');
 
-    // We'll only define these functions if NOT on a touch device
-    if (!isTouchDevice) {
+    if (!isCoarsePointer) {
+      // We'll only intercept mouse wheel on desktop
+
       function checkScrollerActivation() {
-        // bounding box of the scroller
         const rect = scrollerEl.getBoundingClientRect();
         const scrollerCenter = rect.top + (rect.height / 2);
         const viewportCenter = window.innerHeight / 2;
+        const distance       = Math.abs(scrollerCenter - viewportCenter);
 
-        // Condition A: scroller is partly visible
+        // threshold: only if the scroller's center is within 50px of screen center
+        const nearCenter = (distance < 50);
+
+        // must also be partly visible on screen
         const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
 
-        // Condition B: scroller's center is at/above the screen's center line
-        const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
-
-        scrollerActive = (partlyVisible && centerAboveScreenCenter);
+        // only activate if both conditions are true
+        scrollerActive = (partlyVisible && nearCenter);
       }
 
-      // Intercept wheel only if scrollerActive == true
-      window.addEventListener('wheel', function (e) {
+      // Intercept wheel if scrollerActive == true
+      window.addEventListener('wheel', e => {
         checkScrollerActivation();
-        if (!scrollerActive) return; // normal vertical scroll if not active
+        if (!scrollerActive) return; // do normal vertical scroll
 
         const deltaY = e.deltaY;
         const currentLeft = scrollerEl.scrollLeft;
-        const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+        const maxLeft     = scrollerEl.scrollWidth - scrollerEl.clientWidth;
 
         const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
         const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
@@ -1865,34 +1867,35 @@
         }
       }, { passive: false });
 
-      // Recheck activation on scroll/resize
-      window.addEventListener('scroll',  checkScrollerActivation);
+      // Recheck activation on normal scroll and resize
+      window.addEventListener('scroll', checkScrollerActivation);
       window.addEventListener('resize', checkScrollerActivation);
     }
 
-    /*****************************
-     * 2) Example D3 Chart Setup *
-     *****************************/
+    /************************************************************
+     * 3) D3 CHART CODE
+     ************************************************************/
+    // Example data
     const rawData_x2 = [
-      { group: "India", category: "Hindu",     nat: 79.80, cs: 92.88 },
-      { group: "India", category: "Muslim",    nat: 14.20, cs: 4.22 },
-      { group: "India", category: "Christian", nat: 2.30,  cs: 1.29 },
-      { group: "India", category: "Sikh",      nat: 1.70,  cs: 0.89 },
-      { group: "India", category: "Jain",      nat: 0.40,  cs: 0.62 },
-      { group: "India", category: "Buddhist",  nat: 0.70,  cs: 0.11 },
-      { group: "Bangladesh", category: "Muslim",     nat: 91.09, cs: 89.56 },
-      { group: "Bangladesh", category: "Hindu",      nat: 7.75,  cs: 8.91 },
-      { group: "Bangladesh", category: "Indigenous", nat: 1.00,  cs: 1.30 },
-      { group: "Bangladesh", category: "Christian",  nat: 0.15,  cs: 0.09 },
-      { group: "Bangladesh", category: "Buddhist",   nat: 0.01,  cs: 0.14 },
-      { group: "Nepal", category: "Bahuns",    nat: 12.74, cs: 72 },
-      { group: "Nepal", category: "Chhetris",  nat: 15.8,  cs: 15.89 },
-      { group: "Nepal", category: "Newar",     nat: 5.48,  cs: 7.14 },
-      { group: "Nepal", category: "Janajati",  nat: 30.83, cs: 1.64 },
-      { group: "Nepal", category: "Madheshi",  nat: 12.32, cs: 1.17 },
-      { group: "Nepal", category: "Dalit",     nat: 14.99, cs: 0.67 },
-      { group: "Nepal", category: "Muslim",    nat: 4.27,  cs: 0.1 },
-      { group: "Nepal", category: "Others",    nat: 3.57,  cs: 1.39 }
+      { group: "India",       category: "Hindu",     nat: 79.80, cs: 92.88 },
+      { group: "India",       category: "Muslim",    nat: 14.20, cs: 4.22 },
+      { group: "India",       category: "Christian", nat: 2.30,  cs: 1.29 },
+      { group: "India",       category: "Sikh",      nat: 1.70,  cs: 0.89 },
+      { group: "India",       category: "Jain",      nat: 0.40,  cs: 0.62 },
+      { group: "India",       category: "Buddhist",  nat: 0.70,  cs: 0.11 },
+      { group: "Bangladesh",  category: "Muslim",     nat: 91.09, cs: 89.56 },
+      { group: "Bangladesh",  category: "Hindu",      nat: 7.75,  cs: 8.91 },
+      { group: "Bangladesh",  category: "Indigenous", nat: 1.00,  cs: 1.30 },
+      { group: "Bangladesh",  category: "Christian",  nat: 0.15,  cs: 0.09 },
+      { group: "Bangladesh",  category: "Buddhist",   nat: 0.01,  cs: 0.14 },
+      { group: "Nepal",       category: "Bahuns",    nat: 12.74, cs: 72 },
+      { group: "Nepal",       category: "Chhetris",  nat: 15.8,  cs: 15.89 },
+      { group: "Nepal",       category: "Newar",     nat: 5.48,  cs: 7.14 },
+      { group: "Nepal",       category: "Janajati",  nat: 30.83, cs: 1.64 },
+      { group: "Nepal",       category: "Madheshi",  nat: 12.32, cs: 1.17 },
+      { group: "Nepal",       category: "Dalit",     nat: 14.99, cs: 0.67 },
+      { group: "Nepal",       category: "Muslim",    nat: 4.27,  cs: 0.1 },
+      { group: "Nepal",       category: "Others",    nat: 3.57,  cs: 1.39 }
     ];
 
     const subtitle_x2 = {
@@ -1905,46 +1908,40 @@
       "Bangladesh": "Government of Bangladesh, Netra News",
       "Nepal":      "Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
     };
-
     const countries_x2 = ["India", "Bangladesh", "Nepal"];
-    const tooltip_x2   = d3.select(".tooltip_x2");
 
-    // We'll store the chart dimensions in a global
+    const tooltip_x2 = d3.select(".tooltip_x2");
+
     let chartWidth  = 618;
     let chartHeight = 300;
     let margin      = { top: 30, right: 20, bottom: 30, left: 60 };
     let drawableW   = chartWidth - margin.left - margin.right;
     let drawableH   = chartHeight - margin.top - margin.bottom;
 
-    // A function to set up or update chart dimension based on current screen size
     function computeChartDimensions() {
       const windowW = window.innerWidth;
       if (windowW < 618) {
-        chartWidth = Math.floor(windowW - 20);  // subtract 20px for spacing
+        chartWidth = Math.floor(windowW - 20);
       } else {
         chartWidth = 618;
       }
-      chartHeight = Math.floor(chartWidth * 0.5); // e.g., half the width
+      chartHeight = Math.floor(chartWidth * 0.5);
       if (chartHeight < 200) {
         chartHeight = 200;
       }
+
       drawableW = chartWidth - margin.left - margin.right;
       drawableH = chartHeight - margin.top - margin.bottom;
     }
 
-    // This function clears existing charts and rebuilds them
     function buildCharts() {
-      // 1) Clear old chart divs
-      d3.select("#charts_x2").html("");
-
-      // 2) Compute new dimensions
+      d3.select("#charts_x2").html(""); // clear old charts
       computeChartDimensions();
 
-      // 3) For each country, build a "page"
       countries_x2.forEach(country => {
         const data = rawData_x2.filter(d => d.group === country);
 
-        // Container for each chart
+        // Outer container
         const container = d3.select("#charts_x2")
           .append("div")
           .attr("class", "chart-container_x2")
@@ -1955,13 +1952,13 @@
           .attr("class", "chart-title_x2")
           .text(`${country}: ${subtitle_x2[country]}`);
 
-        // Legend Container
+        // Legend
         const legend = container.append("div")
           .attr("class", "legend_x2")
           .style("display", "flex")
           .style("align-items", "center");
 
-        // Population Share Legend
+        // Pop share legend
         const popLegend = legend.append("div")
           .attr("class", "legend-item_x2")
           .style("display", "flex")
@@ -1976,7 +1973,7 @@
 
         popLegend.append("span").text("Overall population share");
 
-        // Civil Service Legend
+        // Civil service legend
         const civilLegend = legend.append("div")
           .attr("class", "legend-item_x2")
           .style("display", "flex")
@@ -1987,10 +1984,9 @@
           .style("height", "12px")
           .style("background-color", "#00243e")
           .style("margin-right", "6px");
-
         civilLegend.append("span").text("Civil service officers share");
 
-        // Create an SVG
+        // SVG
         const svg = container.append("svg")
           .attr("width", chartWidth)
           .attr("height", chartHeight)
@@ -2020,7 +2016,6 @@
           .data(data)
           .enter()
           .append("rect")
-          .attr("class", "bar-pop")
           .attr("x", 0)
           .attr("y", d => y(d.category))
           .attr("width", d => x(d.nat))
@@ -2029,10 +2024,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`
-                <strong>${d.category}</strong><br/>
-                Pop: ${d.nat}%
-              `);
+              .html(`<strong>${d.category}</strong><br/>Pop: ${d.nat}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -2048,7 +2040,6 @@
           .data(data)
           .enter()
           .append("rect")
-          .attr("class", "bar-cs")
           .attr("x", 0)
           .attr("y", d => y(d.category) + y.bandwidth() / 4)
           .attr("width", d => x(d.cs))
@@ -2057,10 +2048,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`
-                <strong>${d.category}</strong><br/>
-                Civil: ${d.cs}%
-              `);
+              .html(`<strong>${d.category}</strong><br/>Civil: ${d.cs}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -2078,21 +2066,22 @@
       });
     }
 
-    /**************************************************************
-     * 3) INITIALIZE
-     **************************************************************/
-    buildCharts();          // build once on page load
-    if (!isTouchDevice) {
-      // If not a touch device, run the activation check once
-      // so wheel logic is in sync
-      // (On mobile, we skip all wheel logic entirely)
+    /************************************************************
+     * 4) INITIALIZE
+     ************************************************************/
+    buildCharts();
+
+    // If desktop-like pointer, run check once
+    if (!isCoarsePointer) {
+      // This ensures we set scrollerActive correctly on load
+      // so if it's already near center, wheel is intercepted.
       checkScrollerActivation();
     }
 
-    // On window resize, rebuild charts
+    // Rebuild charts on resize
     window.addEventListener('resize', () => {
       buildCharts();
-      if (!isTouchDevice) {
+      if (!isCoarsePointer) {
         checkScrollerActivation();
       }
     });
