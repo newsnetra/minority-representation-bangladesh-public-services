@@ -1817,51 +1817,58 @@
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  
   <script>
+    // 0) Detect touch device
+    const isTouchDevice = (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0
+    );
+
     /**************************************************************
-     * 1) SCROLLER ACTIVATION LOGIC: ONLY WHEN CENTER ON SCREEN
+     * 1) SCROLLER ACTIVATION LOGIC: DESKTOP ONLY
      **************************************************************/
     const scrollerEl = document.getElementById('myHorizontalScroller');
     let scrollerActive = false;
 
-    function checkScrollerActivation() {
-      // bounding box of the scroller
-      const rect = scrollerEl.getBoundingClientRect();
-      const scrollerCenter = rect.top + (rect.height / 2);
-      const viewportCenter = window.innerHeight / 2;
+    // We'll only define these functions if NOT on a touch device
+    if (!isTouchDevice) {
+      function checkScrollerActivation() {
+        // bounding box of the scroller
+        const rect = scrollerEl.getBoundingClientRect();
+        const scrollerCenter = rect.top + (rect.height / 2);
+        const viewportCenter = window.innerHeight / 2;
 
-      // Condition A: scroller is partly visible
-      const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
+        // Condition A: scroller is partly visible
+        const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
 
-      // Condition B: scroller's center is at or above the screen's center line
-      const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
+        // Condition B: scroller's center is at/above the screen's center line
+        const centerAboveScreenCenter = (scrollerCenter <= viewportCenter);
 
-      scrollerActive = (partlyVisible && centerAboveScreenCenter);
-    }
-
-    // Intercept wheel only if scrollerActive == true and there's horizontal room
-    window.addEventListener('wheel', function (e) {
-      checkScrollerActivation();
-      if (!scrollerActive) return; // not active => normal vertical scroll
-
-      const deltaY = e.deltaY;
-      const currentLeft = scrollerEl.scrollLeft;
-      const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
-
-      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
-      const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
-
-      if (canScrollRight || canScrollLeft) {
-        e.preventDefault();
-        scrollerEl.scrollLeft += deltaY;
+        scrollerActive = (partlyVisible && centerAboveScreenCenter);
       }
-    }, { passive: false });
 
-    // Recheck activation on normal scroll & resize
-    window.addEventListener('scroll', checkScrollerActivation);
-    window.addEventListener('resize', checkScrollerActivation);
+      // Intercept wheel only if scrollerActive == true
+      window.addEventListener('wheel', function (e) {
+        checkScrollerActivation();
+        if (!scrollerActive) return; // normal vertical scroll if not active
 
+        const deltaY = e.deltaY;
+        const currentLeft = scrollerEl.scrollLeft;
+        const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+
+        const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
+        const canScrollLeft  = (deltaY < 0 && currentLeft > 0);
+
+        if (canScrollRight || canScrollLeft) {
+          e.preventDefault();
+          scrollerEl.scrollLeft += deltaY;
+        }
+      }, { passive: false });
+
+      // Recheck activation on scroll/resize
+      window.addEventListener('scroll',  checkScrollerActivation);
+      window.addEventListener('resize', checkScrollerActivation);
+    }
 
     /*****************************
      * 2) Example D3 Chart Setup *
@@ -1888,7 +1895,6 @@
       { group: "Nepal", category: "Others",    nat: 3.57,  cs: 1.39 }
     ];
 
-    // Subtitle & sources
     const subtitle_x2 = {
       "India":      "Muslims are 14% of the population, but only 4% in civil service jobs",
       "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
@@ -1901,64 +1907,61 @@
     };
 
     const countries_x2 = ["India", "Bangladesh", "Nepal"];
+    const tooltip_x2   = d3.select(".tooltip_x2");
 
-    const tooltip_x2 = d3.select(".tooltip_x2");
-
-    // For chart sizing
+    // We'll store the chart dimensions in a global
     let chartWidth  = 618;
     let chartHeight = 300;
     let margin      = { top: 30, right: 20, bottom: 30, left: 60 };
     let drawableW   = chartWidth - margin.left - margin.right;
     let drawableH   = chartHeight - margin.top - margin.bottom;
 
+    // A function to set up or update chart dimension based on current screen size
     function computeChartDimensions() {
-      // If screen is narrower than 618, scale accordingly:
       const windowW = window.innerWidth;
       if (windowW < 618) {
-        chartWidth = Math.floor(windowW - 20);
+        chartWidth = Math.floor(windowW - 20);  // subtract 20px for spacing
       } else {
         chartWidth = 618;
       }
-      // For height, pick a ratio or minimum
-      chartHeight = Math.floor(chartWidth * 0.5);
+      chartHeight = Math.floor(chartWidth * 0.5); // e.g., half the width
       if (chartHeight < 200) {
         chartHeight = 200;
       }
-
       drawableW = chartWidth - margin.left - margin.right;
       drawableH = chartHeight - margin.top - margin.bottom;
     }
 
-    // Clears existing charts, rebuilds them
+    // This function clears existing charts and rebuilds them
     function buildCharts() {
-      // Clear old chart divs
+      // 1) Clear old chart divs
       d3.select("#charts_x2").html("");
 
-      // Compute new chart dimensions
+      // 2) Compute new dimensions
       computeChartDimensions();
 
-      // For each country, build a "page"
+      // 3) For each country, build a "page"
       countries_x2.forEach(country => {
         const data = rawData_x2.filter(d => d.group === country);
 
-        // 1) Outer container for each chart page
+        // Container for each chart
         const container = d3.select("#charts_x2")
           .append("div")
           .attr("class", "chart-container_x2")
-          .style("width", chartWidth + "px"); // inline width
+          .style("width", chartWidth + "px");
 
         // Title
         container.append("div")
           .attr("class", "chart-title_x2")
           .text(`${country}: ${subtitle_x2[country]}`);
 
-        // Legend container
+        // Legend Container
         const legend = container.append("div")
           .attr("class", "legend_x2")
           .style("display", "flex")
           .style("align-items", "center");
 
-        // 2) Population legend
+        // Population Share Legend
         const popLegend = legend.append("div")
           .attr("class", "legend-item_x2")
           .style("display", "flex")
@@ -1973,7 +1976,7 @@
 
         popLegend.append("span").text("Overall population share");
 
-        // 3) Civil service legend
+        // Civil Service Legend
         const civilLegend = legend.append("div")
           .attr("class", "legend-item_x2")
           .style("display", "flex")
@@ -1987,7 +1990,7 @@
 
         civilLegend.append("span").text("Civil service officers share");
 
-        // 4) SVG + margin group
+        // Create an SVG
         const svg = container.append("svg")
           .attr("width", chartWidth)
           .attr("height", chartHeight)
@@ -2076,15 +2079,22 @@
     }
 
     /**************************************************************
-     * 3) INITIALIZE & RESIZE EVENTS
+     * 3) INITIALIZE
      **************************************************************/
     buildCharts();          // build once on page load
-    checkScrollerActivation(); // check scroller activation on load
+    if (!isTouchDevice) {
+      // If not a touch device, run the activation check once
+      // so wheel logic is in sync
+      // (On mobile, we skip all wheel logic entirely)
+      checkScrollerActivation();
+    }
 
-    // On window resize, rebuild charts & re-check scroller
+    // On window resize, rebuild charts
     window.addEventListener('resize', () => {
       buildCharts();
-      checkScrollerActivation();
+      if (!isTouchDevice) {
+        checkScrollerActivation();
+      }
     });
   </script>
 
