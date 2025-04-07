@@ -213,7 +213,7 @@
       font-weight: 300;
       line-height: 1.25;
       font-family: 'franklin-gothic-urw', sans-serif;
-      margin: 0px auto 20px;
+      margin: 0px 20px 20px;
       color: #00243e;
       text-align: center;
       text-wrap: balance;
@@ -265,6 +265,7 @@
       font-weight: 700;
       font-size: 25px;
       color: #00243e;
+      text-align: left;
     }
 
     p {
@@ -738,13 +739,20 @@
       text-decoration: none;
     }
 
-
     .banner {
-      height: auto;
-      width: 40%;
+
       margin: 40px auto;
-      display: block;
     }
+
+
+
+    .banner img {
+      height: auto;
+      width: 100%;
+      display: block;
+      
+    }
+
 
     .faith-line-break {
       display: flex;
@@ -777,6 +785,18 @@
       font-size: 12px;
       font-style: italic;
       color: #888;
+      text-align: right;
+      margin-right: 0 20px 0 0;
+      max-width: 100%;
+    }
+
+    .credits {
+      font-family: 'National', monospace;
+      font-size: 15px;
+      font-style: italic;
+      color: #888;
+      margin-right: 0 20px 0 0;
+      max-width: 100%;
     }
 
 
@@ -1100,7 +1120,7 @@
       <div class='facebook'>
         <li class="facebook-share">
           <a href="XXXXXXXXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
-            <svg viewBox="0 0 14 26" fill="none" preserveAspectRatio="xMidYMid meet" class="fb-logo">
+            <svg viewBox="0 0 14 26" fill="none" preserveAspectRatio="xMidYMid meet" class="fb-logo" style="color: #00243e;">
               <path
                 d="M13.2237 13.9747H8.82474V25.75H4.13073V13.9747H0V9.87083H4.18437V4.88177C4.18437 2.41406 6.00833 0 9.20026 0H13.5456V4.72083H10.6487C9.25391 4.72083 8.77109 4.88177 8.77109 6.06198V9.84401H13.7333L13.2237 13.9747Z"
                 fill="currentColor"></path>
@@ -1112,7 +1132,7 @@
       <div class='twitter'>
         <li class="twitter-share">
           <a href="XXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
-            <svg class="twitter-logo" data-icon="twitter" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
+            <svg class="twitter-logo" data-icon="twitter" style="color: #00243e;" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"
               fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M8.99079 12.1721L0 1H7.12135L12.6713 7.9051L18.6005 1.03109H22.5226L14.5676 10.2645L24 22H16.8999L10.8905 14.5326L4.47476 21.9793H0.531444L8.99079 12.1721ZM17.9348 19.93L4.36657 3.06999H6.08565L19.6368 19.93H17.9348Z"
@@ -1127,9 +1147,12 @@
   <header class="header fullwidth ready">
 
     <div class="titles">
-      <div>
-        <img class="banner" src="icons/Service jobs proportion.png" alt="Description of the image">
+      
+      <div class="banner">
+        <img src="./assets/photos/dataminofeat3 copy.webp" alt="Description of the image">
+        <p class="credit">Illustration: Subinoy Mustofi Eron/Netra News</p>
       </div>
+      
       <h3 class="kicker">Netra Interactives</h3>
       <h1>Bangladesh stands apart in South Asia on minority inclusion — except in its <span class="bg-texture">military</span></h1>
       
@@ -1396,7 +1419,7 @@
 
           
           
-<p class="credit">Suraiya Sultana and Marzia Hashmi Momo contributed to the story. Subinoy Mustofi Eron and Aaqib Md. Shatil drew the illustraitons.</p>
+<p class="credits">Suraiya Sultana and Marzia Hashmi Momo contributed to the story. Subinoy Mustofi Eron and Aaqib Md. Shatil drew the illustraitons.</p>
 
       <div class="faith-line-break">
         <hr>
