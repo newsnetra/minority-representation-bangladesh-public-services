@@ -1059,6 +1059,64 @@
       font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
     }
 
+    .infotip-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .infotip-container sup {
+    cursor: help;
+    color: #666;
+    font-size: 0.75em;
+    line-height: 1;
+    padding-left: 2px;
+  }
+
+  .infotip-container sup::after {
+    content: '?';
+    border: 0.1px solid #aaa;
+    border-radius: 10%;
+    padding: 0 2.5px;
+    background-color: #f0f0f0;
+    font-family: 'franklin-gothic-urw', sans-serif;
+  }
+
+  .infotip-box {
+    visibility: hidden;
+    background-color: #00243e;
+    color: #fff;
+    text-align: left;
+    border-radius: 4px;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 110%;
+    white-space: normal;
+    width: 240px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 1.5rem;
+    font-family: 'National';
+  }
+
+  .infotip-container:hover .infotip-box,
+  .infotip-container:focus-within .infotip-box {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .infotip-box::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #333 transparent transparent;
+  }
+
     @media (hover: none) and (pointer: coarse) {
       .horizontal-scroller {
         white-space: normal;
@@ -1346,8 +1404,7 @@
       of
       civil service positions. </p>
     <p>Nepal’s Muslim minority, conversely, accounts for over four percent of the population but just 0.1 percent of
-      civil service posts, according to a 2016 study by Tek Bahadur Dong, a Nepalese social scientist with Social
-      Science Baha.</p>
+      civil service posts, according to <a href="https://web.archive.org/web/20240525223901/https://www.southasianist.ed.ac.uk/article/view/1176" target="_blank" title="Access the archived version of a 2016 study from The South Asianist journal">a 2016 study</a> by Tek Bahadur Dong, a Nepalese academic and social scientist.</p>
     <p>Indigenous Buddhist-majority groups beyond the Newar community — who together comprise over 30 percent of
       Nepal’s
       population — are massively underrepresented at only 1.6 percent of officer-level posts. </p>
@@ -1385,7 +1442,7 @@
     <p>In the 2016 army roster obtained by Netra News, the highest-ranked non-Muslim officer — a brigadier general
       from
       the engineering corps — has
-      since retired. In the 2017 navy rolls, there was just one non-Muslim commodore, also no longer serving.</p>
+      since retired. In the 2017 navy rolls, there was just one non-Muslim <span class="infotip-container" tabindex="0"> Commodore<sup></sup> <span class="infotip-box"> Commodore is the fourth highest rank in Bangladesh Navy hierarchy, equivalent to Brigadier General in the army. </span> </span>, also no longer serving.</p>
     <p>Beyond these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating
       that
       for
@@ -1414,16 +1471,14 @@
 
     <h2>A quiet disqualification</h2>
 
-    <p>All branches of the armed forces in Bangladesh recruit through a centralised process overseen by the Inter
-      Services Selection Board (ISSB). Unlike many other government agencies, the military offers no quotas for
-      marginalised communities or descendants of freedom fighters. Instead, candidates are assessed on personality,
-      family background, and other factors — criteria that, according to a former ISSB official, may include religious
-      affiliation.
+<p>All branches of Bangladesh’s armed forces recruit through a centralized system overseen by the Inter Services Selection Board (ISSB), modeled closely on the Pakistani military’s selection process.</p>
 
-    </p>
-
-    <p>Officially, the system is based on merit, yet the end result is a near-total absence of minorities in the upper
+    <p>Unlike many other government agencies, the military does not offer quotas for marginalized communities or descendants of freedom fighters. Instead, candidates are evaluated on psychological tests, personality traits, family background, and other factors — criteria that, according to a former ISSB official, may also include religious affiliation.</p>
+<p>In Pakistan, the first Sikh army officer was commissioned only in 2005, nearly six decades after the country’s founding. A Hindu officer followed a year later.</p>
+    <p>Officially, the ISSB system is based on merit, yet the end result is a near-total absence of minorities in the upper
       echelons of military command.</p>
+
+      <p>The Inter-Services Public Relations (ISPR), the agency representing all three branches of the military, did not respond to a request for comment sent via email.</p>
 
     <p>Netra News reached out to twelve retired minority officers from the Navy and Army. Only one agreed to speak on
       the record. Even in retirement, officers are bound by the military’s reach, which extends through lifelong
