@@ -347,7 +347,6 @@
      ***************************************************/
     .grid-card {
       padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       background: #F6F4EE;
       color: #000;
       display: flex;
@@ -448,10 +447,15 @@
     /***************************************************
      * Dots-Grid & Religion Rows
      ***************************************************/
-    .dots-grid {
-      margin-top: 1rem;
-      width: 100%;
-    }
+     .dots-grid {
+  /* Hardcode or dynamically set some height you want. */
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+}
+
 
     .religion-row {
       display: block;
@@ -460,13 +464,14 @@
     }
 
     .religion-row .dot {
-      display: inline-block;
-      width: 3.5px;
-      height: 3.5px;
-      margin: 1px;
-      vertical-align: top;
-      border-radius: 50%;
-    }
+  display: inline-block;
+  width: 3.5px;
+  height: 3.5px;
+  margin: 1px;
+  vertical-align: top;
+  border-radius: 50%;
+}
+
 
     /***************************************************
      * Scrolly Steps & Overlays
