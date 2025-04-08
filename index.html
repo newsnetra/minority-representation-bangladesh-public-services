@@ -1062,62 +1062,68 @@
     }
 
     .infotip-container {
-    position: relative;
-    display: inline-block;
-  }
+  position: relative;
+  display: inline-block;
+}
 
-  .infotip-container sup {
-    cursor: help;
-    color: #666;
-    font-size: 0.75em;
-    line-height: 1;
-    padding-left: 2px;
-  }
+.infotip-container sup {
+  cursor: help;
+  color: #666;
+  font-size: 0.75em;
+  line-height: 1;
+  padding-left: 2px;
+}
 
-  .infotip-container sup::after {
-    content: '?';
-    border: 0.1px solid #aaa;
-    border-radius: 10%;
-    padding: 0 2.5px;
-    background-color: #f0f0f0;
-    font-family: 'franklin-gothic-urw', sans-serif;
-  }
+.infotip-container sup::after {
+  content: '?';
+  border: 0.1px solid #aaa;
+  border-radius: 10%;
+  padding: 0 2.5px;
+  background-color: #f0f0f0;
+  font-family: 'franklin-gothic-urw', sans-serif;
+}
 
-  .infotip-box {
-    visibility: hidden;
-    background-color: #00243e;
-    color: #fff;
-    text-align: left;
-    border-radius: 4px;
-    padding: 8px 10px;
-    position: absolute;
-    z-index: 1;
-    top: -10px;
-    left: 110%;
-    white-space: normal;
-    width: 240px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 1.5rem;
-    font-family: 'National';
-  }
+/* Responsive tooltip */
+.infotip-box {
+  visibility: hidden;
+  background-color: #00243e;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  max-width: 90vw;
+  min-width: 200px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1.8rem;
+  font-family: 'National';
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-top: 6px;
+}
 
-  .infotip-container:hover .infotip-box,
-  .infotip-container:focus-within .infotip-box {
-    visibility: visible;
-    opacity: 1;
-  }
+/* Show tooltip on hover/focus */
+.infotip-container:hover .infotip-box,
+.infotip-container:focus-within .infotip-box {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .infotip-box::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent #333 transparent transparent;
-  }
+/* Optional arrow styling, adjusted for new layout */
+.infotip-box::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #00243e transparent;
+}
+
 
     @media (hover: none) and (pointer: coarse) {
       .horizontal-scroller {
@@ -1444,7 +1450,7 @@
     <p>In the 2016 army roster obtained by Netra News, the highest-ranked non-Muslim officer — a brigadier general
       from
       the engineering corps — has
-      since retired. In the 2017 navy rolls, there was just one non-Muslim <span class="infotip-container" tabindex="0"> Commodore<sup></sup> <span class="infotip-box"> Commodore is the fourth highest rank in Bangladesh Navy hierarchy, equivalent to Brigadier General in the army. </span> </span>, also no longer serving.</p>
+      since retired. In the 2017 navy rolls, there was just one non-Muslim <span class="infotip-container" tabindex="0"> Commodore<sup></sup> <span class="infotip-box" role="tooltip"> Commodore is the fourth highest rank in Bangladesh Navy hierarchy, equivalent to Brigadier General in the army. </span> </span>, also no longer serving.</p>
     <p>Beyond these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating
       that
       for
