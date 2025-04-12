@@ -7,9 +7,9 @@
   <title>Bangladesh stands apart in South Asia on minority inclusion, except military</title>
   <link rel="stylesheet" href="https://use.typekit.net/rsa7eoe.css">
  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
   <style>
     /* Reset default margins and paddings */
     * {
@@ -39,7 +39,7 @@
     a:visited {
       text-decoration: underline;
       text-underline-offset: 4px;
-      text-decoration-color: #00243e;
+      text-decoration-color: #ea7e49;
       text-decoration-thickness: 2.5px;
       text-underline-offset: 4px;
       transition: all .5s ease;
@@ -48,7 +48,8 @@
 
 
     a:hover {
-      background: #d4f112;
+      background: #ea7e49;
+      color: #fff;
     }
 
 
@@ -137,7 +138,7 @@
       display: block;
       width: 166px;
       height: 7px;
-      background: linear-gradient(to right, #00243e 50%, #d4f112 50%);
+      background: linear-gradient(to right, #00243e 50%, #ea7e49 50%);
       bottom: 0;
       left: 50%;
       position: absolute;
@@ -181,8 +182,8 @@
       text-decoration: underline;
     }
  
-    h1, h2 {
-      font-weight: 700;
+    h1 {
+      font-weight: 400;
     }
 
     /* Headline */
@@ -191,9 +192,8 @@
       line-height: 1.1;
       max-width: 25ch;
       margin: 20px 0 40px;
-      font-family: 'franklin-gothic-urw', 'Courier New', Courier, monospace;
-      
-      color: #333;
+      font-family: 'Publico Text Web', 'Courier New', Courier, monospace;
+      color: #000;
       text-align: center;
       text-wrap: balance;
     }
@@ -208,7 +208,7 @@
 
     .bg-texture {
       display: inline-block;
-      background-image: url('./assets/photos/army_strip.jpg');
+      background-image: url('./assets/photos/militarycamo_landscape.webp');
       /* or your actual path */
       background-size: cover;
       background-position: center;
@@ -217,6 +217,8 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: bold;
+      font-family: 'stencil-std', sans-serif;
+      background-position: 10% 20%;
     }
 
 
@@ -224,24 +226,28 @@
     h2 {
       font-size: 22px;
       line-height: 1.25;
-      font-family: 'franklin-gothic-urw', sans-serif;
+      font-family: 'League Spartan', sans-serif;
       margin: 0px 20px 20px;
-      color: #333;
+      color: #000;
       text-align: center;
       text-wrap: balance;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
     /* Subtitle */
     .titles h2 {
-      font-family: 'utopia-std', sans-serif;
-      font-weight: 300;
+      font-family: 'Fort', sans-serif;
+      font-weight: 500;
+      text-transform: none;
     }
 
     h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'League Spartan', sans-serif;
       font-size: 18px;
-      color: #333;
-      font-weight: 300;
+      color: #000;
+      font-weight: 500;
+      text-transform: uppercase;
 
     }
 
@@ -273,7 +279,7 @@
 
     .articlex::first-letter {
       font-weight: 700;
-      color: #00243e;
+      color: #ea7e49;
     }
 
     .highlighted {
@@ -289,7 +295,7 @@
     .article-3 h2 {
       margin: 20px;
       font-size: 25px;
-      color: #00243e;
+      color: #000;
       text-align: left;
     }
 
@@ -346,7 +352,7 @@
       position: sticky;
       top: 10%;
       overflow-y: auto;
-      border-right: 1.5px solid #d4f112;
+      border-right: 1.5px solid #ea7e49;
       padding: 0 1rem;
 
     }
@@ -380,9 +386,10 @@
     .title-text {
       width: 50%;
       text-align: left;
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'League Spartan', sans-serif;
       font-weight: 400;
       font-style: normal;
+      text-transform: uppercase;
     }
 
     .title-icon {
@@ -562,7 +569,6 @@
       background-color: antiquewhite;
       color: #000;
       padding: 40px;
-      font-family: 'Bebas Neue', 'Courier New', Courier, monospace;
       margin: auto;
       display: flex;
       justify-content: center;
@@ -605,8 +611,9 @@
       padding-top: 30px;
       margin-top: 30px;
       color: black;
-      font-family: 'Bebas Neue', 'Courier New', Courier, monospace;
+      font-family: 'League Spartan', 'Courier New', Courier, monospace;
       font-weight: 300;
+      text-transform: uppercase;
     }
 
     .list {
@@ -771,7 +778,7 @@
 
     .banner {
 
-      margin: 40px auto;
+      margin: 20px auto;
     }
 
 
@@ -841,13 +848,13 @@
       font-stretch: normal;
       font-display: swap;
     }
-
+/* 
     @font-face {
       font-family: 'Inconsolata';
       src: url('./assets/fonts/national-book.woff2') format('woff2');
       font-weight: 400;
       font-display: swap;
-    }
+    } */
 
     /* Hide .header-bar ONLY on small screens when it has class "hidden" */
     @media (max-width: 540px) {
@@ -1034,7 +1041,7 @@
       box-sizing: border-box;
       margin-right: 10px;
       vertical-align: top;
-      border-right: 1px solid #d4f112;
+      border-right: 1px solid #ea7e49;
       /* optional separator */
     }
 
@@ -1043,12 +1050,14 @@
       font-size: 18px;
       margin: 8px;
       color: #333;
-      font-family: 'Bebas Neue', Georgia, 'Times New Roman', Times, serif;
+      font-family: 'League Spartan', Georgia, 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
     .legend_x2,
     .source_x2 {
-      font-size: 15px;
+      font-size: 13px;
       margin: 8px;
       font-family: 'Inconsolata', 'Courier New', Courier, monospace;
       color: #333;
@@ -1080,10 +1089,12 @@
       margin-top: 8px;
       font-size: 12px;
       font-style: italic;
+      text-wrap: auto;
     }
     g.tick {
       font-family: 'Inconsolata', 'Courier New', Courier, monospace;
       font-size: 10px;
+      color: #000;
     }
 
     .infotip-container {
@@ -1105,7 +1116,8 @@
   border-radius: 10%;
   padding: 0 2.5px;
   background-color: #f0f0f0;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'League Spartan', sans-serif;
+  text-transform: uppercase;
 }
 
 /* Tooltip box that auto-centers and avoids overflow */
@@ -1207,7 +1219,8 @@
 
   <div class='header-bar'>
     <div class='netra-logo'>
-      <img class="nav-logo" alt="Netra News Logo" src="./icons/netralogo.svg">
+
+      <img class="nav-logo" alt="Netra News Logo" src="./assets/photos/netraintractvlogo.svg">
     </div>
 
     <div class="social-icons">
@@ -1215,7 +1228,7 @@
         <li class="facebook-share">
           <a href="XXXXXXXXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
             <svg viewBox="0 0 14 26" fill="none" preserveAspectRatio="xMidYMid meet" class="fb-logo"
-              style="color: #00243e;">
+              style="color: #000;">
               <path
                 d="M13.2237 13.9747H8.82474V25.75H4.13073V13.9747H0V9.87083H4.18437V4.88177C4.18437 2.41406 6.00833 0 9.20026 0H13.5456V4.72083H10.6487C9.25391 4.72083 8.77109 4.88177 8.77109 6.06198V9.84401H13.7333L13.2237 13.9747Z"
                 fill="currentColor"></path>
@@ -1227,7 +1240,7 @@
       <div class='twitter'>
         <li class="twitter-share">
           <a href="XXXX" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
-            <svg class="twitter-logo" data-icon="twitter" style="color: #00243e;" preserveAspectRatio="xMidYMid meet"
+            <svg class="twitter-logo" data-icon="twitter" style="color: #000;" preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 24 24" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M8.99079 12.1721L0 1H7.12135L12.6713 7.9051L18.6005 1.03109H22.5226L14.5676 10.2645L24 22H16.8999L10.8905 14.5326L4.47476 21.9793H0.531444L8.99079 12.1721ZM17.9348 19.93L4.36657 3.06999H6.08565L19.6368 19.93H17.9348Z"
@@ -1244,10 +1257,10 @@
     <div class="titles">
 
       
+      
 
-      <h3 class="kicker">Netra Interactives</h3>
-      <h1>Bangladesh stands apart in South Asia on minority inclusion — except in its <span
-          class="bg-texture">military</span></h1>
+      <h1>Bangladesh offers an avenue for minorities rare in South Asia — except <span
+          class="bg-texture">armed forces</span></h1>
 
       <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
         but
@@ -1262,8 +1275,7 @@
       </div>
 
       <div class="banner">
-        <img src="./assets/photos/dataminofeat3 copy.webp" alt="Description of the image">
-        <p class="credit">Illustration: Subinoy Mustofi Eron/Netra News</p>
+        <img src="./assets/photos/dataminofeat3 copy.webp" alt="Illustration for minority representation in Bangladesh civil service by Subinoy Mustofi Eron/Netra News">
       </div>
 
 
@@ -1541,7 +1553,7 @@
               a list of thousands of officers, alongside their ranks, joining dates and other crucial details. While
               the
               data may not reflect today’s force composition, the forces have announced no policy changes that would
-              address the disparity in recruitment of religious minorities.
+              address the disparity in recruitment and promotion of religious minorities in its ranks.
             </p>
 
             <p>We used Google Pinpoint and Tabula to extract entries from scanned PDF files to plain text in
@@ -1586,7 +1598,7 @@
               million unique
               records of Indian names and their religions. Both have a very high accuracy rate, and they agreed on the
               likely religion of the officers’ names in more than 90% of the cases. We manually determined some of the
-              cases through reporting and research, and discarded the rest. We analysed the names of more than 9,000
+              cases through reporting and research, and discarded the rest. In total, we analysed the names of more than 9,000
               Indian officers.
             </p>
           </div>
@@ -2081,9 +2093,9 @@
     ];
 
     const subtitle_x2 = {
-      "India": "Muslims are 14% of the population, but only 4% in civil service jobs",
-      "Bangladesh": "Hindus, a minority, slightly outpace Muslims in civil service jobs",
-      "Nepal": "Majority Hindu elites dominate, leaving indigenous, Buddhists far behind"
+      "India": "Muslims are 14% of population, 4% in civil service",
+      "Bangladesh": "Hindus slightly outpace Muslims in civil service jobs",
+      "Nepal": "Hindu elites dominate, with the rest left behind"
     };
     const sources_x2 = {
       "India": "Source: Government of India, Netra News",
@@ -2150,7 +2162,7 @@
         popLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#cbd5e1")
+          .style("background-color", "#00243e")
           .style("margin-right", "6px");
 
         popLegend.append("span").text("Overall population share");
@@ -2164,7 +2176,7 @@
         civilLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#00243e")
+          .style("background-color", "#ea7e49")
           .style("margin-right", "6px");
         civilLegend.append("span").text("Civil service officers share");
 
@@ -2202,7 +2214,7 @@
           .attr("y", d => y(d.category))
           .attr("width", d => x(d.nat))
           .attr("height", y.bandwidth())
-          .attr("fill", "#cbd5e1")
+          .attr("fill", "#00243e")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
@@ -2226,7 +2238,7 @@
           .attr("y", d => y(d.category) + y.bandwidth() / 4)
           .attr("width", d => x(d.cs))
           .attr("height", y.bandwidth() / 2)
-          .attr("fill", "#00243e")
+          .attr("fill", "#ea7e49")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
