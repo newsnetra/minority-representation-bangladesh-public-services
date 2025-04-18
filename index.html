@@ -9,8 +9,7 @@
  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">  <style>
     /* Reset default margins and paddings */
     * {
       box-sizing: border-box;
@@ -105,6 +104,21 @@
       margin: 0px 3px;
     }
 
+    @media screen and (max-width: 540px) {
+  .header-bar {
+    justify-content: center; /* Center everything in the bar */
+  }
+
+  .netra-logo {
+    margin-left: 0; /* Reset margin */
+  }
+
+  .social-icons {
+    display: none; /* Hide social icons */
+  }
+}
+
+
     /* Titles Container */
     .titles {
       padding-top: 1rem;
@@ -182,20 +196,19 @@
       text-decoration: underline;
     }
  
-    h1 {
-      font-weight: 400;
-    }
-
+   
     /* Headline */
     h1 {
       font-size: 36px;
       line-height: 1.1;
-      max-width: 25ch;
+      max-width: 618px;
       margin: 20px 0 40px;
-      font-family: 'Publico Text Web', 'Courier New', Courier, monospace;
+      font-family: 'pressio', 'Courier New', Courier, monospace;
       color: #000;
       text-align: center;
       text-wrap: balance;
+      font-feature-settings: "liga" 1, "onum" 1;
+      font-weight: 500;
     }
 
     @media screen and (min-width: 800px) {
@@ -216,8 +229,6 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      font-family: 'stencil-std', sans-serif;
       background-position: 10% 20%;
     }
 
@@ -226,7 +237,7 @@
     h2 {
       font-size: 22px;
       line-height: 1.25;
-      font-family: 'League Spartan', sans-serif;
+      font-family: 'pressio', sans-serif;
       margin: 0px 20px 20px;
       color: #000;
       text-align: center;
@@ -237,13 +248,14 @@
 
     /* Subtitle */
     .titles h2 {
-      font-family: 'Fort', sans-serif;
+      font-family: 'ff-meta-web-pro', sans-serif;
       font-weight: 500;
       text-transform: none;
+      margin: 0px 20px 40px;
     }
 
     h3 {
-      font-family: 'League Spartan', sans-serif;
+      font-family: 'ff-meta-web-pro', sans-serif;
       font-size: 18px;
       color: #000;
       font-weight: 500;
@@ -386,7 +398,7 @@
     .title-text {
       width: 50%;
       text-align: left;
-      font-family: 'League Spartan', sans-serif;
+      font-family: 'ff-meta-web-pro', sans-serif;
       font-weight: 400;
       font-style: normal;
       text-transform: uppercase;
@@ -611,7 +623,7 @@
       padding-top: 30px;
       margin-top: 30px;
       color: black;
-      font-family: 'League Spartan', 'Courier New', Courier, monospace;
+      font-family: 'ff-meta-web-pro', 'Courier New', Courier, monospace;
       font-weight: 300;
       text-transform: uppercase;
     }
@@ -727,7 +739,7 @@
 
     .content p,
     .footnotes p {
-      font-family: 'Inconsolata', 'Courier New', Courier, monospace;
+      font-family: 'ff-meta-web-pro', 'Courier New', Courier, monospace;
       font-size: 15px;
       line-height: normal;
 
@@ -818,7 +830,7 @@
     }
 
     .credit {
-      font-family: 'Inconsolata', monospace;
+      font-family: 'ff-meta-web-pro', monospace;
       font-size: 15px;
       font-style: italic;
       color: #333;
@@ -828,9 +840,9 @@
     }
 
     .credits {
-      font-family: 'Inconsolata', monospace;
+      font-family: 'ff-meta-web-pro', monospace;
 
-      font-size: 18px;
+      font-size: 15px;
       font-style: italic;
       color: #333;
       margin: 0 20px;
@@ -943,7 +955,6 @@
 
       h1 {
         max-width: 16ch;
-        margin: 20px 0;
       }
 
       h2 {
@@ -1050,7 +1061,7 @@
       font-size: 18px;
       margin: 8px;
       color: #333;
-      font-family: 'League Spartan', Georgia, 'Times New Roman', Times, serif;
+      font-family: 'ff-meta-web-pro', Georgia, 'Times New Roman', Times, serif;
       text-transform: uppercase;
       font-weight: 500;
     }
@@ -1116,7 +1127,7 @@
   border-radius: 10%;
   padding: 0 2.5px;
   background-color: #f0f0f0;
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'ff-meta-web-pro', sans-serif;
   text-transform: uppercase;
 }
 
@@ -1256,27 +1267,25 @@
 
     <div class="titles">
 
-      
-      
-
-      <h1>Bangladesh offers an avenue for minorities rare in South Asia — except <span
-          class="bg-texture">armed forces</span></h1>
-
-      <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
-        but
-        the country’s armed forces remain off-limits.</h2>
-      <div class="byline">
-        <span>By
-          <a href="https://XXXXX" class="by-text" target="_blank">Investigations Editor</a>
-        </span>
-        <span class="publish">
-          <time datetime="2025-04-01">- APRIL 1ST 2025</time>
-        </span>
-      </div>
-
       <div class="banner">
         <img src="./assets/photos/dataminofeat3 copy.webp" alt="Illustration for minority representation in Bangladesh civil service by Subinoy Mustofi Eron/Netra News">
       </div>
+
+      <h1>Unlike South Asia, Bangladesh Makes Room for Minorities — Just Not in <span
+        class="bg-texture">Military</span></h1>
+
+    <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
+      but
+      the country’s armed forces remain off-limits.</h2>
+    <div class="byline">
+      <span>By
+        <a href="https://XXXXX" class="by-text" target="_blank">Investigations Editor</a>
+      </span>
+      <span class="publish">
+        <time datetime="2025-04-01">- APRIL 1ST 2025</time>
+      </span>
+    </div>
+
 
 
     </div>
@@ -1316,8 +1325,8 @@
 
       <p>The findings paint a rosier picture for religious minorities across pivotal civilian spheres.</p>
 
-      <p>More than 10 percent of lower court judges, nine percent of police officers, and 10.5 percent of senior civil
-        servants come from these communities, with Hindus making up the largest bloc. Indigenous, Christian, and
+      <p>More than 10 percent of lower court judges, nine percent of police officers, and 10.5 percent of civil administration
+        officials come from these communities, with Hindus making up the largest bloc. Indigenous, Christian, and
         Buddhist minorities also maintain a strong presence.</p>
 
       <p>Non-Muslims represent over 10 percent of the University of Dhaka’s permanent faculty, 8.57 percent of members of the Dhaka Reporters Unity, and about 8 percent of the Supreme Court Bar Association — ratios that broadly reflect the national religious landscape.</p>
