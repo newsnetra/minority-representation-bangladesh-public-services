@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bangladesh stands apart in South Asia on minority inclusion, except military</title>
   <link rel="stylesheet" href="https://use.typekit.net/rsa7eoe.css">
- 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=source-sans-pro:wght@200..900&display=swap" rel="stylesheet">  <style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=source-sans-pro:wght@200..900&display=swap"
+    rel="stylesheet">
+  <style>
     /* Reset default margins and paddings */
     * {
       box-sizing: border-box;
@@ -30,7 +33,7 @@
       font-family: 'source-sans-pro', Georgia, serif;
       font-size: 8px;
       -webkit-font-smoothing: antialiased;
-      
+
     }
 
 
@@ -105,18 +108,21 @@
     }
 
     @media screen and (max-width: 540px) {
-  .header-bar {
-    justify-content: center; /* Center everything in the bar */
-  }
+      .header-bar {
+        justify-content: center;
+        /* Center everything in the bar */
+      }
 
-  .netra-logo {
-    margin-left: 0; /* Reset margin */
-  }
+      .netra-logo {
+        margin-left: 0;
+        /* Reset margin */
+      }
 
-  .social-icons {
-    display: none; /* Hide social icons */
-  }
-}
+      .social-icons {
+        display: none;
+        /* Hide social icons */
+      }
+    }
 
 
     /* Titles Container */
@@ -195,8 +201,8 @@
     .byline a:hover {
       text-decoration: underline;
     }
- 
-   
+
+
     /* Headline */
     h1 {
       font-size: 36px;
@@ -229,7 +235,8 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-position: 10% 20%;
+      background-position: 10% 10%;
+      font-weight: 900;
     }
 
 
@@ -297,7 +304,7 @@
     .highlighted {
       font-weight: 400;
       background: linear-gradient(120deg, transparent 0%, rgba(212, 241, 18, 0.3) 10%, #d4f112 20%, #d4f112 50%, rgba(212, 241, 18, 0.3) 80%, transparent 100%);
-      padding: 4px 4px 4px 0px;
+      /* padding: 0px 0px 4px 0px; */
       background-position: 0% 50%;
     }
 
@@ -325,7 +332,7 @@
       font-stretch: 100%;
       word-wrap: break-word;
       text-rendering: optimizeLegibility;
-      
+
     }
 
 
@@ -373,8 +380,8 @@
 
 
     /***************************************************
-     * Grid Card + Titles
-     ***************************************************/
+ * Grid Card + Titles
+ ***************************************************/
     .grid-card {
       padding: 20px;
       background: #F6F4EE;
@@ -416,8 +423,8 @@
     }
 
     /***************************************************
-     * Stats Row
-     ***************************************************/
+ * Stats Row
+ ***************************************************/
     /* Responsive Stats Row */
 
     .stats {
@@ -453,8 +460,8 @@
 
 
     /***************************************************
-     * Religion Colors
-     ***************************************************/
+ * Religion Colors
+ ***************************************************/
     .islam {
       background-color: #00796B;
     }
@@ -476,16 +483,16 @@
     }
 
     /***************************************************
-     * Dots-Grid & Religion Rows
-     ***************************************************/
-     .dots-grid {
-  /* Hardcode or dynamically set some height you want. */
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  width: 100%;
-}
+ * Dots-Grid & Religion Rows
+ ***************************************************/
+    .dots-grid {
+      /* Hardcode or dynamically set some height you want. */
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      width: 100%;
+    }
 
 
     .religion-row {
@@ -495,18 +502,18 @@
     }
 
     .religion-row .dot {
-  display: inline-block;
-  width: 3.5px;
-  height: 3.5px;
-  margin: 1px;
-  vertical-align: top;
-  border-radius: 50%;
-}
+      display: inline-block;
+      width: 3.5px;
+      height: 3.5px;
+      margin: 1px;
+      vertical-align: top;
+      border-radius: 50%;
+    }
 
 
     /***************************************************
-     * Scrolly Steps & Overlays
-     ***************************************************/
+ * Scrolly Steps & Overlays
+ ***************************************************/
     .scrolly-steps {
       width: 100%;
       height: 1000vh;
@@ -554,7 +561,7 @@
 
     .step p {
       color: #0d0c0f;
-      
+
       font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
       font-size: 18px;
       line-height: 1.4;
@@ -572,9 +579,18 @@
     .methodology,
     .methodology p {
       color: #333;
+      font-size: 15px;
+      line-height: normal;
+      font-family: 'ff-meta-web-pro', monospace;
     }
 
+    .methodology li {
+    margin: 10px 2px;
+}
 
+.methodology ul {
+    margin: 13px 40px;
+}
 
 
     #footer {
@@ -860,13 +876,14 @@
       font-stretch: normal;
       font-display: swap;
     }
-/* 
-    @font-face {
-      font-family: 'source-sans-pro';
-      src: url('./assets/fonts/national-book.woff2') format('woff2');
-      font-weight: 400;
-      font-display: swap;
-    } */
+
+    /* 
+ @font-face {
+ font-family: 'source-sans-pro';
+ src: url('./assets/fonts/national-book.woff2') format('woff2');
+ font-weight: 400;
+ font-display: swap;
+ } */
 
     /* Hide .header-bar ONLY on small screens when it has class "hidden" */
     @media (max-width: 540px) {
@@ -916,8 +933,8 @@
 
 
     /***************************************************
-     * Responsive Tweaks
-     ***************************************************/
+ * Responsive Tweaks
+ ***************************************************/
 
     @media (orientation: landscape) {
       .main-container {
@@ -1102,6 +1119,7 @@
       font-style: italic;
       text-wrap: auto;
     }
+
     g.tick {
       font-family: 'source-sans-pro', 'Courier New', Courier, monospace;
       font-size: 10px;
@@ -1109,71 +1127,75 @@
     }
 
     .infotip-container {
-  position: relative;
-  display: inline-block;
-}
+      position: relative;
+      display: inline-block;
+    }
 
-.infotip-container sup {
-  cursor: help;
-  color: #666;
-  font-size: 0.75em;
-  line-height: 1;
-  padding-left: 2px;
-}
+    .infotip-container sup {
+      cursor: help;
+      color: #666;
+      font-size: 0.75em;
+      line-height: 1;
+      padding-left: 2px;
+    }
 
-.infotip-container sup::after {
-  content: '?';
-  border: 0.1px solid #aaa;
-  border-radius: 10%;
-  padding: 0 2.5px;
-  background-color: #f0f0f0;
-  font-family: 'ff-meta-web-pro', sans-serif;
-  text-transform: uppercase;
-}
+    .infotip-container sup::after {
+      content: '?';
+      border: 0.1px solid #aaa;
+      border-radius: 10%;
+      padding: 0 2.5px;
+      background-color: #f0f0f0;
+      font-family: 'ff-meta-web-pro', sans-serif;
+      text-transform: uppercase;
+    }
 
-/* Tooltip box that auto-centers and avoids overflow */
-.infotip-box {
-  visibility: hidden;
-  background-color: #00243e;
-  color: #fff;
-  text-align: left;
-  border-radius: 4px;
-  padding: 8px 10px;
-  position: absolute;
-  z-index: 1;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: 50vw;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 1.8rem;
-  font-family: 'source-sans-pro';
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  margin-top: 6px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
+    .infotip-container a {
+color: #fff;
+    }
 
-/* Show tooltip on hover or keyboard focus */
-.infotip-container:hover .infotip-box,
-.infotip-container:focus-within .infotip-box {
-  visibility: visible;
-  opacity: 1;
-}
+    /* Tooltip box that auto-centers and avoids overflow */
+    .infotip-box {
+      visibility: hidden;
+      background-color: #00243e;
+      color: #fff;
+      text-align: left;
+      border-radius: 4px;
+      padding: 8px 10px;
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 50vw;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 1.8rem;
+      font-family: 'source-sans-pro';
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      margin-top: 6px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
 
-/* Tooltip arrow */
-.infotip-box::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: transparent transparent #00243e transparent;
-}
+    /* Show tooltip on hover or keyboard focus */
+    .infotip-container:hover .infotip-box,
+    .infotip-container:focus-within .infotip-box {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Tooltip arrow */
+    .infotip-box::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #00243e transparent;
+    }
 
 
 
@@ -1268,23 +1290,24 @@
     <div class="titles">
 
       <div class="banner">
-        <img src="./assets/photos/dataminofeat3 copy.webp" alt="Illustration for minority representation in Bangladesh civil service by Subinoy Mustofi Eron/Netra News">
+        <img src="./assets/photos/dataminofeat3 copy.webp"
+          alt="Illustration for minority representation in Bangladesh civil service by Subinoy Mustofi Eron/Netra News">
       </div>
 
-      <h1>Unlike South Asia, Bangladesh Makes Room for Minorities — Just Not in <span
-        class="bg-texture">Military</span></h1>
+      <h1>Unlike South Asia, Bangladesh Makes Room for Minorities — Just Not in <span class="bg-texture">Military</span>
+      </h1>
 
-    <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
-      but
-      the country’s armed forces remain off-limits.</h2>
-    <div class="byline">
-      <span>By
-        <a href="https://XXXXX" class="by-text" target="_blank">Investigations Editor</a>
-      </span>
-      <span class="publish">
-        <time datetime="2025-04-01">- APRIL 1ST 2025</time>
-      </span>
-    </div>
+      <h2>Bangladesh’s religious minorities can — and do — ascend through courts, classrooms, and government offices,
+        but
+        the country’s armed forces remain off-limits.</h2>
+      <div class="byline">
+        <span>By
+          <a href="https://XXXXX" class="by-text" target="_blank">Investigations Editor</a>
+        </span>
+        <span class="publish">
+          <time datetime="2025-04-01">- APRIL 1ST 2025</time>
+        </span>
+      </div>
 
 
 
@@ -1295,19 +1318,51 @@
 
   <div class="article">
     <div class="articlex">
-      <p>For Bangladesh’s religious minorities, most portals to power are open.</p>
-      <p>In bustling offices nationwide, minority officers help shape decisions in the police and civil services. They litigate cases and deliver justice as lawyers and judges in crowded courtrooms, guide new generations of students at top universities, and influence public opinion through media roles. At a glance, their presence in the nation’s corridors of power evokes a rare inclusivity in a South Asia too often fractured along communal lines.</p>
-<p>But the nation’s progress abruptly stalls at the military’s doorstep.</p>
+      <p>For Bangladesh’s religious minorities, most portals to power stand open.</p>
+      <p>In bustling offices nationwide, minority officers help shape decisions in the police and civil services. They
+        litigate cases and deliver justice as lawyers and judges in crowded courtrooms, guide new generations of
+        students at top universities, and steer public opinion through the media.</p>
+      <p>Within these civilian institutions, minorities serve in proportions that match — and at times surpass — their
+        9 percent share of the population, according to a first-of-its-kind analysis by Netra News.</p>
+      <p>That record challenges “common perceptions in the region, especially India,” says Iftekharuzzaman of
+        Transparency International Bangladesh, which last <a
+          href="https://www.ti-bangladesh.org/images/max_file/rp_Full_PSC_eng_07.pdf"
+          title="Transparency International Bangladesh: Diversity in Civil Service Report (2007)" target="_blank"
+          rel="noopener noreferrer">studied</a>
+        diversity in the civil service 18 years ago and has reviewed the new Netra News findings.</p>
+      <p>“Although there is much to be desired, especially at higher levels,” he adds, “Bangladesh has been clearly
+        doing significantly better than its neighbours in terms of inclusivity in the public sector job opportunities.”
+      </p>
+      <p>But the Muslim-majority nation’s remarkable progress abruptly stalls at the military’s doorstep.</p>
+
       <p><span class="highlighted">Fewer than one percent</span> of Bangladeshi army officers and
-        <span class="highlighted">just over one percent</span> of navy officers are non-Muslim, according to a
-        first-of-its-kind analysis of confidential
+        <span class="highlighted">just over one percent</span> of navy officers are non-Muslim, according to a separate
+        analysis of confidential
         military records.
       </p>
-      <p>These figures stand in stark contrast to other key levers of civilian power, where religious minorities rise to
-        positions of influence at rates that reflect — and sometimes even exceed — their nine-percent share of the
-        national
-        population, according to a separate analysis based on public data.
-      </p>
+
+
+      <p>Jobs like these hold outsized importance in Bangladesh where, as in much of South Asia, a government
+        position is a highly coveted badge of social and
+        economic status, rooted in the legacy of British colonial bureaucracy. </p>
+
+      <p>Competition for these posts is fierce, and the political stakes are high. <a
+          href="https://journals.sagepub.com/doi/pdf/10.1080/03064227208532144" target="_blank"
+          title="Download the PDF: 'Underrepresentation of Bengalis' from SAGE Journals">Underrepresentation of
+          Bengalis</a> in elite civilian and military ranks during the East Pakistan era was among the grievances that
+        fuelled the Liberation War in 1971. More recently, allegations of bias in government hiring sparked mass
+        demonstrations last July and August, paving the way for the downfall of Prime Minister Sheikh Hasina’s
+        long-serving administration.</p>
+      <p>Conservative critics have long accused the former Awami League government of large-scale bias for Hindu
+        officers, citing their perceived electoral loyalty. However, the Netra News data suggests these claims are
+        overstated. If any state institution stands as an outlier, it is the armed forces, where non-Muslims are
+        strikingly absent.</p>
+
+
+        <p>Netra News reached these conclusions by <span class="infotip-container" tabindex="0">
+          sifting through<sup></sup> <span class="infotip-box" role="tooltip"> Read <a href="/#app">full methodology.</a></span> </span> a broad spectrum of official and confidential records. In all, the study inferred the likely
+          religious identities of nearly 45,000 individuals in Bangladesh and India, pairing traditional research methods
+          with machine‑learning models.</p>
 
       <div class="faith-line-break">
         <hr>
@@ -1323,25 +1378,22 @@
 
       <h2>Minorities hold ground</h2>
 
-      <p>The findings paint a rosier picture for religious minorities across pivotal civilian spheres.</p>
+      <p>The Netra News findings offer a hopeful view for Bangladesh’s 15 million ethnic and religious minority citizens, particularly across the country’s civilian institutions.</p>
 
-      <p>More than 10 percent of lower court judges, nine percent of police officers, and 10.5 percent of civil administration
-        officials come from these communities, with Hindus making up the largest bloc. Indigenous, Christian, and
-        Buddhist minorities also maintain a strong presence.</p>
-
-      <p>Non-Muslims represent over 10 percent of the University of Dhaka’s permanent faculty, 8.57 percent of members of the Dhaka Reporters Unity, and about 8 percent of the Supreme Court Bar Association — ratios that broadly reflect the national religious landscape.</p>
+      <p>Minority groups — led by Hindus, followed by Indigenous, Christian, and Buddhist communities — make up over 10.5 percent of civil service officials, 10 percent of lower court judges, and nine percent of police officers. A 2022 list compiled during the Hasina era had placed the civil service figure closer to 10 percent.</p>
+      <p>This broad-based representation isn’t limited to government-run institutions.</p> 
+        
+        <p>At Dhaka University — the country’s most prestigious centre of higher education and one of its most well-known independently governed bodies — minorities make up over 10 percent of the permanent faculty. 
+        </p><p>In key professional bodies as well, minorities hold proportional ground: they account for 8.57 percent of the Dhaka Reporters Unity and about 8 percent of the Supreme Court Bar Association, reflecting their share in the broader population.</p>
 
       <p>That trend is rooted further down the educational pipeline, which feeds into these prestigious professions.
-        A government <a href="https://dhakaeducationboard.gov.bd/data/20241215155622468507.pdf" target="_blank" title="Download the merit list PDF from Dhaka Education Board">merit list</a> of 3,237
+        A government <a href="https://dhakaeducationboard.gov.bd/data/20241215155622468507.pdf" target="_blank"
+          title="Download the merit list PDF from Dhaka Education Board">merit list</a> of 3,237
         high school students across Dhaka division — based on anonymised graduation results that
         eliminate potential religious bias — shows that minority students made up 9.60%, closely tracking their national
         share.</p>
 
 
-      <p>To compile these findings, Netra News sifted through a wide spectrum of official and confidential records. Reporters pored over  around 8,000 names from past army and navy rosters, along with a restricted police directory of about 2,500 officers, and publicly available information on civil servants, lower court judges, university faculty, and membership lists of two professional bodies.</p>
-
-      <p>In total, the study mapped the likely religious affiliations of nearly 45,000 individuals across Bangladesh
-        and India, using both conventional methods and machine-learning models to classify identities.</p>
 
       <div class="faith-line-break">
         <hr>
@@ -1353,17 +1405,6 @@
         </div>
         <hr>
       </div>
-
-      <h2>Political minefield</h2>
-
-      <p>Numbers like these hold outsized importance in Bangladesh where, as in much of South Asia, a government
-        position is a highly coveted badge of social and
-        economic status, rooted in the legacy of British colonial bureaucracy. </p>
-
-      <p>Competition for these posts is fierce, and the political stakes are high.</p>
-
-      <p><a href="https://journals.sagepub.com/doi/pdf/10.1080/03064227208532144" target="_blank" title="Download the PDF: 'Underrepresentation of Bengalis' from SAGE Journals">Underrepresentation of Bengalis (PDF)</a> in elite civilian and military ranks during the East Pakistan era was among the grievances that fuelled the Liberation War in 1971. More recently, allegations of bias in government hiring sparked mass demonstrations last July and August, paving the way for the downfall of Prime Minister Sheikh Hasina’s long-serving administration.</p>
-      <p>Conservative critics have long accused the former Awami League government of large-scale bias for Hindu officers, citing their perceived electoral loyalty. However, the Netra News data suggests these claims are overstated. If any state institution stands as an outlier, it is the armed forces, where non-Muslims are strikingly absent.</p>
 
 
     </div>
@@ -1411,21 +1452,23 @@
     </div>
 
     <h2>Bright spot by a region’s dismal standards</h2>
-    <p>Despite all its shortcomings, Bangladesh’s overall record on minority inclusion far surpasses that of its
+    <p>Bangladesh’s overall record on minority inclusion far surpasses that of its
       neighbours. </p>
     <p>Bangladesh’s military numbers echo India’s when it comes to uniformed minorities. In India, the largest minority
-      group, Muslims, reportedly makes up only about two percent of the armed forces’ officer corps, even though they
-      form around 14 percent of the national population — nearly double the share of Hindus in Bangladesh. </p>
+      group, Muslims, reportedly makes up <a href="https://www.epw.in/journal/2018/4/strategic-affairs/missing-muslim-army-officers.html" title="EPW article: Missing Muslim Army Officers in India" target="_blank" rel="noopener noreferrer">only two percent</a>
+       of the Indian Army officer corps, even though they
+      form around 14 percent of the national population.</p>
     <p>Thus, the army and navy figures in Bangladesh, for all their stark shortfalls, are not entirely out of step with
       regional norms for religious representation in military ranks.</p>
-    <p>However, Bangladesh far outperforms India in other arenas of governance. </p>
-    <p>In Bangladesh’s civil service, around nine percent of officers are non-indigenous Hindus — 112 percent of their
+    <p>However, Bangladesh far outperforms India in civilian arenas of governance.</p>
+    <p>In Bangladesh’s civil service, around nine percent of officers are <span class="infotip-container" tabindex="0">non-indigenous<sup></sup> <span class="infotip-box" role="tooltip"> Some indigenous communities such as Tripura follow Hinduism. They are classified as indigenous, instead of Hindu.</a></span> </span> Hindus — 112 percent of their
       population share. In India, by contrast, Muslims comprise about 4.3 percent of the elite civil service, data
       shows. That’s just 28 percent of their national proportion. </p>
-    <p>Put differently, adjusted for each country’s religious demographics, Hindus in Bangladesh’s civil service are
-      nearly four times better represented than Muslims in India’s. </p>
-    <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
-      share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
+      <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
+        share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
+    <p>Put differently, adjusted for each country’s religious demographics, Hindus in Bangladesh’s civil service and police are
+      more or less <span class="highlighted">four times</span> better represented than Muslims in India’s. </p>
+    
   </div>
 
   <!-- 1) Horizontal scroller container -->
@@ -1443,12 +1486,16 @@
       of
       civil service positions. </p>
     <p>Nepal’s Muslim minority, conversely, accounts for over four percent of the population but just 0.1 percent of
-      civil service posts, according to <a href="https://web.archive.org/web/20240525223901/https://www.southasianist.ed.ac.uk/article/view/1176" target="_blank" title="Access the archived version of a 2016 study from The South Asianist journal">a 2016 study</a> by Tek Bahadur Dong, a Nepalese academic and social scientist.</p>
-    <p>Indigenous Buddhist-majority groups beyond the Newar community — who together comprise over 30 percent of
+      civil service posts, according to <a
+        href="https://web.archive.org/web/20240525223901/https://www.southasianist.ed.ac.uk/article/view/1176"
+        target="_blank" title="Access the archived version of a 2016 study from The South Asianist journal">a 2016
+        study</a> by Tek Bahadur Dong, a Nepalese academic and social scientist.</p>
+        <p>Bahuns <span class="infotip-container" tabindex="0">(upper-caste Brahmins)<sup></sup> <span class="infotip-box" role="tooltip">“Bahuns and Chhetris are a caste group and Hindu but they do not belong to ethnic [indigenous] communities,” Tek Bahadur Dong, the Nepalese academic, told Netra News.</span> </span>, 12 percent of the population, hold more than 70 percent of officer-level posts.</p>
+    <p>Indigenous <span class="infotip-container" tabindex="0">Buddhist-majority<sup></sup> <span class="infotip-box" role="tooltip">“The remaining caste groups are predominantly Hindu but not all of them. For example, there are both Hindu and Buddhist among the Newar community,” Dong added. “Non-Newar Janajatis [...] follow different religions such as Buddhist, Kirant, Islam and Christian. However, many of the non-Newar Janajatis are Buddhist primarily [...] Dalits were Hindu but now [many] are converting to Christianity.”</span> </span> groups beyond the Newar community — who together comprise over 30 percent of
       Nepal’s
-      population — are massively underrepresented at only 1.6 percent of officer-level posts. </p>
-    <p>Meanwhile, Bahuns (upper-caste Brahmins), 12 percent of the population, hold more than 70 percent of these
+      population — are massively underrepresented at only 1.6 percent of these
       coveted roles.</p>
+    
 
     <div class="faith-line-break">
       <hr>
@@ -1464,10 +1511,10 @@
 
     <h2>The higher up, the fewer</h2>
 
-    <p>It’s not, however, all good news across civilian entities in Bangladesh. Gaps emerge — and widen — at higher
+    <p>It’s not, however, all good news across civilian entities in Bangladesh. Gaps do emerge — and widen — at higher
       ranks.</p>
 
-    <p>At the University of Dhaka, 93 percent of top professorial posts are held by Muslims, slightly above their 91-percent share of the national population. In the lower judiciary, 92 percent of senior district judges and equivalents are Muslim.</p>
+    <p>At Dhaka University, Muslims hold 93 percent of top professorial positions — higher than their 90 percent share in civil jobs and 91 percent in the general population. Similarly in the lower judiciary, 92 percent of senior district and sessions judges are Muslim.</p>
     <p>The disparity intensifies in the civil administration, where <span class="highlighted">only one</span> out of
       74
       top-tier secretaries identifies
@@ -1475,17 +1522,20 @@
       deputy inspector generals or
       higher are from minority communities.</p>
     <p>In the armed forces, the gap turns into a chasm.</p>
-    <p>In the 2016 army roster obtained by Netra News, the highest-ranked non-Muslim officer — a brigadier general
+    <p>In the <span class="infotip-container" tabindex="0">2016<sup></sup> <span class="infotip-box" role="tooltip">While the data may not reflect today’s force composition, the forces have announced no policy changes that would address the disparity in recruitment and promotion of religious minorities in its ranks. Read <a href="/#app">full methodology to learn more.</a></span> </span> army roster obtained by Netra News, the highest-ranked non-Muslim officer — a brigadier general
       from
       the engineering corps — has
-      since retired. In the 2017 navy rolls, there was just one non-Muslim <span class="infotip-container" tabindex="0"> Commodore<sup></sup> <span class="infotip-box" role="tooltip"> Commodore is the fourth highest rank in Bangladesh Navy hierarchy, equivalent to Brigadier General in the army. </span> </span>, also no longer serving.</p>
+      since retired. In the 2017 navy rolls, there was just one non-Muslim <span class="infotip-container" tabindex="0">
+        commodore<sup></sup> <span class="infotip-box" role="tooltip"> Commodore is the fourth highest rank in
+          Bangladesh Navy hierarchy, equivalent to Brigadier General in the army. </span> </span>, also no longer
+      serving.</p>
     <p>Beyond these two individuals, the records show 445 Muslim officers at equivalent or higher ranks, indicating
       that
       for
       every non-Muslim at the top, there were over 200 Muslim officers. In contrast, Bangladesh’s national population
       counts one non-Muslim among 12 citizens.</p>
     <p>Equally telling is the breakdown within this small minority. </p>
-    <p>According to the data analysed by Netra News, there are <span class="highlighted">no indigenous (Adivasi)</span>
+    <p>According to the data analysed by Netra News, there are <span class="highlighted">no indigenous</span>
       personnel in the navy officer
       corps, just <span class="highlighted">one Christian</span> officer, and <span class="highlighted">three
         Buddhists.</span> In the army, <span class="highlighted">no Christians</span> at all appear in the officer
@@ -1507,14 +1557,28 @@
 
     <h2>A quiet disqualification</h2>
 
-<p>All branches of Bangladesh’s armed forces recruit through a centralized system overseen by the Inter Services Selection Board (ISSB), modeled closely on the Pakistani military’s selection process.</p>
+    <p>All branches of Bangladesh’s armed forces recruit through a centralized system overseen by the Inter Services
+      Selection Board (ISSB), named after and modeled closely on the Pakistani military’s selection process.</p>
 
-    <p>Unlike many other government agencies, the military does not offer quotas for marginalized communities or descendants of freedom fighters. Instead, candidates are evaluated on psychological tests, personality traits, family background, and other factors — criteria that, according to a former ISSB official, may also include religious affiliation.</p>
-<p>In Pakistan, the first Sikh army officer was <a href="https://web.archive.org/web/20110811045337/http://articles.timesofindia.indiatimes.com/2005-12-20/pakistan/27834439_1_sikh-youth-pak-army-pakistan-army" target="_blank" title="Archived 2005 Times of India article on Sikh youth in the Pakistan Army (via Wayback Machine)">commissioned</a> only in 2005, nearly six decades after the country’s founding. A Hindu officer <a href="https://timesofindia.indiatimes.com/world/pakistan/Pak-army-recruits-first-Hindu-cadet/articleshow/2023276.cms" target="_blank" title="Times of India article on the Pakistan Army recruiting its first Hindu cadet">followed</a> a year later.</p>
-    <p>Officially, the ISSB system is based on merit, yet the end result is a near-total absence of minorities in the upper
+    <p>Unlike many other government agencies, the military does not offer quotas for marginalized communities or
+      descendants of freedom fighters. Instead, candidates are evaluated on psychological tests, personality traits,
+      family background, and other factors — criteria that, according to a former ISSB official, may also include
+      religious affiliation.</p>
+    <p>In Pakistan, the first Sikh army officer was <a
+        href="https://web.archive.org/web/20110811045337/http://articles.timesofindia.indiatimes.com/2005-12-20/pakistan/27834439_1_sikh-youth-pak-army-pakistan-army"
+        target="_blank"
+        title="Archived 2005 Times of India article on Sikh youth in the Pakistan Army (via Wayback Machine)">commissioned</a>
+      only in 2005, nearly six decades after the country’s founding. A Hindu officer <a
+        href="https://timesofindia.indiatimes.com/world/pakistan/Pak-army-recruits-first-Hindu-cadet/articleshow/2023276.cms"
+        target="_blank"
+        title="Times of India article on the Pakistan Army recruiting its first Hindu cadet">followed</a> a year later.
+    </p>
+    <p>Officially, the ISSB system is based on merit, yet the end result is a near-total absence of minorities in the
+      upper
       echelons of military command.</p>
 
-      <p>The Inter-Services Public Relations (ISPR), the agency representing all three branches of the military, did not respond to a request for comment sent via email.</p>
+    <p>The Inter-Services Public Relations (ISPR), the agency representing all three branches of the military, did not
+      respond to a request for comment sent via email.</p>
 
     <p>Netra News reached out to twelve retired minority officers from the Navy and Army. Only one agreed to speak on
       the record. Even in retirement, officers are bound by the military’s reach, which extends through lifelong
@@ -1522,7 +1586,9 @@
       including the loss of these benefits.</p>
 
     <p>Among the few willing to speak was Sachin Karmakar, a former captain and veteran of the Liberation War.
-      Despite his service, the association of retired officers <a href="https://www.raowa.org/Freedom-Fighters/" target="_blank" rel="noopener noreferrer" title="Visit the RAOWA Freedom Fighters section">does not</a> list him as a freedom fighter, a distinction that carries both symbolic and material weight.
+      Despite his service, the association of retired officers <a href="https://www.raowa.org/Freedom-Fighters/"
+        target="_blank" rel="noopener noreferrer" title="Visit the RAOWA Freedom Fighters section">does not</a> list him
+      as a freedom fighter, a distinction that carries both symbolic and material weight.
 
     </p>
     <p>Asked to estimate the share of non-Muslims in the military without being informed of Netra News’ findings,
@@ -1533,11 +1599,14 @@
       1980s. For years, every attempt to travel abroad required prior government approval. “I felt like a classified
       prisoner,” he said.
     </p>
-    <p>While his personal story is marked by confrontations, Karmakar insists that the experience of contemporary minority officers is not so different. “It’s an unwritten state law,” he said, alleging that minority representation is deliberately kept to a minimum. “They just don’t trust the minority community.”</p>
+    <p>While his personal story is marked by confrontations, Karmakar insists that the experience of contemporary
+      minority officers is not so different. “It’s an unwritten state law,” he said, alleging that minority
+      representation is deliberately kept to a minimum. “They just don’t trust the minority community.”</p>
 
 
 
-    <p class="credits">Suraiya Sultana and Marzia Hashmi Momo contributed to the story. Subinoy Mustofi Eron and Aaqib Md. Shatil drew the illustrations.</p>
+    <p class="credits">Suraiya Sultana and Marzia Hashmi Momo contributed to the story. Subinoy Mustofi Eron and Aaqib
+      Md. Shatil drew the illustrations.</p>
 
     <div class="faith-line-break">
       <hr>
@@ -1565,49 +1634,101 @@
               address the disparity in recruitment and promotion of religious minorities in its ranks.
             </p>
 
+            <p>The sources of public data used in the analysis are as follows:</p>
+
+<ul>
+  <li>
+    Civil service data from December 2024 was collected from 
+    <a href="https://gems.gov.bd/employee-list" target="_blank" rel="noopener">gems.gov.bd</a>. 
+    The Hasina-era 2022 list is available via the Internet Archive 
+    <a href="https://web.archive.org/web/20220620140421/http://old.mopa.gov.bd/en/home/officer/107" target="_blank" rel="noopener">here</a>.
+  </li>
+  
+  <li>
+    The list of lower court judges was compiled from individual websites of each local court, totaling several hundred. 
+    For example, the Noakhali District Court lists its judges 
+    <a href="https://noakhali.judiciary.gov.bd/bn/menu/page/district-and-sessions-judge-court" target="_blank" rel="noopener">here</a>.
+  </li>
+  
+  <li>
+    Faculty members of Dhaka University were scraped from respective departmental websites. 
+    For instance, the Department of Anthropology maintains its faculty list 
+    <a href="https://www.du.ac.bd/body/FacultyMembers/ANT" target="_blank" rel="noopener">here</a>.
+  </li>
+  
+  <li>
+    The Supreme Court Bar Association's membership directory is available 
+    <a href="https://scba.org.bd/members_directory.php" target="_blank" rel="noopener">here</a>, 
+    and the Dhaka Reporters Unity also maintains a public list of its members 
+    <a href="https://www.dru.com.bd/permanent-members" target="_blank" rel="noopener">here</a>.
+  </li>
+  
+  <li>
+    India’s IAS officers’ list was sourced from 
+    <a href="https://easy.nic.in/civilListIAS/Home/ViewList" target="_blank" rel="noopener">easy.nic.in</a>, 
+    and the list of IPS officers from 
+    <a href="https://ips.gov.in/ips_civillist.aspx" target="_blank" rel="noopener">ips.gov.in</a>.
+  </li>
+</ul>
+
             <p>We used Google Pinpoint and Tabula to extract entries from scanned PDF files to plain text in
               spreadsheets. We then manually fixed spelling errors and other inaccuracies in names and other details.
             </p>
 
-            <p>Netra News also scraped public databases of officers in public administration, faculty members of the University of Dhaka, web directories of all of the 172 subordinate courts of Bangladesh, and membership lists of the Supreme Court Bar Association and Dhaka Reporters Unity.</p>
+            
 
-            <p>Some lists contained only English transliterations. We used Open AI’s API and Google Translate API to convert them to Bengali transliterations, some of which were manually fixed. The Supreme Court Bar Association’s membership list contained members’ religious background.</p>
-            <p>We obtained a list of common Hindu and Indigenous surnames from four Wikipedia pages, and added the
+            <p>Some lists contained only English transliterations. We used Open AI’s API and Google Translate API to
+              convert them to Bengali transliterations, some of which were manually fixed.</p>
+            <p>We obtained a list of common Bengali Hindu, Buddhist, Christian, and indigenous surnames from four Wikipedia pages (e.g., <a href="https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B2%E0%A6%BF_%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0_%E0%A6%AA%E0%A6%A6%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A6%AE%E0%A7%82%E0%A6%B9" target="_blank" rel="noopener" title="বাংলা উইকিপিডিয়ায়: বাঙালি হিন্দুদের পদবিসমূহ">
+              বাংলা উইকিপিডিয়ায়: বাঙালি হিন্দুদের পদবিসমূহ
+            </a>
+            ), and added the
               rest
               ourselves.
             </p>
             <p>We then developed a cleaning technique to assign likely religion based on their surname:
             </p>
             <p style="padding: 0px 50px;"><code>=ARRAYFORMULA(TEXTJOIN(", ", TRUE, IF(LEN(A2), IFERROR(VLOOKUP(FILTER(SPLIT(A2, " "), SPLIT(A2, " ") <>
-                ""), 'Sheet with Non-Muslim surnames'!A:B, 2, FALSE), ""), "")))</code></p>
+ ""), 'Sheet with Non-Muslim surnames'!A:B, 2, FALSE), ""), "")))</code></p>
             <p>If A2 contains the name, the formula will divide the names into several pieces. If A2 contains "মৃণাল
               কান্তি দাস”, it will first divide it into three parts: “মৃণাল”, “কান্তি” and “দাস” and match each of the
               parts with the list of surnames to see if they match with any surname. For matches, it will return the
               respective likely religion name(s). Since both কান্তি and দাস are considered traditionally Hindu names,
-              the formula will return “হিন্দু, হিন্দু”. In the following column, we also return the exact surnames that are matches. In the above example, it will return “কান্তি” and “দাস”. For such multiple matches, we considered them to be safer determination. For the rest, we manually checked over to see if any mistake occurred.
+              the formula will return “হিন্দু, হিন্দু”. In the following column, we also return the exact surnames that
+              are matches. In the above example, it will return “কান্তি” and “দাস”. For such multiple matches, we
+              considered them to be safer determination. For the rest, we manually checked over to see if any mistake
+              occurred.
             </p>
-            <p>However, some surnames are common among Muslim, Hindus and even indigenous communities, such as Chowdhury (চৌধুরী) and Dewan (দেওয়ান). In such cases, we considered the first name and, where available, their parents’ names.</p>
+            <p>However, some surnames are common among Muslim, Hindus and even indigenous communities, such as Chowdhury
+              (চৌধুরী) and Dewan (দেওয়ান). In such cases, we considered the first name and, where available, their
+              parents’ names.</p>
             <p>The number of indigenous officers may be undercounted because some communities follow Christian and
               Hindu
-              norms for naming themselves. Our list of traditionally non-Muslim surnames can be found here.
+              norms for naming themselves. Our list of Bangladeshi Muslim and non-Muslim surnames and given names can be found <a href="https://github.com/newsnetra/minority-representation-bangladesh-public-services/tree/main/assets/files" title="View the source files on GitHub">here</a>.
             </p>
 
             <p>Bangladesh’s 2022 census says the country has 1% indigenous people in its 165 million population. We
               estimate 60% of them to follow Buddhist, 20% to follow Hinduism and 15% to follow Christianity.
-              Accordingly, to find the share of indigenous people irrespective of their religions in population, we deducted
+              Accordingly, to find the share of indigenous people irrespective of their religions in population, we
+              deducted
               the similar share from total Hindu, Buddhist and Christian populations to find a national share of all
               religions.
             </p>
             <p>To find the share of officers by likely religion among Indian Administrative Service and Indian Police
               Service officer corps, we obtained their latest available public list. We employed two
-              machine-learning-based predictive models: <code><a href="https://github.com/RochanaChaturvedi/it-is-all-in-the-name" target="_blank" rel="noopener noreferrer" title="View the GitHub repository for 'It is all in the name'">“It is all in the name”</a></code> developed by researchers
+              machine-learning-based predictive models:
+              <code><a href="https://github.com/RochanaChaturvedi/it-is-all-in-the-name" target="_blank" rel="noopener noreferrer" title="View the GitHub repository for 'It is all in the name'">“It is all in the name”</a></code>
+              developed by researchers
               at
               University
-              of Illinois Chicago and University of Sussex, and <code><a href="https://github.com/appeler/pranaam" target="_blank" rel="noopener noreferrer" title="View the GitHub repository for 'pranaam'">“pranaam”</a></code>, a Python library that uses 4
+              of Illinois Chicago and University of Sussex, and
+              <code><a href="https://github.com/appeler/pranaam" target="_blank" rel="noopener noreferrer" title="View the GitHub repository for 'pranaam'">“pranaam”</a></code>,
+              a Python library that uses 4
               million unique
               records of Indian names and their religions. Both have a very high accuracy rate, and they agreed on the
               likely religion of the officers’ names in more than 90% of the cases. We manually determined some of the
-              cases through reporting and research, and discarded the rest. In total, we analysed the names of more than 9,000
+              cases through reporting and research, and discarded the rest. In total, we analysed the names of more than
+              9,000
               Indian officers.
             </p>
           </div>
@@ -1634,32 +1755,42 @@
         <div class="list">
           <h3>About</h3>
           <ul>
-            <li><a href="https://netra.news/2019/journalism-on-behalf-of-the-people/" target="_blank" title="Read about Netra News's editorial mission">Editorial Mission</a></li>
+            <li><a href="https://netra.news/2019/journalism-on-behalf-of-the-people/" target="_blank"
+                title="Read about Netra News's editorial mission">Editorial Mission</a></li>
             <li><a href="https://netra.news/about/" target="_blank" title="Learn more about Netra News">About</a></li>
-            <li><a href="https://netra.news/privacy/" target="_blank" title="View Netra News’s privacy policy">Privacy Policy</a></li>
+            <li><a href="https://netra.news/privacy/" target="_blank" title="View Netra News’s privacy policy">Privacy
+                Policy</a></li>
             <li><a href="https://netra.news/contact/" target="_blank" title="Contact Netra News">Contact</a></li>
           </ul>
         </div>
         <div class="list">
           <h3>Coverage</h3>
           <ul>
-            <li><a href="https://netra.news/tags/netra-report/" target="_blank" title="Browse Netra News investigations">Investigations</a></li>
-            <li><a href="https://netra.news/tags/column/" target="_blank" title="Read columns published on Netra News">Column</a></li>
-            <li><a href="https://netra.news/tags/analysis/" target="_blank" title="Explore explainers from Netra News">Explainer</a></li>
-            <li><a href="https://medium.com/@NetraNews" target="_blank" title="Visit Netra News’s blog on Medium">Blog</a></li>
+            <li><a href="https://netra.news/tags/netra-report/" target="_blank"
+                title="Browse Netra News investigations">Investigations</a></li>
+            <li><a href="https://netra.news/tags/column/" target="_blank"
+                title="Read columns published on Netra News">Column</a></li>
+            <li><a href="https://netra.news/tags/analysis/" target="_blank"
+                title="Explore explainers from Netra News">Explainer</a></li>
+            <li><a href="https://medium.com/@NetraNews" target="_blank"
+                title="Visit Netra News’s blog on Medium">Blog</a></li>
           </ul>
         </div>
         <div class="list">
           <h3>Social</h3>
           <ul>
-            <li><a href="https://www.facebook.com/newsnetra" target="_blank" title="Follow Netra News on Facebook">Facebook</a></li>
-            <li><a href="https://twitter.com/netranews" target="_blank" title="Follow Netra News on X (formerly Twitter)">X</a></li>
-            <li><a href="https://www.youtube.com/netranews" target="_blank" title="Watch Netra News on YouTube">YouTube</a></li>
-            <li><a href="https://www.instagram.com/netra.news/" target="_blank" title="Follow Netra News on Instagram">Instagram</a></li>
+            <li><a href="https://www.facebook.com/newsnetra" target="_blank"
+                title="Follow Netra News on Facebook">Facebook</a></li>
+            <li><a href="https://twitter.com/netranews" target="_blank"
+                title="Follow Netra News on X (formerly Twitter)">X</a></li>
+            <li><a href="https://www.youtube.com/netranews" target="_blank"
+                title="Watch Netra News on YouTube">YouTube</a></li>
+            <li><a href="https://www.instagram.com/netra.news/" target="_blank"
+                title="Follow Netra News on Instagram">Instagram</a></li>
           </ul>
         </div>
       </div>
-      
+
     </div>
   </div>
 
@@ -1669,8 +1800,8 @@
 
 
     /***************************************************
-     * Utilities
-     ***************************************************/
+    * Utilities
+    ***************************************************/
     function getColor(religion) {
       const colors = {
         islam: "#00796B",
@@ -1683,8 +1814,8 @@
     }
 
     /**
-     * Generates a block (.religion-row) per religion.
-     */
+    * Generates a block (.religion-row) per religion.
+    */
     function generateDots(container, distribution) {
       container.innerHTML = '';
       const religionOrder = ["buddhist", "christian", "indigenous", "hinduism", "islam"];
@@ -1708,8 +1839,8 @@
     }
 
     /***************************************************
-     * Stats logic (add religion labels + circles + percentages)
-     ***************************************************/
+    * Stats logic (add religion labels + circles + percentages)
+    ***************************************************/
     function generateStats(container, distribution) {
       const religionNames = {
         islam: 'Islam',
@@ -1730,10 +1861,10 @@
         const label = religionNames[religion] || religion;
         const span = document.createElement('span');
         span.innerHTML = `<span class="statp" style="color:${getColor(religion)};">
-      ${label}
-      <span class="circle" style="background-color: ${getColor(religion)};"></span>
-      ${percentage.toFixed(2)}%</span>
-    `;
+ ${label}
+ <span class="circle" style="background-color: ${getColor(religion)};"></span>
+ ${percentage.toFixed(2)}%</span>
+ `;
         container.appendChild(span);
       });
     }
@@ -1758,8 +1889,8 @@
     }
 
     /***************************************************
-     * Left Column: National Data
-     ***************************************************/
+    * Left Column: National Data
+    ***************************************************/
     const nationalData = {
       buddhist: 0.01,
       christian: 0.15,
@@ -1774,8 +1905,8 @@
     generateDots(nationalGrid, nationalData);
 
     /***************************************************
-     * Right Column Overlays / Steps
-     ***************************************************/
+    * Right Column Overlays / Steps
+    ***************************************************/
     const areas = [
       {
         name: 'Local judiciary',
@@ -1811,7 +1942,7 @@
           islam: 90.85
         },
         icon: 'icons/police.svg',
-        customMessage: 'On the other hand, the religious composition of police officers closely mirrors the country’s overall religious demographics. '
+        customMessage: 'The religious composition of police officers closely mirrors the country’s overall religious demographics. '
       },
       {
         name: 'Civil service',
@@ -1824,7 +1955,21 @@
         },
         icon: 'icons/civil ad.svg',
         customMessage: 'The civil service officer corps also reflects a similar balance, maintaining alignment with the nation’s religious and ethnic makeup.'
+      }
+      ,
+      {
+        name: 'Reporters’ Unity',
+        data: {
+          buddhist: 0.16,
+          christian: 0.10,
+          indigenous: 0.21,
+          hinduism: 8.21,
+          islam: 91.32
+        },
+        icon: 'icons/reporters.svg',
+        customMessage: 'In the media sector, a Dhaka-based reporters’ collective shows a nearly representative membership.'
       },
+
       {
         name: 'Supreme Court Bar',
         data: {
@@ -1838,18 +1983,6 @@
         customMessage: 'The elite Supreme Court Bar exhibits a modest tilt for Muslims in its membership.'
       },
       {
-        name: 'Reporters’ Unity',
-        data: {
-          buddhist: 0.16,
-          christian: 0.10,
-          indigenous: 0.21,
-          hinduism: 8.21,
-          islam: 91.32
-        },
-        icon: 'icons/reporters.svg',
-        customMessage: 'In the media sector, a Dhaka-based reporters’ collective shows a nearly representative membership, demonstrating greater inclusivity.'
-      },
-      {
         name: 'Bangladesh Navy',
         data: {
           buddhist: 0.18,
@@ -1859,7 +1992,7 @@
           islam: 98.47
         },
         icon: 'icons/BD NAVY.svg',
-        customMessage: 'However, the picture is different within the military. The Navy has only a handful of minority officers.'
+        customMessage: 'However, the picture is dramatically different within the military. The Navy has only a handful of minority officers.'
       },
       {
         name: 'Bangladesh Army',
@@ -1923,8 +2056,8 @@
 
 
     /***************************************************
-     * Intersection Observer
-     ***************************************************/
+    * Intersection Observer
+    ***************************************************/
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
     const overlays = document.querySelectorAll('.overlay');
     let activeOverlayIndex = 0;
@@ -2009,7 +2142,7 @@
         });
       }, {
         root: null,
-        threshold: 0   // triggers as soon as any part of .infographic intersects
+        threshold: 0 // triggers as soon as any part of .infographic intersects
       });
 
       observer.observe(infographic);
@@ -2020,16 +2153,16 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script>
     /************************************************************
-     * 1) DETECT COARSE VS. FINE POINTER
-     *    - If pointer is coarse => treat as mobile (vertical stack).
-     *    - If fine => treat as desktop (horizontal scroller).
-     ************************************************************/
+    * 1) DETECT COARSE VS. FINE POINTER
+    * - If pointer is coarse => treat as mobile (vertical stack).
+    * - If fine => treat as desktop (horizontal scroller).
+    ************************************************************/
     const mqCoarse = window.matchMedia("(hover: none) and (pointer: coarse)");
     const isCoarsePointer = mqCoarse.matches; // true => likely mobile
 
     /************************************************************
-     * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
-     ************************************************************/
+    * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
+    ************************************************************/
     let scrollerActive = false;
     const scrollerEl = document.getElementById('myHorizontalScroller');
 
@@ -2076,8 +2209,8 @@
     }
 
     /************************************************************
-     * 3) D3 CHART CODE
-     ************************************************************/
+    * 3) D3 CHART CODE
+    ************************************************************/
     // Example data
     const rawData_x2 = [
       { group: "India", category: "Hindu", nat: 79.80, cs: 92.88 },
@@ -2115,18 +2248,18 @@
 
     const tooltip_x2 = d3.select(".tooltip_x2");
 
-    let chartWidth = 618;
-    let chartHeight = 300;
+    let chartWidth = 718;
+    let chartHeight = 400;
     let margin = { top: 30, right: 20, bottom: 30, left: 60 };
     let drawableW = chartWidth - margin.left - margin.right;
     let drawableH = chartHeight - margin.top - margin.bottom;
 
     function computeChartDimensions() {
       const windowW = window.innerWidth;
-      if (windowW < 618) {
+      if (windowW < 718) {
         chartWidth = Math.floor(windowW - 20);
       } else {
-        chartWidth = 618;
+        chartWidth = 718;
       }
       chartHeight = Math.floor(chartWidth * 0.5);
       if (chartHeight < 200) {
@@ -2171,7 +2304,7 @@
         popLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#00243e")
+          .style("background-color", "#cbd5e1")
           .style("margin-right", "6px");
 
         popLegend.append("span").text("Overall population share");
@@ -2185,7 +2318,7 @@
         civilLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#ea7e49")
+          .style("background-color", "#00243e")
           .style("margin-right", "6px");
         civilLegend.append("span").text("Civil service officers share");
 
@@ -2223,7 +2356,7 @@
           .attr("y", d => y(d.category))
           .attr("width", d => x(d.nat))
           .attr("height", y.bandwidth())
-          .attr("fill", "#00243e")
+          .attr("fill", "#cbd5e1")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
@@ -2247,7 +2380,7 @@
           .attr("y", d => y(d.category) + y.bandwidth() / 4)
           .attr("width", d => x(d.cs))
           .attr("height", y.bandwidth() / 2)
-          .attr("fill", "#ea7e49")
+          .attr("fill", "#00243e")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
@@ -2270,8 +2403,8 @@
     }
 
     /************************************************************
-     * 4) INITIALIZE
-     ************************************************************/
+    * 4) INITIALIZE
+    ************************************************************/
     buildCharts();
 
     // If desktop-like pointer, run check once
