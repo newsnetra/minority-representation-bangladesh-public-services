@@ -1418,7 +1418,7 @@
         <div class="grid-card">
           <div class="title-section">
             <div class="title-text">
-              <h3>National share</h3>
+              <h3>জনসংখ্যার হার</h3>
             </div>
             <div class="title-icon"><img src="../icons/BD MAP.svg" alt="icon"></div>
           </div>
@@ -1764,7 +1764,7 @@
           </ul>
         </div>
         <div class="list">
-          <h3>Coverage</h3>
+          <h3>কাভারেজ</h3>
           <ul>
             <li><a href="https://netra.news/tags/e0-a6-a8-e0-a7-87-e0-a6-a4-e0-a7-8d-e0-a6-b0-e0-a6-aa-e0-a7-8d-e0-a6-b0-e0-a6-a4-e0-a6-bf-e0-a6-ac-e0-a7-87-e0-a6-a6-e0-a6-a8/" target="_blank"
                 title="Browse Netra News investigations">অনুসন্ধান</a></li>
@@ -1777,7 +1777,7 @@
           </ul>
         </div>
         <div class="list">
-          <h3>Social</h3>
+          <h3>সামাজিক মাধ্যমে</h3>
           <ul>
             <li><a href="https://www.facebook.com/newsnetra" target="_blank"
                 title="Follow Netra News on Facebook">ফেসবুক</a></li>
@@ -1843,11 +1843,11 @@
     ***************************************************/
     function generateStats(container, distribution) {
       const religionNames = {
-        islam: 'Islam',
-        hinduism: 'Hinduism',
-        indigenous: 'Indigenous',
-        christian: 'Christianity',
-        buddhist: 'Buddhism'
+        islam: 'মুসলমান',
+        hinduism: 'হিন্দু',
+        indigenous: 'আদিবাসী',
+        christian: 'খ্রিস্টান',
+        buddhist: 'বৌদ্ধ'
       };
 
       // Clear out any existing content
@@ -1909,7 +1909,7 @@
     ***************************************************/
     const areas = [
       {
-        name: 'Local judiciary',
+        name: 'বিচারিক আদালত',
         data: {
           buddhist: 0.07,
           christian: 0.07,
@@ -1917,11 +1917,11 @@
           hinduism: 9.78,
           islam: 89.85
         },
-        icon: 'icons/low court.svg',
-        customMessage: 'In subordinate courts across the country, Hindu judges slightly outpace their national representation.'
+        icon: '../icons/low court.svg',
+        customMessage: 'দেশজুড়ে বিচারিক আদালতে, হিন্দু বিচারকদের সংখ্যা জনসংখ্যার হারের তুলনায় কিছুটা বেশি। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
       {
-        name: 'Dhaka University',
+        name: 'ঢাকা বিশ্ববিদ্যালয়',
         data: {
           buddhist: 0.67,
           christian: 0.43,
@@ -1929,11 +1929,11 @@
           hinduism: 8.76,
           islam: 89.89
         },
-        icon: 'icons/du teach.svg',
-        customMessage: 'A similar trend is visible in Dhaka University, where Hindu and Buddhist faculty members exceed their respective shares of the national population.'
+        icon: '../icons/du teach.svg',
+        customMessage: 'একই অবস্থা ঢাকা বিশ্ববিদ্যালয়ের স্থায়ী শিক্ষকদের তালিকায়। সেখানে হিন্দু ও বৌদ্ধ পরিচয়বাহী শিক্ষকদের হার স্ব জনসংখ্যার হারের চেয়ে বেশি। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
       {
-        name: 'Bangladesh Police',
+        name: 'পুলিশ',
         data: {
           buddhist: 0.12,
           christian: 0.08,
@@ -1941,11 +1941,11 @@
           hinduism: 7.58,
           islam: 90.85
         },
-        icon: 'icons/police.svg',
-        customMessage: 'The religious composition of police officers closely mirrors the country’s overall religious demographics. '
+        icon: '../icons/police.svg',
+        customMessage: 'পুলিশে বিভিন্ন ধর্মীয় ও জাতিগত সম্প্রদায়ের অবস্থান দেশের জনসংখ্যার হারের সঙ্গে প্রায় হুবহু মিলছে। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
       {
-        name: 'Civil service',
+        name: 'জনপ্রশাসন',
         data: {
           buddhist: 0.14,
           christian: 0.09,
@@ -1953,12 +1953,12 @@
           hinduism: 8.91,
           islam: 89.56
         },
-        icon: 'icons/civil ad.svg',
-        customMessage: 'The civil service officer corps also reflects a similar balance, maintaining alignment with the nation’s religious and ethnic makeup.'
+        icon: '../icons/civil ad.svg',
+        customMessage: 'জনপ্রশাসনেও কাছাকাছি ভারসাম্য দেখা যায়। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       }
       ,
       {
-        name: 'Reporters’ Unity',
+        name: 'ডিআরইউ',
         data: {
           buddhist: 0.16,
           christian: 0.10,
@@ -1966,12 +1966,12 @@
           hinduism: 8.21,
           islam: 91.32
         },
-        icon: 'icons/reporters.svg',
-        customMessage: 'In the media sector, a Dhaka-based reporters’ collective shows a nearly representative membership.'
+        icon: '../icons/reporters.svg',
+        customMessage: 'গণমাধ্যম খাতে ঢাকা-ভিত্তিক প্রতিবেদকদের একটি সংগঠনে ধর্মীয় ও জাতিগত প্রতিনিধিত্ব ৮.৫ শতাংশের উপরে। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
 
       {
-        name: 'Supreme Court Bar',
+        name: 'সুপ্রিম কোর্ট বার',
         data: {
           buddhist: 0.13,
           christian: 0.16,
@@ -1979,11 +1979,11 @@
           hinduism: 7.44,
           islam: 92.20
         },
-        icon: 'icons/supreme court bar.svg',
-        customMessage: 'The elite Supreme Court Bar exhibits a modest tilt for Muslims in its membership.'
+        icon: '../icons/supreme court bar.svg',
+        customMessage: 'সুপ্রিম কোর্ট বার অ্যাসোসিয়েশনে সংখ্যালঘুদের প্রতিনিধিত্ব তুলনামূলকভাবে সামান্য কম। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
       {
-        name: 'Bangladesh Navy',
+        name: 'নৌ বাহিনী',
         data: {
           buddhist: 0.18,
           christian: 0.06,
@@ -1991,11 +1991,11 @@
           hinduism: 1.29,
           islam: 98.47
         },
-        icon: 'icons/BD NAVY.svg',
-        customMessage: 'However, the picture is dramatically different within the military. The Navy has only a handful of minority officers.'
+        icon: '../icons/BD NAVY.svg',
+        customMessage: 'তবে সামরিক বাহিনীতে পরিস্থিতি নাটকীয়ভাবে ভিন্ন। নৌ বাহিনীতে সংখ্যালঘু কর্মকর্তাদের সংখ্যা একেবারে হাতে গোনা যায়। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       },
       {
-        name: 'Bangladesh Army',
+        name: 'সেনাবাহিনী',
         data: {
           buddhist: 0.13,
           christian: 0.00,
@@ -2003,8 +2003,8 @@
           hinduism: 0.64,
           islam: 99.09
         },
-        icon: 'icons/BD ARMY.svg',
-        customMessage: 'The Army, too, remains almost exclusively composed of Muslim officers, standing in stark contrast to civilian institutions.'
+        icon: '../icons/BD ARMY.svg',
+        customMessage: 'সেনাবাহিনীতেও কর্মকর্তাদের তালিকা প্রায় পুরোটাই মুসলিমদের দিয়ে ভরা, বেসামরিক সরকারের সঙ্গে যা একেবারেই বেমানান। (ডটের সংখ্যা প্রতীকী, তবে আনুপাতিক।)'
       }
     ];
 
@@ -2213,38 +2213,38 @@
     ************************************************************/
     // Example data
     const rawData_x2 = [
-      { group: "India", category: "Hindu", nat: 79.80, cs: 92.88 },
-      { group: "India", category: "Muslim", nat: 14.20, cs: 4.22 },
-      { group: "India", category: "Christian", nat: 2.30, cs: 1.29 },
-      { group: "India", category: "Sikh", nat: 1.70, cs: 0.89 },
-      { group: "India", category: "Jain", nat: 0.40, cs: 0.62 },
-      { group: "India", category: "Buddhist", nat: 0.70, cs: 0.11 },
-      { group: "Bangladesh", category: "Muslim", nat: 91.09, cs: 89.56 },
-      { group: "Bangladesh", category: "Hindu", nat: 7.75, cs: 8.91 },
-      { group: "Bangladesh", category: "Indigenous", nat: 1.00, cs: 1.30 },
-      { group: "Bangladesh", category: "Christian", nat: 0.15, cs: 0.09 },
-      { group: "Bangladesh", category: "Buddhist", nat: 0.01, cs: 0.14 },
-      { group: "Nepal", category: "Bahuns", nat: 12.74, cs: 72 },
-      { group: "Nepal", category: "Chhetris", nat: 15.8, cs: 15.89 },
-      { group: "Nepal", category: "Newar", nat: 5.48, cs: 7.14 },
-      { group: "Nepal", category: "Janajati", nat: 30.83, cs: 1.64 },
-      { group: "Nepal", category: "Madheshi", nat: 12.32, cs: 1.17 },
-      { group: "Nepal", category: "Dalit", nat: 14.99, cs: 0.67 },
-      { group: "Nepal", category: "Muslim", nat: 4.27, cs: 0.1 },
-      { group: "Nepal", category: "Others", nat: 3.57, cs: 1.39 }
+      { group: "ভারত", category: "হিন্দু", nat: 79.80, cs: 92.88 },
+      { group: "ভারত", category: "মুসলিম", nat: 14.20, cs: 4.22 },
+      { group: "ভারত", category: "খ্রিস্টান", nat: 2.30, cs: 1.29 },
+      { group: "ভারত", category: "শিখ", nat: 1.70, cs: 0.89 },
+      { group: "ভারত", category: "জৈন", nat: 0.40, cs: 0.62 },
+      { group: "ভারত", category: "বৌদ্ধ", nat: 0.70, cs: 0.11 },
+      { group: "বাংলাদেশ", category: "মুসলিম", nat: 91.09, cs: 89.56 },
+      { group: "বাংলাদেশ", category: "হিন্দু", nat: 7.75, cs: 8.91 },
+      { group: "বাংলাদেশ", category: "Indigenous", nat: 1.00, cs: 1.30 },
+      { group: "বাংলাদেশ", category: "খ্রিস্টান", nat: 0.15, cs: 0.09 },
+      { group: "বাংলাদেশ", category: "বৌদ্ধ", nat: 0.01, cs: 0.14 },
+      { group: "নেপাল", category: "বাহুন", nat: 12.74, cs: 72 },
+      { group: "নেপাল", category: "ছেত্রি", nat: 15.8, cs: 15.89 },
+      { group: "নেপাল", category: "নেওয়ার", nat: 5.48, cs: 7.14 },
+      { group: "নেপাল", category: "জনজাতি", nat: 30.83, cs: 1.64 },
+      { group: "নেপাল", category: "মাধেশি", nat: 12.32, cs: 1.17 },
+      { group: "নেপাল", category: "দলিত", nat: 14.99, cs: 0.67 },
+      { group: "নেপাল", category: "মুসলিম", nat: 4.27, cs: 0.1 },
+      { group: "নেপাল", category: "অন্যান্য", nat: 3.57, cs: 1.39 }
     ];
 
     const subtitle_x2 = {
-      "India": "Muslims are 14% of population, 4% in civil service",
-      "Bangladesh": "Hindus slightly outpace Muslims in civil service jobs",
-      "Nepal": "Hindu elites dominate, with the rest left behind"
+      "ভারত": "জনসংখ্যার ১৪ ভাগ মুসলিম, সিভিল সার্ভিসে ৪ ভাগ",
+      "বাংলাদেশ": "সিভিল সার্ভিসে হিন্দুদের হার মুসলিমদের তুলনায় কিছুটা বেশি",
+      "নেপাল": "হিন্দু অভিজাতদের আধিপত্য, বাকিরা পিছিয়ে"
     };
     const sources_x2 = {
-      "India": "Source: Government of India, Netra News",
-      "Bangladesh": "Source: Government of Bangladesh, Netra News",
-      "Nepal": "Source: Social inequality in the civil service and a review of affirmative action in Nepal (South Asianist Journal)"
+      "ভারত": "সূত্র: ভারত সরকার, নেত্র নিউজ",
+      "বাংলাদেশ": "সূত্র: বাংলাদেশ সরকার, নেত্র নিউজ",
+      "নেপাল": "সূত্র: গবেষণাপত্র (দক্ষিণ এশিয়া জার্নাল, ২০১৬)"
     };
-    const countries_x2 = ["India", "Bangladesh", "Nepal"];
+    const countries_x2 = ["ভারত", "বাংলাদেশ", "নেপাল"];
 
     const tooltip_x2 = d3.select(".tooltip_x2");
 
@@ -2307,7 +2307,7 @@
           .style("background-color", "#cbd5e1")
           .style("margin-right", "6px");
 
-        popLegend.append("span").text("Overall population share");
+        popLegend.append("span").text("জাতীয় জনসংখ্যায় হার");
 
         // Civil service legend
         const civilLegend = legend.append("div")
@@ -2320,7 +2320,7 @@
           .style("height", "12px")
           .style("background-color", "#00243e")
           .style("margin-right", "6px");
-        civilLegend.append("span").text("Civil service officers share");
+        civilLegend.append("span").text("সিভিল সার্ভিসে হার");
 
         // SVG
         const svg = container.append("svg")
