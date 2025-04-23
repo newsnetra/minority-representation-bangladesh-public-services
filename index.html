@@ -15,7 +15,7 @@
     }
 
     ::selection {
-      background-color: #00243e;
+      background-color: #c74c3d;
       color: white;
     }
 
@@ -35,7 +35,7 @@
     a:visited {
       text-decoration: underline;
       text-underline-offset: 4px;
-      text-decoration-color: #ea7e49;
+      text-decoration-color: #c74c3d;
       text-decoration-thickness: 2.5px;
       text-underline-offset: 4px;
       transition: all .5s ease;
@@ -44,7 +44,7 @@
 
 
     a:hover {
-      background: #ea7e49;
+      background: #c74c3d;
       color: #fff;
     }
 
@@ -152,7 +152,7 @@
       display: block;
       width: 166px;
       height: 7px;
-      background: linear-gradient(to right, #00243e 50%, #ea7e49 50%);
+      background: linear-gradient(to right, #c74c3d 50%, #c74c3d 50%);
       bottom: 0;
       left: 50%;
       position: absolute;
@@ -269,7 +269,7 @@
     .method-title {
       margin: 15px 20px;
       font-style: normal;
-      color: #00243e;
+      color: #c74c3d;
       font-size: 18px;
     }
 
@@ -293,12 +293,12 @@
 
     .articlex::first-letter {
       font-weight: 700;
-      color: #ea7e49;
+      color: #c74c3d;
     }
 
     .highlighted {
       font-weight: 400;
-      background: linear-gradient(120deg, transparent 0%, rgba(212, 241, 18, 0.3) 10%, #d4f112 20%, #d4f112 50%, rgba(212, 241, 18, 0.3) 80%, transparent 100%);
+      background: linear-gradient(120deg, transparent 0%, rgba(247, 205, 184, 0.3) 10%, #f7cdb8 20%, #f7cdb8 50%, rgba(247, 205, 184, 0.3) 80%, transparent 100%);
       /* padding: 0px 0px 4px 0px; */
       background-position: 0% 50%;
     }
@@ -366,7 +366,7 @@
       position: sticky;
       top: 10%;
       overflow-y: auto;
-      border-right: 1.5px solid #ea7e49;
+      border-right: 1.5px solid lightgray;
       padding: 0 1rem;
 
     }
@@ -589,7 +589,7 @@
 
 
     #footer {
-      background-color: antiquewhite;
+      background-color: #c74c3d;
       color: #000;
       padding: 40px;
       margin: auto;
@@ -1064,7 +1064,7 @@
       box-sizing: border-box;
       margin-right: 10px;
       vertical-align: top;
-      border-right: 1px solid #ea7e49;
+      border-right: 1px solid lightgray;
       /* optional separator */
     }
 
@@ -1151,7 +1151,7 @@ color: #fff;
     /* Tooltip box that auto-centers and avoids overflow */
     .infotip-box {
       visibility: hidden;
-      background-color: #00243e;
+      background-color: #c74c3d;
       color: #fff;
       text-align: left;
       border-radius: 4px;
@@ -1189,7 +1189,7 @@ color: #fff;
       transform: translateX(-50%);
       border-width: 6px;
       border-style: solid;
-      border-color: transparent transparent #00243e transparent;
+      border-color: transparent transparent #c74c3d transparent;
     }
 
 
@@ -1602,7 +1602,9 @@ color: #fff;
       minority officers is not so different. “It’s an unwritten state law,” he said, alleging that minority
       representation is deliberately kept to a minimum. “They just don’t trust the minority community.”</p>
 
-      <p>There are, of course, opposing views. Among them is Manish Dewan, a former military officer and decorated veteran of Bangladesh’s Liberation War. A Buddhist and a member of the Chakma community with ties to the Bangladesh Nationalist Party, Dewan declined to give a detailed interview. But he offered a brief remark: “I don’t see myself as a minority. I am a proud soldier who has given his blood and sweat to the Bangladesh Army. My foremost identity is that I am a Bangladeshi.”</p>
+      <p>There are, of course, opposing views.</p>
+      
+        <p>Among them is Manish Dewan, a former military officer and decorated veteran of Bangladesh’s Liberation War. A Buddhist and a member of the Chakma community with ties to the Bangladesh Nationalist Party, Dewan declined to give a detailed interview. But he offered a brief remark: “I don’t see myself as a minority. I am a proud soldier who has given his blood and sweat to the Bangladesh Army. My foremost identity is that I am a Bangladeshi.”</p>
 
     <p class="credits">Suraiya Sultana and Marzia Hashmi Momo contributed to the reporting. Subinoy Mustofi Eron and Aaqib
       Md. Shatil drew the illustrations. Miraz Hossain, Mehedi Hasan Marof, Aaqib
@@ -2304,7 +2306,7 @@ color: #fff;
         popLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#cbd5e1")
+          .style("background-color", "#f7cdb8")
           .style("margin-right", "6px");
 
         popLegend.append("span").text("Overall population share");
@@ -2318,7 +2320,7 @@ color: #fff;
         civilLegend.append("div")
           .style("width", "12px")
           .style("height", "12px")
-          .style("background-color", "#00243e")
+          .style("background-color", "#c74c3d")
           .style("margin-right", "6px");
         civilLegend.append("span").text("Civil service officers share");
 
@@ -2356,7 +2358,7 @@ color: #fff;
           .attr("y", d => y(d.category))
           .attr("width", d => x(d.nat))
           .attr("height", y.bandwidth())
-          .attr("fill", "#cbd5e1")
+          .attr("fill", "#f7cdb8")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
@@ -2380,7 +2382,7 @@ color: #fff;
           .attr("y", d => y(d.category) + y.bandwidth() / 4)
           .attr("width", d => x(d.cs))
           .attr("height", y.bandwidth() / 2)
-          .attr("fill", "#00243e")
+          .attr("fill", "#c74c3d")
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
