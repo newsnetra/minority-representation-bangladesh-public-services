@@ -88,7 +88,7 @@
 }
 
 .mil.mil7 {
-  top: 45vh;
+  top: 38vh;
   left: 30vw;
   width: 5.5vw;
   animation-delay: 2.1s;
@@ -133,6 +133,150 @@
   100% {
     opacity: 0;
   }
+}
+
+
+
+/* Very large screens (e.g., 2560px wide monitors) */
+@media (min-width: 2000px) {
+  .container {
+    height: 65vh; /* slightly reduce height to maintain landscape */
+  }
+
+  .icon.army {
+    bottom: 0vh;
+  }
+}
+
+/* Medium screens (like iPad landscape, 1024px to 1366px) */
+@media (max-width: 1366px) {
+  .container {
+    height: 60vh;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  /* Fix military figures */
+  .mil.mil1 {
+    top: 28vh; /* instead of bottom: 20vh */
+    left: 7vw;
+    width: 5vw;
+    bottom: auto;
+  }
+  .mil.mil2 {
+    top: 24vh; /* instead of bottom: 22vh */
+    left: 12vw;
+    width: 5vw;
+    bottom: auto;
+  }
+  .mil.mil5 {
+    top: 32vh; /* instead of bottom: 12vh */
+    left: 15vw;
+    width: 5vw;
+    bottom: auto;
+  }
+  .mil.mil7 {
+    top: 35vh; /* was 45vh -> now within limit */
+    left: 30vw;
+    width: 5vw;
+  }
+
+  /* Fix civilian figures (only those violating) */
+  .person.p4 {
+    top: 34vh; /* was 42vh -> adjusted */
+    left: 74vw;
+    width: 5vw;
+  }
+  .person.p10 {
+    top: 36vh; /* was 41vh */
+    left: 76vw;
+    width: 5vw;
+  }
+  .person.p14 {
+    top: 37vh; /* was 44vh */
+    left: 53vw;
+    width: 5vw;
+  }
+  .person.p20 {
+    top: 37vh; /* was 43vh */
+    left: 60vw;
+    width: 5vw;
+  }
+  .icon.army {
+    bottom: 0vh;
+  }
+}
+
+
+/* Small tablets and large smartphones (600px to 768px) */
+@media (max-width: 768px) {
+  .container {
+    height: 50vh;
+  }
+}
+
+/* Smartphones (up to 600px) */
+@media (max-width: 600px) {
+  .container {
+    height: 45vh;
+    background-size: contain; /* still contain to avoid weird crops */
+  }
+}
+
+/* Very small devices (up to 400px) */
+@media (max-width: 400px) {
+  .container {
+    height: 40vh;
+    background-size: contain;
+  }
+}
+
+
+
+@media (orientation: portrait) {
+  /* Adjust container for portrait screens */
+  .container {
+    height: 30vh;
+  }
+
+  /* Randomized tops for military figures (mil1 to mil7) */
+  .mil.mil1 { top: 7vh; }
+  .mil.mil2 { top: 15vh; }
+  .mil.mil3 { top: 9vh; }
+  .mil.mil4 { top: 19vh; }
+  .mil.mil5 { top: 11vh; }
+  .mil.mil6 { top: 5vh; }
+  .mil.mil7 { top: 17vh; }
+
+  /* Randomized tops for civilian figures (p1 to p22) */
+  .person.p1 { top: 6vh; }
+  .person.p2 { top: 18vh; }
+  .person.p3 { top: 10vh; }
+  .person.p4 { top: 13vh; }
+  .person.p5 { top: 7vh; }
+  .person.p6 { top: 15vh; }
+  .person.p7 { top: 8vh; }
+  .person.p8 { top: 16vh; }
+  .person.p9 { top: 11vh; }
+  .person.p10 { top: 19vh; }
+  .person.p11 { top: 9vh; }
+  .person.p12 { top: 17vh; }
+  .person.p13 { top: 5vh; }
+  .person.p14 { top: 14vh; }
+  .person.p15 { top: 12vh; }
+  .person.p16 { top: 8vh; }
+  .person.p17 { top: 20vh; }
+  .person.p18 { top: 7vh; }
+  .person.p19 { top: 18vh; }
+  .person.p20 { top: 5vh; }
+  .person.p21 { top: 16vh; }
+  .person.p22 { top: 10vh; }
+  .icon.army {
+        bottom: 2vh;
+    }
+    .icon.navy {
+      top: 14vh;}
 }
 
   </style>
