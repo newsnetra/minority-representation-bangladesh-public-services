@@ -1483,12 +1483,16 @@ color: #fff;
       regional norms for religious representation in military ranks.</p>
     <p>However, Bangladesh far outperforms India in civilian arenas of governance.</p>
     <p>In Bangladesh’s civil service, around nine percent of officers are <span class="infotip-container" tabindex="0">non-indigenous<sup></sup> <span class="infotip-box" role="tooltip"> Some indigenous communities such as Tripura follow Hinduism. They are classified as indigenous, instead of Hindu.</a></span> </span> Hindus — 112 percent of their
-      population share. In India, by contrast, Muslims comprise about 4.3 percent of the elite civil service, data
+      population share. In India, by contrast, Muslims comprise about 4 percent of the elite civil service, data
       shows. That’s just 28 percent of their national proportion. </p>
       <p>Policing follows a similar pattern, with Hindus in Bangladesh reaching about 95 percent of their demographic
-        share in the force, while Indian Muslims fill barely 28 percent of theirs.</p>
+        share in the force, while Indian Muslims fill barely 30 percent of theirs.</p>
     <p>Put differently, adjusted for each country’s religious demographics, Hindus in Bangladesh’s civil service and police are
       <span class="highlighted">three-four times</span> better represented than Muslims in India’s. </p>
+
+      <p>Even in institutions prized for their autonomy, India lags behind Bangladesh in minority representation. A comparison of permanent faculty rosters — excluding lecturers, since tenure in India typically begins at the assistant professor level — reveals striking disparities. At Dhaka University, Hindu professors account for 8.8 percent of the permanent faculty. By contrast, Muslims make up just 3.8 percent of the faculty at Delhi University and 6.4 percent at Jawaharlal Nehru University (JNU), two of India's most prominent public universities.</p>
+
+<p>When it comes to including its largest minority group in university faculty, Dhaka University outperforms Delhi University and JNU by factors of 4.3 and 2.75, respectively.</p>
     
   </div>
 
@@ -1709,6 +1713,15 @@ color: #fff;
     and the list of IPS officers from 
     <a href="https://ips.gov.in/ips_civillist.aspx" target="_blank" rel="noopener">ips.gov.in</a>.
   </li>
+
+
+  <li>
+   Members of faculty at Delhi University were scraped from respective departmental websites. For example, the 
+   Department of Law maintaints its website
+    <a href="https://www.du.ac.in/index.php?page=department-of-law" target="_blank"
+      rel="noopener">here</a>। Jawaharlal Nehru University maintaints its faculty directory 
+    <a href="https://www.jnu.ac.in/faculty-profile4/a" target="_blank" rel="noopener">here</a>.
+  </li>
 </ul>
 
             <p>We used Google Pinpoint and Tabula to extract entries from scanned PDF files to plain text in
@@ -1765,12 +1778,12 @@ color: #fff;
               <code><a href="https://github.com/appeler/pranaam" target="_blank" rel="noopener noreferrer" title="View the GitHub repository for 'pranaam'">“pranaam”</a></code>,
               a Python library that uses 4
               million unique
-              records of Indian names and their religions. Both have a very high accuracy rate, and they agreed on the
-              likely religion of the officers’ names in more than 90% of the cases. We manually determined some of the
-              cases through reporting and research, and discarded the rest. In total, we analysed the names of more than
-              9,000
-              Indian officers.
+              records of Indian names and their religions.
             </p>
+            <p>Peer-reviewed studies have found that each library delivers a high level of accuracy.</p> 
+            <p>For roughly 97 percent of the names, both models reached the same conclusion, even though their decision-making methods differ. For the remaining 3 percent, we used OpenAI’s API to infer the most likely religion. In total, we identified the probable faith of about 10,000 Indian officials and educators.</p> 
+            <p>Our full Python notebook is available <a href="https://github.com/newsnetra/minority-representation-bangladesh-public-services/blob/main/assets/files/minority_representation_india_civil_service_police_university.ipynb" target="_blank" rel="noopener">at this link</a>.</p>
+
           </div>
 
         </div>
