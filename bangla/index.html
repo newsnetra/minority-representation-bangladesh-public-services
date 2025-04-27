@@ -125,6 +125,18 @@
       margin-right: 20px;
     }
 
+    .social-icons-m {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-right: 20px;
+      margin-top: 35px;
+    }
+
+    .social-icons-m a {
+      background: none;
+    }
+
     .twitter,
     .facebook {
       display: flex;
@@ -144,6 +156,7 @@
       margin: 0px 3px;
     }
 
+   
     @media screen and (max-width: 540px) {
       .header-bar {
         justify-content: center;
@@ -160,6 +173,12 @@
         /* Hide social icons */
       }
     }
+
+    @media screen and (min-width: 540px) {
+    .social-icons-m {
+      display: none;
+    }
+  }
 
 
     /* Titles Container */
@@ -1955,7 +1974,7 @@
 
       <div class='twitter'>
         <li class="twitter-share">
-          <a href="https://twitter.com/intent/tweet?url=https://interactive.netra.news/minority-representation-bangladesh-public-services/bangla/" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
+          <a href="https://twitter.com/intent/tweet?url=https://interactive.netra.news/minority-representation-bangladesh-public-services/bangla/&text=সংখ্যালঘু অন্তর্ভুক্তিতে দক্ষিণ এশিয়ায় অনবদ্য বাংলাদেশ, ব্যাতিক্রম সশস্ত্র বাহিনী @NetraNews" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
             <svg class="twitter-logo" data-icon="twitter" style="color: #000;" preserveAspectRatio="xMidYMid meet"
               viewBox="0 0 24 24" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -2022,14 +2041,40 @@
         সশস্ত্র বাহিনী রয়ে গেছে নাগালের বাইরে।</h2>
       <div class="byline">
         <span>
-          <a href="https://XXXXX" class="by-text" target="_blank">অনুসন্ধানী সম্পাদক</a>
+          অনুসন্ধানী সম্পাদক
         </span>
         <span class="publish">
           <time datetime="2025-05-01">- পহেলা মে ২০২৫</time>
         </span>
       </div>
 
-
+      <div class="social-icons-m">
+        <div class='facebook'>
+          <li class="facebook-share">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://interactive.netra.news/minority-representation-bangladesh-public-services/bangla/" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
+              <svg viewBox="0 0 14 26" fill="none" preserveAspectRatio="xMidYMid meet" class="fb-logo"
+                style="color: #000;">
+                <path
+                  d="M13.2237 13.9747H8.82474V25.75H4.13073V13.9747H0V9.87083H4.18437V4.88177C4.18437 2.41406 6.00833 0 9.20026 0H13.5456V4.72083H10.6487C9.25391 4.72083 8.77109 4.88177 8.77109 6.06198V9.84401H13.7333L13.2237 13.9747Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </li>
+        </div>
+  
+        <div class='twitter'>
+          <li class="twitter-share">
+            <a href="https://twitter.com/intent/tweet?url=https://interactive.netra.news/minority-representation-bangladesh-public-services/bangla/&text=সংখ্যালঘু অন্তর্ভুক্তিতে দক্ষিণ এশিয়ায় অনবদ্য বাংলাদেশ, ব্যাতিক্রম সশস্ত্র বাহিনী @NetraNews" target="_blank" rel="noreferrer" class="svelte-1ouj9qo">
+              <svg class="twitter-logo" data-icon="twitter" style="color: #000;" preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.99079 12.1721L0 1H7.12135L12.6713 7.9051L18.6005 1.03109H22.5226L14.5676 10.2645L24 22H16.8999L10.8905 14.5326L4.47476 21.9793H0.531444L8.99079 12.1721ZM17.9348 19.93L4.36657 3.06999H6.08565L19.6368 19.93H17.9348Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </li>
+        </div>
+      </div>
 
     </div>
 
