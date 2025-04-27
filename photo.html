@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minority Representation in Bangladesh</title>
+  <style>
+    /* General Settings */
+.icon, .person {
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 6s forwards;
+}
+
+/* Container */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 50vh;
+  margin: 0 auto;
+  background: url('./icons/dataminogrid.png') no-repeat center center;
+  background-size: cover;
+}
+
+/* Icons (religious and military) */
+.icon.christ {
+  top: 3vh;
+  left: 40vw;
+  width: 3vw;
+}
+
+.icon.hindu {
+  bottom: 3vh;
+  right: 5vw;
+  width: 3vw;
+}
+
+.icon.navy {
+  top: 15vh;
+  left: 3vw;
+  width: 4vw;
+}
+
+.icon.army {
+  bottom: 3vh;
+  left: 2vw;
+  width: 4vw;
+}
+
+/* People (civilian and military figures) - Even Bigger */
+.person.p1 {
+  top: 30vh;
+  left: 20vw;
+  width: 5.5vw; /* Bigger */
+  animation-delay: 0.2s;
+}
+
+.person.p2 {
+  top: 35vh;
+  left: 35vw;
+  width: 5.5vw;
+  animation-delay: 0.4s;
+}
+
+.person.p3 {
+  top: 22vh;
+  left: 50vw;
+  width: 5.5vw;
+  animation-delay: 0.6s;
+}
+
+.person.p4 {
+  top: 15vh;
+  left: 70vw;
+  width: 5.5vw;
+  animation-delay: 0.8s;
+}
+
+.person.p5 {
+  top: 33vh;
+  left: 80vw;
+  width: 5.5vw;
+  animation-delay: 1s;
+}
+
+.person.p6 {
+  top: 18vh;
+  left: 25vw;
+  width: 5.5vw;
+  animation-delay: 1.2s;
+}
+
+.person.p7 {
+  top: 25vh;
+  left: 60vw;
+  width: 5.5vw;
+  animation-delay: 1.4s;
+}
+
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Religious and Military Icons -->
+    <img src="./icons/christsign.png" class="icon christ" alt="Christianity">
+    <img src="./icons/hindusign.png" class="icon hindu" alt="Hinduism">
+    <img src="./icons/navylogo.png" class="icon navy" alt="Navy">
+    <img src="./icons/bdarmylogo.png" class="icon army" alt="Army">
+
+    <!-- People Icons -->
+    <img src="./icons/civ2.svg" class="person p1" alt="Person 1">
+    <img src="./icons/civ3.svg" class="person p2" alt="Person 2">
+    <img src="./icons/m3.svg" class="person p3" alt="Person 3">
+    <img src="./icons/civ4.svg" class="person p4" alt="Person 4">
+    <img src="./icons/m4.svg" class="person p5" alt="Person 5">
+    <img src="./icons/m5.svg" class="person p6" alt="Person 6">
+    <img src="./icons/m6.svg" class="person p7" alt="Person 7">
+  </div>
+</body>
+</html>
