@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Minority Representation in Bangladesh</title>
   <style>
@@ -135,28 +136,29 @@
   }
 }
 
-
-
 /* Very large screens (e.g., 2560px wide monitors) */
 @media (min-width: 2000px) {
   .container {
     height: 65vh; /* slightly reduce height to maintain landscape */
   }
-
   .icon.army {
     bottom: 0vh;
   }
 }
 
-/* Medium screens (like iPad landscape, 1024px to 1366px) */
+/* Medium-large screens (like MacBooks, iPad landscape, 1024px to 1366px) */
 @media (max-width: 1366px) {
   .container {
     height: 60vh;
   }
 }
 
-
+/* Small laptops and tablets (width <= 1024px) */
 @media (max-width: 1024px) {
+  .container {
+    height: 55vh;
+  }
+
   /* Fix military figures */
   .mil.mil1 {
     top: 28vh; /* instead of bottom: 20vh */
@@ -184,7 +186,7 @@
 
   /* Fix civilian figures (only those violating) */
   .person.p4 {
-    top: 34vh; /* was 42vh -> adjusted */
+    top: 34vh; /* was 42vh */
     left: 74vw;
     width: 5vw;
   }
@@ -208,8 +210,7 @@
   }
 }
 
-
-/* Small tablets and large smartphones (600px to 768px) */
+/* Tablets and larger smartphones (600px to 768px) */
 @media (max-width: 768px) {
   .container {
     height: 50vh;
@@ -220,27 +221,20 @@
 @media (max-width: 600px) {
   .container {
     height: 45vh;
-    background-size: contain; /* still contain to avoid weird crops */
+    background-size: contain; /* avoid weird cropping */
   }
 }
 
-/* Very small devices (up to 400px) */
-@media (max-width: 400px) {
-  .container {
-    height: 40vh;
-    background-size: contain;
-  }
-}
-
-
-
+/* -----------------------------------
+   Portrait Screens (all devices upright)
+   General rule (comes before small phones)
+----------------------------------- */
 @media (orientation: portrait) {
-  /* Adjust container for portrait screens */
   .container {
     height: 30vh;
   }
 
-  /* Randomized tops for military figures (mil1 to mil7) */
+  /* Military Figures - random tops between 5vh and 20vh */
   .mil.mil1 { top: 7vh; }
   .mil.mil2 { top: 15vh; }
   .mil.mil3 { top: 9vh; }
@@ -249,7 +243,7 @@
   .mil.mil6 { top: 5vh; }
   .mil.mil7 { top: 17vh; }
 
-  /* Randomized tops for civilian figures (p1 to p22) */
+  /* Civilian Figures - random tops between 5vh and 20vh */
   .person.p1 { top: 6vh; }
   .person.p2 { top: 18vh; }
   .person.p3 { top: 10vh; }
@@ -272,12 +266,69 @@
   .person.p20 { top: 5vh; }
   .person.p21 { top: 16vh; }
   .person.p22 { top: 10vh; }
+
+  /* Icon positions for portrait */
   .icon.army {
-        bottom: 2vh;
-    }
-    .icon.navy {
-      top: 14vh;}
+    bottom: 2vh;
+  }
+  .icon.navy {
+    top: 14vh;
+  }
 }
+
+/* -----------------------------------
+   Portrait + Very Small Phones (max-width: 500px)
+   Specific override (comes after general portrait)
+----------------------------------- */
+@media (orientation: portrait) and (max-width: 600px) {
+  .container {
+    height: 15vh;
+    margin: 10px;
+  }
+
+  /* Military Figures - random tops between 1vh and 10vh */
+  .mil.mil1 { top: 3vh; }
+  .mil.mil2 { top: 7vh; }
+  .mil.mil3 { top: 2vh; }
+  .mil.mil4 {         top: 9vh;
+    left: 35vw; }
+  .mil.mil5 { top: 5vh; }
+  .mil.mil6 { top: 1vh; }
+  .mil.mil7 { top: 8vh; }
+
+  /* Civilian Figures - random tops between 1vh and 10vh */
+  .person.p1 { top: 2vh; }
+  .person.p2 { top: 9vh; left: 46vw; }
+  .person.p3 { top: 4vh; }
+  .person.p4 { top: 8vh; }
+  .person.p5 { top: 1vh; }
+  .person.p6 { top: 6vh; }
+  .person.p7 { top: 3vh; }
+  .person.p8 { top: 7vh; left: 54vw;}
+  .person.p9 { top: 5vh; }
+  .person.p10 { top: 10vh; }
+  .person.p11 { top: 2vh; }
+  .person.p12 { top: 8vh; }
+  .person.p13 { top: 1vh; }
+  .person.p14 { top: 6vh; }
+  .person.p15 { top: 4vh; }
+  .person.p16 { top: 7vh; }
+  .person.p17 { top: 3vh; }
+  .person.p18 { top: 9vh; }
+  .person.p19 { top: 2vh; }
+  .person.p20 { top: 10vh; }
+  .person.p21 { top: 5vh;     left: 50vw;}
+  .person.p22 { top: 7vh; }
+  .icon.navy {
+        top: 6vh;
+    }
+    .icon.army {
+        bottom: 0vh;
+    }
+}
+
+
+
 
   </style>
 </head>
