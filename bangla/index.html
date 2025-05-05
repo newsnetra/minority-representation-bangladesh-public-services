@@ -993,10 +993,7 @@
 
     }
 
-    .articlex::first-letter {
-      font-weight: 700;
-      color: #c74c3d;
-    }
+   
 
 
 
@@ -1647,6 +1644,15 @@
         padding: 0px 0px 0px 0px;
       }
 
+      /* drop‑cap tweak */
+      .dropcap-image {
+        margin: 0px -15px -5px 10px;
+      }
+
+      .dropcap-image .image {
+        height: 10em;
+      }
+
     }
 
 
@@ -1915,6 +1921,35 @@
     }
 
 
+ /* 1. Existing drop‑cap rules (kept, with a small tidy‑up) */
+ .dropcap-image {
+      float: left;
+      /* margin: top  right bottom left */
+      margin: -8px 0px 0px 5px;
+      line-height: 0;
+      /* removes stray whitespace under the svg */
+    }
+
+    .dropcap-image .image {
+      height: 15em;
+      /* same visual size you already use */
+      width: auto;
+      display: block;
+    }
+
+/* 2. Visually hide the textual “F” but leave it for accessibility/SEO */
+.visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
 
     @media (hover: none) and (pointer: coarse) {
       .horizontal-scroller {
@@ -1966,7 +2001,6 @@
     .language-button {
       background-color: #c74c3d;
       border: 1px solid #f7cdb8;
-      border-radius: 3px;
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -2066,27 +2100,27 @@
       <!-- Civilian Figures (22) -->
       <!-- You can repeat civ2, civ3, civ4 as needed -->
       <img src="../icons/civ2.svg" class="person p1" alt="Civilian 1">
-      <img src="../icons/civ3.svg" class="person p2" alt="Civilian 2">
-      <img src="../icons/civ4.svg" class="person p3" alt="Civilian 3">
-      <img src="../icons/civ2.svg" class="person p4" alt="Civilian 4">
-      <img src="../icons/civ3.svg" class="person p5" alt="Civilian 5">
-      <img src="../icons/civ4.svg" class="person p6" alt="Civilian 6">
-      <img src="../icons/civ2.svg" class="person p7" alt="Civilian 7">
-      <img src="../icons/civ3.svg" class="person p8" alt="Civilian 8">
-      <img src="../icons/civ4.svg" class="person p9" alt="Civilian 9">
-      <img src="../icons/civ2.svg" class="person p10" alt="Civilian 10">
-      <img src="../icons/civ3.svg" class="person p11" alt="Civilian 11">
-      <img src="../icons/civ4.svg" class="person p12" alt="Civilian 12">
-      <img src="../icons/civ2.svg" class="person p13" alt="Civilian 13">
-      <img src="../icons/civ3.svg" class="person p14" alt="Civilian 14">
-      <img src="../icons/civ4.svg" class="person p15" alt="Civilian 15">
-      <img src="../icons/civ2.svg" class="person p16" alt="Civilian 16">
-      <img src="../icons/civ3.svg" class="person p17" alt="Civilian 17">
-      <img src="../icons/civ4.svg" class="person p18" alt="Civilian 18">
-      <img src="../icons/civ2.svg" class="person p19" alt="Civilian 19">
-      <img src="../icons/civ3.svg" class="person p20" alt="Civilian 20">
-      <img src="../icons/civ4.svg" class="person p21" alt="Civilian 21">
-      <img src="../icons/civ2.svg" class="person p22" alt="Civilian 22">
+    <img src="../icons/civ3.svg" class="person p2" alt="Civilian 2">
+    <img src="../icons/civ4.svg" class="person p3" alt="Civilian 3">
+    <img src="../icons/civ2_1.svg" class="person p4" alt="Civilian 4">
+    <img src="../icons/civ3_1.svg" class="person p5" alt="Civilian 5">
+    <img src="../icons/civ4_1.svg" class="person p6" alt="Civilian 6">
+    <img src="../icons/civ2_2.svg" class="person p7" alt="Civilian 7">
+    <img src="../icons/civ3_2.svg" class="person p8" alt="Civilian 8">
+    <img src="../icons/civ4_2.svg" class="person p9" alt="Civilian 9">
+    <img src="../icons/civ2.svg" class="person p10" alt="Civilian 10">
+    <img src="../icons/civ3.svg" class="person p11" alt="Civilian 11">
+    <img src="../icons/civ4.svg" class="person p12" alt="Civilian 12">
+    <img src="../icons/civ2_1.svg" class="person p13" alt="Civilian 13">
+    <img src="../icons/civ3_1.svg" class="person p14" alt="Civilian 14">
+    <img src="../icons/civ4_1.svg" class="person p15" alt="Civilian 15">
+    <img src="../icons/civ2_2.svg" class="person p16" alt="Civilian 16">
+    <img src="../icons/civ3_2.svg" class="person p17" alt="Civilian 17">
+    <img src="../icons/civ4_2.svg" class="person p18" alt="Civilian 18">
+    <img src="../icons/civ2.svg" class="person p19" alt="Civilian 19">
+    <img src="../icons/civ3.svg" class="person p20" alt="Civilian 20">
+    <img src="../icons/civ4.svg" class="person p21" alt="Civilian 21">
+    <img src="../icons/civ2_1.svg" class="person p22" alt="Civilian 22">
     </div>
 
     <div class="titles">
@@ -2152,7 +2186,14 @@
 
   <div class="article">
     <div class="articlex">
-      <p>বাংলাদেশের ধর্মীয় ও জাতিগত সংখ্যালঘুদের জন্য দেশটির রাষ্ট্রীয় ও সামাজিক প্রভাব-প্রতিপত্তির চৌহদ্দিতে প্রবেশের প্রায় সকল দ্বার উন্মুক্ত।</p>
+
+      <span class="dropcap-image" aria-hidden="true">
+        <img class="image" src="/icons/dha data.svg" alt="" loading="lazy" decoding="async">
+      </span>
+
+      <!-- Paragraph: real “F” is present but hidden from sight -->
+      <p><span class="visually-hidden">ধ</span>র্মীয় ও জাতিগত সংখ্যালঘুদের জন্য বাংলাদেশের রাষ্ট্রীয় ও সামাজিক প্রভাব-প্রতিপত্তির চৌহদ্দিতে প্রবেশের প্রায় সকল দ্বার উন্মুক্ত।</p>
+
       <p>জনপ্রশাসন থেকে শুরু করে পুলিশ বাহিনী — রাষ্ট্রের গুরুত্বপূর্ণ সব দপ্তরে সিদ্ধান্তগ্রহণ প্রক্রিয়ায়
         সক্রিয় অংশগ্রহণ রয়েছে সংখ্যালঘু কর্মকর্তাদের। জনাকীর্ণ আদালতে আইনজীবী হিসেবে তারা মামলা পরিচালনা যেমন করছেন,
         তেমনি

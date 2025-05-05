@@ -158,29 +158,6 @@
       margin: 0px 3px;
     }
 
-    @media screen and (min-width: 540px) {
-      .social-icons-m {
-        display: none;
-      }
-
-    }
-
-    @media screen and (max-width: 540px) {
-      .header-bar {
-        justify-content: center;
-        /* Center everything in the bar */
-      }
-
-      .netra-logo {
-        margin-left: 0;
-        /* Reset margin */
-      }
-
-      .social-icons {
-        display: none;
-        /* Hide social icons */
-      }
-    }
 
 
     /* Titles Container */
@@ -468,383 +445,6 @@
       animation-delay: 2.8s;
     }
 
-    /* Fade-in Animation */
-    /* Keyframes for infinite fade in + fade out */
-    @keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 1;
-      }
-
-      80% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Very large screens (e.g., 2560px wide monitors) */
-    @media (min-width: 2000px) {
-      .container {
-        height: 65vh;
-        /* slightly reduce height to maintain landscape */
-      }
-
-      .icon.army {
-        bottom: 0vh;
-      }
-    }
-
-    /* Medium-large screens (like MacBooks, iPad landscape, 1024px to 1366px) */
-    @media (max-width: 1366px) {
-      .container {
-        height: 60vh;
-      }
-
-      .icon.army {
-        bottom: 1vh;
-      }
-
-      .icon.navy {
-        left: 0vw;
-      }
-
-      .person.p14 {
-        top: 4vh;
-        left: 73vw;
-      }
-
-      .mil.mil2 {
-        bottom: 40vh;
-      }
-    }
-
-
-
-    /* Small laptops and tablets (width <= 1024px) */
-    @media (max-width: 1024px) {
-      .container {
-        height: 55vh;
-      }
-
-      /* Fix military figures */
-      .mil.mil1 {
-        top: 28vh;
-        /* instead of bottom: 20vh */
-        left: 7vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil2 {
-        top: 24vh;
-        /* instead of bottom: 22vh */
-        left: 12vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil5 {
-        top: 32vh;
-        /* instead of bottom: 12vh */
-        left: 15vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil7 {
-        top: 35vh;
-        /* was 45vh -> now within limit */
-        left: 30vw;
-        width: 7vw;
-      }
-
-      /* Fix civilian figures (only those violating) */
-      .person.p4 {
-        top: 34vh;
-        /* was 42vh */
-        left: 74vw;
-        width: 7vw;
-      }
-
-      .person.p10 {
-        top: 36vh;
-        /* was 41vh */
-        left: 76vw;
-        width: 7vw;
-      }
-
-      .person.p14 {
-        top: 37vh;
-        /* was 44vh */
-        left: 53vw;
-        width: 7vw;
-      }
-
-      .person.p20 {
-        top: 37vh;
-        /* was 43vh */
-        left: 60vw;
-        width: 7vw;
-      }
-
-      .icon.army {
-        bottom: 0vh;
-      }
-    }
-
-    /* Tablets and larger smartphones (600px to 768px) */
-    @media (max-width: 768px) {
-      .container {
-        height: 50vh;
-      }
-    }
-
-    /* Smartphones (up to 600px) */
-    @media (max-width: 600px) {
-      .container {
-        height: 45vh;
-        background-size: contain;
-        /* avoid weird cropping */
-      }
-    }
-
-    /* -----------------------------------
-   Portrait Screens (all devices upright)
-   General rule (comes before small phones)
------------------------------------ */
-    @media (orientation: portrait) {
-      .container {
-        height: 30vh;
-      }
-
-      /* Military Figures - random tops between 5vh and 20vh */
-      .mil.mil1 {
-        top: 7vh;
-      }
-
-      .mil.mil2 {
-        top: 15vh;
-      }
-
-      .mil.mil3 {
-        top: 9vh;
-      }
-
-      .mil.mil4 {
-        top: 19vh;
-      }
-
-      .mil.mil5 {
-        top: 11vh;
-      }
-
-      .mil.mil6 {
-        top: 5vh;
-      }
-
-      .mil.mil7 {
-        top: 17vh;
-      }
-
-      /* Civilian Figures - random tops between 5vh and 20vh */
-      .person.p1 {
-        top: 6vh;
-      }
-
-      .person.p2 {
-        top: 18vh;
-        left: 60vw;
-      }
-
-      .person.p3 {
-        top: 10vh;
-      }
-
-      .person.p4 {
-        top: 13vh;
-      }
-
-      .person.p5 {
-        top: 7vh;
-      }
-
-      .person.p6 {
-        top: 15vh;
-      }
-
-      .person.p7 {
-        top: 8vh;
-      }
-
-      .person.p8 {
-        top: 16vh;
-      }
-
-      .person.p9 {
-        top: 11vh;
-      }
-
-      .person.p10 {
-        top: 19vh;
-      }
-
-      .person.p11 {
-        top: 9vh;
-      }
-
-      .person.p12 {
-        top: 17vh;
-      }
-
-      .person.p13 {
-        top: 5vh;
-      }
-
-      .person.p14 {
-        top: 14vh;
-      }
-
-      .person.p15 {
-        top: 12vh;
-      }
-
-      .person.p16 {
-        top: 8vh;
-      }
-
-      .person.p17 {
-        top: 20vh;
-      }
-
-      .person.p18 {
-        top: 7vh;
-      }
-
-      .person.p19 {
-        top: 18vh;
-      }
-
-      .person.p20 {
-        top: 5vh;
-      }
-
-      .person.p21 {
-        top: 16vh;
-        left: 80vw;
-      }
-
-      .person.p22 {
-        top: 10vh;
-      }
-
-      /* Icon positions for portrait */
-      .icon.army {
-        bottom: 2vh;
-      }
-
-      .icon.navy {
-        top: 14vh;
-        left: 1vw;
-      }
-    }
-
-    /* -----------------------------------
-   Portrait + Very Small Phones (max-width: 500px)
-   Specific override (comes after general portrait)
------------------------------------ */
-    @media (orientation: portrait) and (max-width: 500px) {
-      .container {
-        height: 20vh;
-        margin: 10px 5px;
-      }
-
-      /* Military Figures - random tops between 1vh and 10vh */
-      .mil.mil1 {
-        top: 3vh;
-      }
-
-      .mil.mil2 {
-        top: 5vh;
-      }
-
-      .mil.mil4 {
-        top: 9vh;
-      }
-
-      .mil.mil7 {
-        top: 3vh;
-      }
-
-
-      /* Civilian Figures - random tops between 1vh and 10vh */
-
-
-      .person.p2 {
-        top: 8vh;
-      }
-
-
-      .person.p6 {
-        top: 6vh;
-      }
-
-
-
-
-      .person.p8 {
-        top: 12vh;
-      }
-
-
-
-
-      .person.p10 {
-        top: 10vh;
-      }
-
-
-
-      .person.p12 {
-        top: 3vh;
-      }
-
-
-      .person.p14 {
-        top: 4vh;
-      }
-
-
-
-
-      .person.p17 {
-        top: 13vh;
-        left: 53vw;
-      }
-
-
-      .person.p19 {
-        top: 8vh;
-      }
-
-
-
-
-      .person.p21 {
-        top: 10vh;
-      }
-
-      .icon.navy {
-        top: 9vh;
-      }
-
-
-    }
 
     /* Headline */
 
@@ -898,11 +498,6 @@
       font-weight: 500;
     }
 
-    @media screen and (min-width: 800px) {
-      h1 {
-        font-size: 48px;
-      }
-    }
 
 
 
@@ -960,11 +555,7 @@
       font-size: 18px;
     }
 
-    @media screen and (min-width: 800px) {
-      .byline {
-        font-size: 15px;
-      }
-    }
+
 
 
 
@@ -978,10 +569,6 @@
 
     }
 
-    .articlex::first-letter {
-      font-weight: 700;
-      color: #c74c3d;
-    }
 
     .highlighted {
       position: relative;
@@ -1399,11 +986,7 @@
       padding: 0 0;
     }
 
-    @media (min-width: 500px) {
-      .content {
-        --closed-height: 150px;
-      }
-    }
+
 
     .toggle {
       line-height: 2;
@@ -1591,163 +1174,6 @@
  font-display: swap;
  } */
 
-    /* Hide .header-bar ONLY on small screens when it has class "hidden" */
-    @media (max-width: 540px) {
-      .header-bar.hidden {
-        display: none;
-      }
-
-      .left-grid-card,
-      .pinned-container {
-        top: 5%;
-
-
-      }
-    }
-
-    @media (max-width: 450px) {
-
-      p {
-        font-size: 19.5px;
-      }
-
-      .left-grid-card,
-      .pinned-container {
-        top: 0;
-      }
-
-      .left-grid-card,
-      .col-right,
-      .grid-card {
-
-        border: none;
-      }
-
-      .grid-card {
-        padding: 0;
-      }
-
-      .col-right {
-        padding: 0px 0px 0px 0px;
-      }
-
-      .left-grid-card {
-        padding: 0px 0px 0px 0px;
-      }
-
-    }
-
-
-    /***************************************************
- * Responsive Tweaks
- ***************************************************/
-
-    @media (orientation: landscape) {
-      .main-container {
-        width: 100%;
-      }
-
-    }
-
-
-
-    @media (max-width: 912px) and (orientation: portrait) {
-
-      .main-container {
-        width: 100%;
-      }
-
-      .religion-row .dot {
-        width: 4px;
-        height: 4px;
-      }
-
-
-
-      .left-grid-card,
-      .col-right {
-        flex: 0 0 50%;
-      }
-
-
-
-    }
-
-
-    @media (max-width: 540px) {
-
-      h1 {
-        max-width: 16ch;
-      }
-
-      h2 {
-
-        line-height: 1.15;
-      }
-
-      .banner {
-        margin: 20px auto;
-      }
-
-      .kicker {
-        margin: 10px auto;
-      }
-
-      .religion-row .dot {
-        width: 2.5px;
-        height: 2.5px;
-      }
-
-
-      .title-section {
-        margin-bottom: 5px;
-      }
-
-      .stats {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        gap: 2.5px;
-      }
-
-      .dots-grid {
-        margin-top: 5px;
-      }
-
-      .statp {
-        font-size: 12px;
-        margin: 3px 5px;
-      }
-
-      .circle {
-        width: 6px;
-        height: 6px;
-      }
-
-      .title-text {
-        font-size: 12px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .title-icon {
-        display: none;
-      }
-
-
-    }
-
-    @media (max-width: 394px) {
-
-      .religion-row {
-        margin-bottom: 3px;
-      }
-
-      .religion-row .dot {
-        width: 2px;
-        height: 2px;
-      }
-    }
-
     /* 1) Center the scroller with max-width: 618px */
     .horizontal-scroller {
       max-width: 718px;
@@ -1902,59 +1328,40 @@
       border-color: transparent transparent #c74c3d transparent;
     }
 
-
-
-    @media (hover: none) and (pointer: coarse) {
-      .horizontal-scroller {
-        white-space: normal;
-        /* stack vertically instead of side-by-side */
-        overflow-x: visible;
-        /* no horizontal scrollbar needed */
-      }
-
-      .chart-container_x2 {
-        display: block;
-        width: auto;
-        /* let the chart shrink to mobile width */
-        margin-right: 0;
-        border-right: none;
-        margin-bottom: 40px;
-        /* a gap between charts */
-      }
+    /* 1. Existing drop‑cap rules (kept, with a small tidy‑up) */
+    .dropcap-image {
+      float: left;
+      /* margin: top  right bottom left */
+      margin: -8px 0px 0px 5px;
+      line-height: 0;
+      /* removes stray whitespace under the svg */
     }
 
-    /* For very large screens beyond 1920px */
-    @media screen and (min-width: 1440px) {
-      .religion-row .dot {
-        width: 4px;
-        height: 4px;
-      }
+    .dropcap-image .image {
+      height: 15em;
+      /* same visual size you already use */
+      width: auto;
+      display: block;
     }
 
-    @media screen and (min-width: 1921px) {
-      .religion-row .dot {
-        width: 7px;
-        height: 7px;
-      }
-    }
 
-    @media screen and (min-width: 2500px) {
-      .religion-row .dot {
-        width: 10px;
-        height: 10px;
-      }
-
-      .title-text,
-      .statp {
-        font-size: 18px;
-      }
+    /* 2. Visually hide the textual “F” but leave it for accessibility/SEO */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
     }
 
 
     .language-button {
       background-color: #c74c3d;
       border: 1px solid #f7cdb8;
-      border-radius: 3px;
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -1991,6 +1398,577 @@
 
     a.language-button {
       background-image: none;
+    }
+
+    /* ----------  General  ---------- */
+
+    /* Fade‑in Animation */
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /***************************************************
+*  Responsive rules (merged by unique breakpoint)  *
+***************************************************/
+
+    /* ≥ 540 px ------------------------------------------------------------*/
+    @media screen and (min-width: 540px) {
+      .social-icons-m {
+        display: none;
+      }
+    }
+
+    /* ≤ 540 px ------------------------------------------------------------*/
+    @media screen and (max-width: 540px) {
+
+      /* header + logo + icons */
+      .header-bar {
+        justify-content: center;
+      }
+
+      .netra-logo {
+        margin-left: 0;
+      }
+
+      .social-icons {
+        display: none;
+      }
+
+      .header-bar.hidden {
+        display: none;
+      }
+
+      /* cards pinned/left */
+      .left-grid-card,
+      .pinned-container {
+        top: 5%;
+      }
+
+      /* typography & banners */
+      h1 {
+        max-width: 16ch;
+      }
+
+      h2 {
+        line-height: 1.15;
+      }
+
+      .banner {
+        margin: 20px auto;
+      }
+
+      .kicker {
+        margin: 10px auto;
+      }
+
+      /* dot charts & stats */
+      .religion-row .dot {
+        width: 2.5px;
+        height: 2.5px;
+      }
+
+      .title-section {
+        margin-bottom: 5px;
+      }
+
+      .stats {
+        padding: 5px 0;
+        gap: 2.5px;
+      }
+
+      .dots-grid {
+        margin-top: 5px;
+      }
+
+      .statp {
+        font-size: 12px;
+        margin: 3px 5px;
+      }
+
+      .circle {
+        width: 6px;
+        height: 6px;
+      }
+
+      .title-text {
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .title-icon {
+        display: none;
+      }
+    }
+
+    /* ≥ 800 px ------------------------------------------------------------*/
+    @media screen and (min-width: 800px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .byline {
+        font-size: 15px;
+      }
+    }
+
+    /* ≥ 1440 px -----------------------------------------------------------*/
+    @media screen and (min-width: 1440px) {
+      .religion-row .dot {
+        width: 4px;
+        height: 4px;
+      }
+    }
+
+    /* ≥ 1921 px -----------------------------------------------------------*/
+    @media screen and (min-width: 1921px) {
+      .religion-row .dot {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    /* ≥ 2000 px -----------------------------------------------------------*/
+    @media (min-width: 2000px) {
+      .container {
+        height: 65vh;
+      }
+
+      .icon.army {
+        bottom: 0vh;
+      }
+    }
+
+    /* ≥ 2500 px -----------------------------------------------------------*/
+    @media screen and (min-width: 2500px) {
+      .religion-row .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .title-text,
+      .statp {
+        font-size: 18px;
+      }
+    }
+
+    /* ≥ 500 px (component tweak) -----------------------------------------*/
+    @media (min-width: 500px) {
+      .content {
+        --closed-height: 150px;
+      }
+    }
+
+    /* ≤ 1366 px -----------------------------------------------------------*/
+    @media (max-width: 1366px) {
+      .container {
+        height: 60vh;
+      }
+
+      .icon.army {
+        bottom: 1vh;
+      }
+
+      .icon.navy {
+        left: 0vw;
+      }
+
+      .person.p14 {
+        top: 4vh;
+        left: 73vw;
+      }
+
+      .mil.mil2 {
+        bottom: 40vh;
+      }
+    }
+
+    /* ≤ 1024 px -----------------------------------------------------------*/
+    @media (max-width: 1024px) {
+      .container {
+        height: 55vh;
+      }
+
+      /* military figures */
+      .mil.mil1 {
+        top: 28vh;
+        left: 7vw;
+        width: 7vw;
+        bottom: auto;
+      }
+
+      .mil.mil2 {
+        top: 24vh;
+        left: 12vw;
+        width: 7vw;
+        bottom: auto;
+      }
+
+      .mil.mil5 {
+        top: 32vh;
+        left: 15vw;
+        width: 7vw;
+        bottom: auto;
+      }
+
+      .mil.mil7 {
+        top: 35vh;
+        left: 30vw;
+        width: 7vw;
+      }
+
+      /* civilian figures */
+      .person.p4 {
+        top: 34vh;
+        left: 74vw;
+        width: 7vw;
+      }
+
+      .person.p10 {
+        top: 36vh;
+        left: 76vw;
+        width: 7vw;
+      }
+
+      .person.p14 {
+        top: 37vh;
+        left: 53vw;
+        width: 7vw;
+      }
+
+      .person.p20 {
+        top: 37vh;
+        left: 60vw;
+        width: 7vw;
+      }
+
+      .icon.army {
+        bottom: 0vh;
+      }
+    }
+
+    /* ≤ 912 px & portrait -------------------------------------------------*/
+    @media (max-width: 912px) and (orientation: portrait) {
+      .main-container {
+        width: 100%;
+      }
+
+      .religion-row .dot {
+        width: 4px;
+        height: 4px;
+      }
+
+      .left-grid-card,
+      .col-right {
+        flex: 0 0 50%;
+      }
+    }
+
+    /* ≤ 800 px portrait rule already handled above for ≥800 desktop sizes   */
+
+    /* ≤ 768 px -----------------------------------------------------------*/
+    @media (max-width: 768px) {
+      .container {
+        height: 50vh;
+      }
+    }
+
+    /* ≤ 600 px -----------------------------------------------------------*/
+    @media (max-width: 600px) {
+      .container {
+        height: 45vh;
+        background-size: contain;
+      }
+    }
+
+    /* portrait (all widths) ----------------------------------------------*/
+    @media (orientation: portrait) {
+      .container {
+        height: 30vh;
+      }
+
+      /* military figures (randomised tops) */
+      .mil.mil1 {
+        top: 7vh;
+      }
+
+      .mil.mil2 {
+        top: 15vh;
+      }
+
+      .mil.mil3 {
+        top: 9vh;
+      }
+
+      .mil.mil4 {
+        top: 19vh;
+      }
+
+      .mil.mil5 {
+        top: 11vh;
+      }
+
+      .mil.mil6 {
+        top: 5vh;
+      }
+
+      .mil.mil7 {
+        top: 17vh;
+      }
+
+      /* civilian figures */
+      .person.p1 {
+        top: 6vh;
+      }
+
+      .person.p2 {
+        top: 18vh;
+        left: 60vw;
+      }
+
+      .person.p3 {
+        top: 10vh;
+      }
+
+      .person.p4 {
+        top: 13vh;
+      }
+
+      .person.p5 {
+        top: 7vh;
+      }
+
+      .person.p6 {
+        top: 15vh;
+      }
+
+      .person.p7 {
+        top: 8vh;
+      }
+
+      .person.p8 {
+        top: 16vh;
+      }
+
+      .person.p9 {
+        top: 11vh;
+      }
+
+      .person.p10 {
+        top: 19vh;
+      }
+
+      .person.p11 {
+        top: 9vh;
+      }
+
+      .person.p12 {
+        top: 17vh;
+      }
+
+      .person.p13 {
+        top: 5vh;
+      }
+
+      .person.p14 {
+        top: 14vh;
+      }
+
+      .person.p15 {
+        top: 12vh;
+      }
+
+      .person.p16 {
+        top: 8vh;
+      }
+
+      .person.p17 {
+        top: 20vh;
+      }
+
+      .person.p18 {
+        top: 7vh;
+      }
+
+      .person.p19 {
+        top: 18vh;
+      }
+
+      .person.p20 {
+        top: 5vh;
+      }
+
+      .person.p21 {
+        top: 16vh;
+        left: 80vw;
+      }
+
+      .person.p22 {
+        top: 10vh;
+      }
+
+      /* icons */
+      .icon.army {
+        bottom: 2vh;
+      }
+
+      .icon.navy {
+        top: 14vh;
+        left: 1vw;
+      }
+    }
+
+    /* portrait ≤ 500 px ---------------------------------------------------*/
+    @media (orientation: portrait) and (max-width: 500px) {
+      .container {
+        height: 20vh;
+        margin: 10px 5px;
+      }
+
+      /* military figures */
+      .mil.mil1 {
+        top: 3vh;
+      }
+
+      .mil.mil2 {
+        top: 5vh;
+      }
+
+      .mil.mil4 {
+        top: 9vh;
+      }
+
+      .mil.mil7 {
+        top: 3vh;
+      }
+
+      /* civilian figures */
+      .person.p2 {
+        top: 8vh;
+      }
+
+      .person.p6 {
+        top: 6vh;
+      }
+
+      .person.p8 {
+        top: 12vh;
+      }
+
+      .person.p10 {
+        top: 10vh;
+      }
+
+      .person.p12 {
+        top: 3vh;
+      }
+
+      .person.p14 {
+        top: 4vh;
+      }
+
+      .person.p17 {
+        top: 13vh;
+        left: 53vw;
+      }
+
+      .person.p19 {
+        top: 8vh;
+      }
+
+      .person.p21 {
+        top: 10vh;
+      }
+
+      .icon.navy {
+        top: 9vh;
+      }
+    }
+
+    /* ≤ 450 px -----------------------------------------------------------*/
+    @media (max-width: 450px) {
+      p {
+        font-size: 19.5px;
+      }
+
+      /* layout */
+      .left-grid-card,
+      .pinned-container {
+        top: 0;
+      }
+
+      .left-grid-card,
+      .col-right,
+      .grid-card {
+        border: none;
+      }
+
+      .grid-card {
+        padding: 0;
+      }
+
+      .col-right,
+      .left-grid-card {
+        padding: 0;
+      }
+
+      /* drop‑cap tweak */
+      .dropcap-image {
+        margin: 0px -15px -5px 10px;
+      }
+
+      .dropcap-image .image {
+        height: 10em;
+      }
+    }
+
+    /* ≤ 394 px -----------------------------------------------------------*/
+    @media (max-width: 394px) {
+      .religion-row {
+        margin-bottom: 3px;
+      }
+
+      .religion-row .dot {
+        width: 2px;
+        height: 2px;
+      }
+    }
+
+    /* landscape (any width) ---------------------------------------------*/
+    @media (orientation: landscape) {
+      .main-container {
+        width: 100%;
+      }
+    }
+
+    /* no‑hover / coarse pointer -----------------------------------------*/
+    @media (hover: none) and (pointer: coarse) {
+      .horizontal-scroller {
+        white-space: normal;
+        overflow-x: visible;
+      }
+
+      .chart-container_x2 {
+        display: block;
+        width: auto;
+        margin-right: 0;
+        border-right: none;
+        margin-bottom: 40px;
+      }
     }
   </style>
 </head>
@@ -2054,25 +2032,25 @@
     <img src="./icons/civ2.svg" class="person p1" alt="Civilian 1">
     <img src="./icons/civ3.svg" class="person p2" alt="Civilian 2">
     <img src="./icons/civ4.svg" class="person p3" alt="Civilian 3">
-    <img src="./icons/civ2.svg" class="person p4" alt="Civilian 4">
-    <img src="./icons/civ3.svg" class="person p5" alt="Civilian 5">
-    <img src="./icons/civ4.svg" class="person p6" alt="Civilian 6">
-    <img src="./icons/civ2.svg" class="person p7" alt="Civilian 7">
-    <img src="./icons/civ3.svg" class="person p8" alt="Civilian 8">
-    <img src="./icons/civ4.svg" class="person p9" alt="Civilian 9">
+    <img src="./icons/civ2_1.svg" class="person p4" alt="Civilian 4">
+    <img src="./icons/civ3_1.svg" class="person p5" alt="Civilian 5">
+    <img src="./icons/civ4_1.svg" class="person p6" alt="Civilian 6">
+    <img src="./icons/civ2_2.svg" class="person p7" alt="Civilian 7">
+    <img src="./icons/civ3_2.svg" class="person p8" alt="Civilian 8">
+    <img src="./icons/civ4_2.svg" class="person p9" alt="Civilian 9">
     <img src="./icons/civ2.svg" class="person p10" alt="Civilian 10">
     <img src="./icons/civ3.svg" class="person p11" alt="Civilian 11">
     <img src="./icons/civ4.svg" class="person p12" alt="Civilian 12">
-    <img src="./icons/civ2.svg" class="person p13" alt="Civilian 13">
-    <img src="./icons/civ3.svg" class="person p14" alt="Civilian 14">
-    <img src="./icons/civ4.svg" class="person p15" alt="Civilian 15">
-    <img src="./icons/civ2.svg" class="person p16" alt="Civilian 16">
-    <img src="./icons/civ3.svg" class="person p17" alt="Civilian 17">
-    <img src="./icons/civ4.svg" class="person p18" alt="Civilian 18">
+    <img src="./icons/civ2_1.svg" class="person p13" alt="Civilian 13">
+    <img src="./icons/civ3_1.svg" class="person p14" alt="Civilian 14">
+    <img src="./icons/civ4_1.svg" class="person p15" alt="Civilian 15">
+    <img src="./icons/civ2_2.svg" class="person p16" alt="Civilian 16">
+    <img src="./icons/civ3_2.svg" class="person p17" alt="Civilian 17">
+    <img src="./icons/civ4_2.svg" class="person p18" alt="Civilian 18">
     <img src="./icons/civ2.svg" class="person p19" alt="Civilian 19">
     <img src="./icons/civ3.svg" class="person p20" alt="Civilian 20">
     <img src="./icons/civ4.svg" class="person p21" alt="Civilian 21">
-    <img src="./icons/civ2.svg" class="person p22" alt="Civilian 22">
+    <img src="./icons/civ2_1.svg" class="person p22" alt="Civilian 22">
   </div>
 
   <header class="header fullwidth ready">
@@ -2139,7 +2117,15 @@
 
   <div class="article">
     <div class="articlex">
-      <p>For Bangladesh’s religious minorities, most portals to power stand wide open.</p>
+      <!-- Drop‑cap image (screen‑readers ignore it) -->
+      <span class="dropcap-image" aria-hidden="true">
+        <img class="image" src="icons/F data.svg" alt="" loading="lazy" decoding="async">
+      </span>
+
+      <!-- Paragraph: real “F” is present but hidden from sight -->
+      <p><span class="visually-hidden">F</span>or Bangladesh’s religious minorities, most portals to power stand wide
+        open.</p>
+
       <p>In bustling offices nationwide, minority officers help shape decisions in the police and civil services. They
         litigate cases and deliver justice as lawyers and judges in crowded courtrooms, guide new generations of
         students at top universities, and steer public opinion through the media.</p>
@@ -2181,7 +2167,8 @@
 
 
       <p>Netra News reached these conclusions by <span class="infotip-container" tabindex="0">
-          sifting through<sup></sup> <span class="infotip-box" role="tooltip"> Read <a href="https://interactive.netra.news/minority-representation-bangladesh-public-services/#app">full
+          sifting through<sup></sup> <span class="infotip-box" role="tooltip"> Read <a
+              href="https://interactive.netra.news/minority-representation-bangladesh-public-services/#app">full
               methodology.</a></span> </span> a broad spectrum of official and confidential records. In all, the study
         inferred the likely
         religious identities of nearly 50,000 individuals in Bangladesh and India, pairing traditional research methods
@@ -2411,7 +2398,8 @@
     <p>In the <span class="infotip-container" tabindex="0">2016<sup></sup> <span class="infotip-box"
           role="tooltip">While the data may not reflect today’s force composition, the forces have announced no policy
           changes that would address the disparity in recruitment and promotion of religious minorities in its ranks.
-          Read <a href="https://interactive.netra.news/minority-representation-bangladesh-public-services/#app">full methodology to learn more.</a></span> </span> army roster obtained by Netra News,
+          Read <a href="https://interactive.netra.news/minority-representation-bangladesh-public-services/#app">full
+            methodology to learn more.</a></span> </span> army roster obtained by Netra News,
       the highest-ranked non-Muslim officer — a brigadier general
       from
       the engineering corps — has
@@ -2503,7 +2491,8 @@
     </p>
     <p>While his personal story is marked by confrontations, Karmakar insists that the experience of contemporary
       minority officers is not so different. “It’s an unwritten state law,” he said, alleging that minority
-      representation is deliberately kept to a minimum. “They don’t trust the minority community — no doubt about that.”</p>
+      representation is deliberately kept to a minimum. “They don’t trust the minority community — no doubt about that.”
+    </p>
 
     <p>There are, of course, opposing views.</p>
 
@@ -2594,7 +2583,8 @@
 
 
               <li>
-                Members of faculty at Delhi University were scraped from respective departmental websites. For example, the Department of Law maintains its website
+                Members of faculty at Delhi University were scraped from respective departmental websites. For example,
+                the Department of Law maintains its website
                 <a href="https://www.du.ac.in/index.php?page=department-of-law" target="_blank" rel="noopener">here</a>.
                 Jawaharlal Nehru University maintains its faculty directory here
                 <a href="https://www.jnu.ac.in/faculty-profile4/a" target="_blank" rel="noopener">here</a>.
@@ -2670,9 +2660,11 @@
             <p>Our full Python notebook is available <a
                 href="https://github.com/newsnetra/minority-representation-bangladesh-public-services/blob/main/assets/files/minority_representation_india_civil_service_police_university.ipynb"
                 target="_blank" rel="noopener">at this link</a>.</p>
-                <p>In the case of the second chart, not just Hindus and Muslims, but various possible religions of civil service officials in India have been identified using only the Pranaam library, because it cannot be done with "It is all in the name." As a result, there is some variation in the percentage results in this case.
+            <p>In the case of the second chart, not just Hindus and Muslims, but various possible religions of civil
+              service officials in India have been identified using only the Pranaam library, because it cannot be done
+              with "It is all in the name." As a result, there is some variation in the percentage results in this case.
 
-                </p>
+            </p>
 
           </div>
 
