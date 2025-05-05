@@ -1399,6 +1399,7 @@
       background-image: none;
     }
 
+
     /* ----------  General  ---------- */
 
     /* Fade‑in Animation */
@@ -1420,555 +1421,250 @@
       }
     }
 
+
     /***************************************************
-*  Responsive rules (merged by unique breakpoint)  *
+*  Responsive rules (same declarations, re‑ordered) *
 ***************************************************/
 
-    /* ≥ 540 px ------------------------------------------------------------*/
-    @media screen and (min-width: 540px) {
-      .social-icons-m {
-        display: none;
-      }
-    }
-
-    /* ≤ 540 px ------------------------------------------------------------*/
-    @media screen and (max-width: 540px) {
-
-      /* header + logo + icons */
-      .header-bar {
-        justify-content: center;
-      }
-
-      .netra-logo {
-        margin-left: 0;
-      }
-
-      .social-icons {
-        display: none;
-      }
-
-      .header-bar.hidden {
-        display: none;
-      }
-
-      /* cards pinned/left */
-      .left-grid-card,
-      .pinned-container {
-        top: 5%;
-      }
-
-      /* typography & banners */
-      h1 {
-        max-width: 16ch;
-      }
-
-      h2 {
-        line-height: 1.15;
-      }
-
-      .banner {
-        margin: 20px auto;
-      }
-
-      .kicker {
-        margin: 10px auto;
-      }
-
-      /* dot charts & stats */
-      .religion-row .dot {
-        width: 2.5px;
-        height: 2.5px;
-      }
-
-      .title-section {
-        margin-bottom: 5px;
-      }
-
-      .stats {
-        padding: 5px 0;
-        gap: 2.5px;
-      }
-
-      .dots-grid {
-        margin-top: 5px;
-      }
-
-      .statp {
-        font-size: 12px;
-        margin: 3px 5px;
-      }
-
-      .circle {
-        width: 6px;
-        height: 6px;
-      }
-
-      .title-text {
-        font-size: 12px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .title-icon {
-        display: none;
-      }
-    }
-
-    /* ≥ 800 px ------------------------------------------------------------*/
-    @media screen and (min-width: 800px) {
-      h1 {
-        font-size: 48px;
-      }
-
-      .byline {
-        font-size: 15px;
-      }
-    }
-
-    /* ≥ 1440 px -----------------------------------------------------------*/
-    @media screen and (min-width: 1440px) {
-      .religion-row .dot {
-        width: 4px;
-        height: 4px;
-      }
-    }
-
-    /* ≥ 1921 px -----------------------------------------------------------*/
-    @media screen and (min-width: 1921px) {
-      .religion-row .dot {
-        width: 7px;
-        height: 7px;
-      }
-    }
-
-    /* ≥ 2000 px -----------------------------------------------------------*/
-    @media (min-width: 2000px) {
-      .container {
-        height: 65vh;
-      }
-
-      .icon.army {
-        bottom: 0vh;
-      }
-    }
-
-    /* ≥ 2500 px -----------------------------------------------------------*/
-    @media screen and (min-width: 2500px) {
-      .religion-row .dot {
-        width: 10px;
-        height: 10px;
-      }
-
-      .title-text,
-      .statp {
-        font-size: 18px;
-      }
-    }
-
-    /* ≥ 500 px (component tweak) -----------------------------------------*/
-    @media (min-width: 500px) {
-      .content {
-        --closed-height: 150px;
-      }
-    }
-
-    /* ≤ 1366 px -----------------------------------------------------------*/
-    @media (max-width: 1366px) {
-      .container {
-        height: 60vh;
-      }
-
-      .icon.army {
-        bottom: 1vh;
-      }
-
-      .icon.navy {
-        left: 0vw;
-      }
-
-      .person.p14 {
-        top: 4vh;
-        left: 73vw;
-      }
-
-      .mil.mil2 {
-        bottom: 40vh;
-      }
-    }
-
-    /* ≤ 1024 px -----------------------------------------------------------*/
-    @media (max-width: 1024px) {
-      .container {
-        height: 55vh;
-      }
-
-      /* military figures */
-      .mil.mil1 {
-        top: 28vh;
-        left: 7vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil2 {
-        top: 24vh;
-        left: 12vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil5 {
-        top: 32vh;
-        left: 15vw;
-        width: 7vw;
-        bottom: auto;
-      }
-
-      .mil.mil7 {
-        top: 35vh;
-        left: 30vw;
-        width: 7vw;
-      }
-
-      /* civilian figures */
-      .person.p4 {
-        top: 34vh;
-        left: 74vw;
-        width: 7vw;
-      }
-
-      .person.p10 {
-        top: 36vh;
-        left: 76vw;
-        width: 7vw;
-      }
-
-      .person.p14 {
-        top: 37vh;
-        left: 53vw;
-        width: 7vw;
-      }
-
-      .person.p20 {
-        top: 37vh;
-        left: 60vw;
-        width: 7vw;
-      }
-
-      .icon.army {
-        bottom: 0vh;
-      }
-    }
-
-    /* ≤ 912 px & portrait -------------------------------------------------*/
-    @media (max-width: 912px) and (orientation: portrait) {
-      .main-container {
-        width: 100%;
-      }
-
-      .religion-row .dot {
-        width: 4px;
-        height: 4px;
-      }
-
-      .left-grid-card,
-      .col-right {
-        flex: 0 0 50%;
-      }
-    }
-
-    /* ≤ 800 px portrait rule already handled above for ≥800 desktop sizes   */
-
-    /* ≤ 768 px -----------------------------------------------------------*/
-    @media (max-width: 768px) {
-      .container {
-        height: 50vh;
-      }
-    }
-
-    /* ≤ 600 px -----------------------------------------------------------*/
-    @media (max-width: 600px) {
-      .container {
-        height: 45vh;
-        background-size: contain;
-      }
-    }
-
-    /* portrait (all widths) ----------------------------------------------*/
-    @media (orientation: portrait) {
-      .container {
-        height: 30vh;
-      }
-
-      /* military figures (randomised tops) */
-      .mil.mil1 {
-        top: 7vh;
-      }
-
-      .mil.mil2 {
-        top: 15vh;
-      }
-
-      .mil.mil3 {
-        top: 9vh;
-      }
-
-      .mil.mil4 {
-        top: 19vh;
-      }
-
-      .mil.mil5 {
-        top: 11vh;
-      }
-
-      .mil.mil6 {
-        top: 5vh;
-      }
-
-      .mil.mil7 {
-        top: 17vh;
-      }
-
-      /* civilian figures */
-      .person.p1 {
-        top: 6vh;
-      }
-
-      .person.p2 {
-        top: 18vh;
-        left: 60vw;
-      }
-
-      .person.p3 {
-        top: 10vh;
-      }
-
-      .person.p4 {
-        top: 13vh;
-      }
-
-      .person.p5 {
-        top: 7vh;
-      }
-
-      .person.p6 {
-        top: 15vh;
-      }
-
-      .person.p7 {
-        top: 8vh;
-      }
-
-      .person.p8 {
-        top: 16vh;
-      }
-
-      .person.p9 {
-        top: 11vh;
-      }
-
-      .person.p10 {
-        top: 19vh;
-      }
-
-      .person.p11 {
-        top: 9vh;
-      }
-
-      .person.p12 {
-        top: 17vh;
-      }
-
-      .person.p13 {
-        top: 5vh;
-      }
-
-      .person.p14 {
-        top: 14vh;
-      }
-
-      .person.p15 {
-        top: 12vh;
-      }
-
-      .person.p16 {
-        top: 8vh;
-      }
-
-      .person.p17 {
-        top: 20vh;
-      }
-
-      .person.p18 {
-        top: 7vh;
-      }
-
-      .person.p19 {
-        top: 18vh;
-      }
-
-      .person.p20 {
-        top: 5vh;
-      }
-
-      .person.p21 {
-        top: 16vh;
-        left: 80vw;
-      }
-
-      .person.p22 {
-        top: 10vh;
-      }
-
-      /* icons */
-      .icon.army {
-        bottom: 2vh;
-      }
-
-      .icon.navy {
-        top: 14vh;
-        left: 1vw;
-      }
-    }
-
-    /* portrait ≤ 500 px ---------------------------------------------------*/
-    @media (orientation: portrait) and (max-width: 500px) {
-      .container {
-        height: 20vh;
-        margin: 10px 5px;
-      }
-
-      /* military figures */
-      .mil.mil1 {
-        top: 3vh;
-      }
-
-      .mil.mil2 {
-        top: 5vh;
-      }
-
-      .mil.mil4 {
-        top: 9vh;
-      }
-
-      .mil.mil7 {
-        top: 3vh;
-      }
-
-      /* civilian figures */
-      .person.p2 {
-        top: 8vh;
-      }
-
-      .person.p6 {
-        top: 6vh;
-      }
-
-      .person.p8 {
-        top: 12vh;
-      }
-
-      .person.p10 {
-        top: 10vh;
-      }
-
-      .person.p12 {
-        top: 3vh;
-      }
-
-      .person.p14 {
-        top: 4vh;
-      }
-
-      .person.p17 {
-        top: 13vh;
-        left: 53vw;
-      }
-
-      .person.p19 {
-        top: 8vh;
-      }
-
-      .person.p21 {
-        top: 10vh;
-      }
-
-      .icon.navy {
-        top: 9vh;
-      }
-    }
-
-    /* ≤ 450 px -----------------------------------------------------------*/
-    @media (max-width: 450px) {
-      p {
-        font-size: 19.5px;
-      }
-
-      /* layout */
-      .left-grid-card,
-      .pinned-container {
-        top: 0;
-      }
-
-      .left-grid-card,
-      .col-right,
-      .grid-card {
-        border: none;
-      }
-
-      .grid-card {
-        padding: 0;
-      }
-
-      .col-right,
-      .left-grid-card {
-        padding: 0;
-      }
-
-      /* drop‑cap tweak */
-      .dropcap-image {
-        margin: 0px -15px -5px 10px;
-      }
-
-      .dropcap-image .image {
-        height: 10em;
-      }
-    }
-
-    /* ≤ 394 px -----------------------------------------------------------*/
-    @media (max-width: 394px) {
-      .religion-row {
-        margin-bottom: 3px;
-      }
-
-      .religion-row .dot {
-        width: 2px;
-        height: 2px;
-      }
-    }
-
-    /* landscape (any width) ---------------------------------------------*/
-    @media (orientation: landscape) {
-      .main-container {
-        width: 100%;
-      }
-    }
-
-    /* no‑hover / coarse pointer -----------------------------------------*/
-    @media (hover: none) and (pointer: coarse) {
-      .horizontal-scroller {
-        white-space: normal;
-        overflow-x: visible;
-      }
-
-      .chart-container_x2 {
-        display: block;
-        width: auto;
-        margin-right: 0;
-        border-right: none;
-        margin-bottom: 40px;
-      }
-    }
+/* ----------  ≤ 1366 px --------------------------------*/
+@media (max-width: 1366px) {
+  .container { height: 60vh; }
+
+  .icon.army { bottom: 1vh; }
+  .icon.navy { left: 0vw; }
+
+  .person.p14 { top: 4vh; left: 73vw; }
+  .mil.mil2   { bottom: 40vh; }
+}
+
+/* ----------  ≤ 1024 px --------------------------------*/
+@media (max-width: 1024px) {
+  .container { height: 55vh; }
+
+  /* military figures */
+  .mil.mil1 { top: 28vh; left: 7vw; width: 7vw; bottom: auto; }
+  .mil.mil2 { top: 24vh; left: 12vw; width: 7vw; bottom: auto; }
+  .mil.mil5 { top: 32vh; left: 15vw; width: 7vw; bottom: auto; }
+  .mil.mil7 { top: 35vh; left: 30vw; width: 7vw; }
+
+  /* civilian figures */
+  .person.p4  { top: 34vh; left: 74vw; width: 7vw; }
+  .person.p10 { top: 36vh; left: 76vw; width: 7vw; }
+  .person.p14 { top: 37vh; left: 53vw; width: 7vw; }
+  .person.p20 { top: 37vh; left: 60vw; width: 7vw; }
+
+  .icon.army { bottom: 0vh; }
+}
+
+/* ----------  orientation: portrait (all widths) -------*/
+@media (orientation: portrait) {
+  .container { height: 30vh; }
+
+  /* military figures */
+  .mil.mil1 { top: 7vh; }
+  .mil.mil2 { top: 15vh; }
+  .mil.mil3 { top: 9vh; }
+  .mil.mil4 { top: 19vh; }
+  .mil.mil5 { top: 11vh; }
+  .mil.mil6 { top: 5vh; }
+  .mil.mil7 { top: 17vh; }
+
+  /* civilian figures */
+  .person.p1  { top: 6vh; }
+  .person.p2  { top: 18vh; left: 60vw; }
+  .person.p3  { top: 10vh; }
+  .person.p4  { top: 13vh; }
+  .person.p5  { top: 7vh; }
+  .person.p6  { top: 15vh; }
+  .person.p7  { top: 8vh; }
+  .person.p8  { top: 16vh; }
+  .person.p9  { top: 11vh; }
+  .person.p10 { top: 19vh; }
+  .person.p11 { top: 9vh; }
+  .person.p12 { top: 17vh; }
+  .person.p13 { top: 5vh; }
+  .person.p14 { top: 14vh; }
+  .person.p15 { top: 12vh; }
+  .person.p16 { top: 8vh; }
+  .person.p17 { top: 20vh; }
+  .person.p18 { top: 7vh; }
+  .person.p19 { top: 18vh; }
+  .person.p20 { top: 5vh; }
+  .person.p21 { top: 16vh; left: 80vw; }
+  .person.p22 { top: 10vh; }
+
+  .icon.army { bottom: 2vh; }
+  .icon.navy { top: 14vh; left: 1vw; }
+}
+
+/* ----------  ≤ 912 px & portrait -----------------------*/
+@media (max-width: 912px) and (orientation: portrait) {
+  .main-container { width: 100%; }
+
+  .religion-row .dot { width: 4px; height: 4px; }
+
+  .left-grid-card,
+  .col-right { flex: 0 0 50%; }
+}
+
+/* ----------  ≤ 768 px ----------------------------------*/
+@media (max-width: 768px) {
+  .container { height: 50vh; }
+}
+
+/* ----------  ≤ 600 px ----------------------------------*/
+@media (max-width: 600px) {
+  .container {
+    height: 45vh;
+    background-size: contain;
+  }
+}
+
+/* ----------  ≤ 540 px ----------------------------------*/
+@media screen and (max-width: 540px) {
+  /* header, logo, icons */
+  .header-bar        { justify-content: center; }
+  .netra-logo        { margin-left: 0; }
+  .social-icons      { display: none; }
+  .header-bar.hidden { display: none; }
+
+   /* small‑screen card tweaks */
+   .left-grid-card,
+  .pinned-container  { top: 2%; }
+
+  .grid-card {padding: 10px;}
+  .dots-grid {height: 75vh;}
+
+
+  /* text + banners */
+  h1      { max-width: 16ch; }
+  h2      { line-height: 1.15; }
+  .banner { margin: 20px auto; }
+  .kicker { margin: 10px auto; }
+
+  /* dots & stats */
+  .religion-row .dot { width: 2.5px; height: 2.5px; }
+  .title-section     { margin-bottom: 5px; }
+  .stats             { padding: 5px 0; gap: 2.5px; }
+  .dots-grid         { margin-top: 5px; }
+  .statp             { font-size: 12px; margin: 3px 5px; }
+  .circle            { width: 6px; height: 6px; }
+  .title-text        { font-size: 12px; width: 100%; text-align: center; }
+  .title-icon        { display: none; }
+
+  /* hide alt social set */
+  .social-icons-m    { display: none; }
+}
+
+/* ----------  orientation: portrait ≤ 500 px ------------*/
+@media (orientation: portrait) and (max-width: 500px) {
+  .container { height: 20vh; margin: 10px 5px; }
+
+  /* military figs */
+  .mil.mil1 { top: 3vh; }
+  .mil.mil2 { top: 5vh; }
+  .mil.mil4 { top: 9vh; }
+  .mil.mil7 { top: 3vh; }
+
+  /* civilian figs */
+  .person.p2  { top: 8vh; }
+  .person.p6  { top: 6vh; }
+  .person.p8  { top: 12vh; }
+  .person.p10 { top: 10vh; }
+  .person.p12 { top: 3vh; }
+  .person.p14 { top: 4vh; }
+  .person.p17 { top: 13vh; left: 53vw; }
+  .person.p19 { top: 8vh; }
+  .person.p21 { top: 10vh; }
+
+  .icon.navy { top: 9vh; }
+}
+
+/* ----------  ≤ 450 px ----------------------------------*/
+@media (max-width: 450px) {
+  p { font-size: 19.5px; }
+
+  /* layout */
+  .left-grid-card,
+  .pinned-container { top: 0; }
+
+  .left-grid-card,
+  .col-right,
+  .grid-card { border: none; }
+
+  .grid-card  { padding: 0; }
+  .col-right,
+  .left-grid-card { padding: 0; }
+
+  /* drop‑cap tweak */
+  .dropcap-image        { margin: 0 -15px -5px 10px; }
+  .dropcap-image .image { height: 10em; }
+}
+
+/* ----------  ≤ 394 px ----------------------------------*/
+@media (max-width: 394px) {
+  .religion-row      { margin-bottom: 3px; }
+  .religion-row .dot { width: 2px; height: 2px; }
+}
+
+/* ----------  orientation: landscape --------------------*/
+@media (orientation: landscape) {
+  .main-container { width: 100%; }
+}
+
+/* ----------  ≥ 500 px ----------------------------------*/
+@media (min-width: 500px) {
+  .content { --closed-height: 150px; }
+}
+
+/* ----------  ≥ 540 px ----------------------------------*/
+@media screen and (min-width: 540px) {
+  .social-icons-m { display: none; }
+}
+
+/* ----------  ≥ 800 px ----------------------------------*/
+@media screen and (min-width: 800px) {
+  h1      { font-size: 48px; }
+  .byline { font-size: 15px; }
+}
+
+/* ----------  ≥ 1440 px ---------------------------------*/
+@media screen and (min-width: 1440px) {
+  .religion-row .dot { width: 4px; height: 4px; }
+}
+
+/* ----------  ≥ 1921 px ---------------------------------*/
+@media screen and (min-width: 1921px) {
+  .religion-row .dot { width: 7px; height: 7px; }
+}
+
+/* ----------  ≥ 2000 px ---------------------------------*/
+@media (min-width: 2000px) {
+  .container { height: 65vh; }
+  .icon.army { bottom: 0vh; }
+}
+
+/* ----------  ≥ 2500 px ---------------------------------*/
+@media screen and (min-width: 2500px) {
+  .religion-row .dot { width: 10px; height: 10px; }
+  .title-text,
+  .statp             { font-size: 18px; }
+}
+
+/* ----------  no‑hover / coarse pointer -----------------*/
+@media (hover: none) and (pointer: coarse) {
+  .horizontal-scroller { white-space: normal; overflow-x: visible; }
+
+  .chart-container_x2 {
+    display: block;
+    width: auto;
+    margin-right: 0;
+    border-right: none;
+    margin-bottom: 40px;
+  }
+}
+
+
   </style>
 </head>
 
