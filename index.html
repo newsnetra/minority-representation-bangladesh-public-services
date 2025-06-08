@@ -773,27 +773,14 @@
     /***************************************************
  * Dots-Grid & Religion Rows
  ***************************************************/
-  
-
-
- .dots-grid {
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.dots-grid svg {
-  width: 100%;
-  height: 60vh;
-  display: block;
-}
- .dots-grid circle {
-  r: 2.5; /* matches ~5px dot diameter visually */
-}
-
-
+    .dots-grid {
+      /* Hardcode or dynamically set some height you want. */
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      width: 100%;
+    }
 
 
     .religion-row {
@@ -877,9 +864,7 @@
       text-rendering: optimizeLegibility;
     }
 
-
-
-
+    
 
     .methodology,
     .methodology p {
@@ -2470,61 +2455,27 @@
     /**
     * Generates a block (.religion-row) per religion.
     */
-function generateSvgDots(container, distribution, totalDots = 1000, scaleFactor = 10) {
-  container.innerHTML = '';
+    function generateDots(container, distribution) {
+      container.innerHTML = '';
+      const religionOrder = ["buddhist", "christian", "indigenous", "hinduism", "islam"];
 
-  const cols = 80; // fill horizontally
-  const spacing = 9; // tighter spacing to fit more
-  const radius = 2.8;
-  const svgNS = "http://www.w3.org/2000/svg";
+      religionOrder.forEach((religion) => {
+        if (religion in distribution) {
+          const count = Math.round(distribution[religion] * 50);
+          const religionRow = document.createElement('div');
+          religionRow.classList.add('religion-row');
 
-  const scaledDots = totalDots * scaleFactor;
-  const blockMargin = spacing * 2;
+          for (let i = 0; i < count; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.style.backgroundColor = getColor(religion);
+            religionRow.appendChild(dot);
+          }
 
-  const svg = document.createElementNS(svgNS, "svg");
-  svg.setAttribute("preserveAspectRatio", "none");
-
-  const religionOrder = ["buddhist", "christian", "indigenous", "hinduism", "islam"];
-
-  let globalY = 0;
-  let maxRowWidth = 0;
-
-  religionOrder.forEach(religion => {
-    const count = Math.round(distribution[religion] * scaleFactor * totalDots / 100);
-    const rows = Math.ceil(count / cols);
-    const blockHeight = rows * spacing;
-
-    let x = 0, y = 0;
-
-    for (let i = 0; i < count; i++) {
-const ellipse = document.createElementNS(svgNS, "ellipse");
-ellipse.setAttribute("cx", x * spacing + spacing / 2);
-ellipse.setAttribute("cy", globalY + y * spacing + spacing / 2);
-ellipse.setAttribute("rx", spacing / 5); // adjust as needed
-ellipse.setAttribute("ry", spacing / 2.5); // match rx for round shape
-ellipse.setAttribute("fill", getColor(religion));
-svg.appendChild(ellipse);
-
-
-      x++;
-      if (x >= cols) {
-        x = 0;
-        y++;
-      }
+          container.appendChild(religionRow);
+        }
+      });
     }
-
-    globalY += blockHeight + blockMargin;
-    maxRowWidth = Math.max(maxRowWidth, cols * spacing);
-  });
-
-  svg.setAttribute("viewBox", `0 0 ${maxRowWidth} ${globalY}`);
-  svg.setAttribute("width", "100%");
-  svg.setAttribute("height", "auto");
-
-  container.appendChild(svg);
-}
-
-
 
     /***************************************************
     * Stats logic (add religion labels + circles + percentages)
@@ -2590,9 +2541,7 @@ svg.appendChild(ellipse);
     const nationalStats = document.getElementById('national-stats');
     const nationalGrid = document.getElementById('national-grid');
     generateStats(nationalStats, nationalData);
-    generateSvgDots(nationalGrid, nationalData, 1000, 10);
-
-
+    generateDots(nationalGrid, nationalData);
 
     /***************************************************
     * Right Column Overlays / Steps
@@ -2728,8 +2677,7 @@ svg.appendChild(ellipse);
       const gridDiv = document.createElement('div');
       gridDiv.classList.add('dots-grid');
       overlay.appendChild(gridDiv);
-      generateSvgDots(gridDiv, area.data, 1000, 10);
-
+      generateDots(gridDiv, area.data);
 
       pinnedContainer.appendChild(overlay);
     });
