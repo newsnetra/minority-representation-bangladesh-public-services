@@ -2297,7 +2297,7 @@
 
             <p>Some lists contained only English transliterations. We used Open AI’s API and Google Translate API to
               convert them to Bengali transliterations, some of which were manually fixed.</p>
-            <p>We obtained a list of common Bengali Hindu, Buddhist, Christian, and indigenous surnames from four
+            <p>We obtained a list of common Bengali Hindu, Buddhist, Christian, and indigenous surnames from five
               Wikipedia pages (e.g., <a
                 href="https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A6%BE%E0%A6%99%E0%A6%BE%E0%A6%B2%E0%A6%BF_%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A7%81%E0%A6%A6%E0%A7%87%E0%A6%B0_%E0%A6%AA%E0%A6%A6%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A6%AE%E0%A7%82%E0%A6%B9"
                 target="_blank" rel="noopener" title="বাংলা উইকিপিডিয়ায়: বাঙালি হিন্দুদের পদবিসমূহ">
@@ -2307,7 +2307,7 @@
               rest
               ourselves.
             </p>
-            <p>We then developed a cleaning technique to assign likely religion based on their surname:
+            <p>We then developed a cleaning technique to assign likely religion based on their surname on Google Spreadsheets:
             </p>
             <p style="padding: 0px 50px;"><code>=ARRAYFORMULA(TEXTJOIN(", ", TRUE, IF(LEN(A2), IFERROR(VLOOKUP(FILTER(SPLIT(A2, " "), SPLIT(A2, " ") <>
  ""), 'Sheet with surnames'!A:B, 2, FALSE), ""), "")))</code></p>
