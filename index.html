@@ -1438,11 +1438,12 @@
     border-color: #b13f32;
   }
   .custom-lollipop-chart .title {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     font-weight: 600;
     color: #333;
     margin-bottom: 12px;
+    margin-left: 8px;
   }
   .custom-lollipop-chart .legend {
     display: flex;
@@ -1492,7 +1493,7 @@
     font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
     text-align: left;
     max-width: 700px;
-    margin-left: auto;
+    margin-left: 8px;
     margin-right: auto;
   }
 
@@ -2180,7 +2181,7 @@
       </div>
 
 <div class="custom-lollipop-chart">
-  <div class="title" id="chartTitle">Non-Muslim Representation in Government Institutions</div>
+  <div class="title" id="chartTitle">Non-Muslim Representation in Public Institutions: Overall vs Top Positions</div>
   <div class="toggle-container">
     <button id="toggleChartBtn">Switch to Muslim View</button>
   </div>
@@ -3196,13 +3197,14 @@ function drawLollipopChart(containerSelector, dataSet, isMuslim = false) {
   }
 
   function renderChart() {
-    const margin = { top: 30, right: 160, bottom: 40, left: 200 },
-          width = container.node().getBoundingClientRect().width - margin.left - margin.right,
+    const fullWidth = container.node().getBoundingClientRect().width;
+const margin = { top: 30, right: 40, bottom: 40, left: 150 };
+const width = fullWidth - margin.left - margin.right,
           height = 400;
 
     const svgOuter = container.append("svg")
       .style("opacity", 0)
-      .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`);
+      .attr("viewBox", `0 0 ${fullWidth} ${height}`);
 
     svgOuter.transition().duration(300).style("opacity", 1);
 
@@ -3311,8 +3313,8 @@ function toggleDataView() {
   const isMuslim = currentView === 'muslim';
   drawLollipopChart(".custom-lollipop-chart .chart-container", isMuslim ? muslimData : nonMuslimData, isMuslim);
   document.getElementById("chartTitle").textContent = isMuslim ?
-    "Muslim Representation in Government Institutions" :
-    "Non-Muslim Representation in Government Institutions";
+    "Muslim Representation in Public Institutions: Overall vs Top Positions" :
+    "Non-Muslim Representation in Public Institutions: Overall vs Top Positions";
   document.getElementById("toggleChartBtn").textContent = isMuslim ?
     "Switch to Non-Muslim View" : "Switch to Muslim View";
 }
