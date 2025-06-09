@@ -1407,8 +1407,9 @@
 
 
 .custom-lollipop-chart {
-  margin: 30px 0px;
+  margin: 30px auto;
   font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
+  max-width: 718px;
 }
 
 .custom-lollipop-chart svg {
@@ -2176,6 +2177,7 @@
 
     <p>It’s not, however, all good news across civilian entities in Bangladesh. Gaps do emerge — and widen — at higher
       ranks.</p>
+      </div>
 
 <div class="custom-lollipop-chart">
   <div class="title" id="chartTitle">Non-Muslim Representation in Government Institutions</div>
@@ -2183,18 +2185,17 @@
     <button id="toggleChartBtn">Switch to Muslim View</button>
   </div>
   <div class="legend">
-    <div class="legend-item"><span class="legend-circle" style="background:#f7cdb8"></span> National</div>
     <div class="legend-item"><span class="legend-circle" style="background:#d48266"></span> Overall</div>
     <div class="legend-item"><span class="legend-circle" style="background:#c74c3d"></span> Top-tier</div>
   </div>
   <div class="chart-container"></div>
   <div class="source-note">
-    Source: Public and confidential records obtained by Netra News. For details sourcing, please see <a href="#app">full methodology.</a><br><br>
+    Source: Public and confidential records obtained by Netra News. For details sourcing, please see <a href="https://interactive.netra.news/minority-representation-bangladesh-public-services/#app" target="_blank" style="color:#c74c3d; text-decoration: underline;">full methodology.</a><br><br>
     <em>Note:</em> For army, brigadier and above; for navy, commodore and above; for administration, secretary and above; for police, DIG and above; for judiciary, district judges and above; for Dhaka University, professor positions were considered for top-tier positions.
   </div>
 </div>
 <div id="customLollipopTooltip" class="custom-lollipop-chart-tooltip" style="opacity:0;"></div>
-
+      <div class="article-3">
     <p>Across the lower judiciary, nearly 96 percent of senior positions — district and sessions judges and above — are held by Muslims, compared to 89.9 percent across the judiciary overall.</p>
 
     <p>The disparity intensifies in the civil administration, where <span class="highlighted">only one</span> out of
@@ -3168,144 +3169,156 @@
     });
   </script>
 
-<script>
-  const tooltip = d3.select("#customLollipopTooltip");
+  <script>
 
-  function drawLollipopChart(containerSelector, dataSet, isMuslim = false) {
-    const categories = ["National", "Overall", "Top"];
-    const color = d3.scaleOrdinal()
-      .domain(categories)
-      .range(["#f7cdb8", "#d48266", "#c74c3d"]);
+const tooltip = d3.select("#customLollipopTooltip");
 
-    const container = d3.select(containerSelector);
-    const existingSVG = container.select("svg");
-    if (!existingSVG.empty()) {
-      existingSVG.transition()
-        .duration(300)
-        .style("opacity", 0)
-        .on("end", function() {
-          d3.select(this).remove();
-          renderChart();
+function drawLollipopChart(containerSelector, dataSet, isMuslim = false) {
+  const categories = ["Overall", "Top"];
+  const color = d3.scaleOrdinal()
+    .domain(categories)
+    .range(["#d48266", "#c74c3d"]);
+
+  const populationShare = isMuslim ? 91.09 : 8.91;
+
+  const container = d3.select(containerSelector);
+  const existingSVG = container.select("svg");
+  if (!existingSVG.empty()) {
+    existingSVG.transition()
+      .duration(300)
+      .style("opacity", 0)
+      .on("end", function() {
+        d3.select(this).remove();
+        renderChart();
+      });
+  } else {
+    renderChart();
+  }
+
+  function renderChart() {
+    const margin = { top: 30, right: 160, bottom: 40, left: 200 },
+          width = container.node().getBoundingClientRect().width - margin.left - margin.right,
+          height = 400;
+
+    const svgOuter = container.append("svg")
+      .style("opacity", 0)
+      .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`);
+
+    svgOuter.transition().duration(300).style("opacity", 1);
+
+    const svg = svgOuter.append("g")
+      .attr("transform", `translate(${margin.left},20)`);
+
+    const y = d3.scalePoint()
+      .domain(dataSet.map(d => d.institution))
+      .range([0, height - 40])
+      .padding(0.5);
+
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(dataSet.flatMap(d => [d.Overall, d.Top, populationShare])) + 2])
+      .range([0, width]);
+
+    const ticks = x.ticks(3);
+    svg.append("g")
+      .attr("transform", `translate(0,${height - 40})`)
+      .call(d3.axisBottom(x).tickValues([ticks[0], ticks[Math.floor(ticks.length / 2)], ticks[ticks.length - 1]]).tickFormat(d => d + "%"))
+      .selectAll("text")
+      .style("fill", "#333");
+
+    svg.append("g")
+      .call(d3.axisLeft(y).tickSize(-width).tickPadding(8))
+      .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll(".tick line").attr("stroke", "#eee"))
+      .call(g => g.selectAll("text").style("fill", "#333"));
+
+    svg.append("line")
+      .attr("x1", x(populationShare))
+      .attr("x2", x(populationShare))
+      .attr("y1", 0)
+      .attr("y2", height - 40)
+      .attr("stroke", "#f7cdb8")
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", "4 2");
+
+    svg.append("text")
+      .attr("x", x(populationShare))
+      .attr("y", -5)
+      .attr("text-anchor", "middle")
+      .attr("fill", "#c74c3d")
+      .attr("font-size", "12px")
+      .text(`Population share: ${populationShare}%`);
+
+    const lineGroup = svg.append("g");
+    const dotGroup = svg.append("g");
+
+    dataSet.forEach(d => {
+      lineGroup.append("line")
+        .attr("x1", x(d.Overall))
+        .attr("x2", x(d.Top))
+        .attr("y1", y(d.institution))
+        .attr("y2", y(d.institution))
+        .attr("stroke", "#ddd")
+        .attr("stroke-width", 1);
+    });
+
+    categories.forEach(cat => {
+      dotGroup.selectAll(`.dot-${cat}`)
+        .data(dataSet)
+        .join("circle")
+        .attr("class", `dot-${cat}`)
+        .attr("r", 6)
+        .attr("cx", d => x(d[cat]))
+        .attr("cy", d => y(d.institution))
+        .attr("fill", color(cat))
+        .style("cursor", "pointer")
+        .on("mouseover", function (event, d) {
+          d3.select(this).transition().duration(150).attr("r", 8);
+          tooltip.transition().duration(150).style("opacity", 1);
+          tooltip.html(`${cat}: ${d[cat]}%`)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function () {
+          d3.select(this).transition().duration(150).attr("r", 6);
+          tooltip.transition().duration(150).style("opacity", 0);
         });
-    } else {
-      renderChart();
-    }
-
-    function renderChart() {
-      const margin = { top: 30, right: 160, bottom: 40, left: 200 },
-            width = container.node().getBoundingClientRect().width - margin.left - margin.right,
-            height = 400;
-
-      const svgOuter = container.append("svg")
-        .style("opacity", 0)
-        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`);
-
-      svgOuter.transition().duration(300).style("opacity", 1);
-
-      const svg = svgOuter.append("g")
-        .attr("transform", `translate(${margin.left},20)`);
-
-      const y = d3.scalePoint()
-        .domain(dataSet.map(d => d.institution))
-        .range([0, height - 40])
-        .padding(0.5);
-
-      const x = d3.scaleLinear()
-        .domain([0, d3.max(dataSet.flatMap(d => [d.National, d.Overall, d.Top])) + 2])
-        .range([0, width]);
-
-      const ticks = x.ticks(3);
-      svg.append("g")
-        .attr("transform", `translate(0,${height - 40})`)
-        .call(d3.axisBottom(x).tickValues([ticks[0], ticks[Math.floor(ticks.length / 2)], ticks[ticks.length - 1]]).tickFormat(d => d + "%"))
-        .selectAll("text")
-        .style("fill", "#333");
-
-      svg.append("g")
-        .call(d3.axisLeft(y).tickSize(-width).tickPadding(8))
-        .call(g => g.select(".domain").remove())
-        .call(g => g.selectAll(".tick line").attr("stroke", "#eee"))
-        .call(g => g.selectAll("text").style("fill", "#333"));
-
-      const lineGroup = svg.append("g");
-      const dotGroup = svg.append("g");
-
-      dataSet.forEach(d => {
-        lineGroup.append("line")
-          .attr("x1", x(d.National))
-          .attr("x2", x(d.Overall))
-          .attr("y1", y(d.institution))
-          .attr("y2", y(d.institution))
-          .attr("stroke", "#ddd")
-          .attr("stroke-width", 1);
-
-        lineGroup.append("line")
-          .attr("x1", x(d.Overall))
-          .attr("x2", x(d.Top))
-          .attr("y1", y(d.institution))
-          .attr("y2", y(d.institution))
-          .attr("stroke", "#ddd")
-          .attr("stroke-width", 1);
-      });
-
-      categories.forEach(cat => {
-        dotGroup.selectAll(`.dot-${cat}`)
-          .data(dataSet)
-          .join("circle")
-          .attr("class", `dot-${cat}`)
-          .attr("r", 6)
-          .attr("cx", d => x(d[cat]))
-          .attr("cy", d => y(d.institution))
-          .attr("fill", color(cat))
-          .style("cursor", "pointer")
-          .on("mouseover", function (event, d) {
-            d3.select(this).transition().duration(150).attr("r", 8);
-            tooltip.transition().duration(150).style("opacity", 1);
-            tooltip.html(`${cat}: ${d[cat]}%`)
-              .style("left", (event.pageX + 10) + "px")
-              .style("top", (event.pageY - 28) + "px");
-          })
-          .on("mouseout", function () {
-            d3.select(this).transition().duration(150).attr("r", 6);
-            tooltip.transition().duration(150).style("opacity", 0);
-          });
-      });
-    }
+    });
   }
+}
 
-  const muslimData = [
-    { institution: "Lower Court", National: 91.09, Overall: 89.85, Top: 95.81 },
-    { institution: "Dhaka University", National: 91.09, Overall: 89.89, Top: 92.87 },
-    { institution: "Bangladesh Navy", National: 91.09, Overall: 98.47, Top: 98.53 },
-    { institution: "Bangladesh Police", National: 91.09, Overall: 90.85, Top: 93.83 },
-    { institution: "Bangladesh Army", National: 91.09, Overall: 99.09, Top: 99.66 },
-    { institution: "Public Administration", National: 91.09, Overall: 89.56, Top: 94.30 }
-  ];
+const muslimData = [
+  { institution: "Lower Court", Overall: 89.85, Top: 95.81 },
+  { institution: "Dhaka University", Overall: 89.89, Top: 92.87 },
+  { institution: "Bangladesh Navy", Overall: 98.47, Top: 98.53 },
+  { institution: "Bangladesh Police", Overall: 90.85, Top: 93.83 },
+  { institution: "Bangladesh Army", Overall: 99.09, Top: 99.66 },
+  { institution: "Public Administration", Overall: 89.56, Top: 94.30 }
+];
 
-  const nonMuslimData = [
-    { institution: "Lower Court", National: 8.91, Overall: 10.15, Top: 4.19 },
-    { institution: "Dhaka University", National: 8.91, Overall: 10.11, Top: 7.13 },
-    { institution: "Bangladesh Navy", National: 8.91, Overall: 1.53, Top: 1.47 },
-    { institution: "Bangladesh Police", National: 8.91, Overall: 9.15, Top: 6.17 },
-    { institution: "Bangladesh Army", National: 8.91, Overall: 0.91, Top: 0.34 },
-    { institution: "Public Administration", National: 8.91, Overall: 10.44, Top: 5.70 }
-  ];
+const nonMuslimData = [
+  { institution: "Lower Court", Overall: 10.15, Top: 4.19 },
+  { institution: "Dhaka University", Overall: 10.11, Top: 7.13 },
+  { institution: "Bangladesh Navy", Overall: 1.53, Top: 1.47 },
+  { institution: "Bangladesh Police", Overall: 9.15, Top: 6.17 },
+  { institution: "Bangladesh Army", Overall: 0.91, Top: 0.34 },
+  { institution: "Public Administration", Overall: 10.44, Top: 5.70 }
+];
 
-  let currentView = 'nonMuslim';
+let currentView = 'nonMuslim';
 
-  function toggleDataView() {
-    currentView = currentView === 'nonMuslim' ? 'muslim' : 'nonMuslim';
-    const isMuslim = currentView === 'muslim';
-    drawLollipopChart(".custom-lollipop-chart .chart-container", isMuslim ? muslimData : nonMuslimData, isMuslim);
-    document.getElementById("chartTitle").textContent = isMuslim ?
-      "Muslim Representation in Government Institutions" :
-      "Non-Muslim Representation in Government Institutions";
-    document.getElementById("toggleChartBtn").textContent = isMuslim ?
-      "Switch to Non-Muslim View" : "Switch to Muslim View";
-  }
+function toggleDataView() {
+  currentView = currentView === 'nonMuslim' ? 'muslim' : 'nonMuslim';
+  const isMuslim = currentView === 'muslim';
+  drawLollipopChart(".custom-lollipop-chart .chart-container", isMuslim ? muslimData : nonMuslimData, isMuslim);
+  document.getElementById("chartTitle").textContent = isMuslim ?
+    "Muslim Representation in Government Institutions" :
+    "Non-Muslim Representation in Government Institutions";
+  document.getElementById("toggleChartBtn").textContent = isMuslim ?
+    "Switch to Non-Muslim View" : "Switch to Muslim View";
+}
 
-  document.getElementById("toggleChartBtn").addEventListener("click", toggleDataView);
-  drawLollipopChart(".custom-lollipop-chart .chart-container", nonMuslimData);
+document.getElementById("toggleChartBtn").addEventListener("click", toggleDataView);
+drawLollipopChart(".custom-lollipop-chart .chart-container", nonMuslimData);
 </script>
 
 
