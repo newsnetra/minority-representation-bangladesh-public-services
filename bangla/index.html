@@ -1426,6 +1426,98 @@
       background-image: none;
     }
 
+
+.custom-lollipop-chart {
+  margin: 30px auto;
+  font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
+  max-width: 718px;
+}
+
+.custom-lollipop-chart svg {
+    width: 100%;
+    height: auto;
+  }
+  .custom-lollipop-chart .toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .custom-lollipop-chart .toggle-container button {
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #c74c3d;
+    border-radius: 6px;
+    background: #fbece8;
+    color: #c74c3d;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .custom-lollipop-chart .toggle-container button:hover {
+    background: #f7cdb8;
+    border-color: #b13f32;
+  }
+  .custom-lollipop-chart .title {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    margin-left: 8px;
+  }
+  .custom-lollipop-chart .legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
+  }
+  .custom-lollipop-chart .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .custom-lollipop-chart .legend-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .custom-lollipop-chart .chart-container {
+    min-height: 300px;
+  }
+  .custom-lollipop-chart text {
+    font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    fill: #333;
+  }
+  .custom-lollipop-chart-tooltip {
+    position: absolute;
+    padding: 6px 10px;
+  
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    pointer-events: none;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+
+      background: #0009;
+      color: #fff;
+      font-size: 11px;
+  }
+  .custom-lollipop-chart .source-note {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #444;
+    font-family: 'source-sans-pro', Arial, Helvetica, sans-serif;
+    text-align: left;
+    max-width: 700px;
+    margin-left: 8px;
+    margin-right: auto;
+  }
+
 /* =========================================================
    Consolidated media‑query stylesheet  (re‑ordered only)
    ========================================================= */
@@ -2067,6 +2159,26 @@
 
     <p>কিন্তু এর মানে এই নয় যে বেসামরিক সরকারের সকল পর্যায়ে বাংলাদেশ সংখ্যালঘুদের অংশগ্রহণ সমভাবে নিশ্চিত করতে পেরেছে।
       বরং, উপরের পদগুলোতে সংখ্যালঘুদের পদচারণা স্মিত হতে থাকে। </p>
+</div>
+      <div class="custom-lollipop-chart">
+  <div class="title" id="chartTitle">অমুসলিম প্রতিনিধিত্ব: সামগ্রিক বনাম শীর্ষ পদ</div>
+  <div class="toggle-container">
+    <button id="toggleChartBtn">মুসলিম প্রতিনিধিত্ব দেখুন</button>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="legend-circle" style="background:#f7cdb8"></span> সামগ্রিক</div>
+    <div class="legend-item"><span class="legend-circle" style="background:#c74c3d"></span> শীর্ষ পদ-ভিত্তিক</div>
+  </div>
+  <div class="chart-container"></div>
+  <div class="source-note">
+    সূত্র: নেত্র নিউজের সংগ্রহ করা উন্মুক্ত ও গোপন সরকারি রেকর্ড ও উপাত্ত। সূত্র সম্পর্কে বিস্তারিত জানতে <a href="#app" >গবেষণা পদ্ধতি</a> অংশে দেখুন<br><br>
+    <em>দ্রষ্টব্য:</em> সেনাবাহিনীর ক্ষেত্রে ব্রিগেডিয়ার ও তদূর্ধ্ব; নৌবাহিনীর ক্ষেত্রে কমোডর ও তদূর্ধ্ব; প্রশাসনের ক্ষেত্রে সচিব ও তদূর্ধ্ব; পুলিশের ক্ষেত্রে ডিআইজি ও তদূর্ধ্ব; বিচার বিভাগের ক্ষেত্রে জেলা-দায়রা জজ ও তদূর্ধ্ব; এবং ঢাকা বিশ্ববিদ্যালয়ের ক্ষেত্রে অধ্যাপক পদগুলোকে শীর্ষ পদ হিসেবে গণ্য করা হয়েছে।
+  </div>
+</div>
+<div id="customLollipopTooltip" class="custom-lollipop-chart-tooltip" style="opacity:0;"></div>
+
+ <div class="article-3">
+
     <p>বিচারিক আদালতের সর্বোচ্চ পদ জেলা জজ ও তদুর্ধ্ব পদে প্রায় ৯৬ শতাংশ মুসলিম, যদিও নিম্ন আদালতে বিচারকদের মধ্যে
       মুসলমানদের সামগ্রিক হার ৯০ শতাংশের কম। </p>
     <p>বেসামরিক প্রশাসনে এই ব্যবধান আরও তীব্র: ৭৪ জন শীর্ষ-স্তরের সচিবের মধ্যে <span class="highlighted">মাত্র
@@ -3004,6 +3116,174 @@
       }
     });
   </script>
+
+
+<script>
+  const tooltip = d3.select("#customLollipopTooltip");
+
+  function drawLollipopChart(containerSelector, dataSet, isMuslim = false) {
+    const categories = ["Overall", "Top"];
+    const color = d3.scaleOrdinal()
+      .domain(["Population", ...categories])
+      .range(["#f7cdb8", "#f7cdb8", "#c74c3d"]);
+
+    const populationShare = isMuslim ? 91.09 : 8.91;
+
+    const container = d3.select(containerSelector);
+    const existingSVG = container.select("svg");
+    if (!existingSVG.empty()) {
+      existingSVG.transition()
+        .duration(300)
+        .style("opacity", 0)
+        .on("end", function() {
+          d3.select(this).remove();
+          renderChart();
+        });
+    } else {
+      renderChart();
+    }
+
+    function renderChart() {
+      const fullWidth = container.node().getBoundingClientRect().width;
+      const margin = { top: 30, right: 40, bottom: 40, left: 150 },
+            width = fullWidth - margin.left - margin.right,
+            height = 400;
+
+      const svgOuter = container.append("svg")
+        .style("opacity", 0)
+        .attr("viewBox", `0 0 ${fullWidth} ${height}`);
+
+      svgOuter.transition().duration(300).style("opacity", 1);
+
+      const svg = svgOuter.append("g")
+        .attr("transform", `translate(${margin.left},20)`);
+
+      const y = d3.scalePoint()
+        .domain(dataSet.map(d => d.institution))
+        .range([0, height - 40])
+        .padding(0.5);
+
+      const xMax = d3.max(dataSet.flatMap(d => [populationShare, d.Overall, d.Top]));
+      const x = d3.scaleLinear()
+        .domain([0, xMax])
+        .range([0, width]);
+
+      const middleTick = Math.round(xMax / 2);
+      const xAxisGroup = svg.append("g")
+        .attr("transform", `translate(0,${height - 40})`)
+        .style("opacity", 0);
+
+      xAxisGroup.transition().duration(400).style("opacity", 1);
+
+      xAxisGroup.call(d3.axisBottom(x)
+        .tickValues([0, middleTick, xMax])
+        .tickFormat(d => d + "%"))
+        .selectAll("text")
+        .style("fill", "#333");
+
+      svg.append("g")
+        .call(d3.axisLeft(y).tickSize(-width).tickPadding(8))
+        .call(g => g.select(".domain").remove())
+        .call(g => g.selectAll(".tick line").attr("stroke", "#eee"))
+        .call(g => g.selectAll("text").style("fill", "#333"));
+
+      const lineGroup = svg.append("g");
+      const dotGroup = svg.append("g");
+
+      // Animate population line and label
+      const popLine = svg.append("line")
+        .attr("x1", 0)
+        .attr("x2", 0)
+        .attr("y1", 0)
+        .attr("y2", height - 40)
+        .attr("stroke", color("Population"))
+        .attr("stroke-width", 2)
+        .attr("stroke-dasharray", "3,2");
+
+      popLine.transition()
+        .duration(500)
+        .attr("x1", x(populationShare))
+        .attr("x2", x(populationShare));
+
+      const popLabel = svg.append("text")
+        .attr("x", 0)
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .style("fill", "#333")
+        .style("font-size", "12px")
+        .text(`জনসংখ্যায় হার: ${populationShare}%`);
+
+      popLabel.transition()
+        .duration(500)
+        .attr("x", x(populationShare));
+
+      dataSet.forEach(d => {
+        lineGroup.append("line")
+          .attr("x1", x(d.Overall))
+          .attr("x2", x(d.Top))
+          .attr("y1", y(d.institution))
+          .attr("y2", y(d.institution))
+          .attr("stroke", "#ddd")
+          .attr("stroke-width", 1);
+
+        categories.forEach(cat => {
+          dotGroup.append("circle")
+            .attr("r", 6)
+            .attr("cx", x(d[cat]))
+            .attr("cy", y(d.institution))
+            .attr("fill", color(cat))
+            .style("cursor", "pointer")
+            .on("mouseover", function (event) {
+              d3.select(this).transition().duration(150).attr("r", 8);
+              tooltip.transition().duration(150).style("opacity", 1);
+              tooltip.html(`${cat}: ${d[cat]}%`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function () {
+              d3.select(this).transition().duration(150).attr("r", 6);
+              tooltip.transition().duration(150).style("opacity", 0);
+            });
+        });
+      });
+    }
+  }
+
+  const muslimData = [
+    { institution: "বিচারিক আদালত", Overall: 89.85, Top: 95.81 },
+    { institution: "ঢাকা বিশ্ববিদ্যালয়", Overall: 89.89, Top: 92.87 },
+    { institution: "নৌবাহিনী", Overall: 98.47, Top: 98.53 },
+    { institution: "পুলিশ", Overall: 90.85, Top: 93.83 },
+    { institution: "সেনাবাহিনী", Overall: 99.09, Top: 99.66 },
+    { institution: "জনপ্রশাসন", Overall: 89.56, Top: 94.30 }
+  ];
+
+  const nonMuslimData = [
+    { institution: "বিচারিক আদালত", Overall: 10.15, Top: 4.19 },
+    { institution: "ঢাকা বিশ্ববিদ্যালয়", Overall: 10.11, Top: 7.13 },
+    { institution: "নৌবাহিনী", Overall: 1.53, Top: 1.47 },
+    { institution: "পুলিশ", Overall: 9.15, Top: 6.17 },
+    { institution: "সেনাবাহিনী", Overall: 0.91, Top: 0.34 },
+    { institution: "জনপ্রশাসন", Overall: 10.44, Top: 5.70 }
+  ];
+
+  let currentView = 'nonMuslim';
+
+  function toggleDataView() {
+    currentView = currentView === 'nonMuslim' ? 'muslim' : 'nonMuslim';
+    const isMuslim = currentView === 'muslim';
+    drawLollipopChart(".custom-lollipop-chart .chart-container", isMuslim ? muslimData : nonMuslimData, isMuslim);
+    document.getElementById("chartTitle").textContent = isMuslim ?
+      "Muslim Representation: Overall vs Top Positions" :
+      "Non-Muslim Representation: Overall vs Top Positions";
+    document.getElementById("toggleChartBtn").textContent = isMuslim ?
+      "অমুসলিম প্রতিনিধিত্ব দেখুন" : "মুসলিম প্রতিনিধিত্ব দেখুন";
+  }
+
+  document.getElementById("toggleChartBtn").addEventListener("click", toggleDataView);
+  drawLollipopChart(".custom-lollipop-chart .chart-container", nonMuslimData);
+</script>
+
 
 </body>
 
