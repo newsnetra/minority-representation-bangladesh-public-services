@@ -2082,8 +2082,7 @@
       }
     }
 
-    /* ----------  coarse pointer / no‑hover ----------------*/
-    @media (max-width: 820px) {
+   @media (max-width: 820px) {
   .horizontal-scroller {
     white-space: normal;
     overflow-x: visible;
@@ -2097,6 +2096,8 @@
     margin-bottom: 40px;
   }
 }
+
+
 
     /* ----------  ≥ 540 px  (unchanged) --------------------*/
     @media screen and (min-width: 540px) {
@@ -3222,62 +3223,68 @@
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script>
-    /************************************************************
-    * 1) DETECT COARSE VS. FINE POINTER
-    * - If pointer is coarse => treat as mobile (vertical stack).
-    * - If fine => treat as desktop (horizontal scroller).
-    ************************************************************/
-    const isNarrowScreen = window.innerWidth < 821;
+ /************************************************************
+  * Utility: responsive helper
+  ************************************************************/
+  function isCurrentlyNarrow() {
+    return window.innerWidth < 821;
+  }
 
+  /************************************************************
+  * Optional wheel logic for desktop screens
+  ************************************************************/
+  let scrollerEl = null;
+  let scrollerActive = false;
 
-    /************************************************************
-    * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
-    ************************************************************/
-    let scrollerActive = false;
-    const scrollerEl = document.getElementById('myHorizontalScroller');
+  function checkScrollerActivation() {
+    if (!scrollerEl) return;
+    const rect = scrollerEl.getBoundingClientRect();
+    const scrollerCenter = rect.top + (rect.height / 2);
+    const viewportCenter = window.innerHeight / 2;
+    const distance = Math.abs(scrollerCenter - viewportCenter);
+    const nearCenter = (distance < 200);
+    const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
+    scrollerActive = (partlyVisible && nearCenter);
+  }
 
-    if (!isNarrowScreen) {
-      // We'll only intercept mouse wheel on desktop
+  function enableHorizontalScroll() {
+    window.addEventListener('wheel', e => {
+      checkScrollerActivation();
+      if (!scrollerActive) return;
 
-      function checkScrollerActivation() {
-        const rect = scrollerEl.getBoundingClientRect();
-        const scrollerCenter = rect.top + (rect.height / 2);
-        const viewportCenter = window.innerHeight / 2;
-        const distance = Math.abs(scrollerCenter - viewportCenter);
+      const deltaY = e.deltaY;
+      const currentLeft = scrollerEl.scrollLeft;
+      const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
+      const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
+      const canScrollLeft = (deltaY < 0 && currentLeft > 0);
 
-        // threshold: only if the scroller's center is within 50px of screen center
-        const nearCenter = (distance < 200);
-
-        // must also be partly visible on screen
-        const partlyVisible = (rect.bottom > 0 && rect.top < window.innerHeight);
-
-        // only activate if both conditions are true
-        scrollerActive = (partlyVisible && nearCenter);
+      if (canScrollRight || canScrollLeft) {
+        e.preventDefault();
+        scrollerEl.scrollLeft += deltaY;
       }
+    }, { passive: false });
 
-      // Intercept wheel if scrollerActive == true
-      window.addEventListener('wheel', e => {
-        checkScrollerActivation();
-        if (!scrollerActive) return; // do normal vertical scroll
+    window.addEventListener('scroll', checkScrollerActivation);
+    window.addEventListener('resize', checkScrollerActivation);
+    checkScrollerActivation();
+  }
 
-        const deltaY = e.deltaY;
-        const currentLeft = scrollerEl.scrollLeft;
-        const maxLeft = scrollerEl.scrollWidth - scrollerEl.clientWidth;
-
-        const canScrollRight = (deltaY > 0 && currentLeft < maxLeft);
-        const canScrollLeft = (deltaY < 0 && currentLeft > 0);
-
-        if (canScrollRight || canScrollLeft) {
-          e.preventDefault();
-          scrollerEl.scrollLeft += deltaY;
+  /************************************************************
+  * Adjust chart container height for narrow screens
+  ************************************************************/
+  function adjustScrollerHeightIfNarrow() {
+    if (window.innerWidth < 821) {
+      const chartEls = document.querySelectorAll('.chart-container_x2');
+      if (chartEls.length > 0) {
+        const oneHeight = chartEls[0].offsetHeight;
+        const totalHeight = oneHeight * chartEls.length + 40;
+        const scroller = document.querySelector('.horizontal-scroller');
+        if (scroller) {
+          scroller.style.minHeight = `${totalHeight}px`;
         }
-      }, { passive: false });
-
-      // Recheck activation on normal scroll and resize
-      window.addEventListener('scroll', checkScrollerActivation);
-      window.addEventListener('resize', checkScrollerActivation);
+      }
     }
-
+  }
     /************************************************************
     * 3) D3 CHART CODE
     ************************************************************/
@@ -3472,27 +3479,47 @@
       });
     }
 
+    function adjustScrollerHeightIfNarrow() {
+  if (window.innerWidth < 821) {
+    const chartEls = document.querySelectorAll('.chart-container_x2');
+    if (chartEls.length > 0) {
+      const oneHeight = chartEls[0].offsetHeight;
+      const totalHeight = oneHeight * chartEls.length + 40; // margin for spacing
+      const scroller = document.querySelector('.horizontal-scroller');
+      if (scroller) {
+        scroller.style.minHeight = `${totalHeight}px`;
+      }
+    }
+  }
+}
 
-    /************************************************************
-    * 4) INITIALIZE
-    ************************************************************/
+
+/************************************************************
+  * Initialize after DOM is fully loaded
+  ************************************************************/
+  window.addEventListener('DOMContentLoaded', () => {
+    let currentIsNarrow = isCurrentlyNarrow();
+    scrollerEl = document.getElementById('myHorizontalScroller');
+
     buildCharts();
+    adjustScrollerHeightIfNarrow();
 
-    // If desktop-like pointer, run check once
-    if (!isNarrowScreen) {
-      // This ensures we set scrollerActive correctly on load
-      // so if it's already near center, wheel is intercepted.
-      checkScrollerActivation();
+    if (!currentIsNarrow) {
+      enableHorizontalScroll();
     }
 
-    // Rebuild charts on resize
     window.addEventListener('resize', () => {
-  buildCharts();
-  if (!isNarrowScreen) {
-    checkScrollerActivation();
-  }
-});
+      const newIsNarrow = isCurrentlyNarrow();
+      if (newIsNarrow !== currentIsNarrow) {
+        buildCharts();
+        currentIsNarrow = newIsNarrow;
+      }
+      adjustScrollerHeightIfNarrow();
+    });
+  });
+
   </script>
+
 
 
   <script>
