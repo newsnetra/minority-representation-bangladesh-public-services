@@ -2072,20 +2072,20 @@
     }
 
     /* ----------  coarse pointer / no‑hover ----------------*/
-    @media (hover: none) and (pointer: coarse) {
-      .horizontal-scroller {
-        white-space: normal;
-        overflow-x: visible;
-      }
+    @media (max-width: 820px) {
+  .horizontal-scroller {
+    white-space: normal;
+    overflow-x: visible;
+  }
 
-      .chart-container_x2 {
-        display: block;
-        width: auto;
-        margin-right: 0;
-        border-right: none;
-        margin-bottom: 40px;
-      }
-    }
+  .chart-container_x2 {
+    display: block;
+    width: auto;
+    margin-right: 0;
+    border-right: none;
+    margin-bottom: 40px;
+  }
+}
 
     /* ----------  ≥ 540 px  (unchanged) --------------------*/
     @media screen and (min-width: 540px) {
@@ -3216,8 +3216,8 @@
     * - If pointer is coarse => treat as mobile (vertical stack).
     * - If fine => treat as desktop (horizontal scroller).
     ************************************************************/
-    const mqCoarse = window.matchMedia("(hover: none) and (pointer: coarse)");
-    const isCoarsePointer = mqCoarse.matches; // true => likely mobile
+    const isNarrowScreen = window.innerWidth < 821;
+
 
     /************************************************************
     * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
@@ -3225,7 +3225,7 @@
     let scrollerActive = false;
     const scrollerEl = document.getElementById('myHorizontalScroller');
 
-    if (!isCoarsePointer) {
+    if (!isNarrowScreen) {
       // We'll only intercept mouse wheel on desktop
 
       function checkScrollerActivation() {
@@ -3366,7 +3366,7 @@
           .style("background-color", "#f7cdb8")
           .style("margin-right", "6px");
 
-        popLegend.append("span").text("জাতীয় জনসংখ্যায় হার");
+        popLegend.append("span").text("Overall population share");
 
         // Civil service legend
         const civilLegend = legend.append("div")
@@ -3379,7 +3379,7 @@
           .style("height", "12px")
           .style("background-color", "#c74c3d")
           .style("margin-right", "6px");
-        civilLegend.append("span").text("সিভিল সার্ভিসে হার");
+        civilLegend.append("span").text("Civil service officers share");
 
         // SVG
         const svg = container.append("svg")
@@ -3419,7 +3419,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`জনসংখ্যায় <strong>${d.category}</strong><br/>সম্প্রদায়ের ভাগ: ${d.nat}%`);
+              .html(`Population share for <br/><strong>${d.category}</strong>: ${d.nat}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -3443,7 +3443,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`সিভিল সার্ভিসে <br/> <strong>${d.category}</strong> সম্প্রদায়ের ভাগ: ${d.cs}%`);
+              .html(`Civil service share for <br/> <strong>${d.category}</strong>: ${d.cs}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -3467,7 +3467,7 @@
     buildCharts();
 
     // If desktop-like pointer, run check once
-    if (!isCoarsePointer) {
+    if (!isNarrowScreen) {
       // This ensures we set scrollerActive correctly on load
       // so if it's already near center, wheel is intercepted.
       checkScrollerActivation();
@@ -3475,11 +3475,12 @@
 
     // Rebuild charts on resize
     window.addEventListener('resize', () => {
-      buildCharts();
-      if (!isCoarsePointer) {
-        checkScrollerActivation();
-      }
-    });
+  buildCharts();
+  if (!isNarrowScreen) {
+    checkScrollerActivation();
+  }
+});
+
   </script>
 
 

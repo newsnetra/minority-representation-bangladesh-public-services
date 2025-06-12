@@ -2084,22 +2084,29 @@
         font-size: 18px;
       }
     }
+@media (max-width: 820px) {
+  .horizontal-scroller {
+    white-space: normal;
+    overflow-x: visible;
+  }
 
-    /* ----------  no‑hover / coarse pointer -----------------*/
-    @media (hover: none) and (pointer: coarse) {
-      .horizontal-scroller {
-        white-space: normal;
-        overflow-x: visible;
-      }
+  .chart-container_x2 {
+    display: block;
+    width: auto;
+    margin-right: 0;
+    border-right: none;
+    margin-bottom: 40px;
+  }
+}
 
-      .chart-container_x2 {
-        display: block;
-        width: auto;
-        margin-right: 0;
-        border-right: none;
-        margin-bottom: 40px;
+    /* ----------  ≥ 540 px  (unchanged) --------------------*/
+    @media screen and (min-width: 540px) {
+      .social-icons-m {
+        display: none;
       }
     }
+
+
   </style>
 </head>
 
@@ -3244,8 +3251,8 @@
     * - If pointer is coarse => treat as mobile (vertical stack).
     * - If fine => treat as desktop (horizontal scroller).
     ************************************************************/
-    const mqCoarse = window.matchMedia("(hover: none) and (pointer: coarse)");
-    const isCoarsePointer = mqCoarse.matches; // true => likely mobile
+    const isNarrowScreen = window.innerWidth < 821;
+
 
     /************************************************************
     * 2) OPTIONAL WHEEL LOGIC FOR DESKTOP
@@ -3253,7 +3260,7 @@
     let scrollerActive = false;
     const scrollerEl = document.getElementById('myHorizontalScroller');
 
-    if (!isCoarsePointer) {
+    if (!isNarrowScreen) {
       // We'll only intercept mouse wheel on desktop
 
       function checkScrollerActivation() {
@@ -3495,7 +3502,7 @@
     buildCharts();
 
     // If desktop-like pointer, run check once
-    if (!isCoarsePointer) {
+    if (!isNarrowScreen) {
       // This ensures we set scrollerActive correctly on load
       // so if it's already near center, wheel is intercepted.
       checkScrollerActivation();
@@ -3503,11 +3510,12 @@
 
     // Rebuild charts on resize
     window.addEventListener('resize', () => {
-      buildCharts();
-      if (!isCoarsePointer) {
-        checkScrollerActivation();
-      }
-    });
+  buildCharts();
+  if (!isNarrowScreen) {
+    checkScrollerActivation();
+  }
+});
+
   </script>
 
 
