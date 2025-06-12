@@ -655,14 +655,21 @@
     }
 
     .left-grid-card {
+  position: sticky;
+  top: 10%;
+  padding: 0 1rem;
+  position: sticky; /* Needed for ::after */
+}
 
+.left-grid-card::after {
+  content: '';
+  position: absolute;
+  top: 25%; /* Center it vertically */
+  right: 0;
+  height: 50%; /* Half the element's height */
+  border-right: 1.5px solid gray;
+}
 
-      position: sticky;
-      top: 10%;
-      border-right: 1.5px solid lightgray;
-      padding: 0 1rem;
-
-    }
 
 
 
@@ -1203,14 +1210,22 @@
 
     /* Each chart “page” 618px wide => side-by-side horizontally on desktop */
     .chart-container_x2 {
-      display: inline-block;
-      width: 618px;
-      box-sizing: border-box;
-      margin-right: 10px;
-      vertical-align: top;
-      border-right: 1px solid lightgray;
-      /* optional separator */
-    }
+  display: inline-block;
+  width: 618px;
+  box-sizing: border-box;
+  margin-right: 10px;
+  vertical-align: top;
+  position: relative; /* Needed for pseudo-element positioning */
+}
+
+.chart-container_x2::after {
+  content: '';
+  position: absolute;
+  top: 34%; /* Start 25% from top */
+  right: 0;
+  height: 33%; /* 50% of element’s height */
+  border-right: 1px solid lightgray;
+}
 
     /* Chart title, legends, etc. */
     .chart-title_x2 {
@@ -1973,9 +1988,8 @@
         top: 0;
       }
 
-      .left-grid-card {
-        border-right: 1px solid gray;
-      }
+     
+
 
       .col-right,
       .grid-card {

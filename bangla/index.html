@@ -700,16 +700,21 @@
       padding: 0 1rem;
     }
 
-    .left-grid-card {
+     .left-grid-card {
+  position: sticky;
+  top: 10%;
+  padding: 0 1rem;
+  position: sticky; /* Needed for ::after */
+}
 
-
-      position: sticky;
-      top: 10%;
-      border-right: 1.5px solid #c74c3d;
-      padding: 0 1rem;
-
-    }
-
+.left-grid-card::after {
+  content: '';
+  position: absolute;
+  top: 25%; /* Center it vertically */
+  right: 0;
+  height: 50%; /* Half the element's height */
+  border-right: 1.5px solid gray;
+}
 
 
 
@@ -1220,14 +1225,23 @@
 
     /* Each chart “page” 618px wide => side-by-side horizontally on desktop */
     .chart-container_x2 {
-      display: inline-block;
-      width: 618px;
-      box-sizing: border-box;
-      margin-right: 10px;
-      vertical-align: top;
-      border-right: 1px solid lightgray;
-      /* optional separator */
-    }
+  display: inline-block;
+  width: 618px;
+  box-sizing: border-box;
+  margin-right: 10px;
+  vertical-align: top;
+  position: relative; /* Needed for pseudo-element positioning */
+}
+
+.chart-container_x2::after {
+  content: '';
+  position: absolute;
+  top: 34%; /* Start 25% from top */
+  right: 0;
+  height: 33%; /* 50% of element’s height */
+  border-right: 1px solid lightgray;
+}
+
 
     /* Chart title, legends, etc. */
     .chart-title_x2 {
@@ -1829,10 +1843,7 @@
         top: 0;
       }
 
-      /* card padding / borders */
-      .left-grid-card {
-        border-right: 1px solid gray;
-      }
+     
 
       .col-right,
       .grid-card {
@@ -3366,7 +3377,7 @@
           .style("background-color", "#f7cdb8")
           .style("margin-right", "6px");
 
-        popLegend.append("span").text("Overall population share");
+        popLegend.append("span").text("জাতীয় জনসংখ্যায় হার");
 
         // Civil service legend
         const civilLegend = legend.append("div")
@@ -3379,7 +3390,7 @@
           .style("height", "12px")
           .style("background-color", "#c74c3d")
           .style("margin-right", "6px");
-        civilLegend.append("span").text("Civil service officers share");
+        civilLegend.append("span").text("সিভিল সার্ভিসে হার");
 
         // SVG
         const svg = container.append("svg")
@@ -3419,7 +3430,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`Population share for <br/><strong>${d.category}</strong>: ${d.nat}%`);
+              .html(`জনসংখ্যায় <strong>${d.category}</strong><br/>সম্প্রদায়ের ভাগ: ${d.nat}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -3443,7 +3454,7 @@
           .on("mouseover", (event, d) => {
             tooltip_x2
               .style("visibility", "visible")
-              .html(`Civil service share for <br/> <strong>${d.category}</strong>: ${d.cs}%`);
+              .html(`সিভিল সার্ভিসে <br/> <strong>${d.category}</strong> সম্প্রদায়ের ভাগ: ${d.cs}%`);
           })
           .on("mousemove", (event) => {
             tooltip_x2
@@ -3460,6 +3471,7 @@
           .text(sources_x2[country]);
       });
     }
+
 
     /************************************************************
     * 4) INITIALIZE
@@ -3480,7 +3492,6 @@
     checkScrollerActivation();
   }
 });
-
   </script>
 
 
